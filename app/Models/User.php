@@ -50,4 +50,8 @@ class User extends Authenticatable
     public function stock() {
         return $this->hasMany(Stock::class);
     }
+
+    public function datapokok() {
+        return $this->hasOne(Datapokok::class);
+    }
 }
