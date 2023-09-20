@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1d1b252860ca9098ad7ce31ca10c7480
+class ComposerStaticInit61b24d26ab3cfcec2e5bb90c172d7597
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -5853,6 +5853,10 @@ class ComposerStaticInit1d1b252860ca9098ad7ce31ca10c7480
         'Termwind\\ValueObjects\\Node' => __DIR__ . '/..' . '/nunomaduro/termwind/src/ValueObjects/Node.php',
         'Termwind\\ValueObjects\\Style' => __DIR__ . '/..' . '/nunomaduro/termwind/src/ValueObjects/Style.php',
         'Termwind\\ValueObjects\\Styles' => __DIR__ . '/..' . '/nunomaduro/termwind/src/ValueObjects/Styles.php',
+        'Tests\\CreatesApplication' => __DIR__ . '/../..' . '/tests/CreatesApplication.php',
+        'Tests\\Feature\\ExampleTest' => __DIR__ . '/../..' . '/tests/Feature/ExampleTest.php',
+        'Tests\\TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
+        'Tests\\Unit\\ExampleTest' => __DIR__ . '/../..' . '/tests/Unit/ExampleTest.php',
         'TheSeer\\Tokenizer\\Exception' => __DIR__ . '/..' . '/theseer/tokenizer/src/Exception.php',
         'TheSeer\\Tokenizer\\NamespaceUri' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUri.php',
         'TheSeer\\Tokenizer\\NamespaceUriException' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUriException.php',
@@ -5899,9 +5903,9 @@ class ComposerStaticInit1d1b252860ca9098ad7ce31ca10c7480
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1d1b252860ca9098ad7ce31ca10c7480::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1d1b252860ca9098ad7ce31ca10c7480::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit1d1b252860ca9098ad7ce31ca10c7480::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit61b24d26ab3cfcec2e5bb90c172d7597::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit61b24d26ab3cfcec2e5bb90c172d7597::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit61b24d26ab3cfcec2e5bb90c172d7597::$classMap;
 
         }, null, ClassLoader::class);
     }
