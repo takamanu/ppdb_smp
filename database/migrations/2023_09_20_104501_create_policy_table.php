@@ -35,6 +35,7 @@ return new class extends Migration
             $table->enum('perjanjian1',['ya','tidak','ragu']);
             $table->enum('perjanjian2',['ya','tidak','ragu']);
             $table->enum('perjanjian3',['ya','tidak','ragu']);
+            $table->enum('perjanjian4',['ya','tidak','ragu']);
             $table->timestamps();
         });
     }
