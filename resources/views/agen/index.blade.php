@@ -10,11 +10,11 @@
                     </div>
                     <div class="card-body">
                         <a href="{{ url('/agen/create') }}" class="btn btn-success btn-sm float-left" title="Add New Agen">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> Tambah Siswa
                         </a>
                         <form method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search float-right">
                             <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small" name="cari" id="cari" placeholder="Search for..."
+                                <input type="text" class="form-control bg-light border-0 small" name="cari" id="cari" placeholder="Cari siswa..."
                                 value={{ $cari }}>
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit" name="submit">
@@ -34,11 +34,11 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>@sortablelink('name', 'Name')</th>
+                                        <th>@sortablelink('name', 'Nama')</th>
                                         <th>@sortablelink('email', 'Email')</th>
                                         <th>Tanggal Dibuat</th>
                                         {{-- <th>Tanggal Diupdate</th> --}}
-                                        <th>Role</th>
+                                        {{-- <th>Role</th> --}}
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -51,19 +51,21 @@
                                         <td>{{ $item->created_at }}</td>
                                         {{-- <td>{{ $item->updated_at }}</td> --}}
                                         {{-- <td>{{ $item->role }}</td> --}}
-                                        @if($item->role =='1') 
+                                        {{-- @if($item->role =='1') 
                                             <td>Admin</td>
                                         @else
                                             <td>Member</td>
                                         
-                                        @endif
+                                        @endif --}}
                                         <td>
-                                            <a href="{{ url('/agen/' . $item->id) }}" title="View Agen"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
+
+                                            <a href="{{ url('/agen/' . $item->id) }}" title="Cetak Datapokok Siswa"><button class="btn btn-warning btn-sm"><i class="fa fa-print" aria-hidden="true"></i></button></a>
+                                            <a href="{{ url('/agen/' . $item->id) }}" title="Lihat Siswa"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
                                             {{-- <a href="{{ url('/agen/' . $item->id . '/edit') }}" title="Edit Agen"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a> --}}
                                             <form method="POST" action="{{ url('/agen' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Agen" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Siswa" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                             </form>
                                         </td>
                                     </tr>
@@ -86,4 +88,8 @@
             </div>
         </div>
     </div>
+<script>
+
+</script>
 @endsection
+

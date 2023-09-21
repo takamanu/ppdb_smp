@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Agen;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use App\Models\Datapokok;
 
 date_default_timezone_set('Asia/Jakarta');
 
@@ -74,6 +75,41 @@ class AgenController extends Controller
             'password' => Hash::make($request->newPassword),
         ]);
 
+        Datapokok::create([
+            'nama_lengkap' => $request->name,
+            'email' => $request->email,
+            'upload_file' => NULL,
+            'nisn' => NULL,
+            'jenis_kelamin' => 1,
+            'tempat_lahir' => NULL,
+            'tanggal_lahir' => NULL,
+            'agama' => NULL,
+            'asal_sekolah' => NULL,
+            'alamat_sekolah' => NULL,
+            'jumlah_hafalan => NULL' => NULL,
+            'nama_ayah => NULL' => NULL,
+            'pekerjaan_ayah' => NULL,
+            'penghasilan_ayah' => NULL,
+            'pendidikan_terakir_ayah' => NULL,
+            'no_wa_ayah' => NULL,
+            'nama_ibu' => NULL,
+            'pekerjaan_ibu' => NULL,
+            'penghasilan_ibu' => NULL,
+            'pendidikan_terakir_ibu' => NULL,
+            'no_wa_ibu' => NULL,
+            'nama_wali_siswa' => NULL,
+            'hubungan_dengan_siswa' => NULL,
+            'alamat_wali_siswa' => NULL,
+            'pekerjaan_wali' => NULL,
+            'penghasilan_wali' => NULL,
+            'pendidikan_terakir_wali' => NULL,
+            'no_wa_wali_siswa' => NULL,
+            'motivasi' => NULL,
+            'daftar_sekolah_lain' => NULL,
+            'nama_sekolahnya_jika_daftar' => NULL,
+            'informasi_didapatkan_dari' => NULL,
+        ]);
+
         // Agen::create($input);
         return redirect('agen')->with('flash_message', 'Users Added!');
     }
@@ -86,7 +122,7 @@ class AgenController extends Controller
      */
     public function show($id)
     {
-        $agen = Agen::find($id);
+        $agen = Datapokok::find($id);
         return view('agen.show')->with('agen', $agen);
     }
 

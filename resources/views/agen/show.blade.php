@@ -2,40 +2,156 @@
 
 @section('container')
 <div class="card">
-    <div class="card-header">Lihat Agen</div>
-  
+    <div class="card-header">Lihat Siswa {{$agen->nama_lengkap }}</div>
+        <!-- Section 1: Data Pribadi -->
         <div class="card-body">
+            <h3 class="mb-3">Data Pribadi</h3>
             <div class="row">
-                <div class="col-md-4"><b>Name</b></div>
-                <div class="col-md-8">{{ $agen->name }}</div>
+                <div class="col-md-4"><b>Nama Lengkap</b></div>
+                <div class="col-md-8">{{ $agen->nama_lengkap }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>NISN</b></div>
+                <div class="col-md-8">{{ $agen->nisn }}</div>
             </div>
             <div class="row">
                 <div class="col-md-4"><b>Email</b></div>
                 <div class="col-md-8">{{ $agen->email }}</div>
             </div>
             <div class="row">
-                <div class="col-md-4"><b>Tanggal Buat</b></div>
-                <div class="col-md-8">{{ $agen->created_at }}</div>
+                <div class="col-md-4"><b>Jenis Kelamin</b></div>
+                <div class="col-md-8">{{ $agen->jenis_kelamin }}</div>
             </div>
             <div class="row">
-                <div class="col-md-4"><b>Tanggal Update</b></div>
-                <div class="col-md-8">{{ $agen->updated_at }}</div>
+                <div class="col-md-4"><b>Tempat Lahir</b></div>
+                <div class="col-md-8">{{ $agen->tempat_lahir }}</div>
             </div>
             <div class="row">
-                <div class="col-md-4"><b>Role</b></div>
-                @if($agen->role =='1') 
-                    <div class="col-md-8">Admin</div>
-                @else
-                    <div class="col-md-8">Member</div>
-                
-                @endif
+                <div class="col-md-4"><b>Tanggal Lahir</b></div>
+                <div class="col-md-8">{{ $agen->tanggal_lahir }}</div>
             </div>
+            <div class="row">
+                <div class="col-md-4"><b>Agama</b></div>
+                <div class="col-md-8">{{ $agen->agama }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>Asal Sekolah</b></div>
+                <div class="col-md-8">{{ $agen->asal_sekolah }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>Alamat Sekolah</b></div>
+                <div class="col-md-8">{{ $agen->alamat_sekolah }}</div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-md-4"><b>Jumlah Hafalan</b></div>
+                <div class="col-md-8">{{ $agen->jumlah_hafalan }}</div>
+            </div>
+
+            <!-- Section 2: Informasi Keluarga -->
+            <h3 class="mb-3">Informasi Keluarga</h3>
+            <div class="row">
+                <div class="col-md-4"><b>Nama Ayah</b></div>
+                <div class="col-md-8">{{ $agen->nama_ayah }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>Pekerjaan Ayah</b></div>
+                <div class="col-md-8">{{ $agen->pekerjaan_ayah }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>Penghasilan Ayah</b></div>
+                <div class="col-md-8">{{ $agen->penghasilan_ayah }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>Pendidikan Terakhir Ayah</b></div>
+                <div class="col-md-8">{{ $agen->pendidikan_terakir_ayah }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>No. WhatsApp Ayah</b></div>
+                <div class="col-md-8">{{ $agen->no_wa_ayah }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>Nama Ibu</b></div>
+                <div class="col-md-8">{{ $agen->nama_ibu }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>Pekerjaan Ibu</b></div>
+                <div class="col-md-8">{{ $agen->pekerjaan_ibu }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>Penghasilan Ibu</b></div>
+                <div class="col-md-8">{{ $agen->penghasilan_ibu }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>Pendidikan Terakhir Ibu</b></div>
+                <div class="col-md-8">{{ $agen->pendidikan_terakir_ibu }}</div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-md-4"><b>No. WhatsApp Ibu</b></div>
+                <div class="col-md-8">{{ $agen->no_wa_ibu }}</div>
+            </div>
+
+             <!-- Section 3: Data Wali Siswa -->
+            <h3 class="mb-3">Data Wali Siswa</h3>
+            <div class="row">
+                <div class="col-md-4"><b>Nama Wali Siswa</b></div>
+                <div class="col-md-8">{{ $agen->nama_wali_siswa }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>Hubungan dengan Siswa</b></div>
+                <div class="col-md-8">{{ $agen->hubungan_dengan_siswa }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>Alamat Wali Siswa</b></div>
+                <div class="col-md-8">{{ $agen->alamat_wali_siswa }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>Pekerjaan Wali</b></div>
+                <div class="col-md-8">{{ $agen->pekerjaan_wali }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>Penghasilan Wali</b></div>
+                <div class="col-md-8">{{ $agen->penghasilan_wali }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>Pendidikan Terakhir Wali</b></div>
+                <div class="col-md-8">{{ $agen->pendidikan_terakir_wali }}</div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-md-4"><b>No. WhatsApp Wali Siswa</b></div>
+                <div class="col-md-8">{{ $agen->no_wa_wali_siswa }}</div>
+            </div>
+
+            <!-- Section 4: Lainnya -->
+            <h3 class="mb-3">Lainnya</h3>
+            <div class="row">
+                <div class="col-md-4"><b>Motivasi</b></div>
+                <div class="col-md-8">{{ $agen->motivasi }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>Daftar Sekolah Lain</b></div>
+                <div class="col-md-8">
+                    @if($agen->daftar_sekolah_lain == 1)
+                        Yes
+                    @else
+                        No
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>Nama Sekolah Jika Daftar</b></div>
+                <div class="col-md-8">{{ $agen->nama_sekolahnya_jika_daftar }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><b>Informasi Didapatkan Dari</b></div>
+                <div class="col-md-8">{{ $agen->informasi_didapatkan_dari }}</div>
+            </div>
+            
             <br>
             <div class="row">
-                <div class="col-md-4">
-                    <a href="{{ url()->previous() }}" class="btn btn-danger btn-sm">Back</a>
+                <div class="col">
+                    <a href="{{ url()->previous() }}" class="btn btn-danger btn-block">Back</a>
                 </div>
-                <div class="col-md-8"></div>
+                {{-- <div class="col-md-8"></div> --}}
             </div>
         </div>
     </div>
