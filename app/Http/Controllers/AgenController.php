@@ -164,7 +164,12 @@ class AgenController extends Controller
      */
     public function destroy($id)
     {
+        $agen = Datapokok::where('user_id', $id)->first();
+        // return $agen;
+        $nama = $agen->nama_lengkap;
+        $id_datapokok = $agen->id;
+        Datapokok::destroy($id_datapokok);
         Agen::destroy($id);
-        return redirect('agen')->with('status', 'Member berhasil dihapus!');
+        return redirect('agen')->with('status', 'Siswa '. $nama .' berhasil dihapus!');
     }
 }
