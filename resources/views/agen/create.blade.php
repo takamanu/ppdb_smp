@@ -8,7 +8,7 @@
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
-{{-- 
+        {{-- 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -54,7 +54,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group form-outline">
@@ -78,7 +78,7 @@
                                 </div>
 
                                 <div class="btn btn-success btn-sm mb-5"><i class="bi bi-eye-slash" id="togglePassword">
-                                    Toggle Password </i></div>
+                                        Toggle Password </i></div>
 
                                 <h3 class="mb-3">Data Pribadi</h3>
                                 <div class="row">
@@ -114,8 +114,10 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-outline">
                                             <select id="jenis_kelamin"
-                                                class="form-control @error('jenis_kelamin') is-invalid @enderror"
+                                                class="form-select form-control @error('jenis_kelamin') is-invalid @enderror"
                                                 name="jenis_kelamin" required>
+                                                <option value="laki" selected disabled>Pilih jenis kelamin
+                                                </option>
                                                 <option value="laki"
                                                     {{ old('jenis_kelamin') == 'laki' ? 'selected' : '' }}>Laki-Laki
                                                 </option>
@@ -166,15 +168,17 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-outline">
                                             <select id="jumlah_hafalan"
-                                                class="form-control @error('jumlah_hafalan') is-invalid @enderror"
+                                                class="form-select form-control @error('jumlah_hafalan') is-invalid @enderror"
                                                 name="jumlah_hafalan" required>
-                                                <option value="0" disabled selected>Silahkan pilih</option>
                                                 <option value="0"
-                                                    {{ old('jumlah_hafalan') == '0' ? 'selected' : '' }}>0</option>
-                                                <option value="1"
-                                                    {{ old('jumlah_hafalan') == '1' ? 'selected' : '' }}>1</option>
-                                                <!-- Add other options as needed -->
+                                                    {{ old('jumlah_hafalan', '0') == '0' ? 'selected disabled' : '' }}>Pilih Jumlah Hafalan Juz</option>
+                                                @for ($i = 1; $i <= 30; $i++)
+                                                    <option value="{{ $i }}"
+                                                        {{ old('jumlah_hafalan') == $i ? 'selected' : '' }}>
+                                                        {{ $i }} Juz</option>
+                                                @endfor
                                             </select>
+
                                             @error('jumlah_hafalan')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -272,8 +276,10 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-outline">
                                             <select id="pendidikan_terakir_ayah"
-                                                class="form-control @error('pendidikan_terakir_ayah') is-invalid @enderror"
+                                                class="form-select form-control @error('pendidikan_terakir_ayah') is-invalid @enderror"
                                                 name="pendidikan_terakir_ayah" required>
+                                                <option value="0" disabled selected>Pilih Pendidikan Terakhir Ayah
+                                                </option>
                                                 <option value="sd"
                                                     {{ old('pendidikan_terakir_ayah') == 'sd' ? 'selected' : '' }}>SD
                                                 </option>
@@ -309,8 +315,10 @@
                                         <!-- Add the penghasilan_ayah field -->
                                         <div class="form-group form-outline">
                                             <select id="penghasilan_ayah"
-                                                class="form-control @error('penghasilan_ayah') is-invalid @enderror"
+                                                class="form-select form-control @error('penghasilan_ayah') is-invalid @enderror"
                                                 name="penghasilan_ayah" required>
+                                                <option value="0" disabled selected>Pilih Kategori Penghasilan Ayah
+                                                </option>
                                                 <option value="1"
                                                     {{ old('penghasilan_ayah') == '1' ? 'selected' : '' }}>1</option>
                                                 <option value="2"
@@ -364,8 +372,10 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-outline">
                                             <select id="pendidikan_terakir_ibu"
-                                                class="form-control @error('pendidikan_terakir_ibu') is-invalid @enderror"
+                                                class="form-select form-control @error('pendidikan_terakir_ibu') is-invalid @enderror"
                                                 name="pendidikan_terakir_ibu" required>
+                                                <option value="0" disabled selected>Pilih Pendidikan Terakhir Ibu
+                                                </option>
                                                 <option value="sd"
                                                     {{ old('pendidikan_terakir_ibu') == 'sd' ? 'selected' : '' }}>SD
                                                 </option>
@@ -398,8 +408,10 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-outline">
                                             <select id="penghasilan_ibu"
-                                                class="form-control @error('penghasilan_ibu') is-invalid @enderror"
+                                                class="form-select form-control @error('penghasilan_ibu') is-invalid @enderror"
                                                 name="penghasilan_ibu" required>
+                                                <option value="0" disabled selected>Pilih Kategori Penghasilan Ibu
+                                                </option>
                                                 <option value="1"
                                                     {{ old('penghasilan_ibu') == '1' ? 'selected' : '' }}>1
                                                 </option>
@@ -453,8 +465,8 @@
                                         <div class="form-group form-outline">
                                             <input id="hubungan_dengan_siswa" type="text"
                                                 class="form-control @error('hubungan_dengan_siswa') is-invalid @enderror"
-                                                name="hubungan_dengan_siswa" value="{{ old('hubungan_dengan_siswa') }}" required
-                                                placeholder="Hubungan dengan Siswa">
+                                                name="hubungan_dengan_siswa" value="{{ old('hubungan_dengan_siswa') }}"
+                                                required placeholder="Hubungan dengan Siswa">
                                             @error('hubungan_dengan_siswa')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -481,12 +493,16 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-outline">
                                             <select id="pendidikan_terakir_wali"
-                                                class="form-control @error('pendidikan_terakir_wali') is-invalid @enderror"
+                                                class="form-select form-control @error('pendidikan_terakir_wali') is-invalid @enderror"
                                                 name="pendidikan_terakir_wali" required>
+                                                <option value="0" disabled selected>Pilih Pendidikan Terakhir Wali
+                                                </option>
                                                 <option value="sd"
-                                                    {{ old('pendidikan_terakir_wali') == 'sd' ? 'selected' : '' }}>SD</option>
+                                                    {{ old('pendidikan_terakir_wali') == 'sd' ? 'selected' : '' }}>SD
+                                                </option>
                                                 <option value="smp"
-                                                    {{ old('pendidikan_terakir_wali') == 'smp' ? 'selected' : '' }}>SMP</option>
+                                                    {{ old('pendidikan_terakir_wali') == 'smp' ? 'selected' : '' }}>SMP
+                                                </option>
                                                 <!-- Add other options as needed -->
                                             </select>
                                             @error('pendidikan_terakir_wali')
@@ -515,11 +531,15 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-outline">
                                             <select id="penghasilan_wali"
-                                                class="form-control @error('penghasilan_wali') is-invalid @enderror"
+                                                class="form-select form-control @error('penghasilan_wali') is-invalid @enderror"
                                                 name="penghasilan_wali" required>
-                                                <option value="1" {{ old('penghasilan_wali') == '1' ? 'selected' : '' }}>1
+                                                <option value="0" disabled selected>Pilih Kategori Penghasilan Wali
                                                 </option>
-                                                <option value="2" {{ old('penghasilan_wali') == '2' ? 'selected' : '' }}>2
+                                                <option value="1"
+                                                    {{ old('penghasilan_wali') == '1' ? 'selected' : '' }}>1
+                                                </option>
+                                                <option value="2"
+                                                    {{ old('penghasilan_wali') == '2' ? 'selected' : '' }}>2
                                                 </option>
                                                 <!-- Add other options as needed -->
                                             </select>
@@ -533,22 +553,22 @@
                                 </div>
 
                                 <!-- Add the hubungan_dengan_siswa field -->
-                                
+
 
                                 <!-- Add the alamat_wali_siswa field -->
-                                
+
 
                                 <!-- Add the pekerjaan_wali field -->
-                                
+
 
                                 <!-- Add the penghasilan_wali field -->
-                                
+
 
                                 <!-- Add the pendidikan_terakir_wali field -->
-                                
+
 
                                 <!-- Add the no_wa_wali_siswa field -->
-                                
+
                                 {{-- <h3 class="mb-3">Lainnya</h3>
 
                                 <!-- Add the motivasi field -->
@@ -568,7 +588,7 @@
                                 <!-- Add the daftar_sekolah_lain field -->
                                 <div class="form-group form-outline">
                                     <select id="daftar_sekolah_lain"
-                                        class="form-control @error('daftar_sekolah_lain') is-invalid @enderror"
+                                        class="form-select form-control @error('daftar_sekolah_lain') is-invalid @enderror"
                                         name="daftar_sekolah_lain" required>
                                         <option value="Yes"
                                             {{ old('daftar_sekolah_lain') == 'Yes' ? 'selected' : '' }}>Yes</option>
@@ -622,7 +642,7 @@
 
 
 
-                                
+
                                 <button type="submit" class="btn btn-primary btn-block">{{ __('Tambah') }}</button>
                                 <a href="{{ url()->previous() }}" class="btn btn-danger btn-block">Back</a>
                             </form>

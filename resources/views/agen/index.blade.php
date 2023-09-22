@@ -6,7 +6,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Daftar Agen</h2>
+                        <h2>Daftar Siswa PPDB SMP SMPTQ PANGERAN DIPONEGORO</h2>
                     </div>
                     <div class="card-body">
                         <a href="{{ url('/agen/create') }}" class="btn btn-success btn-sm float-left" title="Add New Agen">
@@ -60,6 +60,7 @@
                                         <td>
 
                                             {{-- <a href="{{ url('/agen/' . $item->id) }}" title="Cetak Datapokok Siswa"><button class="btn btn-warning btn-sm"><i class="fa fa-print" aria-hidden="true"></i></button></a> --}}
+                                            <a href="{{ url('/agen/kelulusan/' . $item->id) }}" title="Tambah Kelulusan Siswa"><button class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i></button></a>
                                             <a href="{{ url('/agen/cetak/' . $item->id) }}" title="Cetak Datapokok Siswa">
                                                 <button class="btn btn-warning btn-sm"><i class="fa fa-print" aria-hidden="true"></i></button>
                                             </a>
