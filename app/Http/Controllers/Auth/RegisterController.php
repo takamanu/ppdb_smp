@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\Datapokok;
+
 
 class RegisterController extends Controller
 {
@@ -79,6 +81,7 @@ class RegisterController extends Controller
                 'password' => Hash::make($data['password']),
                 'avatar' => '/images/' . $avatarname,
             ]);
+            
         } else {
             User::create([
                 'name' => $data['name'],
@@ -86,8 +89,46 @@ class RegisterController extends Controller
                 'password' => Hash::make($data['password']),
             ]);
         }
+        
         $products = Produk::all();
         $idBaru = User::latest('id')->first();
+
+        Datapokok::create([
+            'user_id' => $idBaru->id,
+            'policy_id' => $idBaru->id,
+            'nama_lengkap' => $data['nama_lengkap'],
+            'email' => $data['email'],
+            'upload_file' => "apasih anj",
+            'nisn' => $data['nisn'],
+            'jenis_kelamin' => $data['jenis_kelamin'],
+            'tempat_lahir' => $data['tempat_lahir'],
+            'tanggal_lahir' => $data['tanggal_lahir'],
+            'agama' => $data['agama'],
+            'asal_sekolah' => $data['asal_sekolah'],
+            'alamat_sekolah' => $data['alamat_sekolah'],
+            'jumlah_hafalan' => 2,
+            'nama_ayah' => $data['nama_ayah'],
+            'pekerjaan_ayah' => $data['pekerjaan_ayah'],
+            'penghasilan_ayah' => $data['penghasilan_ayah'],
+            'pendidikan_terakir_ayah' => $data['pendidikan_terakir_ayah'],
+            'no_wa_ayah' => $data['no_wa_ayah'],
+            'nama_ibu' => $data['nama_ibu'],
+            'pekerjaan_ibu' => $data['pekerjaan_ibu'],
+            'penghasilan_ibu' => $data['penghasilan_ibu'],
+            'pendidikan_terakir_ibu' => $data['pendidikan_terakir_ibu'],
+            'no_wa_ibu' => $data['no_wa_ibu'],
+            'nama_wali_siswa' => $data['nama_wali_siswa'],
+            'hubungan_dengan_siswa' => $data['hubungan_dengan_siswa'],
+            'alamat_wali_siswa' => $data['alamat_wali_siswa'],
+            'pekerjaan_wali' => $data['pekerjaan_wali'],
+            'penghasilan_wali' => $data['penghasilan_wali'],
+            'pendidikan_terakir_wali' => $data['pendidikan_terakir_wali'],
+            'no_wa_wali_siswa' => $data['no_wa_wali_siswa'],
+            'motivasi' => 'apasih anj',
+            'daftar_sekolah_lain' => 1,
+            'nama_sekolahnya_jika_daftar' => 'apasih anj',
+            'informasi_didapatkan_dari' => 'brosur',
+        ]);
         
         foreach($products as $product) {
             $stock = [

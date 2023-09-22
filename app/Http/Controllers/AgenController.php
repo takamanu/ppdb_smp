@@ -76,34 +76,34 @@ class AgenController extends Controller
         ]);
 
         Datapokok::create([
-            'nama_lengkap' => $request->name,
+            'nama_lengkap' => $request->nama_lengkap,
             'email' => $request->email,
             'upload_file' => NULL,
-            'nisn' => NULL,
-            'jenis_kelamin' => 1,
-            'tempat_lahir' => NULL,
-            'tanggal_lahir' => NULL,
-            'agama' => NULL,
-            'asal_sekolah' => NULL,
-            'alamat_sekolah' => NULL,
-            'jumlah_hafalan => NULL' => NULL,
-            'nama_ayah => NULL' => NULL,
-            'pekerjaan_ayah' => NULL,
-            'penghasilan_ayah' => NULL,
-            'pendidikan_terakir_ayah' => NULL,
-            'no_wa_ayah' => NULL,
-            'nama_ibu' => NULL,
-            'pekerjaan_ibu' => NULL,
-            'penghasilan_ibu' => NULL,
-            'pendidikan_terakir_ibu' => NULL,
-            'no_wa_ibu' => NULL,
-            'nama_wali_siswa' => NULL,
-            'hubungan_dengan_siswa' => NULL,
-            'alamat_wali_siswa' => NULL,
-            'pekerjaan_wali' => NULL,
-            'penghasilan_wali' => NULL,
-            'pendidikan_terakir_wali' => NULL,
-            'no_wa_wali_siswa' => NULL,
+            'nisn' => $request->nisn,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'agama' => $request->agama,
+            'asal_sekolah' => $request->asal_sekolah,
+            'alamat_sekolah' => $request->alamat_sekolah,
+            'jumlah_hafalan' => $request->jumlah_hafalan,
+            'nama_ayah' => $request->nama_ayah,
+            'pekerjaan_ayah' => $request->pekerjaan_ayah,
+            'penghasilan_ayah' => $request->penghasilan_ayah,
+            'pendidikan_terakir_ayah' => $request->pendidikan_terakir_ayah,
+            'no_wa_ayah' => $request->no_wa_ayah,
+            'nama_ibu' => $request->nama_ibu,
+            'pekerjaan_ibu' => $request->pekerjaan_ibu,
+            'penghasilan_ibu' => $request->penghasilan_ibu,
+            'pendidikan_terakir_ibu' => $request->pendidikan_terakir_ibu,
+            'no_wa_ibu' => $request->no_wa_ibu,
+            'nama_wali_siswa' => $request->nama_wali_siswa,
+            'hubungan_dengan_siswa' => $request->hubungan_dengan_siswa,
+            'alamat_wali_siswa' => $request->alamat_wali_siswa,
+            'pekerjaan_wali' => $request->pekerjaan_wali,
+            'penghasilan_wali' => $request->penghasilan_wali,
+            'pendidikan_terakir_wali' => $request->pendidikan_terakir_wali,
+            'no_wa_wali_siswa' => $request->no_wa_wali_siswa,
             'motivasi' => NULL,
             'daftar_sekolah_lain' => NULL,
             'nama_sekolahnya_jika_daftar' => NULL,
@@ -122,7 +122,10 @@ class AgenController extends Controller
      */
     public function show($id)
     {
-        $agen = Datapokok::find($id);
+        $agen = Datapokok::where('user_id', $id)->first();
+
+
+        // return $agen;
         return view('agen.show')->with('agen', $agen);
     }
 
