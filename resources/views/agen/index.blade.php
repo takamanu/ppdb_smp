@@ -59,7 +59,10 @@
                                         @endif --}}
                                         <td>
 
-                                            <a href="{{ url('/agen/' . $item->id) }}" title="Cetak Datapokok Siswa"><button class="btn btn-warning btn-sm"><i class="fa fa-print" aria-hidden="true"></i></button></a>
+                                            {{-- <a href="{{ url('/agen/' . $item->id) }}" title="Cetak Datapokok Siswa"><button class="btn btn-warning btn-sm"><i class="fa fa-print" aria-hidden="true"></i></button></a> --}}
+                                            <a href="{{ url('/agen/cetak/' . $item->id) }}" title="Cetak Datapokok Siswa">
+                                                <button class="btn btn-warning btn-sm"><i class="fa fa-print" aria-hidden="true"></i></button>
+                                            </a>
                                             <a href="{{ url('/agen/' . $item->id) }}" title="Lihat Siswa"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
                                             {{-- <a href="{{ url('/agen/' . $item->id . '/edit') }}" title="Edit Agen"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a> --}}
                                             <form method="POST" action="{{ url('/agen' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">

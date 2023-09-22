@@ -18,6 +18,7 @@ class AgenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index(Request $request)
     {
         //
@@ -127,6 +128,13 @@ class AgenController extends Controller
 
         // return $agen;
         return view('agen.show')->with('agen', $agen);
+    }
+
+    public function cetak($id)
+    {
+        $agen = Datapokok::where('user_id', $id)->first();
+        // return $agen;
+        return view('agen.cetak')->with('agen', $agen);
     }
 
     /**

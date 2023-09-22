@@ -42,6 +42,7 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function(){
     Route::resource('/transaksi', TransaksiController::class);
     Route::resource('/persediaan', ProdukController::class);
+    Route::get('/agen/cetak/{id}', [AgenController::class, 'cetak']);
     Route::resource('/agen', AgenController::class);
     Route::resource('/persediaan', StockController::class);
     Route::resource('/produk', ProdukController::class);
