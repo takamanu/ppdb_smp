@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('surat_keterangan_siswa_aktif_sd_asal');
             $table->string('pasfoto');
             $table->string('akta_kelahiran');
-            $table->string('kk'); 
+            $table->string('kk');
             $table->timestamps();
         });
     }

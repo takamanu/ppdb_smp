@@ -11,6 +11,8 @@ use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\TransaksiController;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegistrasiUlangController;
+use App\Models\RegistrasiUlang;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,8 @@ Route::get('/', function () {
     
 // });
 
+Route::resource('/registrasi', RegistrasiUlangController::class);
+
 Route::middleware(['auth'])->group(function(){
     Route::resource('/transaksi', TransaksiController::class);
     Route::resource('/persediaan', ProdukController::class);
@@ -49,6 +53,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/katalog', [KatalogController::class, 'index']);
     Route::resource('/register', RegistersUsers::class);
     Route::resource('/profile', ProfileController::class);
+    Route::resource('/registrasi_ulang', RegistrasiUlangController::class);
 });
 
 Auth::routes();
