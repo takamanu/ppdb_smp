@@ -108,7 +108,7 @@
 
     <!-- Content Row -->
 
-    <div class="row">
+    {{-- <div class="row">
 
         <!-- Area Chart -->
         <div class="col-xl-8 col-lg-7">
@@ -152,7 +152,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Something else here</a>
                             </div>
-                        </div> --}}
+                        </div>
                                 <!-- Card Body -->
                                 <div class="chart-area">
                                     <canvas id="saldoChart"></canvas>
@@ -173,7 +173,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Something else here</a>
                             </div>
-                        </div> --}}
+                        </div> 
                                 <!-- Card Body -->
                                 <div class="chart-area">
                                     <canvas id="saldoChartTahun"></canvas>
@@ -203,7 +203,7 @@
                             <a class="dropdown-item" href="#">Another action</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Something else here</a>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
                 <!-- Card Body -->
@@ -214,7 +214,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Content Row -->
     {{-- <div class="row">
