@@ -51,9 +51,11 @@ class PaymentController extends Controller
             'amount' => $amount
         ]);
 
+        $order_id = 20+ $payment->id;
+
         $params = array(
             'transaction_details' => array(
-                'order_id' => rand(),
+                'order_id' => $order_id,
                 'gross_amount' => $amount,
             ),
             'customer_details' => array(
@@ -61,12 +63,13 @@ class PaymentController extends Controller
             ),
         );
 
-    $snapToken = \Midtrans\Snap::getSnapToken($params);
-    $payment_user = Payment::find($payment->id);
-    $payment_user->update([
-        'snapToken' => $snapToken
-    ]);
-    return view('checkout',compact('snapToken'));
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        $payment_user = Payment::find($payment->id);
+        $payment_user->update([
+            'snapToken' => $snapToken
+        ]);
+
+        return view('checkout',compact('snapToken'));
     }
 
     /**
@@ -90,33 +93,63 @@ class PaymentController extends Controller
         $order_id = $notif->order_id;
         $fraud = $notif->fraud_status;
 
+        $payment = Payment::find($order_id - 20);
+
         if ($transaction == 'capture') {
-        if ($type == 'credit_card'){
-            if($fraud == 'accept'){
-            // TODO set payment status in merchant's database to 'Success'
-            echo "Transaction order_id: " . $order_id ." successfully captured using " . $type;
-            }
+            if ($type == 'credit_card'){
+                if($fraud == 'accept'){
+                    // TODO set payment status in merchant's database to 'Success'
+                    $payment->update([
+                        'status_payment' => 2,
+                        'status' => 2
+                    ]);
+                    echo "Transaction order_id: " . $order_id ." successfully captured using " . $type;
+                }else{
+                    $payment->update([
+                        'status_payment' => -1,
+                        'status' => -1
+                    ]);
+                }
             }
         }
         else if ($transaction == 'settlement'){
-        // TODO set payment status in merchant's database to 'Settlement'
-        echo "Transaction order_id: " . $order_id ." successfully transfered using " . $type;
+            // TODO set payment status in merchant's database to 'Settlement'
+            $payment->update([
+                'status_payment' => 2,
+                'status' => 2
+            ]);
+            echo "Transaction order_id: " . $order_id ." successfully transfered using " . $type;
         }
         else if($transaction == 'pending'){
-        // TODO set payment status in merchant's database to 'Pending'
-        echo "Waiting customer to finish transaction order_id: " . $order_id . " using " . $type;
+            $payment->update([
+                'status_payment' => 1,
+                'status' => 1
+            ]);
+            echo "Waiting customer to finish transaction order_id: " . $order_id . " using " . $type;
         }
         else if ($transaction == 'deny') {
-        // TODO set payment status in merchant's database to 'Denied'
-        echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is denied.";
+            // TODO set payment status in merchant's database to 'Denied'
+            $payment->update([
+                'status_payment' => -1,
+                'status' => -1
+            ]);
+            echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is denied.";
         }
         else if ($transaction == 'expire') {
-        // TODO set payment status in merchant's database to 'expire'
-        echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is expired.";
+            // TODO set payment status in merchant's database to 'expire'
+            $payment->update([
+                'status_payment' => -2,
+                'status' => -1
+            ]);
+            echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is expired.";
         }
         else if ($transaction == 'cancel') {
-        // TODO set payment status in merchant's database to 'Denied'
-        echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is canceled.";
+            // TODO set payment status in merchant's database to 'Denied'
+            $payment->update([
+                'status_payment' => -3,
+                'status' => -1
+            ]);
+            echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is canceled.";
         }
     }
 
