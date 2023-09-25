@@ -8,6 +8,7 @@ use App\Http\Controllers\StockController;
 use App\Http\Controllers\BisnisController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KatalogController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TransaksiController;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Controllers\ProfileController;
@@ -42,6 +43,7 @@ Route::get('/', function () {
 // });
 
 Route::resource('/registrasi', RegistrasiUlangController::class);
+Route::resource('/payment', PaymentController::class);
 
 Route::middleware(['auth'])->group(function(){
     Route::resource('/transaksi', TransaksiController::class);
@@ -59,3 +61,4 @@ Route::middleware(['auth'])->group(function(){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
