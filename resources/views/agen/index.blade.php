@@ -6,7 +6,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Daftar Siswa PPDB SMP SMPTQ PANGERAN DIPONEGORO</h2>
+                        <h2>Daftar Siswa</h2>
                     </div>
                     <div class="card-body">
                         <a href="{{ url('/agen/create') }}" class="btn btn-success btn-sm float-left" title="Add New Agen">
