@@ -68,7 +68,8 @@ class DatabaseSeeder extends Seeder
             'motivasi' => 'Menjadi superman',
             'daftar_sekolah_lain' => 1,
             'nama_sekolahnya_jika_daftar' => 'SMPN 3748 Mars',
-            'informasi_didapatkan_dari' => 'brosur'
+            'informasi_didapatkan_dari' => 'brosur',
+            'alamat' => 'alamat'
         ]);
         
     }

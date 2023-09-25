@@ -11,7 +11,20 @@ class Payment extends Model
     protected $table = 'payments';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'nama','amount','status','id_user'
+        'status','amount','status_payment','id_user','snapToken'
     ];
+
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    // Status_payment
+    // cancel -3
+    // berhasil 1
+    // gagal/deny -1
+    // expired -2
+
+
 
 }

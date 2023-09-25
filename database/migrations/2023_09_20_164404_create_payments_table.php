@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_user')->nullable();
-            $table->string('nama');
+            $table->foreignId('id_user');
             $table->bigInteger('amount');
-            $table->enum('status',['unpaid','paid'])->default('unpaid');
+            $table->string('snapToken')->nullable();
+            $table->integer('status_payment')->default(0);
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

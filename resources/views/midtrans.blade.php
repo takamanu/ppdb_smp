@@ -24,7 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
 
-    <form class="row g-3" action="{{ route('bayar') }}" method="post">
+    <form class="row g-3" action="{{ route('payment.store') }}" method="post">
         @csrf
         <div class="col-auto">
           <label for="inputPassword2" class="visually-hidden">Nama</label>

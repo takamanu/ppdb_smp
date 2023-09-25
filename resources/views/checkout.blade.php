@@ -30,7 +30,7 @@
     -->
 
     <div class="col-auto">
-        <p>{{ $payment->amount }}</p>
+        {{-- <p>{{ $payment->amount }}</p> --}}
         <button type="submit" class="btn btn-primary mb-3" id="pay-button">Bayar</button>
     </div>
 

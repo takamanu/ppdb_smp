@@ -47,6 +47,7 @@ return new class extends Migration
             $table->string('no_wa_ayah');
             $table->string('nama_ibu');
             $table->string('pekerjaan_ibu');
+            $table->text('alamat');
             $table->enum('penghasilan_ibu',[1,2,3,4,5]);
             $table->enum('pendidikan_terakir_ibu',['sd','smp','sma','d1/2/3','s1','s2','s3']);
             $table->string('no_wa_ibu');

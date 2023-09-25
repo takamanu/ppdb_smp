@@ -18,7 +18,7 @@ class Datapokok extends Model
         'pendidikan_terakir_ayah','no_wa_ayah','nama_ibu','pekerjaan_ibu','penghasilan_ibu','pendidikan_terakir_ibu',
         'no_wa_ibu','nama_wali_siswa','hubungan_dengan_siswa','alamat_wali_siswa','pekerjaan_wali','penghasilan_wali',
         'pendidikan_terakir_wali','no_wa_wali_siswa','motivasi','daftar_sekolah_lain','nama_sekolahnya_jika_daftar',
-        'informasi_didapatkan_dari'
+        'informasi_didapatkan_dari','alamat'
     ];
 
     public function user() {

@@ -62,4 +62,8 @@ class User extends Authenticatable
     public function nilai() {
         return $this->hasOne(Nilai::class);
     }
+
+    public function payment() {
+        return $this->hasMany(Payment::class);
+    }
 }
