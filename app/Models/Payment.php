@@ -21,10 +21,16 @@ class Payment extends Model
 
     // Status_payment
     // cancel -3
-    // berhasil 1
+    // berhasil 2
     // gagal/deny -1
     // expired -2
+    // waiting chose payment 0
+    // pending 1
 
-
+    // Status
+    // 2 = success
+    // 1 = ongoing
+    // 0 = waiting chose payment 
+    // -1 = failed
 
 }
