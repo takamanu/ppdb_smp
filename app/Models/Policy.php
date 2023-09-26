@@ -12,11 +12,12 @@ class Policy extends Model
     protected $table = 'policy';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'perjanjian1','perjanjian2','perjanjian3','perjanjian4'
+        'perjanjian1','perjanjian2','perjanjian3','perjanjian4','datapokok_id'
     ];
 
     public function datapokok(){
-        return $this->belongsTo(Datapokok::class,'policy_id');
+        return $this->belongsTo(Datapokok::class,'datapokok_id');
     }
+
 
 }
