@@ -28,7 +28,7 @@ return new class extends Migration
         Schema::create('datapokok', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('policy_id');
+            // $table->foreignId('policy_id');
             $table->string('email');
             $table->string('upload_file');
             $table->string('nama_lengkap');

@@ -8,78 +8,18 @@
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        {{-- 
-        <!-- Fonts -->
-        <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-        <link href="/css/sb-admin-2.min.css" rel="stylesheet"> --}}
 
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
         <div class="card w-75">
-            <div class="card-header"><b>Tambah Siswa</b></div>
+            <div class="card-header"><b>Isi Datapokok</b></div>
             <div class="card-body">
                 <div class="container">
                     <div class="row">
                         <div class="p-5">
-                            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                           <form method="POST" action="{{ route('siswa.store') }}" enctype="multipart/form-data">
                                 @csrf
-                                <h3 class="mb-3">Data Login</h3>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group form-outline">
-                                            <input id="name" type="text"
-                                                class="form-control @error('name') is-invalid @enderror" name="name"
-                                                value="{{ old('name') }}" required autocomplete="name"
-                                                placeholder="Username" autofocus>
-                                            @error('name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-outline">
-                                            <input id="email" type="email"
-                                                class="form-control @error('email') is-invalid @enderror" name="email"
-                                                value="{{ old('email') }}" required autocomplete="email"
-                                                placeholder="Email">
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group form-outline">
-                                            <input id="password" type="password"
-                                                class="form-control @error('password') is-invalid @enderror" name="password"
-                                                required autocomplete="new-password" placeholder="Password">
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-outline">
-                                            <input id="password-confirm" type="password" class="form-control"
-                                                name="password_confirmation" required autocomplete="new-password"
-                                                placeholder="Ulang Password" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="btn btn-success btn-sm mb-5"><i class="bi bi-eye-slash" id="togglePassword">
-                                        Toggle Password </i></div>
-
                                 <h3 class="mb-3">Data Pribadi</h3>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -572,7 +512,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group form-outline">
-                                            <input id="matematika" type="text"
+                                            <input id="matematika" type="number"
                                                 class="form-control @error('matematika') is-invalid @enderror"
                                                 name="matematika" value="{{ old('matematika') }}" required
                                                 placeholder="Nilai Matematika">
@@ -585,7 +525,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group form-outline">
-                                            <input id="ilmu_pengetahuan_alam" type="text"
+                                            <input id="ilmu_pengetahuan_alam" type="number"
                                                 class="form-control @error('ilmu_pengetahuan_alam') is-invalid @enderror"
                                                 name="ilmu_pengetahuan_alam" value="{{ old('ilmu_pengetahuan_alam') }}"
                                                 required placeholder="Nilai Ilmu Pengetahuan Alam (IPA)">
@@ -601,7 +541,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group form-outline">
-                                            <input id="bahasa_indonesia" type="text"
+                                            <input id="bahasa_indonesia" type="number"
                                                 class="form-control @error('bahasa_indonesia') is-invalid @enderror"
                                                 name="bahasa_indonesia" value="{{ old('bahasa_indonesia') }}" required
                                                 placeholder="Nilai Bahasa Indonesia">
@@ -614,7 +554,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group form-outline">
-                                            <input id="test_membaca_al_quran" type="text"
+                                            <input id="test_membaca_al_quran" type="number"
                                                 class="form-control @error('test_membaca_al_quran') is-invalid @enderror"
                                                 name="test_membaca_al_quran" value="{{ old('test_membaca_al_quran') }}"
                                                 required placeholder="Nilai Test Membaca Al-Quran">
@@ -627,7 +567,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-5">
+                                {{-- <div class="row mb-5">
                                     <div class="col-md-6">
                                         <div class="form-group form-outline">
                                             <input id="status" type="text"
@@ -640,7 +580,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
 
                                 <!-- Add the hubungan_dengan_siswa field -->

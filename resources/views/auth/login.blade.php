@@ -71,16 +71,14 @@
                                             <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                         </a> --}}
                                     </form>
+
+                                    <hr>
                                     
-                                    <!--@if (Route::has('password.request'))-->
-                                    <!--    <a class="btn btn-link" href="{{ route('password.request') }}">-->
-                                    <!--        {{ __('Forgot Your Password?') }}-->
-                                    <!--    </a>-->
-                                    <!--@endif-->
-                                    
-                                    {{-- @if (Route::has('register'))
-                                        <a class="btn btn-link" href="{{ route('register') }}">{{ __('Create an Account') }}</a>
-                                    @endif --}}
+                                    <div class="text-center">
+                                        <a class="small" href="{{ route('register') }}">{{ __('Create an Account') }}</a>
+                                    </div>
+
+                                    {{-- <a class="btn btn-link" href="{{ route('register') }}">{{ __('Create an Account') }}</a> --}}
                                 </div>
                             </div>
                         </div>

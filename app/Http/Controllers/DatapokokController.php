@@ -8,6 +8,7 @@ use App\Models\Payment;
 use App\Models\Policy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Validator;
 
 class DatapokokController extends Controller
 {
@@ -124,6 +125,26 @@ class DatapokokController extends Controller
      */
     public function store(Request $request)
     {
+        if(request()->has('avatar')){
+            $avataruploaded = request()->file('avatar');
+            $avatarname = time() . '.' . $avataruploaded->getClientOriginalExtension();
+            $avatarpath = public_path('/images/');
+            $avataruploaded->move($avatarpath, $avatarname);
+            User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'avatar' => '/images/' . $avatarname,
+            ]);
+            
+        } else {
+            User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
+        }
+        // return $request;
         $request->validate([
             'email' => 'required|unique:datapokok',
             'upload_file' => 'required',

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Agen;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Models\Datapokok;
@@ -123,7 +124,16 @@ class AgenController extends Controller
      */
     public function show($id)
     {
-        $agen = Datapokok::where('user_id', $id)->first();
+        // $agen = Datapokok::where('user_id', $id)->first();
+        $user = User::where('id', $id)->first();
+        $agen = $user->datapokok;
+
+        // dd($agen->nilai);
+        // $agen = User::where('id', $id)->first();
+
+        // dd($agen->datapokok->policy);
+        // $agentest = Datapokok::where('user_id', 2)->first();
+        // return $agentest;
 
 
         // return $agen;

@@ -31,6 +31,7 @@ return new class extends Migration
     {
         Schema::create('policy', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('datapokok_id');
             $table->enum('perjanjian1',['ya','tidak','ragu']);
             $table->enum('perjanjian2',['ya','tidak','ragu']);
             $table->enum('perjanjian3',['ya','tidak','ragu']);

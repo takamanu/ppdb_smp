@@ -1,0 +1,72 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center mt-3" href="/home">
+        <div class="sidebar-brand-text mx-3">PPDB SMP SMPTQ Pangeran Diponegoro</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0 mt-3">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item <?php echo e(Request::is('/home') ? 'active' : ''); ?>">
+        <a class="nav-link <?php echo e(Request::is('/home') ? 'active' : ''); ?>" href="/home">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Servis
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item <?php echo e(Request::is('agen') || Request::is('agen/create') || Request::is('agen/*') ? 'active' : ''); ?>">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+            aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>Menu Siswa</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Fitur Keagenan:</h6>
+                <a class="collapse-item <?php echo e(Request::is('agen/create') ? 'active' : ''); ?>" href="<?php echo e(url('/agen/create')); ?>">Tambah Siswa</a>
+                <a class="collapse-item <?php echo e(Request::is('agen') or Request::is('agen/[1-99999]')  ? 'active' : ''); ?>" href="/agen">Daftar Siswa</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+    <!-- Sidebar Message -->
+    <!--<div class="sidebar-card d-none d-lg-flex">-->
+    <!--    <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">-->
+    <!--    <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>-->
+    <!--    <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>-->
+    <!--</div>-->
+
+</ul>
+<!-- End of Sidebar -->
+<?php /**PATH C:\Users\LENOVO\OneDrive\Desktop\ppdb_smp\resources\views/partials/sidebar.blade.php ENDPATH**/ ?>

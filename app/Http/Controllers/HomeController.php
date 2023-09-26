@@ -164,4 +164,16 @@ class HomeController extends Controller
             'keluarTahun' => json_encode($keluarTahun, JSON_NUMERIC_CHECK)
         ]);
     }
+
+    public function indexsiswa()
+    {
+        
+        $userData = auth()->user()->id;
+
+        $user = User::where('id', $userData)->first();
+        $agen = $user->datapokok;
+
+        return view('siswahome')->with('agen', $agen);
+
+    }
 }

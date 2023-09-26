@@ -11,11 +11,16 @@ class Nilai extends Model
     protected $table = 'nilais';
     protected $primaryKey = 'id';
     protected $fillable = [
-        "user_id",
+        "datapokok_id",
         "matematika",
         "ilmu_pengetahuan_alam",
         "bahasa_indonesia",
         "test_membaca_al_quran",
         "status"
     ];
+
+    public function datapokok(){
+        return $this->belongsTo(Datapokok::class, 'datapokok_id');
+    }
+
 }

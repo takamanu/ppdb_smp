@@ -7,6 +7,8 @@ use App\Models\Datapokok;
 use App\Models\Stock;
 use App\Models\Produk;
 use App\Models\Transaksi;
+use App\Models\Policy;
+use App\Models\Nilai;
 use Carbon\Carbon; // Import the Carbon class
 use Illuminate\Database\Seeder;
 
@@ -36,7 +38,7 @@ class DatabaseSeeder extends Seeder
 
         Datapokok::create([
             'user_id' => 1,
-            'policy_id' => 1,
+            // 'policy_id' => 1,
             'nama_lengkap' => "Fauzan Ali Vijsma",
             'email' => "Email",
             'upload_file' => "Upload file",
@@ -48,6 +50,7 @@ class DatabaseSeeder extends Seeder
             'asal_sekolah' => "SMAN 34 Tangerang",
             'alamat_sekolah' => "Jl. Menuju Kebahagiaan",
             'jumlah_hafalan' => 2,
+            'alamat' => "Jl. Menuju Kebahagiaan",
             'nama_ayah' => "Alexis Jumanto",
             'pekerjaan_ayah' => "Software Engineer",
             'penghasilan_ayah' => 3,
@@ -71,6 +74,25 @@ class DatabaseSeeder extends Seeder
             'informasi_didapatkan_dari' => 'brosur',
             'alamat' => 'alamat'
         ]);
+
+        Policy::create([
+            'datapokok_id' => 1,
+            'perjanjian1' => "ya",
+            'perjanjian2' => "ya",
+            'perjanjian3' => "ya",
+            'perjanjian4' => "ya"
+
+        ]);
+
+        Nilai::create([
+            "datapokok_id" => 1,
+            "matematika" => "50",
+            "ilmu_pengetahuan_alam" => "50",
+            "bahasa_indonesia" => "50",
+            "test_membaca_al_quran" => "50",
+            "status" => "Lulus"
+        ]);
+
         
     }
 }

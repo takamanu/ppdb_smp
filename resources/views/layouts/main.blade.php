@@ -27,6 +27,14 @@
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js" defer></script>
     <script src="https://unpkg.com/jquery@2.2.4/dist/jquery.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <style>
+        .max-card-size {
+            width: 250px;
+            height: 400px;
+            /* Set your desired maximum width in pixels */
+        }
+    </style>
 </head>
 
 <body id="page-top">

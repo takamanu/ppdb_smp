@@ -1,0 +1,185 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Datapokok;
+use App\Models\Policy;
+use App\Models\Nilai;
+
+
+class SiswaController extends Controller
+{
+    public function index(Request $request)
+    {
+        $userData = auth()->user()->id;
+
+        $user = User::where('id', $userData)->first();
+        $agen = $user->datapokok;
+
+        if (is_null($agen)) {
+            $agen = 'NULL'; // Set a default value or any other value you want to use
+        }
+
+        return view('siswa.index')->with([
+            'agen' => $agen,
+            'user' => $user,
+        ]);
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+     public function create()
+     {
+         return view('siswa.create');
+     }
+ 
+     /**
+      * Store a newly created resource in storage.
+      *
+      * @param  \Illuminate\Http\Request  $request
+      * @return \Illuminate\Http\Response
+      */
+     public function store(Request $request)
+     {   
+
+        // dd($data);
+
+        $userData = auth()->user();
+        // $user = User::where('id', $userData)->first();
+
+        Datapokok::create([
+            'user_id' => $userData->id,
+            'nama_lengkap' => $request->nama_lengkap,
+            'email' => $userData->email,
+            'upload_file' => "NULL", 
+            'nisn' => $request->nisn,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'agama' => $request->agama,
+            'alamat' => $request->alamat,
+            'asal_sekolah' => $request->asal_sekolah,
+            'alamat_sekolah' => $request->alamat_sekolah,
+            'jumlah_hafalan' => 2,
+            'nama_ayah' => $request->nama_ayah,
+            'pekerjaan_ayah' => $request->pekerjaan_ayah,
+            'penghasilan_ayah' => $request->penghasilan_ayah,
+            'pendidikan_terakir_ayah' => $request->pendidikan_terakir_ayah,
+            'no_wa_ayah' => $request->no_wa_ayah,
+            'nama_ibu' => $request->nama_ibu,
+            'pekerjaan_ibu' => $request->pekerjaan_ibu,
+            'penghasilan_ibu' => $request->penghasilan_ibu,
+            'pendidikan_terakir_ibu' => $request->pendidikan_terakir_ibu,
+            'no_wa_ibu' => $request->no_wa_ibu,
+            'nama_wali_siswa' => $request->nama_wali_siswa,
+            'hubungan_dengan_siswa' => $request->hubungan_dengan_siswa,
+            'alamat_wali_siswa' => $request->alamat_wali_siswa,
+            'pekerjaan_wali' => $request->pekerjaan_wali,
+            'penghasilan_wali' => $request->penghasilan_wali,
+            'pendidikan_terakir_wali' => $request->pendidikan_terakir_wali,
+            'no_wa_wali_siswa' => $request->no_wa_wali_siswa,
+            'motivasi' => 'apasih anj',
+            'daftar_sekolah_lain' => 1,
+            'nama_sekolahnya_jika_daftar' => 'apasih anj',
+            'informasi_didapatkan_dari' => 'brosur',
+        ]);
+
+        $idBaruDatapokok = Datapokok::latest('id')->first();
+
+        $raw_data_policy = [
+            'datapokok_id' => $idBaruDatapokok->id, 
+            'perjanjian1' => "ya",
+            'perjanjian2' => "ya",
+            'perjanjian3' => "ya",
+            'perjanjian4' => "ya",
+        ];
+
+        $raw_data_nilai = [
+            'datapokok_id' => $idBaruDatapokok->id, 
+            "matematika" => $request->matematika,
+            "ilmu_pengetahuan_alam" => $request->ilmu_pengetahuan_alam,
+            "bahasa_indonesia" => $request->bahasa_indonesia,
+            "test_membaca_al_quran" => $request->test_membaca_al_quran,
+            "status" => "LULUS",
+        ];
+
+        Nilai::create($raw_data_nilai);
+        Policy::create($raw_data_policy);
+ 
+         // Agen::create($input);
+        return redirect('siswa')->with('flash_message', 'Isi datapokok selesai!');
+        
+
+     }
+ 
+     /**
+      * Display the specified resource.
+      *
+      * @param  int  $id
+      * @return \Illuminate\Http\Response
+      */
+     public function show($id)
+     {
+         // $agen = Datapokok::where('user_id', $id)->first();
+         $user = User::where('id', $id)->first();
+         $agen = $user->datapokok;
+ 
+         // dd($agen->nilai);
+         // $agen = User::where('id', $id)->first();
+ 
+         // dd($agen->datapokok->policy);
+         // $agentest = Datapokok::where('user_id', 2)->first();
+         // return $agentest;
+ 
+ 
+         // return $agen;
+         return view('agen.show')->with('agen', $agen);
+     }
+ 
+     public function cetak($id)
+     {
+         $agen = Datapokok::where('user_id', $id)->first();
+         // return $agen;
+
+         return view('agen.cetak')->with('agen', $agen);
+     }
+ 
+     /**
+      * Show the form for editing the specified resource.
+      *
+      * @param  int  $id
+      * @return \Illuminate\Http\Response
+      */
+     public function edit($id)
+     {
+         $agen = Agen::find($id);
+         return view('agen.edit')->with('agen', $agen);
+     }
+ 
+     /**
+      * Update the specified resource in storage.
+      *
+      * @param  \Illuminate\Http\Request  $request
+      * @param  int  $id
+      * @return \Illuminate\Http\Response
+      */
+     public function update(Request $request, $id)
+     {
+         $agen = Agen::find($id);
+         $input = $request->all();
+         $agen->update($input);
+         return redirect('agen')->with('flash_message', 'Users Updated!');
+     }
+ 
+     /**
+      * Remove the specified resource from storage.
+      *
+      * @param  int  $id
+      * @return \Illuminate\Http\Response
+      */
+}

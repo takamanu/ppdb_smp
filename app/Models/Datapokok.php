@@ -29,4 +29,8 @@ class Datapokok extends Model
         return $this->hasOne(Policy::class);
     }
 
+    public function nilai(){
+        return $this->hasOne(Nilai::class);
+    }
+
 }
