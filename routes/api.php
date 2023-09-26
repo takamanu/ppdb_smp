@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('payment/notif',[PaymentController::class,'notification'])->name('notif_midtrans');
+Route::get('nilai',[NilaiController::class,'store']);

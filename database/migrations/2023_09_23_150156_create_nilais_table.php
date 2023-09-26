@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('nilais', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->enum('matematika',['A,B,C,D,E']);
-            $table->enum('ilmu_pengetahuan_alam',['A,B,C,D,E']);
-            $table->enum('bahasa_indonesia',['A,B,C,D,E']);
-            $table->enum('test_membaca_al_quran',['A,B,C,D,E']);
+            $table->string('matematika');
+            $table->string('ilmu_pengetahuan_alam');
+            $table->string('bahasa_indonesia');
+            $table->string('test_membaca_al_quran');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
