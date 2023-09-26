@@ -15,7 +15,8 @@ class Nilai extends Model
         'matematika',
         'ilmu_pengetahuan_alam',
         'bahasa_indonesia',
-        'test_membaca_al_quran'
+        'test_membaca_al_quran',
+        'status'
     ];
 
     public function user() {
