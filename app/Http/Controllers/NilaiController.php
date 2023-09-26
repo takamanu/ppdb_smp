@@ -35,18 +35,49 @@ class NilaiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function check_nilai(Nilai $nilai){
+        
+        //cek nilai akademis
+        $nilai_akademis = [];
+        // $nilai_baca_quaran = $nilai->test_membaca_al_quran;
+        $nilai_akir = '';
+        array_push($nilai_akademis, $nilai->matematika,$nilai->bahasa_indonesia,$nilai->ilmu_pengetahuan_alam,$nilai->test_membaca_al_quran);
+
+        if (in_array("D", $nilai_akademis)) {
+            $nilai_akir = "Tidak Lulus";
+        }else if(in_array("E", $nilai_akademis)){
+            $nilai_akir = "Tidak Lulus";
+        }else{
+            $nilai_akir = "Lulus";
+        }
+
+        return $nilai_akir;
+
+    }
+
     public function store(Request $request)
     {
-        $validateData = $request->validate([
-            'user_id' => 'required',
-            'matematika' => 'required',
-            'ilmu_pengetahuan_alam' => 'required',
-            'bahasa_indonesia' => 'required',
-            'test_membaca_al_quran' => 'required'
+
+        $validateData = [
+            'user_id' => 1,
+            'matematika' => 'C',
+            'ilmu_pengetahuan_alam' => 'C',
+            'bahasa_indonesia' => 'D',
+            'test_membaca_al_quran' => 'C'
+        ];
+
+        $nilai = Nilai::create($validateData);
+
+        $nilai_find = Nilai::find($nilai->id);
+        $nilai_find->update([
+            'status' => $this->check_nilai($nilai)
         ]);
 
-        Nilai::create($validateData);
+        return "Berhasil";        
     }
+
+
 
     /**
      * Display the specified resource.

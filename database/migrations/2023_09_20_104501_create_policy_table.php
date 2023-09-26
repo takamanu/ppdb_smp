@@ -18,13 +18,12 @@ return new class extends Migration
     //Perjanjian 1
     // Percaya dan taat sepenuhnya kepada kebijaksanaan SMPTQ
 
-
-    //Perjanjian 2
+    //Perjanjian 2  
     // Mendukung sunnah dan disiplin yang berlaku di SMPTQ 
     
     //Perjanjian 3
     // Memenuhi segala kewajiban yang telah ditetapkan oleh SMPTQ
-
+    
     //Perjanjian 4
     //Melunasi semua pembayaran uang sekolah dan uang makan sebelum Ujian  Ganjil dan Semester Genap.
     
