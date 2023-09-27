@@ -6,6 +6,7 @@ use App\Models\Config as ModelsConfig;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use PSpell\Config;
 
 class HomeController extends Controller
