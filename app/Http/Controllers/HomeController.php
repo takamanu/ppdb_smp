@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Config as ModelsConfig;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use PSpell\Config;
 
 class HomeController extends Controller
 {
@@ -16,6 +19,25 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function alur_config(Request $request){
+        // update config
+        $config_data = ModelsConfig::find(1);
+        $config_data->update([
+            'pendaftaran_akun_ppdb_start'=>$request->pendaftaran_akun_ppdb_start,
+            'pendaftaran_akun_ppdb_due'=>$request->pendaftaran_akun_ppdb_due,
+            'pengumpulan_berkas_start'=>$request->pengumpulan_berkas_start,
+            'pengumpulan_berkas_due'=>$request->pengumpulan_berkas_due,
+            'test_akademik_start'=>$request->test_akademik_start,
+            'test_akademik_due'=>$request->test_akademik_due,
+            'test_baca_al_quran_start'=>$request->test_baca_al_quran_start,
+            'test_baca_al_quran_due'=>$request->test_baca_al_quran_due,
+            'test_wawancara_start'=>$request->test_wawancara_start,
+            'test_wawancara_due'=>$request->test_wawancara_due,
+            'pendaftaran_ulang_start'=>$request->pendaftaran_ulang_start,
+            'pendaftaran_ulang_due'=>$request->pendaftaran_ulang_due,
+        ]);
     }
 
     /**

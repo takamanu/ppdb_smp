@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Config as ModelsConfig;
 use App\Models\User; // Import the User model
 use App\Models\Datapokok;
 use App\Models\Stock;
@@ -11,6 +12,8 @@ use App\Models\Policy;
 use App\Models\Nilai;
 use Carbon\Carbon; // Import the Carbon class
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Date;
+use PSpell\Config;
 
 class DatabaseSeeder extends Seeder
 {
@@ -92,6 +95,21 @@ class DatabaseSeeder extends Seeder
             "bahasa_indonesia" => "50",
             "test_membaca_al_quran" => "50",
             "status" => "Lulus"
+        ]);
+
+        ModelsConfig::create([
+            'pendaftaran_akun_ppdb_start'=>date('Y-m-d H:i:s'),
+            'pendaftaran_akun_ppdb_due'=>date('Y-m-d H:i:s'),
+            'pengumpulan_berkas_start'=>date('Y-m-d H:i:s'),
+            'pengumpulan_berkas_due'=>date('Y-m-d H:i:s'),
+            'test_akademik_start'=>date('Y-m-d H:i:s'),
+            'test_akademik_due'=>date('Y-m-d H:i:s'),
+            'test_baca_al_quran_start'=>date('Y-m-d H:i:s'),
+            'test_baca_al_quran_due'=>date('Y-m-d H:i:s'),
+            'test_wawancara_start'=>date('Y-m-d H:i:s'),
+            'test_wawancara_due'=>date('Y-m-d H:i:s'),
+            'pendaftaran_ulang_start'=>date('Y-m-d H:i:s'),
+            'pendaftaran_ulang_due'=>date('Y-m-d H:i:s'),
         ]);
 
         

@@ -1,10 +1,12 @@
-<--?php
+<?php
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class AdminMiddleware
 {
@@ -15,22 +17,20 @@ class AdminMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next,$role)
     {
-        if(Auth::check()) {
+        $userId = auth()->id(); // ID pengguna yang saat ini masuk
 
-            if(Auth::user()->role == '1'){
+        $user = User::find($userId);
+
+        // dd($role);
+        if ($user) {
+            $databaseValue = $user->role; // Ganti dengan nama kolom di database Anda
+            if ($databaseValue === (int)$role) {
                 return $next($request);
-            } else {
-                return redirect('/home')->with('message', 'Kamu tidak diperbolehkan mengakses ini!');
             }
-
-        } else {
-            
-            return redirect('/');
-        
         }
-        return redirect('/');
-        
+
+        return abort(403, 'Unauthorized');
     }
 }
