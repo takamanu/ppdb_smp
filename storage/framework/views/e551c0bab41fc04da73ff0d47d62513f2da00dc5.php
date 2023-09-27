@@ -62,7 +62,7 @@
                 <?php else: ?>
                     <h6 class="collapse-header">Aktivitas Siswa:</h6>
                     <a class="collapse-item <?php echo e(Request::is('siswa/create') ? 'active' : ''); ?>" href="<?php echo e(url('siswa/create')); ?>">Datapokok</a>
-                    <a class="collapse-item <?php echo e(Request::is('siswa/pengumuman') ? 'active' : ''); ?>" href="<?php echo e(url('siswa/pengumuman')); ?>">Pengumuman</a>
+                    <a class="collapse-item <?php echo e(Request::is('siswa/pengumuman/' . Auth::user()->id) ? 'active' : ''); ?>" href="<?php echo e(url('siswa/pengumuman/' . Auth::user()->id)); ?>">Pengumuman</a>
                     
                 <?php endif; ?>
             </div>

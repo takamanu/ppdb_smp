@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,6 +18,7 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
+
 <body class="bg-gradient-primary">
 
     <div class="container">
@@ -34,36 +36,47 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Login Siswa PPDB SMPTQ Pangeran Diponegoro</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Login Siswa PPDB SMPTQ Pangeran Diponegoro
+                                        </h1>
                                     </div>
+                                    @if (session('status'))
+                                        <div class="alert alert-success">
+                                            {{ session('status') }}
+                                        </div>
+                                    @endif
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="form-group">
-                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                            <input id="email" type="email"
+                                                class="form-control @error('email') is-invalid @enderror"
+                                                placeholder="Email" name="email" value="{{ old('email') }}" required
+                                                autocomplete="email" autofocus>
 
-                                                @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" id="password" class="form-control form-control-user" placeholder="Password"
-                                            name="password" required autocomplete="current-password">
+                                            <input type="password" id="password" class="form-control form-control-user"
+                                                placeholder="Password" name="password" required
+                                                autocomplete="current-password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input class="form-check-input" type="checkbox" name="togglePassword" id="togglePassword">
+                                                <input class="form-check-input" type="checkbox" name="togglePassword"
+                                                    id="togglePassword">
 
-                                                    <label class="form-check-label" for="remember" id="togglePassword">
-                                                        {{ __('Lihat sandi') }}
+                                                <label class="form-check-label" for="remember" id="togglePassword">
+                                                    {{ __('Lihat sandi') }}
                                             </div>
                                         </div>
                                         <hr>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             {{ __('Login') }}
                                         </button>
-                                        
+
                                         {{-- <a href="#" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
                                         </a>
@@ -73,9 +86,10 @@
                                     </form>
 
                                     <hr>
-                                    
+
                                     <div class="text-center">
-                                        <a class="small" href="{{ route('register') }}">{{ __('Create an Account') }}</a>
+                                        <a class="small"
+                                            href="{{ route('register') }}">{{ __('Create an Account') }}</a>
                                     </div>
 
                                     {{-- <a class="btn btn-link" href="{{ route('register') }}">{{ __('Create an Account') }}</a> --}}
@@ -132,9 +146,9 @@
     </script>
 
 </body>
-    
 
-            {{-- <main class="py-4">
+
+{{-- <main class="py-4">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
@@ -205,4 +219,5 @@
                     </div>
                 </div>
             </main> --}}
+
 </html>

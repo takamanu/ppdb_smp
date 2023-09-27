@@ -30,7 +30,7 @@
                             </div>
                         @endif
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>

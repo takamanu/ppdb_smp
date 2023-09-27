@@ -7,7 +7,9 @@ use App\Models\User;
 use App\Models\Datapokok;
 use App\Models\Policy;
 use App\Models\Nilai;
+use App\Models\Config;
 
+date_default_timezone_set('Asia/Jakarta');
 
 class SiswaController extends Controller
 {
@@ -16,8 +18,10 @@ class SiswaController extends Controller
         $userData = auth()->user()->id;
 
         $user = User::where('id', $userData)->first();
+        $config = Config::where('id', 1)->first();
         $agen = $user->datapokok;
-
+        $date_now = date('Y-m-d H:i:s');
+        
         if (is_null($agen)) {
             $agen = 'NULL'; // Set a default value or any other value you want to use
         }
@@ -25,6 +29,8 @@ class SiswaController extends Controller
         return view('siswa.index')->with([
             'agen' => $agen,
             'user' => $user,
+            'config' => $config,
+            'date_now' => $date_now,
         ]);
     }
     /**
@@ -147,6 +153,15 @@ class SiswaController extends Controller
  
          // return $agen;
          return view('agen.show')->with('agen', $agen);
+     }
+
+     public function pengumuman($id)
+     {
+         $siswa = Datapokok::where('user_id', $id)->first();
+        //   $siswa->nilai;
+         // return $agen;
+
+         return view('siswa.pengumuman')->with('siswa', $siswa);
      }
  
      public function cetak($id)

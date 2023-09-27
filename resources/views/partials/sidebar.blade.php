@@ -74,7 +74,7 @@
                 @else
                     <h6 class="collapse-header">Aktivitas Siswa:</h6>
                     <a class="collapse-item {{ Request::is('siswa/create') ? 'active' : '' }}" href="{{ url('siswa/create') }}">Datapokok</a>
-                    <a class="collapse-item {{ Request::is('siswa/pengumuman') ? 'active' : '' }}" href="{{ url('siswa/pengumuman') }}">Pengumuman</a>
+                    <a class="collapse-item {{ Request::is('siswa/pengumuman/' . Auth::user()->id) ? 'active' : '' }}" href="{{ url('siswa/pengumuman/' . Auth::user()->id) }}">Pengumuman</a>
                     {{-- <a class="collapse-item {{ Request::is('agen') or (Request::is('agen/[1-99999]') ? 'active' : '') }}"
                         href="/agen">Daftar Siswa</a> --}}
                 @endif

@@ -15,7 +15,6 @@
                         <div class="input-group mb-3">
                             <span class="input-group-text">Name</span>
                             <input type="text" id="name" name="name" aria-label="name" class="form-control" value="{{$agen->name}}">
-                
                         </div>
                         
                         <div class="input-group mb-3">

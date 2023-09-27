@@ -8,7 +8,7 @@ use App\Http\Controllers\StockController;
 use App\Http\Controllers\BisnisController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\DatapokokController;
-use App\Http\Controllers\KatalogController;
+use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TransaksiController;
@@ -62,9 +62,12 @@ Route::middleware(['auth'])->group(function(){
 
     // Route::get('/daftar', [AgenController::class, 'create']);
     Route::get('/agen/cetak/{id}', [AgenController::class, 'cetak']);
+    Route::get('/siswa/pengumuman/{id}', [SiswaController::class, 'pengumuman']);
     Route::resource('/persediaan', StockController::class);
     Route::resource('/produk', ProdukController::class);
-    Route::get('/katalog', [KatalogController::class, 'index']);
+    Route::get('/config', [ConfigController::class, 'index']);
+    Route::get('/config/edit', [ConfigController::class, 'edit']);
+    Route::put('/config/update', [ConfigController::class, 'update']);
     // Route::resource('/register', RegistersUsers::class);
     Route::resource('/profile', ProfileController::class);
     Route::resource('/registrasi_ulang', RegistrasiUlangController::class);

@@ -36,7 +36,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/siswa';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -162,6 +162,6 @@ class RegisterController extends Controller
 
         
         // Agen::create($input);
-        return redirect('siswa')->with('flash_message', 'Users Added!');
+        return redirect('login')->with('flash_message', 'Users Added!');
     }
 }

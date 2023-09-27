@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,6 +18,7 @@
     <!-- Scripts -->
     <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js']); ?>
 </head>
+
 <body class="bg-gradient-primary">
 
     <div class="container">
@@ -34,43 +36,55 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Login Siswa PPDB SMPTQ Pangeran Diponegoro</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Login Siswa PPDB SMPTQ Pangeran Diponegoro
+                                        </h1>
                                     </div>
+                                    <?php if(session('status')): ?>
+                                        <div class="alert alert-success">
+                                            <?php echo e(session('status')); ?>
+
+                                        </div>
+                                    <?php endif; ?>
                                     <form method="POST" action="<?php echo e(route('login')); ?>">
                                         <?php echo csrf_field(); ?>
                                         <div class="form-group">
-                                            <input id="email" type="email" class="form-control <?php $__errorArgs = ['email'];
+                                            <input id="email" type="email"
+                                                class="form-control <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" placeholder="Email" name="email" value="<?php echo e(old('email')); ?>" required autocomplete="email" autofocus>
+unset($__errorArgs, $__bag); ?>"
+                                                placeholder="Email" name="email" value="<?php echo e(old('email')); ?>" required
+                                                autocomplete="email" autofocus>
 
-                                                <?php $__errorArgs = ['email'];
+                                            <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong><?php echo e($message); ?></strong>
-                                                    </span>
-                                                <?php unset($message);
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                                            <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" id="password" class="form-control form-control-user" placeholder="Password"
-                                            name="password" required autocomplete="current-password">
+                                            <input type="password" id="password" class="form-control form-control-user"
+                                                placeholder="Password" name="password" required
+                                                autocomplete="current-password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input class="form-check-input" type="checkbox" name="togglePassword" id="togglePassword">
+                                                <input class="form-check-input" type="checkbox" name="togglePassword"
+                                                    id="togglePassword">
 
-                                                    <label class="form-check-label" for="remember" id="togglePassword">
-                                                        <?php echo e(__('Lihat sandi')); ?>
+                                                <label class="form-check-label" for="remember" id="togglePassword">
+                                                    <?php echo e(__('Lihat sandi')); ?>
 
                                             </div>
                                         </div>
@@ -79,14 +93,15 @@ unset($__errorArgs, $__bag); ?>
                                             <?php echo e(__('Login')); ?>
 
                                         </button>
-                                        
+
                                         
                                     </form>
 
                                     <hr>
-                                    
+
                                     <div class="text-center">
-                                        <a class="small" href="<?php echo e(route('register')); ?>"><?php echo e(__('Create an Account')); ?></a>
+                                        <a class="small"
+                                            href="<?php echo e(route('register')); ?>"><?php echo e(__('Create an Account')); ?></a>
                                     </div>
 
                                     
@@ -143,8 +158,9 @@ unset($__errorArgs, $__bag); ?>
     </script>
 
 </body>
-    
 
-            
+
+
+
 </html>
 <?php /**PATH C:\Users\LENOVO\OneDrive\Desktop\ppdb_smp\resources\views/auth/login.blade.php ENDPATH**/ ?>

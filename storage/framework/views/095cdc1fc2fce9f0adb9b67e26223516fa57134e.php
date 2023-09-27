@@ -7,8 +7,7 @@
     </button>
 
     <!-- Topbar Search -->
-    <form
-        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
         <div class="input-group">
             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                 aria-label="Search" aria-describedby="basic-addon2">
@@ -32,19 +31,29 @@
 
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo e(Auth::user()->name); ?></span>
-                <img class="img-profile rounded-circle"
-                    src="<?php echo e(asset(Auth::user()->avatar)); ?>">
+                <img class="img-profile rounded-circle" src="<?php echo e(asset(Auth::user()->avatar)); ?>">
             </a>
             <!-- Dropdown - User Information -->
-            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="/profile">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Profile
-                </a>
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+
+                <?php if(Auth::user()->role == 0): ?>
+                    <a class="dropdown-item" href="/profile">
+                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Profile
+                    </a>
+                    <a class="dropdown-item" href="/config">
+                        <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Config
+                    </a>
+                <?php else: ?>
+                    <a class="dropdown-item" href="/profile">
+                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Profile
+                    </a>
+                <?php endif; ?>
                 
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -57,4 +66,5 @@
     </ul>
 
 </nav>
-<!-- End of Topbar --><?php /**PATH C:\Users\LENOVO\OneDrive\Desktop\ppdb_smp\resources\views/partials/navbar.blade.php ENDPATH**/ ?>
+<!-- End of Topbar -->
+<?php /**PATH C:\Users\LENOVO\OneDrive\Desktop\ppdb_smp\resources\views/partials/navbar.blade.php ENDPATH**/ ?>

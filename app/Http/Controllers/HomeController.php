@@ -193,9 +193,10 @@ class HomeController extends Controller
         $userData = auth()->user()->id;
 
         $user = User::where('id', $userData)->first();
+        $config = Config::where('id', 1)->first();
         $agen = $user->datapokok;
 
-        return view('siswahome')->with('agen', $agen);
+        return view('siswahome')->with(['agen' => $agen, 'config' => $config]);
 
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Config as ModelsConfig;
+use App\Models\Config;
 use App\Models\User; // Import the User model
 use App\Models\Datapokok;
 use App\Models\Stock;
@@ -13,7 +13,7 @@ use App\Models\Nilai;
 use Carbon\Carbon; // Import the Carbon class
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Date;
-use PSpell\Config;
+// use PSpell\Config;
 
 class DatabaseSeeder extends Seeder
 {
@@ -97,20 +97,21 @@ class DatabaseSeeder extends Seeder
             "status" => "Lulus"
         ]);
 
-        ModelsConfig::create([
-            'pendaftaran_akun_ppdb_start'=>date('Y-m-d H:i:s'),
-            'pendaftaran_akun_ppdb_due'=>date('Y-m-d H:i:s'),
-            'pengumpulan_berkas_start'=>date('Y-m-d H:i:s'),
-            'pengumpulan_berkas_due'=>date('Y-m-d H:i:s'),
-            'test_akademik_start'=>date('Y-m-d H:i:s'),
-            'test_akademik_due'=>date('Y-m-d H:i:s'),
-            'test_baca_al_quran_start'=>date('Y-m-d H:i:s'),
-            'test_baca_al_quran_due'=>date('Y-m-d H:i:s'),
-            'test_wawancara_start'=>date('Y-m-d H:i:s'),
-            'test_wawancara_due'=>date('Y-m-d H:i:s'),
-            'pendaftaran_ulang_start'=>date('Y-m-d H:i:s'),
-            'pendaftaran_ulang_due'=>date('Y-m-d H:i:s'),
+        Config::create([
+            'pendaftaran_akun_ppdb_start'   => '2023-02-01 00:00:00',
+            'pendaftaran_akun_ppdb_due'     => '2023-02-15 23:59:59',
+            'pengumpulan_berkas_start'      => '2023-02-20 08:00:00',
+            'pengumpulan_berkas_due'        => '2023-03-05 23:59:59',
+            'test_akademik_start'           => '2023-03-10 08:00:00',
+            'test_akademik_due'             => '2023-03-20 23:59:59',
+            'test_baca_al_quran_start'      => '2023-03-25 08:00:00',
+            'test_baca_al_quran_due'        => '2023-04-05 23:59:59',
+            'test_wawancara_start'          => '2023-04-10 08:00:00',
+            'test_wawancara_due'            => '2023-04-20 23:59:59',
+            'pendaftaran_ulang_start'       => '2023-05-01 08:00:00',
+            'pendaftaran_ulang_due'         => '2023-05-15 23:59:59',
         ]);
+        
 
         
     }

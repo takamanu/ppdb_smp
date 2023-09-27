@@ -139,64 +139,76 @@
             <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
                 <div class="col d-flex justify-content-center">
                     <div class="card max-card-size">
-                        <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
+                        <?php if($date_now > $config->pendaftaran_akun_ppdb_due): ?>
+                            <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
+                        <?php else: ?>
+                            <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                        <?php endif; ?>
                         <div class="card-body">
                             <h5 class="card-title">Pendaftaran Akun PPDB</h5>
-                            <p class="card-text">2 Agustus - 10 Agustus 2023</p>
+                            <p class="card-text"><?php echo e($config->pendaftaran_akun_ppdb_start); ?> s/d <?php echo e($config->pendaftaran_akun_ppdb_due); ?></p>
                         </div>
                     </div>
                 </div>
                 <div class="col d-flex justify-content-center">
                     <div class="card max-card-size">
-                        <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
+                        <?php if($date_now > $config->pengumpulan_berkas_due): ?>
+                            <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
+                        <?php else: ?>
+                            <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                        <?php endif; ?>
                         <div class="card-body">
                             <h5 class="card-title">Pengumpulan berkas</h5>
-                            <p class="card-text">2 Agustus - 17 Agustus 2023</p>
+                            <p class="card-text"><?php echo e($config->pengumpulan_berkas_start); ?> s/d <?php echo e($config->pengumpulan_berkas_due); ?></p>
                         </div>
                     </div>
                 </div>
                 <div class="col d-flex justify-content-center">
                     <div class="card max-card-size">
-                        <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
+                        <?php if($date_now > $config->test_akademik_due): ?>
+                            <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
+                        <?php else: ?>
+                            <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                        <?php endif; ?>
                         <div class="card-body">
                             <h5 class="card-title">Tes Akademik</h5>
-                            <p class="card-text">20 Agustus - 24 Agustus 2023</p>
+                            <p class="card-text"><?php echo e($config->test_akademik_start); ?> s/d <?php echo e($config->test_akademik_due); ?></p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col d-flex justify-content-center">
+            <div class="row row-cols-1 row-cols-md-3 g-4 d-flex justify-content-around">
+                <div class="col">
                     <div class="card max-card-size">
-                        <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                        <?php if($date_now > $config->test_baca_al_quran_due): ?>
+                            <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
+                        <?php else: ?>
+                            <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                        <?php endif; ?>
                         <div class="card-body">
                             <h5 class="card-title">Tes Baca Al-Quran</h5>
-                            <p class="card-text">27 Agustus - 31 Agustus 2023</p>
+                            <p class="card-text"><?php echo e($config->test_baca_al_quran_start); ?> s/d <?php echo e($config->test_baca_al_quran_due); ?></p>
                         </div>
                     </div>
                 </div>
-                <div class="col d-flex justify-content-center">
+                
+                <div class="col">
                     <div class="card max-card-size">
-                        <img src="/images/centang_belum.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Tes Wawancara</h5>
-                            <p class="card-text">3 September - 7 September 2023</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col d-flex justify-content-center">
-                    <div class="card max-card-size">
-                        <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                        <?php if($date_now > $config->pendaftaran_ulang_due): ?>
+                            <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
+                        <?php else: ?>
+                            <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                        <?php endif; ?>
                         <div class="card-body">
                             <h5 class="card-title">Pendaftaran Ulang</h5>
-                            <p class="card-text">10 September - 14 September 2023</p>
+                            <p class="card-text"><?php echo e($config->pendaftaran_ulang_start); ?> s/d <?php echo e($config->pendaftaran_ulang_due); ?></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="card-footer text-body-secondary ">
-            <button onclick="alert('Coming soon')" class="btn btn-primary btn-block">Cek Pengumuman</a>
+            <a href="<?php echo e(url('/siswa/pengumuman/' . Auth::user()->id)); ?>" class="btn btn-primary btn-block">Cek Pengumuman</a>
         </div>
     </div>
 <?php $__env->stopSection(); ?>
