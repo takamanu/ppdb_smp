@@ -48,10 +48,18 @@ class SiswaController extends Controller
      {   
 
         // dd($data);
-
         $userData = auth()->user();
         // $user = User::where('id', $userData)->first();
+        $daftarSekolahLain = $request->input('daftar_sekolah_lain');
+        // Get the value of Nama Sekolah Jika Daftar
+        $namaSekolahJikaDaftar = $request->input('nama_sekolahnya_jika_daftar');
 
+        // If the checkbox is not checked and the field is not filled, set a default value
+        if (!$daftarSekolahLain && empty($namaSekolahJikaDaftar)) {
+            $namaSekolahJikaDaftar = 'None';
+            $daftarSekolahLain = 0;
+        }
+        
         Datapokok::create([
             'user_id' => $userData->id,
             'nama_lengkap' => $request->nama_lengkap,
@@ -83,29 +91,29 @@ class SiswaController extends Controller
             'penghasilan_wali' => $request->penghasilan_wali,
             'pendidikan_terakir_wali' => $request->pendidikan_terakir_wali,
             'no_wa_wali_siswa' => $request->no_wa_wali_siswa,
-            'motivasi' => 'apasih anj',
-            'daftar_sekolah_lain' => 1,
-            'nama_sekolahnya_jika_daftar' => 'apasih anj',
-            'informasi_didapatkan_dari' => 'brosur',
+            'motivasi' => $request->motivasi,
+            'daftar_sekolah_lain' => $daftarSekolahLain,
+            'nama_sekolahnya_jika_daftar' => $namaSekolahJikaDaftar,
+            'informasi_didapatkan_dari' => $request->informasi_didapatkan_dari,
         ]);
 
         $idBaruDatapokok = Datapokok::latest('id')->first();
 
         $raw_data_policy = [
             'datapokok_id' => $idBaruDatapokok->id, 
-            'perjanjian1' => "ya",
-            'perjanjian2' => "ya",
-            'perjanjian3' => "ya",
-            'perjanjian4' => "ya",
+            'perjanjian1' => $request->perjanjian1,
+            'perjanjian2' => $request->perjanjian2,
+            'perjanjian3' => $request->perjanjian3,
+            'perjanjian4' => $request->perjanjian4,
         ];
 
         $raw_data_nilai = [
             'datapokok_id' => $idBaruDatapokok->id, 
-            "matematika" => $request->matematika,
-            "ilmu_pengetahuan_alam" => $request->ilmu_pengetahuan_alam,
-            "bahasa_indonesia" => $request->bahasa_indonesia,
-            "test_membaca_al_quran" => $request->test_membaca_al_quran,
-            "status" => "LULUS",
+            "matematika" => 0,
+            "ilmu_pengetahuan_alam" => 0,
+            "bahasa_indonesia" => 0,
+            "test_membaca_al_quran" => 0,
+            "status" => "BELUM LULUS",
         ];
 
         Nilai::create($raw_data_nilai);

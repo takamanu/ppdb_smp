@@ -2,19 +2,35 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center mt-3" href="/home">
-        <div class="sidebar-brand-text mx-3">PPDB SMP SMPTQ Pangeran Diponegoro</div>
-    </a>
+    <?php if(Auth::user()->role == 0): ?>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center mt-3" href="/home">
+            <div class="sidebar-brand-text mx-3">PPDB SMP SMPTQ Pangeran Diponegoro</div>
+        </a>
+    <?php else: ?>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center mt-3" href="/siswa">
+            <div class="sidebar-brand-text mx-3">PPDB SMP SMPTQ Pangeran Diponegoro</div>
+        </a>
+    <?php endif; ?>
+
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0 mt-3">
 
+    <?php if(Auth::user()->role == 0): ?>
+        <li class="nav-item <?php echo e(Request::is('/home') ? 'active' : ''); ?>">
+            <a class="nav-link <?php echo e(Request::is('/home') ? 'active' : ''); ?>" href="/home">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+    <?php else: ?>
+        <li class="nav-item <?php echo e(Request::is('/siswa') ? 'active' : ''); ?>">
+            <a class="nav-link <?php echo e(Request::is('/siswa') ? 'active' : ''); ?>" href="/siswa">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+    <?php endif; ?>
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item <?php echo e(Request::is('/home') ? 'active' : ''); ?>">
-        <a class="nav-link <?php echo e(Request::is('/home') ? 'active' : ''); ?>" href="/home">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
+
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -28,20 +44,31 @@
     
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item <?php echo e(Request::is('agen') || Request::is('agen/create') || Request::is('agen/*') ? 'active' : ''); ?>">
+    <li
+        class="nav-item <?php echo e(Request::is('agen') || Request::is('agen/create') || Request::is('agen/*') ? 'active' : ''); ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
             <span>Menu Siswa</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Fitur Keagenan:</h6>
-                <a class="collapse-item <?php echo e(Request::is('agen/create') ? 'active' : ''); ?>" href="<?php echo e(url('/agen/create')); ?>">Tambah Siswa</a>
-                <a class="collapse-item <?php echo e(Request::is('agen') or Request::is('agen/[1-99999]')  ? 'active' : ''); ?>" href="/agen">Daftar Siswa</a>
+                <?php if(Auth::user()->role == 0): ?>
+                    <h6 class="collapse-header">Fitur Keagenan:</h6>
+                    <a class="collapse-item <?php echo e(Request::is('agen/create') ? 'active' : ''); ?>" href="<?php echo e(url('/agen/create')); ?>">Tambah
+                        Siswa</a>
+                    <a class="collapse-item <?php echo e(Request::is('agen') or (Request::is('agen/[1-99999]') ? 'active' : '')); ?>"
+                        href="/agen">Daftar Siswa</a>
+                <?php else: ?>
+                    <h6 class="collapse-header">Aktivitas Siswa:</h6>
+                    <a class="collapse-item <?php echo e(Request::is('siswa/create') ? 'active' : ''); ?>" href="<?php echo e(url('siswa/create')); ?>">Datapokok</a>
+                    <a class="collapse-item <?php echo e(Request::is('siswa/pengumuman') ? 'active' : ''); ?>" href="<?php echo e(url('siswa/pengumuman')); ?>">Pengumuman</a>
+                    
+                <?php endif; ?>
             </div>
         </div>
+
+    
     </li>
 
     <!-- Divider -->
@@ -53,7 +80,7 @@
     
 
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

@@ -18,7 +18,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="p-5">
-                            <form method="POST" action="<?php echo e(route('register')); ?>" enctype="multipart/form-data">
+                            <form method="POST" action="<?php echo e(route('agen.store')); ?>" enctype="multipart/form-data">
                                 <?php echo csrf_field(); ?>
                                 <h3 class="mb-3">Data Login</h3>
                                 <div class="row">
@@ -419,13 +419,6 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
 
 
-                                <!-- Add the asal_sekolah field -->
-
-
-                                <!-- Add the alamat_sekolah field -->
-
-
-                                <!-- Add the jumlah_hafalan field -->
 
                                 <h3 class="mb-3">Informasi Keluarga</h3>
                                 <!-- Add the nama_ayah field -->
@@ -503,13 +496,29 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
                                                 name="pendidikan_terakir_ayah" required>
-                                                <option value="0" disabled selected>Pilih Pendidikan Terakhir Ayah
+                                                <option value="sd" disabled selected>Pilih Pendidikan Terakhir Ayah
                                                 </option>
                                                 <option value="sd"
                                                     <?php echo e(old('pendidikan_terakir_ayah') == 'sd' ? 'selected' : ''); ?>>SD
                                                 </option>
                                                 <option value="smp"
                                                     <?php echo e(old('pendidikan_terakir_ayah') == 'smp' ? 'selected' : ''); ?>>SMP
+                                                </option>
+                                                <option value="sma"
+                                                    <?php echo e(old('pendidikan_terakir_ayah') == 'sma' ? 'selected' : ''); ?>>SMA
+                                                </option>
+                                                <option value="d1/2/3"
+                                                    <?php echo e(old('pendidikan_terakir_ayah') == 'd1/2/3' ? 'selected' : ''); ?>>
+                                                    D1/D2/D3
+                                                </option>
+                                                <option value="s1"
+                                                    <?php echo e(old('pendidikan_terakir_ayah') == 's1' ? 'selected' : ''); ?>>S1
+                                                </option>
+                                                <option value="s2"
+                                                    <?php echo e(old('pendidikan_terakir_ayah') == 's2' ? 'selected' : ''); ?>>S2
+                                                </option>
+                                                <option value="s3"
+                                                    <?php echo e(old('pendidikan_terakir_ayah') == 's3' ? 'selected' : ''); ?>>S3
                                                 </option>
                                                 <!-- Add other options as needed -->
                                             </select>
@@ -570,12 +579,24 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
                                                 name="penghasilan_ayah" required>
-                                                <option value="0" disabled selected>Pilih Kategori Penghasilan Ayah
+                                                <option value="1" disabled selected>Pilih Kategori Penghasilan Ayah
                                                 </option>
                                                 <option value="1"
-                                                    <?php echo e(old('penghasilan_ayah') == '1' ? 'selected' : ''); ?>>1</option>
+                                                    <?php echo e(old('penghasilan_ayah') == '1' ? 'selected' : ''); ?>>Di bawah Rp
+                                                    1.000.000</option>
                                                 <option value="2"
-                                                    <?php echo e(old('penghasilan_ayah') == '2' ? 'selected' : ''); ?>>2</option>
+                                                    <?php echo e(old('penghasilan_ayah') == '2' ? 'selected' : ''); ?>>Rp 1.000.000 -
+                                                    Rp 3.000.000</option>
+                                                <option value="3"
+                                                    <?php echo e(old('penghasilan_ayah') == '3' ? 'selected' : ''); ?>>Rp 3.000.000 -
+                                                    Rp 5.000.000</option>
+                                                <option value="4"
+                                                    <?php echo e(old('penghasilan_ayah') == '4' ? 'selected' : ''); ?>>Rp 5.000.000 -
+                                                    Rp 10.000.000</option>
+                                                <option value="5"
+                                                    <?php echo e(old('penghasilan_ayah') == '5' ? 'selected' : ''); ?>>Di atas Rp
+                                                    10.000.000</option>
+
                                                 <!-- Add other options as needed -->
                                             </select>
                                             <?php $__errorArgs = ['penghasilan_ayah'];
@@ -669,13 +690,29 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
                                                 name="pendidikan_terakir_ibu" required>
-                                                <option value="0" disabled selected>Pilih Pendidikan Terakhir Ibu
+                                                <option value="sd" disabled selected>Pilih Pendidikan Terakhir Ibu
                                                 </option>
                                                 <option value="sd"
-                                                    <?php echo e(old('pendidikan_terakir_ibu') == 'sd' ? 'selected' : ''); ?>>SD
+                                                    <?php echo e(old('pendidikan_terakhir_ibu') == 'sd' ? 'selected' : ''); ?>>SD
                                                 </option>
                                                 <option value="smp"
-                                                    <?php echo e(old('pendidikan_terakir_ibu') == 'smp' ? 'selected' : ''); ?>>SD
+                                                    <?php echo e(old('pendidikan_terakhir_ibu') == 'smp' ? 'selected' : ''); ?>>SMP
+                                                </option>
+                                                <option value="sma"
+                                                    <?php echo e(old('pendidikan_terakhir_ibu') == 'sma' ? 'selected' : ''); ?>>SMA
+                                                </option>
+                                                <option value="d1/2/3"
+                                                    <?php echo e(old('pendidikan_terakhir_ibu') == 'd1/2/3' ? 'selected' : ''); ?>>
+                                                    D1/D2/D3
+                                                </option>
+                                                <option value="s1"
+                                                    <?php echo e(old('pendidikan_terakhir_ibu') == 's1' ? 'selected' : ''); ?>>S1
+                                                </option>
+                                                <option value="s2"
+                                                    <?php echo e(old('pendidikan_terakhir_ibu') == 's2' ? 'selected' : ''); ?>>S2
+                                                </option>
+                                                <option value="s3"
+                                                    <?php echo e(old('pendidikan_terakhir_ibu') == 's3' ? 'selected' : ''); ?>>S3
                                                 </option>
                                             </select>
                                             <?php $__errorArgs = ['pendidikan_terakir_ibu'];
@@ -733,14 +770,23 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
                                                 name="penghasilan_ibu" required>
-                                                <option value="0" disabled selected>Pilih Kategori Penghasilan Ibu
+                                                <option value="1" disabled selected>Pilih Kategori Penghasilan Ibu
                                                 </option>
                                                 <option value="1"
-                                                    <?php echo e(old('penghasilan_ibu') == '1' ? 'selected' : ''); ?>>1
-                                                </option>
+                                                    <?php echo e(old('penghasilan_ibu') == '1' ? 'selected' : ''); ?>>Di bawah Rp
+                                                    1.000.000</option>
                                                 <option value="2"
-                                                    <?php echo e(old('penghasilan_ibu') == '2' ? 'selected' : ''); ?>>2
-                                                </option>
+                                                    <?php echo e(old('penghasilan_ibu') == '2' ? 'selected' : ''); ?>>Rp 1.000.000 - Rp
+                                                    3.000.000</option>
+                                                <option value="3"
+                                                    <?php echo e(old('penghasilan_ibu') == '3' ? 'selected' : ''); ?>>Rp 3.000.000 - Rp
+                                                    5.000.000</option>
+                                                <option value="4"
+                                                    <?php echo e(old('penghasilan_ibu') == '4' ? 'selected' : ''); ?>>Rp 5.000.000 - Rp
+                                                    10.000.000</option>
+                                                <option value="5"
+                                                    <?php echo e(old('penghasilan_ibu') == '5' ? 'selected' : ''); ?>>Di atas Rp
+                                                    10.000.000</option>
                                                 <!-- Add other options as needed -->
                                             </select>
                                             <?php $__errorArgs = ['penghasilan_ibu'];
@@ -896,6 +942,23 @@ unset($__errorArgs, $__bag); ?>"
                                                 <option value="smp"
                                                     <?php echo e(old('pendidikan_terakir_wali') == 'smp' ? 'selected' : ''); ?>>SMP
                                                 </option>
+                                                </option>
+                                                <option value="sma"
+                                                    <?php echo e(old('pendidikan_terakir_wali') == 'sma' ? 'selected' : ''); ?>>SMA
+                                                </option>
+                                                <option value="d1/2/3"
+                                                    <?php echo e(old('pendidikan_terakir_wali') == 'd1/2/3' ? 'selected' : ''); ?>>
+                                                    D1/D2/D3
+                                                </option>
+                                                <option value="s1"
+                                                    <?php echo e(old('pendidikan_terakir_wali') == 's1' ? 'selected' : ''); ?>>S1
+                                                </option>
+                                                <option value="s2"
+                                                    <?php echo e(old('pendidikan_terakir_wali') == 's2' ? 'selected' : ''); ?>>S2
+                                                </option>
+                                                <option value="s3"
+                                                    <?php echo e(old('pendidikan_terakir_wali') == 's3' ? 'selected' : ''); ?>>S3
+                                                </option>
                                                 <!-- Add other options as needed -->
                                             </select>
                                             <?php $__errorArgs = ['pendidikan_terakir_wali'];
@@ -957,11 +1020,20 @@ unset($__errorArgs, $__bag); ?>"
                                                 <option value="0" disabled selected>Pilih Kategori Penghasilan Wali
                                                 </option>
                                                 <option value="1"
-                                                    <?php echo e(old('penghasilan_wali') == '1' ? 'selected' : ''); ?>>1
-                                                </option>
+                                                    <?php echo e(old('penghasilan_wali') == '1' ? 'selected' : ''); ?>>Di bawah Rp
+                                                    1.000.000</option>
                                                 <option value="2"
-                                                    <?php echo e(old('penghasilan_wali') == '2' ? 'selected' : ''); ?>>2
-                                                </option>
+                                                    <?php echo e(old('penghasilan_wali') == '2' ? 'selected' : ''); ?>>Rp 1.000.000 -
+                                                    Rp 3.000.000</option>
+                                                <option value="3"
+                                                    <?php echo e(old('penghasilan_wali') == '3' ? 'selected' : ''); ?>>Rp 3.000.000 -
+                                                    Rp 5.000.000</option>
+                                                <option value="4"
+                                                    <?php echo e(old('penghasilan_wali') == '4' ? 'selected' : ''); ?>>Rp 5.000.000 -
+                                                    Rp 10.000.000</option>
+                                                <option value="5"
+                                                    <?php echo e(old('penghasilan_wali') == '5' ? 'selected' : ''); ?>>Di atas Rp
+                                                    10.000.000</option>
                                                 <!-- Add other options as needed -->
                                             </select>
                                             <?php $__errorArgs = ['penghasilan_wali'];

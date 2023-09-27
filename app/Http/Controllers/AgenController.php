@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Agen;
 use App\Models\User;
+use App\Models\Nilai;
+use App\Models\Policy;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Models\Datapokok;
@@ -67,28 +69,29 @@ class AgenController extends Controller
     public function store(Request $request)
     {   
 
-        // $waktu = date('H:i');
-        // $request->created_at = $waktu;
-        // $request->updated_at = $waktu;
-
-        Agen::create([
+        User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->newPassword),
+            'password' => Hash::make($request->password),
         ]);
+        // $user = User::where('id', $userData)->first();
+        
+        $idBaru = User::latest('id')->first();
 
         Datapokok::create([
+            'user_id' => $idBaru->id,
             'nama_lengkap' => $request->nama_lengkap,
             'email' => $request->email,
-            'upload_file' => NULL,
+            'upload_file' => "NULL", 
             'nisn' => $request->nisn,
             'jenis_kelamin' => $request->jenis_kelamin,
             'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
             'agama' => $request->agama,
+            'alamat' => $request->alamat,
             'asal_sekolah' => $request->asal_sekolah,
             'alamat_sekolah' => $request->alamat_sekolah,
-            'jumlah_hafalan' => $request->jumlah_hafalan,
+            'jumlah_hafalan' => 2,
             'nama_ayah' => $request->nama_ayah,
             'pekerjaan_ayah' => $request->pekerjaan_ayah,
             'penghasilan_ayah' => $request->penghasilan_ayah,
@@ -106,14 +109,36 @@ class AgenController extends Controller
             'penghasilan_wali' => $request->penghasilan_wali,
             'pendidikan_terakir_wali' => $request->pendidikan_terakir_wali,
             'no_wa_wali_siswa' => $request->no_wa_wali_siswa,
-            'motivasi' => NULL,
-            'daftar_sekolah_lain' => NULL,
-            'nama_sekolahnya_jika_daftar' => NULL,
-            'informasi_didapatkan_dari' => NULL,
+            'motivasi' => 'apasih anj',
+            'daftar_sekolah_lain' => 1,
+            'nama_sekolahnya_jika_daftar' => 'apasih anj',
+            'informasi_didapatkan_dari' => 'brosur',
         ]);
 
-        // Agen::create($input);
-        return redirect('agen')->with('flash_message', 'Users Added!');
+        $idBaruDatapokok = Datapokok::latest('id')->first();
+
+        $raw_data_policy = [
+            'datapokok_id' => $idBaruDatapokok->id, 
+            'perjanjian1' => "ya",
+            'perjanjian2' => "ya",
+            'perjanjian3' => "ya",
+            'perjanjian4' => "ya",
+        ];
+
+        $raw_data_nilai = [
+            'datapokok_id' => $idBaruDatapokok->id, 
+            "matematika" => $request->matematika,
+            "ilmu_pengetahuan_alam" => $request->ilmu_pengetahuan_alam,
+            "bahasa_indonesia" => $request->bahasa_indonesia,
+            "test_membaca_al_quran" => $request->test_membaca_al_quran,
+            "status" => "LULUS",
+        ];
+
+        Nilai::create($raw_data_nilai);
+        Policy::create($raw_data_policy);
+ 
+         // Agen::create($input);
+        return redirect('agen')->with('flash_message', 'Isi datapokok selesai!');
     }
 
     /**

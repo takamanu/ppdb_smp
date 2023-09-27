@@ -85,6 +85,15 @@
                                                     name="password_confirmation" required autocomplete="new-password"
                                                     placeholder="Confirm Password">
                                             </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input class="form-check-input" type="checkbox" name="togglePassword" id="togglePassword">
+
+                                                    <label class="form-check-label" for="remember" id="togglePassword">
+                                                        {{ __('Lihat sandi') }}
+                                            </div>
                                         </div>
                                         <hr>
                                         <button type="submit" class="btn btn-primary btn-block">
@@ -92,15 +101,6 @@
                                         </button>
                                         <hr>
                                     </form>
-                                        {{-- <a href="#" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="#" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a> --}}
-                                    <!--<div class="text-center">-->
-                                    <!--    <a class="small" href="forgot-password.html">Forgot Password?</a>-->
-                                    <!--</div>-->
                                     <div class="text-center">
                                         <a class="small" href="{{ route('login') }}">Already have an account?
                                             Login!</a>
@@ -125,6 +125,28 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
+        const passwordConfirm = document.querySelector("#password-confirm");
+
+        togglePassword.addEventListener("click", function(e) {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+
+        });
+
+        togglePassword.addEventListener("click", function(e) {
+            // toggle the type attribute
+            const type = passwordConfirm.getAttribute("type") === "password" ? "text" : "password";
+            passwordConfirm.setAttribute("type", type);
+
+        });
+
+        // prevent form submit
+    </script>
 
 </body>
 

@@ -73,6 +73,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         if(request()->has('avatar')){
+
             $avataruploaded = request()->file('avatar');
             $avatarname = time() . '.' . $avataruploaded->getClientOriginalExtension();
             $avatarpath = public_path('/images/');
@@ -80,16 +81,20 @@ class RegisterController extends Controller
             User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
+                'role' => 1,
                 'password' => Hash::make($data['password']),
                 'avatar' => '/images/' . $avatarname,
             ]);
             
         } else {
+
             User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
+                'role' => 1,
                 'password' => Hash::make($data['password']),
             ]);
+            
         }
 
         // $idBaru = User::latest('id')->first();

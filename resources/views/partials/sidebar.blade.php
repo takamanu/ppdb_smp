@@ -2,19 +2,35 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center mt-3" href="/home">
-        <div class="sidebar-brand-text mx-3">PPDB SMP SMPTQ Pangeran Diponegoro</div>
-    </a>
+    @if (Auth::user()->role == 0)
+        <a class="sidebar-brand d-flex align-items-center justify-content-center mt-3" href="/home">
+            <div class="sidebar-brand-text mx-3">PPDB SMP SMPTQ Pangeran Diponegoro</div>
+        </a>
+    @else
+        <a class="sidebar-brand d-flex align-items-center justify-content-center mt-3" href="/siswa">
+            <div class="sidebar-brand-text mx-3">PPDB SMP SMPTQ Pangeran Diponegoro</div>
+        </a>
+    @endif
+
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0 mt-3">
 
+    @if (Auth::user()->role == 0)
+        <li class="nav-item {{ Request::is('/home') ? 'active' : '' }}">
+            <a class="nav-link {{ Request::is('/home') ? 'active' : '' }}" href="/home">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+    @else
+        <li class="nav-item {{ Request::is('/siswa') ? 'active' : '' }}">
+            <a class="nav-link {{ Request::is('/siswa') ? 'active' : '' }}" href="/siswa">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+    @endif
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item {{ Request::is('/home') ? 'active' : '' }}">
-        <a class="nav-link {{ Request::is('/home') ? 'active' : '' }}" href="/home">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
+
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -40,20 +56,32 @@
     </li> --}}
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item {{ Request::is('agen') || Request::is('agen/create') || Request::is('agen/*') ? 'active' : '' }}">
+    <li
+        class="nav-item {{ Request::is('agen') || Request::is('agen/create') || Request::is('agen/*') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
             <span>Menu Siswa</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Fitur Keagenan:</h6>
-                <a class="collapse-item {{ Request::is('agen/create') ? 'active' : '' }}" href="{{ url('/agen/create') }}">Tambah Siswa</a>
-                <a class="collapse-item {{ Request::is('agen') or Request::is('agen/[1-99999]')  ? 'active' : '' }}" href="/agen">Daftar Siswa</a>
+                @if (Auth::user()->role == 0)
+                    <h6 class="collapse-header">Fitur Keagenan:</h6>
+                    <a class="collapse-item {{ Request::is('agen/create') ? 'active' : '' }}" href="{{ url('/agen/create') }}">Tambah
+                        Siswa</a>
+                    <a class="collapse-item {{ Request::is('agen') or (Request::is('agen/[1-99999]') ? 'active' : '') }}"
+                        href="/agen">Daftar Siswa</a>
+                @else
+                    <h6 class="collapse-header">Aktivitas Siswa:</h6>
+                    <a class="collapse-item {{ Request::is('siswa/create') ? 'active' : '' }}" href="{{ url('siswa/create') }}">Datapokok</a>
+                    <a class="collapse-item {{ Request::is('siswa/pengumuman') ? 'active' : '' }}" href="{{ url('siswa/pengumuman') }}">Pengumuman</a>
+                    {{-- <a class="collapse-item {{ Request::is('agen') or (Request::is('agen/[1-99999]') ? 'active' : '') }}"
+                        href="/agen">Daftar Siswa</a> --}}
+                @endif
             </div>
         </div>
+
+    
     </li>
 
     <!-- Divider -->
@@ -94,7 +122,7 @@
     </li> --}}
 
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    {{-- <hr class="sidebar-divider d-none d-md-block"> --}}
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

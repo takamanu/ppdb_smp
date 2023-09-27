@@ -50,7 +50,12 @@ Route::resource('/payment', PaymentController::class);
 // Route::resource('/datapokok', DatapokokController::class);
 
 
+
 Route::middleware(['auth'])->group(function(){
+    // Route::middleware(['checkUserRole'])->group(function () {
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        Route::get('/siswa', [App\Http\Controllers\SiswaController::class, 'index'])->name('siswa');
+    // });
     Route::resource('/transaksi', TransaksiController::class);
     Route::resource('/persediaan', ProdukController::class);
     Route::resource('/agen', AgenController::class);
@@ -68,6 +73,8 @@ Route::middleware(['auth'])->group(function(){
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'indexsiswa'])->name('siswahome');
+
 

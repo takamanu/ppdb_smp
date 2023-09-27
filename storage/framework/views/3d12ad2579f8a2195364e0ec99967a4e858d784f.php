@@ -34,7 +34,7 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Login Dashboard Admin Kopti Salatiga</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Login Siswa PPDB SMPTQ Pangeran Diponegoro</h1>
                                     </div>
                                     <form method="POST" action="<?php echo e(route('login')); ?>">
                                         <?php echo csrf_field(); ?>
@@ -67,10 +67,10 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input class="form-check-input" type="checkbox" name="remember" id="remember" <?php echo e(old('remember') ? 'checked' : ''); ?>>
+                                                <input class="form-check-input" type="checkbox" name="togglePassword" id="togglePassword">
 
-                                                    <label class="form-check-label" for="remember">
-                                                        <?php echo e(__('Remember Me')); ?>
+                                                    <label class="form-check-label" for="remember" id="togglePassword">
+                                                        <?php echo e(__('Lihat sandi')); ?>
 
                                             </div>
                                         </div>
@@ -111,6 +111,36 @@ unset($__errorArgs, $__bag); ?>
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
+        // const passwordConfirm = document.querySelector("#password-confirm");
+
+        togglePassword.addEventListener("click", function(e) {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+
+            // toggle the icon
+            // this.classList.toggle("bi-eye");
+        });
+
+        // togglePassword.addEventListener("click", function(e) {
+        //     // toggle the type attribute
+        //     const type = passwordConfirm.getAttribute("type") === "password" ? "text" : "password";
+        //     passwordConfirm.setAttribute("type", type);
+
+        //     // toggle the icon
+        //     // this.classList.toggle("bi-eye");
+        // });
+
+        // prevent form submit
+        // const form = document.querySelector("form");
+        // form.addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        // });
+    </script>
 
 </body>
     
