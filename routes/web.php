@@ -54,8 +54,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/transaksi', TransaksiController::class);
     Route::resource('/persediaan', ProdukController::class);
     Route::resource('/agen', AgenController::class);
-    Route::get('/siswa', 'SiswaController@index')->name('siswa');
-    Route::resource('/siswa', SiswaController::class);
+
     // Route::get('/daftar', [AgenController::class, 'create']);
     Route::get('/agen/cetak/{id}', [AgenController::class, 'cetak']);
     Route::resource('/persediaan', StockController::class);
@@ -66,8 +65,19 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/registrasi_ulang', RegistrasiUlangController::class);
 });
 
+Route::middleware(['admin:1'])->group(function(){
+    Route::get('/siswa', 'SiswaController@index')->name('siswa');
+    Route::resource('/siswa', SiswaController::class);
+});
+
+Route::middleware(['admin:0'])->group(function(){
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('/agen', AgenController::class);
+});
+
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'indexsiswa'])->name('siswahome');
 
