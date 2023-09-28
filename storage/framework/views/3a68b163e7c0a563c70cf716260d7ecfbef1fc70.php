@@ -44,11 +44,24 @@
                     <td>Hasil tes</td>
                     <td><?php echo e($siswa->nilai->status); ?></td>
                     
+
                 </tr>
             </tbody>
         </table>
     </div>
-    <a href="<?php echo e(url('/agen/cetak/' . $siswa->id)); ?>" title="Cetak Datapokok Siswa" class="btn btn-success btn-block">Cetak Datapokok</a>
+    <hr>
+    <?php if(is_null(Auth::user()->registrasi_ulang)): ?>
+        <a href="<?php echo e(url('/siswa/registrasi/' . $siswa->id)); ?>" class="btn btn-primary btn-block">Registrasi Ulang</a>
+    <?php else: ?>
+        <button onclick="alert('Kamu sudah melakukan registrasi ulang!')" class="btn btn-primary btn-block mb-3" disabled>Registrasi Ulang</button>
+        <div class="alert alert-success">
+            Kamu sudah melakukan registrasi ulang!
+        </div>
+    <?php endif; ?>
+
+    <hr>
+    <a href="<?php echo e(url('/agen/cetak/' . $siswa->id)); ?>" title="Cetak Datapokok Siswa" class="btn btn-success btn-block">Cetak
+        Datapokok</a>
     
     <a href="/siswa" class="btn btn-warning btn-block">Kembali ke dashboard</a>
 <?php $__env->stopSection(); ?>

@@ -56,7 +56,7 @@
                                         <td>
 
                                             
-                                            <a href="<?php echo e(url('/agen/kelulusan/' . $item->id)); ?>" title="Tambah Kelulusan Siswa"><button class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i></button></a>
+                                            <a href="<?php echo e(url('/agen/nilai/' . $item->id)); ?>" title="Tambah Kelulusan Siswa"><button class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i></button></a>
                                             <a href="<?php echo e(url('/agen/cetak/' . $item->id)); ?>" title="Cetak Datapokok Siswa">
                                                 <button class="btn btn-warning btn-sm"><i class="fa fa-print" aria-hidden="true"></i></button>
                                             </a>

@@ -83,7 +83,7 @@
             <tr>
                 <td style="width: 30%; vertical-align: top;">Alamat</td>
                 <td style="width: 5%; vertical-align: top;">:</td>
-                <td style="width: 65%;">NULL</td>
+                <td style="width: 65%;"><?php echo e($agen->alamat); ?></td>
             </tr>
             <tr>
                 <td style="width: 30%;">No. Telp</td>

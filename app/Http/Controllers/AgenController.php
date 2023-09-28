@@ -172,6 +172,24 @@ class AgenController extends Controller
         return view('agen.cetak')->with('agen', $agen);
     }
 
+    public function masukNilai($id)
+    {
+        $agen = Datapokok::where('user_id', $id)->first();
+        // return $agen;
+        return view('agen.nilai')->with('agen', $agen);
+    }
+
+    public function updateNilai(Request $request, $id)
+    {
+        $agen = Datapokok::where('user_id', $id)->first();
+        $nilaiId = $agen->nilai->id;
+        $nilai = Nilai::where('id', $nilaiId)->first();
+        $input = $request->all();
+        $nilai->update($input);
+
+        return redirect('/agen/nilai/' . $id)->with(['flash_message' => 'Nilai Updated!', 'agen' => $agen]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

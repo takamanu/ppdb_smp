@@ -53,16 +53,21 @@ Route::resource('/payment', PaymentController::class);
 
 Route::middleware(['auth'])->group(function(){
     // Route::middleware(['checkUserRole'])->group(function () {
-        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-        Route::get('/siswa', [App\Http\Controllers\SiswaController::class, 'index'])->name('siswa');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/siswa', [App\Http\Controllers\SiswaController::class, 'index'])->name('siswa');
     // });
     Route::resource('/transaksi', TransaksiController::class);
     Route::resource('/persediaan', ProdukController::class);
     Route::resource('/agen', AgenController::class);
+    Route::resource('/siswa', SiswaController::class);
 
     // Route::get('/daftar', [AgenController::class, 'create']);
     Route::get('/agen/cetak/{id}', [AgenController::class, 'cetak']);
+    Route::get('/agen/nilai/{id}', [AgenController::class, 'masukNilai']);
+    Route::put('/agen/nilai/update/{id}', [AgenController::class, 'updateNilai']);
     Route::get('/siswa/pengumuman/{id}', [SiswaController::class, 'pengumuman']);
+    Route::get('/siswa/registrasi/{id}', [SiswaController::class, 'registrasiUlang']);
+    // Route::post('/siswa/registrasi/create', [SiswaController::class, 'storeRegistrasiUlang']);
     Route::resource('/persediaan', StockController::class);
     Route::resource('/produk', ProdukController::class);
     Route::get('/config', [ConfigController::class, 'index']);

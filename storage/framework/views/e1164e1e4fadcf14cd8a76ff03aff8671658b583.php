@@ -1,6 +1,6 @@
-@extends('layouts.main')
 
-@section('container')
+
+<?php $__env->startSection('container'); ?>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -9,17 +9,18 @@
                     <h2>Profil</h2>
                 </div>
                 <div class="card-body">
-                    <form action="{{ url('profile/' .$agen->id) }}" method="post" enctype="multipart/form-data">
-                        {!! csrf_field() !!}
-                        @method("PATCH")
+                    <form action="<?php echo e(url('profile/' .$agen->id)); ?>" method="post" enctype="multipart/form-data">
+                        <?php echo csrf_field(); ?>
+
+                        <?php echo method_field("PATCH"); ?>
                         <table class="table table-striped">
                             <tbody>
                                 <tr>
                                     <th>Name</th>
                                     <td>
                                         <div class="input-group">
-                                            {{-- <span class="input-group-text">Name</span> --}}
-                                            <input type="text" id="name" name="name" aria-label="name" class="form-control" value="{{$agen->name}}">
+                                            
+                                            <input type="text" id="name" name="name" aria-label="name" class="form-control" value="<?php echo e($agen->name); ?>">
                                         </div>
                                     </td>
                                 </tr>
@@ -27,8 +28,8 @@
                                     <th>Email</th>
                                     <td>
                                         <div class="input-group">
-                                            {{-- <span class="input-group-text">Email</span> --}}
-                                            <input type="text" id="email" name="email" aria-label="email" class="form-control" value="{{$agen->email}}">
+                                            
+                                            <input type="text" id="email" name="email" aria-label="email" class="form-control" value="<?php echo e($agen->email); ?>">
                                         </div>
                                     </td>
                                 </tr>
@@ -36,7 +37,7 @@
                                     <th>Upload Avatar</th>
                                     <td>
                                         <div class="input-group">
-                                            {{-- <span class="input-group-text">Upload Avatar</span> --}}
+                                            
                                             <input id="avatar" type="file" class="form-control" name="avatar">
                                         </div>
                                     </td>
@@ -45,7 +46,7 @@
                                     <th>Old Password</th>
                                     <td>
                                         <div class="input-group">
-                                            {{-- <span class="input-group-text">Old Password</span> --}}
+                                            
                                             <input type="password" id="password" name="password" aria-label="password" class="form-control">
                                         </div>
                                     </td>
@@ -54,7 +55,7 @@
                                     <th>New Password</th>
                                     <td>
                                         <div class="input-group">
-                                            {{-- <span class="input-group-text">New Password</span> --}}
+                                            
                                             <input type="password" id="new_password" name="new_password" aria-label="new_password" class="form-control">
                                         </div>
                                     </td>
@@ -107,4 +108,5 @@
             e.preventDefault();
         });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\LENOVO\OneDrive\Desktop\ppdb_smp\resources\views/profile/edit.blade.php ENDPATH**/ ?>

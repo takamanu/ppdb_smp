@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\RegistrasiUlang;
+use App\Models\Datapokok;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -37,23 +38,59 @@ class RegistrasiUlangController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'ijazah' => 'required|mimes:pdf|',
-            'surat_pernyataan_bermaterai' => 'required|mimes:pdf|',
-            'surat_keterangan_siswa_aktif_sd_asal' => 'required|mimes:pdf|',
-            'pasfoto' => 'required|mimes:pdf|',
-            'akta_kelahiran' => 'required|mimes:pdf|',
-            'kk' => 'required|mimes:pdf|',
-        ]);
-        $validatedData['ijazah'] = $request->file('ijazah')->store('/public/registrasi_ulang/ijazah');
-        $validatedData['surat_pernyataan_bermaterai'] = $request->file('surat_pernyataan_bermaterai')->store('/public/registrasi_ulang/surat_pernyataan_bermaterai');
-        $validatedData['surat_keterangan_siswa_aktif_sd_asal'] = $request->file('surat_keterangan_siswa_aktif_sd_asal')->store('/public/registrasi_ulang/surat_keterangan_siswa_aktif_sd_asal');
-        $validatedData['pasfoto'] = $request->file('pasfoto')->store('/public/registrasi_ulang/pasfoto');
-        $validatedData['akta_kelahiran'] = $request->file('akta_kelahiran')->store('/public/registrasi_ulang/akta_kelahiran');
-        $validatedData['kk'] = $request->file('kk')->store('/public/registrasi_ulang/kk');
-        $validatedData['user_id'] = 1;
+        $user = auth()->user()->id;
+        $siswa = Datapokok::where('user_id', $user)->first();
 
-        $registrasiUlang = RegistrasiUlang::create($validatedData);
+        $request->validate([
+            'ijazah' => 'required|mimes:pdf,docx',
+            'surat_pernyataan_bermaterai' => 'required|mimes:pdf,docx',
+            'surat_keterangan_siswa_aktif_sd_asal' => 'required|mimes:pdf,docx',
+            'pasfoto' => 'required|image|mimes:jpg,jpeg,png',
+            'akta_kelahiran' => 'required|mimes:pdf,docx',
+            'kk' => 'required|mimes:pdf,docx',
+        ]);
+
+        // Store the uploaded files
+        $uploadedFiles = [];
+
+        foreach ($request->allFiles() as $key => $file) {
+            $path = $file->store('uploads'); // Store files in the 'uploads' directory
+
+            $uploadedFiles[$key] = $path;
+        }
+
+        // Create a record in the database with the file paths
+        RegistrasiUlang::create([
+            'user_id' => auth()->user()->id,
+            'ijazah' => $uploadedFiles['ijazah'],
+            'surat_pernyataan_bermaterai' => $uploadedFiles['surat_pernyataan_bermaterai'],
+            'surat_keterangan_siswa_aktif_sd_asal' => $uploadedFiles['surat_keterangan_siswa_aktif_sd_asal'],
+            'pasfoto' => $uploadedFiles['pasfoto'],
+            'akta_kelahiran' => $uploadedFiles['akta_kelahiran'],
+            'kk' => $uploadedFiles['kk'],
+        ]);
+
+        // Redirect with a success message
+        return redirect('/siswa/pengumuman/' . $siswa->id)
+            ->with(['siswa' => $siswa, 
+            'success' => 'Files uploaded successfully.']);
+        // $validatedData = $request->validate([
+        //     'ijazah' => 'required|mimes:pdf|',
+        //     'surat_pernyataan_bermaterai' => 'required|mimes:pdf|',
+        //     'surat_keterangan_siswa_aktif_sd_asal' => 'required|mimes:pdf|',
+        //     'pasfoto' => 'required|mimes:pdf|',
+        //     'akta_kelahiran' => 'required|mimes:pdf|',
+        //     'kk' => 'required|mimes:pdf|',
+        // ]);
+        // $validatedData['ijazah'] = $request->file('ijazah')->store('/public/registrasi_ulang/ijazah');
+        // $validatedData['surat_pernyataan_bermaterai'] = $request->file('surat_pernyataan_bermaterai')->store('/public/registrasi_ulang/surat_pernyataan_bermaterai');
+        // $validatedData['surat_keterangan_siswa_aktif_sd_asal'] = $request->file('surat_keterangan_siswa_aktif_sd_asal')->store('/public/registrasi_ulang/surat_keterangan_siswa_aktif_sd_asal');
+        // $validatedData['pasfoto'] = $request->file('pasfoto')->store('/public/registrasi_ulang/pasfoto');
+        // $validatedData['akta_kelahiran'] = $request->file('akta_kelahiran')->store('/public/registrasi_ulang/akta_kelahiran');
+        // $validatedData['kk'] = $request->file('kk')->store('/public/registrasi_ulang/kk');
+        // $validatedData['user_id'] = 1;
+
+        // $registrasiUlang = RegistrasiUlang::create($validatedData);
     }
 
     /**
