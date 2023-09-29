@@ -15,14 +15,14 @@
             <thead>
                 <tr>
                     <th>Rp</th>
-                    <th>1.000.000</th>
+                    <th><?php echo e($config->nominal_pembayaran); ?></th>
                     
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Terbilang</td>
-                    <td>Satu juta rupiah</td>
+                    <td>Seratus Ribu rupiah</td>
                     
                 </tr>
                 <tr>

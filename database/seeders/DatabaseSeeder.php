@@ -110,6 +110,8 @@ class DatabaseSeeder extends Seeder
             'test_wawancara_due'            => '2023-04-20 23:59:59',
             'pendaftaran_ulang_start'       => '2023-05-01 08:00:00',
             'pendaftaran_ulang_due'         => '2023-05-15 23:59:59',
+            'redirect_wa'         => 'web.whatsapp.com',
+            'nominal_pembayaran'         => '100000',
         ]);
         
 

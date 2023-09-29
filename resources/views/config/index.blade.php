@@ -53,6 +53,11 @@
                     <td colspan="2"><a href="{{ $config->redirect_wa }}">{{ $config->redirect_wa }}</a></td>
                     {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
                 </tr>
+                <tr>
+                    <td>Biaya registrasi</td>
+                    <td colspan="2">{{ $config->nominal_pembayaran }}</td>
+                    {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
+                </tr>
             </tbody>
         </table>
     </div>

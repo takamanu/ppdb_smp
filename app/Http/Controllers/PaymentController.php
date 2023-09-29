@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Payment;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Config;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,22 +17,22 @@ class PaymentController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function bayar()
+    public function bayar()
     {
         return view('siswa.bayar');
     }
     public function index()
     {
         $id = Auth::user()->id;
-        $payment = Payment::where('user_id',3)
-                            ->where('status_payment',2)
-                            ->where('status',2)
-                            ->first();
+        $payment = Payment::where('user_id', 3)
+            ->where('status_payment', 2)
+            ->where('status', 2)
+            ->first();
 
-        if($payment){
+        if ($payment) {
             return abort(403, 'Unauthorized');
-        } 
-        
+        }
+
         return view('midtrans');
     }
 
@@ -62,18 +63,72 @@ class PaymentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    // public function numberToWords($number)
+    // {
+    //     $words = ['nol', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan'];
+
+    //     $units = ['', 'ribu', 'juta', 'miliar', 'triliun'];
+
+    //     // Function to convert a three-digit number to words
+    //     function threeDigitsToWords($num)
+    //     {
+    //         global $words;
+    //         $result = [];
+
+    //         $ratus = (int) ($num / 100);
+    //         $num %= 100;
+    //         $puluh = (int) ($num / 10);
+    //         $num %= 10;
+    //         $satuan = $num;
+
+    //         if ($ratus > 0) {
+    //             $result[] = $words[$ratus] . ' ratus';
+    //         }
+
+    //         if ($puluh > 1) {
+    //             $result[] = $words[$puluh] . ' puluh';
+    //         } elseif ($puluh == 1) {
+    //             $result[] = 'sepuluh';
+    //         }
+
+    //         if ($puluh != 1 && $satuan > 0) {
+    //             $result[] = $words[$satuan];
+    //         }
+
+    //         return implode(' ', $result);
+    //     }
+
+    //     $result = [];
+    //     $chunked = str_split(strrev((string) $number), 3);
+
+    //     foreach ($chunked as $i => $chunk) {
+    //         $chunk = (int) strrev($chunk);
+
+    //         if ($chunk > 0) {
+    //             $result[] = threeDigitsToWords($chunk) . ' ' . $units[$i];
+    //         }
+    //     }
+
+    //     if (empty($result)) {
+    //         return $words[0];
+    //     }
+
+    //     return implode(' ', array_reverse($result));
+    // }
+
     public function store(Request $request)
     {
         $id = Auth::user()->id;
-        $payment = Payment::where('user_id',3)
-                            ->where('status_payment',2)
-                            ->where('status',2)
-                            ->first();
+        $payment = Payment::where('user_id', 3)
+            ->where('status_payment', 2)
+            ->where('status', 2)
+            ->first();
 
-        if($payment){
+        if ($payment) {
             return abort(403, 'Unauthorized');
-        } 
-        
+        }
+
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
@@ -82,34 +137,37 @@ class PaymentController extends Controller
         // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
 
-        $amount = 12300;
+        $config = Config::where('id', 1)->first();
 
-        // $user_detail = 
+        $amount = $config->nominal_pembayaran;
+        // $nominal = $this->numberToWords($amount);
+
+        // $user_detail =
 
         $payment = Payment::create([
             'user_id' => Auth::user()->id,
-            'amount' => $amount
+            'amount' => $amount,
         ]);
 
-        $order_id = 55+ $payment->id;
+        $order_id = 80 + $payment->id;
 
-        $params = array(
-            'transaction_details' => array(
+        $params = [
+            'transaction_details' => [
                 'order_id' => $order_id,
                 'gross_amount' => $amount,
-            ),
-            'customer_details' => array(
+            ],
+            'customer_details' => [
                 'email' => Auth::user()->email,
-            ),
-        );
+            ],
+        ];
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
         $payment_user = Payment::find($payment->id);
         $payment_user->update([
-            'snapToken' => $snapToken
+            'snapToken' => $snapToken,
         ]);
 
-        return view('siswa.bayar',compact('snapToken'));
+        return view('siswa.bayar', compact('snapToken'))->with(['config' => $config]);
     }
 
     /**
@@ -123,7 +181,8 @@ class PaymentController extends Controller
         //
     }
 
-    public function notification(){
+    public function notification()
+    {
         \Midtrans\Config::$isProduction = false;
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
         $notif = new \Midtrans\Notification();
@@ -133,63 +192,58 @@ class PaymentController extends Controller
         $order_id = $notif->order_id;
         $fraud = $notif->fraud_status;
 
-        $payment = Payment::find($order_id - 55);
+        $payment = Payment::find($order_id - 80);
 
         if ($transaction == 'capture') {
-            if ($type == 'credit_card'){
-                if($fraud == 'accept'){
+            if ($type == 'credit_card') {
+                if ($fraud == 'accept') {
                     // TODO set payment status in merchant's database to 'Success'
                     $payment->update([
                         'status_payment' => 2,
-                        'status' => 2
+                        'status' => 2,
                     ]);
-                    echo "Transaction order_id: " . $order_id ." successfully captured using " . $type;
-                }else{
+                    echo 'Transaction order_id: ' . $order_id . ' successfully captured using ' . $type;
+                } else {
                     $payment->update([
                         'status_payment' => -1,
-                        'status' => -1
+                        'status' => -1,
                     ]);
                 }
             }
-        }
-        else if ($transaction == 'settlement'){
+        } elseif ($transaction == 'settlement') {
             // TODO set payment status in merchant's database to 'Settlement'
             $payment->update([
                 'status_payment' => 2,
-                'status' => 2
+                'status' => 2,
             ]);
-            echo "Transaction order_id: " . $order_id ." successfully transfered using " . $type;
-        }
-        else if($transaction == 'pending'){
+            echo 'Transaction order_id: ' . $order_id . ' successfully transfered using ' . $type;
+        } elseif ($transaction == 'pending') {
             $payment->update([
                 'status_payment' => 1,
-                'status' => 1
+                'status' => 1,
             ]);
-            echo "Waiting customer to finish transaction order_id: " . $order_id . " using " . $type;
-        }
-        else if ($transaction == 'deny') {
+            echo 'Waiting customer to finish transaction order_id: ' . $order_id . ' using ' . $type;
+        } elseif ($transaction == 'deny') {
             // TODO set payment status in merchant's database to 'Denied'
             $payment->update([
                 'status_payment' => -1,
-                'status' => -1
+                'status' => -1,
             ]);
-            echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is denied.";
-        }
-        else if ($transaction == 'expire') {
+            echo 'Payment using ' . $type . ' for transaction order_id: ' . $order_id . ' is denied.';
+        } elseif ($transaction == 'expire') {
             // TODO set payment status in merchant's database to 'expire'
             $payment->update([
                 'status_payment' => -2,
-                'status' => -1
+                'status' => -1,
             ]);
-            echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is expired.";
-        }
-        else if ($transaction == 'cancel') {
+            echo 'Payment using ' . $type . ' for transaction order_id: ' . $order_id . ' is expired.';
+        } elseif ($transaction == 'cancel') {
             // TODO set payment status in merchant's database to 'Denied'
             $payment->update([
                 'status_payment' => -3,
-                'status' => -1
+                'status' => -1,
             ]);
-            echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is canceled.";
+            echo 'Payment using ' . $type . ' for transaction order_id: ' . $order_id . ' is canceled.';
         }
     }
 

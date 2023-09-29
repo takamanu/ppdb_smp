@@ -128,10 +128,10 @@ class SiswaController extends Controller
 
         $raw_data_nilai = [
             'datapokok_id' => $idBaruDatapokok->id,
-            'matematika' => 0,
-            'ilmu_pengetahuan_alam' => 0,
-            'bahasa_indonesia' => 0,
-            'test_membaca_al_quran' => 0,
+            'matematika' => "Isi nilai A-E",
+            'ilmu_pengetahuan_alam' => "Isi nilai A-E",
+            'bahasa_indonesia' => "Isi nilai A-E",
+            'test_membaca_al_quran' => "Isi nilai A-E",
             'status' => 'BELUM LULUS',
         ];
 
