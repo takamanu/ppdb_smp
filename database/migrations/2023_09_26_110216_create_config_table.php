@@ -27,6 +27,8 @@ return new class extends Migration
             $table->date('test_wawancara_due')->nullable();
             $table->date('pendaftaran_ulang_start')->nullable();
             $table->date('pendaftaran_ulang_due')->nullable();
+            $table->boolean('pengumuman')->default(0);
+            $table->string('redirect_wa')->nullable();
             $table->timestamps();
         });
     }
