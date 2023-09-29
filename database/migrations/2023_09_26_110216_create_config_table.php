@@ -30,6 +30,7 @@ return new class extends Migration
             $table->boolean('pengumuman')->default(0);
             $table->string('redirect_wa')->nullable();
             $table->bigInteger('nominal_pembayaran')->nullable();
+            // $table->bigInteger('nominal_pembayaran_terbilang')->nullable();
             // $table->string('redirect_wa')->nullable();
             $table->timestamps();
         });

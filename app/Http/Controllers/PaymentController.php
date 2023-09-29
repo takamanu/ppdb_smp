@@ -50,11 +50,12 @@ class PaymentController extends Controller
             $snapToken = $handle_payment->snapToken;
             // Your code here to use the $snapToken
         }
-
-        $nominal = "Testing";
-        
-
         $config = Config::where('id', 1)->first();
+
+
+        $amount = $config->nominal_pembayaran;
+        $nominal = $this->terbilang($amount);
+        
 
         return view('siswa.bayar', compact('snapToken'))->with(['config' => $config, 'nominal' => $nominal]);
     }
@@ -95,9 +96,7 @@ class PaymentController extends Controller
         // }
     }
 
-    public function store(Request $request)
-    {
-        function penyebut($nilai)
+    public function penyebut($nilai)
         {
             $nilai = abs($nilai);
             $huruf = ['', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan', 'sepuluh', 'sebelas'];
@@ -126,7 +125,7 @@ class PaymentController extends Controller
             return $temp;
         }
 
-        function terbilang($nilai)
+    public function terbilang($nilai)
         {
             if ($nilai < 0) {
                 $hasil = 'minus ' . trim(penyebut($nilai));
@@ -135,6 +134,10 @@ class PaymentController extends Controller
             }
             return $hasil;
         }
+
+    public function store(Request $request)
+    {
+        
 
         $id = Auth::user()->id;
         $payment = Payment::where('user_id', 3)
@@ -157,7 +160,7 @@ class PaymentController extends Controller
         $config = Config::where('id', 1)->first();
 
         $amount = $config->nominal_pembayaran;
-        $nominal = terbilang($amount);
+        $nominal = $this->terbilang($amount);
 
         // $user_detail =
 
