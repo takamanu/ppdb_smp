@@ -19,8 +19,44 @@ class PaymentController extends Controller
 
     public function bayar()
     {
-        return view('siswa.bayar');
+        $id = Auth::user()->id;
+
+        $handle_payment = Payment::where('user_id', $id)->first();
+
+        if (!empty($handle_payment)) {
+            $payment = Payment::where('user_id', $id)
+                ->where('status_payment', 2)
+                ->where('status', 2)
+                ->first();
+
+            if ($payment) {
+                return abort(403, 'Unauthorized');
+            }
+        }
+
+        $snapToken = '';
+
+        if ($handle_payment->status_payment !== 2 && $handle_payment->status !== 2) {
+            // Configure Midtrans
+            \Midtrans\Config::$serverKey = config('midtrans.server_key');
+            // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+            \Midtrans\Config::$isProduction = false;
+            // Set sanitization on (default)
+            \Midtrans\Config::$isSanitized = true;
+            // Set 3DS transaction for credit card to true
+            \Midtrans\Config::$is3ds = true;
+        
+            // Obtain the snapToken
+            $snapToken = $handle_payment->snapToken;
+            // Your code here to use the $snapToken
+        }
+        
+
+        $config = Config::where('id', 1)->first();
+
+        return view('siswa.bayar', compact('snapToken'))->with(['config' => $config]);
     }
+
     public function index()
     {
         $id = Auth::user()->id;
@@ -57,68 +93,47 @@ class PaymentController extends Controller
         // }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-    // public function numberToWords($number)
-    // {
-    //     $words = ['nol', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan'];
-
-    //     $units = ['', 'ribu', 'juta', 'miliar', 'triliun'];
-
-    //     // Function to convert a three-digit number to words
-    //     function threeDigitsToWords($num)
-    //     {
-    //         global $words;
-    //         $result = [];
-
-    //         $ratus = (int) ($num / 100);
-    //         $num %= 100;
-    //         $puluh = (int) ($num / 10);
-    //         $num %= 10;
-    //         $satuan = $num;
-
-    //         if ($ratus > 0) {
-    //             $result[] = $words[$ratus] . ' ratus';
-    //         }
-
-    //         if ($puluh > 1) {
-    //             $result[] = $words[$puluh] . ' puluh';
-    //         } elseif ($puluh == 1) {
-    //             $result[] = 'sepuluh';
-    //         }
-
-    //         if ($puluh != 1 && $satuan > 0) {
-    //             $result[] = $words[$satuan];
-    //         }
-
-    //         return implode(' ', $result);
-    //     }
-
-    //     $result = [];
-    //     $chunked = str_split(strrev((string) $number), 3);
-
-    //     foreach ($chunked as $i => $chunk) {
-    //         $chunk = (int) strrev($chunk);
-
-    //         if ($chunk > 0) {
-    //             $result[] = threeDigitsToWords($chunk) . ' ' . $units[$i];
-    //         }
-    //     }
-
-    //     if (empty($result)) {
-    //         return $words[0];
-    //     }
-
-    //     return implode(' ', array_reverse($result));
-    // }
-
     public function store(Request $request)
     {
+        function penyebut($nilai)
+        {
+            $nilai = abs($nilai);
+            $huruf = ['', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan', 'sepuluh', 'sebelas'];
+            $temp = '';
+            if ($nilai < 12) {
+                $temp = ' ' . $huruf[$nilai];
+            } elseif ($nilai < 20) {
+                $temp = penyebut($nilai - 10) . ' belas';
+            } elseif ($nilai < 100) {
+                $temp = penyebut($nilai / 10) . ' puluh' . penyebut($nilai % 10);
+            } elseif ($nilai < 200) {
+                $temp = ' seratus' . penyebut($nilai - 100);
+            } elseif ($nilai < 1000) {
+                $temp = penyebut($nilai / 100) . ' ratus' . penyebut($nilai % 100);
+            } elseif ($nilai < 2000) {
+                $temp = ' seribu' . penyebut($nilai - 1000);
+            } elseif ($nilai < 1000000) {
+                $temp = penyebut($nilai / 1000) . ' ribu' . penyebut($nilai % 1000);
+            } elseif ($nilai < 1000000000) {
+                $temp = penyebut($nilai / 1000000) . ' juta' . penyebut($nilai % 1000000);
+            } elseif ($nilai < 1000000000000) {
+                $temp = penyebut($nilai / 1000000000) . ' milyar' . penyebut(fmod($nilai, 1000000000));
+            } elseif ($nilai < 1000000000000000) {
+                $temp = penyebut($nilai / 1000000000000) . ' trilyun' . penyebut(fmod($nilai, 1000000000000));
+            }
+            return $temp;
+        }
+
+        function terbilang($nilai)
+        {
+            if ($nilai < 0) {
+                $hasil = 'minus ' . trim(penyebut($nilai));
+            } else {
+                $hasil = trim(penyebut($nilai));
+            }
+            return $hasil;
+        }
+
         $id = Auth::user()->id;
         $payment = Payment::where('user_id', 3)
             ->where('status_payment', 2)
@@ -140,7 +155,7 @@ class PaymentController extends Controller
         $config = Config::where('id', 1)->first();
 
         $amount = $config->nominal_pembayaran;
-        // $nominal = $this->numberToWords($amount);
+        $nominal = terbilang($amount);
 
         // $user_detail =
 
@@ -167,7 +182,7 @@ class PaymentController extends Controller
             'snapToken' => $snapToken,
         ]);
 
-        return view('siswa.bayar', compact('snapToken'))->with(['config' => $config]);
+        return view('siswa.bayar', compact('snapToken'))->with(['config' => $config, 'nominal' => $nominal]);
     }
 
     /**

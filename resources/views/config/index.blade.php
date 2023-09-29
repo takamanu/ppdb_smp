@@ -54,6 +54,17 @@
                     {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
                 </tr>
                 <tr>
+                    <td>Pengumuman</td>
+                    <td colspan="2">
+                        @if ($config->pengumuman == 0)
+                            Belum dibuka
+                        @else
+                            Sudah dibuka
+                        @endif
+                    </td>
+                    {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
+                </tr>
+                <tr>
                     <td>Biaya registrasi</td>
                     <td colspan="2">{{ $config->nominal_pembayaran }}</td>
                     {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
@@ -61,5 +72,5 @@
             </tbody>
         </table>
     </div>
-    <a href="/config/edit" class="btn btn-warning btn-block">Update tanggal</a>
+    <a href="/config/edit" class="btn btn-warning btn-block">Update konfigurasi</a>
 @endsection

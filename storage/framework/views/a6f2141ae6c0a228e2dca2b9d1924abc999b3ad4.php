@@ -22,7 +22,7 @@
             <tbody>
                 <tr>
                     <td>Terbilang</td>
-                    <td>Seratus Ribu rupiah</td>
+                    <td><?php echo e($nominal); ?> rupiah</td>
                     
                 </tr>
                 <tr>

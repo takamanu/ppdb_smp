@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    <h2 class="mb-3">Pembayaran Sianjing</h2>
+    <h2 class="mb-3">Pembayaran {{ Auth::user()->name }}</h2>
     @if (session('status'))
         <div class="alert alert-success">
             {{ session('status') }}
@@ -21,7 +21,7 @@
             <tbody>
                 <tr>
                     <td>Terbilang</td>
-                    <td>Seratus Ribu rupiah</td>
+                    <td>{{ $nominal }} rupiah</td>
                     {{-- <td></td> --}}
                 </tr>
                 <tr>

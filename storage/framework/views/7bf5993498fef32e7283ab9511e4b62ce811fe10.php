@@ -51,6 +51,17 @@
                     
                 </tr>
                 <tr>
+                    <td>Pengumuman</td>
+                    <td colspan="2">
+                        <?php if($config->pengumuman == 0): ?>
+                            Belum dibuka
+                        <?php else: ?>
+                            Sudah dibuka
+                        <?php endif; ?>
+                    </td>
+                    
+                </tr>
+                <tr>
                     <td>Biaya registrasi</td>
                     <td colspan="2"><?php echo e($config->nominal_pembayaran); ?></td>
                     
@@ -58,7 +69,7 @@
             </tbody>
         </table>
     </div>
-    <a href="/config/edit" class="btn btn-warning btn-block">Update tanggal</a>
+    <a href="/config/edit" class="btn btn-warning btn-block">Update konfigurasi</a>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\LENOVO\OneDrive\Desktop\ppdb_smp\resources\views/config/index.blade.php ENDPATH**/ ?>

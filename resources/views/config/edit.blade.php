@@ -51,6 +51,33 @@
                         <td colspan="2"><input type="name" id="redirect_wa" name="redirect_wa" aria-label="redirect_wa" class="form-control" value="{{$config->redirect_wa}}"></td>
                         {{-- <td><input type="date" id="pendaftaran_ulang_due" name="pendaftaran_ulang_due" aria-label="pendaftaran_ulang_due" class="form-control" value="{{$config->pendaftaran_ulang_due}}"></td> --}}
                     </tr>
+                    <tr>
+                        <td>Pengumuman</td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio"
+                                    name="pengumuman" value="0" id="pengumuman_tutup"
+                                    {{ old('pengumuman') == '0' ? 'checked' : '' }}>
+                                <label class="form-check-label" for="pengumuman_tutup">Tutup</label>
+                            </div>
+
+                            </td>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                        name="pengumuman" value="1" id="pengumuman_buka"
+                                        {{ old('pengumuman') == '1' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="pengumuman_buka">Buka</label>
+                                </div>
+    
+                                </td>
+                        {{-- <td><input type="date" id="pendaftaran_ulang_due" name="pendaftaran_ulang_due" aria-label="pendaftaran_ulang_due" class="form-control" value="{{$config->pendaftaran_ulang_due}}"></td> --}}
+                    </tr>
+                    <tr>
+                        <td>Biaya registrasi</td>
+                        <td colspan="2"><input type="name" id="nominal_pembayaran" name="nominal_pembayaran" aria-label="nominal_pembayaran" class="form-control" value="{{$config->nominal_pembayaran}}"></td>
+                        {{-- <td><input type="date" id="pendaftaran_ulang_due" name="pendaftaran_ulang_due" aria-label="pendaftaran_ulang_due" class="form-control" value="{{$config->pendaftaran_ulang_due}}"></td> --}}
+                    </tr>
 
                 </tbody>
 
