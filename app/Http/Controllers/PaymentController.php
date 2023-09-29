@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Payment;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -20,6 +22,16 @@ class PaymentController extends Controller
     }
     public function index()
     {
+        $id = Auth::user()->id;
+        $payment = Payment::where('id_user',3)
+                            ->where('status_payment',2)
+                            ->where('status',2)
+                            ->first();
+
+        if($payment){
+            return abort(403, 'Unauthorized');
+        } 
+        
         return view('midtrans');
     }
 
@@ -30,7 +42,18 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        //
+        // $id = Auth::user()->id;
+        // $payment = Payment::where('id_user',3)
+        //                     ->where('status_payment',2)
+        //                     ->where('status',2)
+        //                     ->first();
+
+        // dd($payment);
+        // if($payment){
+        //     echo "Ada";
+        // }else{
+        //     echo "Tidak";
+        // }
     }
 
     /**
@@ -41,6 +64,16 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
+        $id = Auth::user()->id;
+        $payment = Payment::where('id_user',3)
+                            ->where('status_payment',2)
+                            ->where('status',2)
+                            ->first();
+
+        if($payment){
+            return abort(403, 'Unauthorized');
+        } 
+        
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
@@ -51,12 +84,14 @@ class PaymentController extends Controller
 
         $amount = 12300;
 
+        // $user_detail = 
+
         $payment = Payment::create([
-            'id_user' => 1,
+            'id_user' => Auth::user()->id,
             'amount' => $amount
         ]);
 
-        $order_id = 34+ $payment->id;
+        $order_id = 33+ $payment->id;
 
         $params = array(
             'transaction_details' => array(
@@ -64,7 +99,7 @@ class PaymentController extends Controller
                 'gross_amount' => $amount,
             ),
             'customer_details' => array(
-                'email' => 'budi.pra@example.com',
+                'email' => Auth::user()->email,
             ),
         );
 
@@ -98,7 +133,7 @@ class PaymentController extends Controller
         $order_id = $notif->order_id;
         $fraud = $notif->fraud_status;
 
-        $payment = Payment::find($order_id - 34);
+        $payment = Payment::find($order_id - 33);
 
         if ($transaction == 'capture') {
             if ($type == 'credit_card'){
