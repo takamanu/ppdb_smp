@@ -29,6 +29,8 @@ return new class extends Migration
             $table->date('pendaftaran_ulang_due')->nullable();
             $table->boolean('pengumuman')->default(0);
             $table->string('redirect_wa')->nullable();
+            $table->bigInteger('nominal_pembayaran')->nullable();
+            // $table->string('redirect_wa')->nullable();
             $table->timestamps();
         });
     }
