@@ -168,6 +168,7 @@ class SiswaController extends Controller
         $user = User::where('id', $userData)->first();
         $config = Config::where('id', 1)->first();
         $agen = $user->datapokok;
+        // dd($agen);
         $date_now = date('Y-m-d H:i:s');
 
         if (is_null($agen)) {
@@ -179,7 +180,8 @@ class SiswaController extends Controller
 
     public function registrasiUlang($id)
     {
-        $siswa = Datapokok::where('user_id', $id)->first();
+        // return $id;
+        $siswa = Datapokok::where('id', $id)->first();
 
         if (!is_null($siswa->registrasi_ulang)) {
             return abort(403, 'Unauthorized');

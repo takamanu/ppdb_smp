@@ -13,6 +13,11 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function bayar()
+    {
+        return view('siswa.bayar');
+    }
     public function index()
     {
         return view('midtrans');
@@ -51,7 +56,7 @@ class PaymentController extends Controller
             'amount' => $amount
         ]);
 
-        $order_id = 20+ $payment->id;
+        $order_id = 34+ $payment->id;
 
         $params = array(
             'transaction_details' => array(
@@ -69,7 +74,7 @@ class PaymentController extends Controller
             'snapToken' => $snapToken
         ]);
 
-        return view('checkout',compact('snapToken'));
+        return view('siswa.bayar',compact('snapToken'));
     }
 
     /**
@@ -93,7 +98,7 @@ class PaymentController extends Controller
         $order_id = $notif->order_id;
         $fraud = $notif->fraud_status;
 
-        $payment = Payment::find($order_id - 20);
+        $payment = Payment::find($order_id - 34);
 
         if ($transaction == 'capture') {
             if ($type == 'credit_card'){

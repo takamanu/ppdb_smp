@@ -40,6 +40,7 @@ class RegistrasiUlangController extends Controller
      */
     public function store(Request $request)
     {   
+        
         $user = auth()->user()->id;
         $auth = auth()->user();
 
@@ -48,9 +49,6 @@ class RegistrasiUlangController extends Controller
             return abort(403, 'Unauthorized');
 
         }
-
-
-        
 
         $user = auth()->user()->id;
         $siswa = Datapokok::where('user_id', $user)->first();
@@ -65,6 +63,7 @@ class RegistrasiUlangController extends Controller
             'akta_kelahiran' => 'required|mimes:pdf,docx',
             'kk' => 'required|mimes:pdf,docx',
         ]);
+        // return $siswa;
 
         // Store the uploaded files
         $uploadedFiles = [];
@@ -96,7 +95,7 @@ class RegistrasiUlangController extends Controller
         ]);
 
         // Redirect with a success message
-        return redirect('/siswa/pengumuman/' . $siswa->id)
+        return redirect('/siswa/pengumuman/' . $siswa->user_id)
             ->with(['siswa' => $siswa,
             'agen' => $agen,
             'success' => 'Files uploaded successfully.']);

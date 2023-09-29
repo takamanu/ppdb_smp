@@ -202,38 +202,28 @@ class AgenController extends Controller
 
     public function updateNilai(Request $request, $id)
     {
+        // return $id;
+
         $agen = Datapokok::where('user_id', $id)->first();
+        // return $id;
 
-        if ($agen) {
-            $nilai = $agen->nilai;
+        $nilai = $agen->nilai;
 
-            // Make sure $nilai exists before attempting to update it
-            if ($nilai) {
-                $validateData = [
-                    'matematika' => $request->matematika,
-                    'ilmu_pengetahuan_alam' => $request->ilmu_pengetahuan_alam,
-                    'bahasa_indonesia' => $request->bahasa_indonesia,
-                    'test_membaca_al_quran' => $request->test_membaca_al_quran
-                ];
+        $validateData = [
+            'matematika' => $request->matematika,
+            'ilmu_pengetahuan_alam' => $request->ilmu_pengetahuan_alam,
+            'bahasa_indonesia' => $request->bahasa_indonesia,
+            'test_membaca_al_quran' => $request->test_membaca_al_quran
+        ];
 
-                // Update the $nilai object with the new data
-                $nilai->update($validateData);
+        // Update the $nilai object with the new data
+        $nilai->update($validateData);
 
-                // Update the 'status' field based on the 'check_nilai' method
-                $nilai->update([
-                    'status' => $this->check_nilai($nilai)
-                ]);
+        // Update the 'status' field based on the 'check_nilai' method
+        $nilai->update([
+            'status' => $this->check_nilai($nilai)
+        ]);
 
-                // Optionally, you can return a response indicating success
-                // return response()->json(['message' => 'Nilai updated successfully']);
-            } else {
-                // Handle the case where $nilai is not found
-                // return response()->json(['error' => 'Nilai not found for this user'], 404);
-            }
-        } else {
-            // Handle the case where $agen is not found
-            // return response()->json(['error' => 'Datapokok not found for this user'], 404);
-        }
         return redirect('/agen/nilai/' . $id)->with(['flash_message' => 'Nilai Updated!', 'agen' => $agen]);
     }
 

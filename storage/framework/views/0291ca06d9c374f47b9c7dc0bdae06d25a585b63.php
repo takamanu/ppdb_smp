@@ -10,7 +10,7 @@
     <?php endif; ?>
 
     <div class="container mb-5">
-        <form action="<?php echo e(url('agen/nilai/update/' . $agen->id)); ?>" method="post">
+        <form action="<?php echo e(url('agen/nilai/update/' . $agen->user_id)); ?>" method="post">
             <?php echo csrf_field(); ?>
             <?php echo method_field('PUT'); ?>
             <table class="table table-striped">

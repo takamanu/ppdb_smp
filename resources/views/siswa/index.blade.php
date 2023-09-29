@@ -93,38 +93,19 @@
             <div class="row row-cols-1 row-cols-md-2 g-4 d-flex justify-content-center">
                 <div class="col d-flex justify-content-center">
                     <div class="card max-card-size">
-                        <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
+                        <img src="/images/centang_belum.png" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Pembayaran</h5>
-                            <p class="card-text"><button class="btn btn-success btn-sm btn-block" disabled>Success</button>
-                            </p>
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
-                                Bayar
-                            </button>
+                            <form class="row g-3" action="{{ route('payment.store') }}" method="post">
+                                @csrf
+                                <h5 class="card-title">Pembayaran</h5>
+                                <p class="card-text"><button type="submit" class="btn btn-danger btn-sm btn-block">Belum bayar</button>
+                                </p>
+                                <!-- Button trigger modal -->
+                                {{-- <button type="submit" class="btn btn-primary">
+                                    Bayar
+                                </button> --}}
+                            </form>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Pembayaran</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Anda akan melakukan pembayaran sebesar Rp200.000,00. Silahkan klik next untuk melanjutkan.
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Next</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -254,4 +235,26 @@
                 Pengumuman</a>
         </div>
     </div>
+
+    <!-- Include Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Using jQuery for simplicity, but you can use plain JavaScript as well
+        $(document).ready(function() {
+
+            // var payButton = document.getElementById('pay-button');
+
+            // Add a click event listener to the "Bayar" button
+            $('#exampleModal').on('click', '.btn-primary', function() {
+                // Hide the current modal
+                $('#exampleModal').modal('hide');
+
+                // Show the second modal
+                $('#secondModal').modal('show');
+            });
+
+
+        });
+    </script>
 @endsection

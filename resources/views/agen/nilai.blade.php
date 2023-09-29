@@ -9,7 +9,7 @@
     @endif
 
     <div class="container mb-5">
-        <form action="{{ url('agen/nilai/update/' . $agen->id) }}" method="post">
+        <form action="{{ url('agen/nilai/update/' . $agen->user_id) }}" method="post">
             @csrf
             @method('PUT')
             <table class="table table-striped">
