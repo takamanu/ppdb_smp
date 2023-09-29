@@ -81,6 +81,9 @@ Route::middleware(['auth'])->group(function(){
 Route::middleware(['admin:1'])->group(function(){
     Route::get('/siswa', 'SiswaController@index')->name('siswa');
     Route::resource('/siswa', SiswaController::class);
+    Route::resource('/registrasi_ulang', RegistrasiUlangController::class);
+    Route::get('/siswa/pengumuman/{id}', [SiswaController::class, 'pengumuman']);
+    Route::get('/siswa/registrasi/{id}', [SiswaController::class, 'registrasiUlang']);
 });
 
 Route::middleware(['admin:0'])->group(function(){
