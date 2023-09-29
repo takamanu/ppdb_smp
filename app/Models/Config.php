@@ -23,5 +23,7 @@ class Config extends Model
         'test_wawancara_due',
         'pendaftaran_ulang_start',
         'pendaftaran_ulang_due',
+        'pengumuman',
+        'redirect_wa'
     ];
 }
