@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\RegistrasiUlang;
 use App\Models\Datapokok;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class RegistrasiUlangController extends Controller
@@ -41,6 +43,8 @@ class RegistrasiUlangController extends Controller
         $user = auth()->user()->id;
         $siswa = Datapokok::where('user_id', $user)->first();
 
+        $usess = User::find(Auth::user()->id);
+        // dd($usess->datapokok);
         $request->validate([
             'ijazah' => 'required|mimes:pdf,docx',
             'surat_pernyataan_bermaterai' => 'required|mimes:pdf,docx',
@@ -52,6 +56,15 @@ class RegistrasiUlangController extends Controller
 
         // Store the uploaded files
         $uploadedFiles = [];
+        // return $user->datapokok;
+        // $agen = $user->datapokok;
+        // return $agen;'
+        $agen = '';
+        $date_now = date('Y-m-d H:i:s');
+
+        if (is_null($siswa)) {
+            $agen = 'NULL'; // Set a default value or any other value you want to use
+        }
 
         foreach ($request->allFiles() as $key => $file) {
             $path = $file->store('uploads'); // Store files in the 'uploads' directory
@@ -72,7 +85,8 @@ class RegistrasiUlangController extends Controller
 
         // Redirect with a success message
         return redirect('/siswa/pengumuman/' . $siswa->id)
-            ->with(['siswa' => $siswa, 
+            ->with(['siswa' => $siswa,
+            'agen' => $agen,
             'success' => 'Files uploaded successfully.']);
         // $validatedData = $request->validate([
         //     'ijazah' => 'required|mimes:pdf|',

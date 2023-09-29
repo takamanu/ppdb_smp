@@ -55,20 +55,30 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <?php if(Auth::user()->role == 0): ?>
                     <h6 class="collapse-header">Fitur Keagenan:</h6>
-                    <a class="collapse-item <?php echo e(Request::is('agen/create') ? 'active' : ''); ?>" href="<?php echo e(url('/agen/create')); ?>">Tambah
+                    <a class="collapse-item <?php echo e(Request::is('agen/create') ? 'active' : ''); ?>"
+                        href="<?php echo e(url('/agen/create')); ?>">Tambah
                         Siswa</a>
                     <a class="collapse-item <?php echo e(Request::is('agen') or (Request::is('agen/[1-99999]') ? 'active' : '')); ?>"
                         href="/agen">Daftar Siswa</a>
                 <?php else: ?>
-                    <h6 class="collapse-header">Aktivitas Siswa:</h6>
-                    <a class="collapse-item <?php echo e(Request::is('siswa/create') ? 'active' : ''); ?>" href="<?php echo e(url('siswa/create')); ?>">Datapokok</a>
-                    <a class="collapse-item <?php echo e(Request::is('siswa/pengumuman/' . Auth::user()->id) ? 'active' : ''); ?>" href="<?php echo e(url('siswa/pengumuman/' . Auth::user()->id)); ?>">Pengumuman</a>
+                    <?php if(is_null(Auth::user()->datapokok)): ?>
+                        <h6 class="collapse-header">Aktivitas Siswa:</h6>
+                        <a class="collapse-item <?php echo e(Request::is('siswa/create') ? 'active' : ''); ?>"
+                            href="<?php echo e(url('siswa/create')); ?>">Datapokok</a>
+                        <a class="collapse-item <?php echo e(Request::is('siswa/pengumuman/' . Auth::user()->id) ? 'active' : ''); ?>"
+                            href="<?php echo e(url('siswa/pengumuman/' . Auth::user()->id)); ?>">Pengumuman</a>
+                    <?php else: ?>
+                        <h6 class="collapse-header">Aktivitas Siswa:</h6>
+                        
+                        <a class="collapse-item <?php echo e(Request::is('siswa/pengumuman/' . Auth::user()->id) ? 'active' : ''); ?>"
+                            href="<?php echo e(url('siswa/pengumuman/' . Auth::user()->id)); ?>">Pengumuman</a>
+                    <?php endif; ?>
                     
                 <?php endif; ?>
             </div>
         </div>
 
-    
+
     </li>
 
     <!-- Divider -->

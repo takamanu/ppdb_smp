@@ -175,20 +175,71 @@ class AgenController extends Controller
     public function masukNilai($id)
     {
         $agen = Datapokok::where('user_id', $id)->first();
-        // return $agen;
+        // return $agen;    
         return view('agen.nilai')->with('agen', $agen);
+    }
+
+    public function check_nilai(Nilai $nilai){
+        
+        //cek nilai akademis
+        $nilai_akademis = [];
+        // $nilai_baca_quaran = $nilai->test_membaca_al_quran;
+        $nilai_akir = '';
+        array_push($nilai_akademis, $nilai->matematika,$nilai->bahasa_indonesia,$nilai->ilmu_pengetahuan_alam,$nilai->test_membaca_al_quran);
+
+        if (in_array("D", $nilai_akademis)) {
+            $nilai_akir = "Tidak Lulus";
+        }else if(in_array("E", $nilai_akademis)){
+            $nilai_akir = "Tidak Lulus";
+        }else{
+            $nilai_akir = "Lulus";
+        }
+
+        return $nilai_akir;
+
     }
 
     public function updateNilai(Request $request, $id)
     {
         $agen = Datapokok::where('user_id', $id)->first();
-        $nilaiId = $agen->nilai->id;
-        $nilai = Nilai::where('id', $nilaiId)->first();
-        $input = $request->all();
-        $nilai->update($input);
 
+        if ($agen) {
+            $nilai = $agen->nilai;
+
+            // Make sure $nilai exists before attempting to update it
+            if ($nilai) {
+                $validateData = [
+                    'matematika' => $request->matematika,
+                    'ilmu_pengetahuan_alam' => $request->ilmu_pengetahuan_alam,
+                    'bahasa_indonesia' => $request->bahasa_indonesia,
+                    'test_membaca_al_quran' => $request->test_membaca_al_quran
+                ];
+
+                // Update the $nilai object with the new data
+                $nilai->update($validateData);
+
+                // Update the 'status' field based on the 'check_nilai' method
+                $nilai->update([
+                    'status' => $this->check_nilai($nilai)
+                ]);
+
+                // Optionally, you can return a response indicating success
+                // return response()->json(['message' => 'Nilai updated successfully']);
+            } else {
+                // Handle the case where $nilai is not found
+                // return response()->json(['error' => 'Nilai not found for this user'], 404);
+            }
+        } else {
+            // Handle the case where $agen is not found
+            // return response()->json(['error' => 'Datapokok not found for this user'], 404);
+        }
         return redirect('/agen/nilai/' . $id)->with(['flash_message' => 'Nilai Updated!', 'agen' => $agen]);
     }
+
+    
+        // $nilai = Nilai::where('id', $nilaiId)->first();
+        // $input = $request->all();
+        // $nilai->update($input);
 
     /**
      * Show the form for editing the specified resource.

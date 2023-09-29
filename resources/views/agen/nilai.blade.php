@@ -57,21 +57,20 @@
                             <button type="submit" class="btn btn-primary">Update</button>
                         </td> --}}
                     </tr>
-                    <tr>
+                     <tr>
                         <td>Status Kelulusan</td>
                         <td>
-                            <select name="status" class="form-select form-control" required>
-                            <option selected value="{{ $agen->nilai->status }}"> {{ $agen->nilai->status }} </option>
-                            @if ($agen->nilai->status == "BELUM LULUS")
+                            <select name="status" class="form-select form-control" required disabled>
+                            <option selected disabled value="{{ $agen->nilai->status }}"> {{ $agen->nilai->status }} </option>
+                            {{-- @if ($agen->nilai->status == "BELUM LULUS")
                                 <option value="LULUS"> LULUS </option>
                             @else
                                 <option value="BELUM LULUS"> BELUM LULUS </option>
-                            @endif
-                            {{-- <option selected disabled value="{{ $agen->nilai->status }}"> {{ $agen->nilai->status }} </option> --}}
+                            @endif --}}
                         </td>
                         {{-- <td>
                             <button type="submit" class="btn btn-primary">Update</button>
-                        </td> --}}
+                        </td>  --}}
                     </tr>
                     <!-- Add more rows as needed -->
                 </tbody>

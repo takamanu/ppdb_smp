@@ -33,7 +33,7 @@
                         <p class="card-text">
                         <div class="row">
                             <div class="col-md-6 d-flex justify-content-start">
-                                <p class="text-start">Nama:</p>
+                                <p class="text-start">Nama: {{$agen}}</p>
                             </div>
                             <div class="col-md-6 d-flex justify-content-start">Belum isi datapokok</div>
                         </div>

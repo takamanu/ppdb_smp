@@ -54,8 +54,11 @@
         <a href="<?php echo e(url('/siswa/registrasi/' . $siswa->id)); ?>" class="btn btn-primary btn-block">Registrasi Ulang</a>
     <?php else: ?>
         <button onclick="alert('Kamu sudah melakukan registrasi ulang!')" class="btn btn-primary btn-block mb-3" disabled>Registrasi Ulang</button>
-        <div class="alert alert-success">
+        <div class="alert alert-success mb-3">
             Kamu sudah melakukan registrasi ulang!
+        </div>
+        <div class="alert alert-success">
+            Silahkan join grup whatsapp: NULL.
         </div>
     <?php endif; ?>
 

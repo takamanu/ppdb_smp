@@ -60,11 +60,11 @@ class NilaiController extends Controller
     {
 
         $validateData = [
-            'user_id' => 1,
-            'matematika' => 'C',
-            'ilmu_pengetahuan_alam' => 'C',
-            'bahasa_indonesia' => 'D',
-            'test_membaca_al_quran' => 'C'
+            'user_id' => auth()->user()->id,
+            'matematika' => $request->matematika,
+            'ilmu_pengetahuan_alam' => $request->ilmu_pengetahuan_alam,
+            'bahasa_indonesia' => $request->bahasa_indonesia,
+            'test_membaca_al_quran' => $request->test_membaca_al_quran
         ];
 
         $nilai = Nilai::create($validateData);

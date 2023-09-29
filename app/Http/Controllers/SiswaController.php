@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Agen;
 use App\Models\Datapokok;
 use App\Models\Policy;
 use App\Models\Nilai;
@@ -42,7 +43,18 @@ class SiswaController extends Controller
 
     public function create()
     {
-        return view('siswa.create');
+        $userData = auth()->user()->id;
+
+        $user = User::where('id', $userData)->first();
+        $config = Config::where('id', 1)->first();
+        $agen = $user->datapokok;
+        $date_now = date('Y-m-d H:i:s');
+
+        if (is_null($agen)) {
+            $agen = 'NULL'; // Set a default value or any other value you want to use
+        }
+        
+        return view('siswa.create')->with('agen', $agen);
     }
 
     /**
@@ -157,8 +169,17 @@ class SiswaController extends Controller
         $siswa = Datapokok::where('user_id', $id)->first();
         //   $siswa->nilai;
         // return $agen;
+        $userData = auth()->user()->id;
+        $user = User::where('id', $userData)->first();
+        $config = Config::where('id', 1)->first();
+        $agen = $user->datapokok;
+        $date_now = date('Y-m-d H:i:s');
 
-        return view('siswa.pengumuman')->with('siswa', $siswa);
+        if (is_null($agen)) {
+            $agen = 'NULL'; // Set a default value or any other value you want to use
+        }
+
+        return view('siswa.pengumuman')->with(['siswa' => $siswa, 'agen' => $agen]);
     }
 
     public function registrasiUlang($id)
@@ -166,8 +187,17 @@ class SiswaController extends Controller
         $siswa = Datapokok::where('user_id', $id)->first();
         //   $siswa->nilai;
         // return $agen;
+        $userData = auth()->user()->id;
+        $user = User::where('id', $userData)->first();
+        $config = Config::where('id', 1)->first();
+        $agen = $user->datapokok;
+        $date_now = date('Y-m-d H:i:s');
 
-        return view('siswa.registrasi')->with('siswa', $siswa);
+        if (is_null($agen)) {
+            $agen = 'NULL'; // Set a default value or any other value you want to use
+        }
+
+        return view('siswa.registrasi')->with(['siswa'=> $siswa, 'agen' => $agen]);
     }
 
     // public function storeRegistrasiUlang(Request $request)

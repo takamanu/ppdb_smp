@@ -54,9 +54,6 @@
                 </div>
 
             </div>
-
-
-
             <a href="<?php echo e(url('/profile/' . $agen->id . '/edit')); ?>" class="btn btn-success btn-block">Edit Profile
             </a>
 

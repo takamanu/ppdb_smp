@@ -50,16 +50,11 @@
                         </td>
                         
                     </tr>
-                    <tr>
+                     <tr>
                         <td>Status Kelulusan</td>
                         <td>
-                            <select name="status" class="form-select form-control" required>
-                            <option selected value="<?php echo e($agen->nilai->status); ?>"> <?php echo e($agen->nilai->status); ?> </option>
-                            <?php if($agen->nilai->status == "BELUM LULUS"): ?>
-                                <option value="LULUS"> LULUS </option>
-                            <?php else: ?>
-                                <option value="BELUM LULUS"> BELUM LULUS </option>
-                            <?php endif; ?>
+                            <select name="status" class="form-select form-control" required disabled>
+                            <option selected disabled value="<?php echo e($agen->nilai->status); ?>"> <?php echo e($agen->nilai->status); ?> </option>
                             
                         </td>
                         
