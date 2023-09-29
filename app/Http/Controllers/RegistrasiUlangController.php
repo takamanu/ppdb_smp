@@ -39,11 +39,18 @@ class RegistrasiUlangController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $check_data = RegistrasiUlang::find('user_id',Auth::user()->id);
-        if($check_data){
+    {   
+        $user = auth()->user()->id;
+        $auth = auth()->user();
+
+
+        if (!is_null($auth->registrasi_ulang)){
             return abort(403, 'Unauthorized');
+
         }
+
+
+        
 
         $user = auth()->user()->id;
         $siswa = Datapokok::where('user_id', $user)->first();

@@ -55,16 +55,16 @@ class SiswaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        $check_data = Datapokok::find('user_id',Auth::user()->id);
-        if($check_data){
+    {
+        $userData = auth()->user();
+
+        if (!is_null($userData->datapokok))
+        {
             return abort(403, 'Unauthorized');
         }
         
-        $userData = auth()->user();
-        // $user = User::where('id', $userData)->first();
+        
         $daftarSekolahLain = $request->input('daftar_sekolah_lain');
-        // Get the value of Nama Sekolah Jika Daftar
         $namaSekolahJikaDaftar = $request->input('nama_sekolahnya_jika_daftar');
 
         // If the checkbox is not checked and the field is not filled, set a default value
@@ -174,16 +174,16 @@ class SiswaController extends Controller
             $agen = 'NULL'; // Set a default value or any other value you want to use
         }
 
-        return view('siswa.pengumuman')->with(['siswa' => $siswa, 'agen' => $agen]);
+        return view('siswa.pengumuman')->with(['siswa' => $siswa, 'agen' => $agen, 'config' => $config]);
     }
 
     public function registrasiUlang($id)
     {
-        $check_data = RegistrasiUlang::find('user_id',Auth::user()->id);
-        if($check_data){
+        $siswa = Datapokok::where('user_id', $id)->first();
+
+        if (!is_null($siswa->registrasi_ulang)) {
             return abort(403, 'Unauthorized');
         }
-        $siswa = Datapokok::where('user_id', $id)->first();
         //   $siswa->nilai;
         // return $agen;
         $userData = auth()->user()->id;

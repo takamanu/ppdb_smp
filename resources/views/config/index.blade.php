@@ -48,6 +48,11 @@
                     <td>{{ $config->pendaftaran_ulang_start }}</td>
                     <td>{{ $config->pendaftaran_ulang_due }}</td>
                 </tr>
+                <tr>
+                    <td>Link WhatsApp</td>
+                    <td colspan="2"><a href="{{ $config->redirect_wa }}">{{ $config->redirect_wa }}</a></td>
+                    {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
+                </tr>
             </tbody>
         </table>
     </div>

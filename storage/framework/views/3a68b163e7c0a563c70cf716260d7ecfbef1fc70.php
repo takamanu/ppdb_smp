@@ -58,7 +58,8 @@
             Kamu sudah melakukan registrasi ulang!
         </div>
         <div class="alert alert-success">
-            Silahkan join grup whatsapp: NULL.
+            Silahkan join grup whatsapp: <?php echo e($config->redirect_wa); ?>
+
         </div>
     <?php endif; ?>
 

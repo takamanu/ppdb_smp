@@ -46,6 +46,11 @@
                         <td><input type="date" id="pendaftaran_ulang_start" name="pendaftaran_ulang_start" aria-label="pendaftaran_ulang_start" class="form-control" value="{{$config->pendaftaran_ulang_start}}"></td>
                         <td><input type="date" id="pendaftaran_ulang_due" name="pendaftaran_ulang_due" aria-label="pendaftaran_ulang_due" class="form-control" value="{{$config->pendaftaran_ulang_due}}"></td>
                     </tr>
+                    <tr>
+                        <td>Link WhatsApp</td>
+                        <td colspan="2"><input type="name" id="redirect_wa" name="redirect_wa" aria-label="redirect_wa" class="form-control" value="{{$config->redirect_wa}}"></td>
+                        {{-- <td><input type="date" id="pendaftaran_ulang_due" name="pendaftaran_ulang_due" aria-label="pendaftaran_ulang_due" class="form-control" value="{{$config->pendaftaran_ulang_due}}"></td> --}}
+                    </tr>
 
                 </tbody>
 

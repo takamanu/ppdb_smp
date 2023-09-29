@@ -193,7 +193,7 @@
                                                 <div class="form-group form-outline mb-3">
                                                     <input id="nama_ayah" type="text"
                                                         class="form-control @error('nama_ayah') is-invalid @enderror"
-                                                        name="nama_ayah" value="{{ old('nama_ayah') }}" required
+                                                        name="nama_ayah" value="{{ old('nama_ayah') }}"
                                                         placeholder="Nama Ayah">
                                                     @error('nama_ayah')
                                                         <span class="invalid-feedback" role="alert">
@@ -206,7 +206,7 @@
                                                 <div class="form-group form-outline">
                                                     <input id="no_wa_ayah" type="text"
                                                         class="form-control @error('no_wa_ayah') is-invalid @enderror"
-                                                        name="no_wa_ayah" value="{{ old('no_wa_ayah') }}" required
+                                                        name="no_wa_ayah" value="{{ old('no_wa_ayah') }}"
                                                         placeholder="No. WhatsApp Ayah">
                                                     @error('no_wa_ayah')
                                                         <span class="invalid-feedback" role="alert">
@@ -226,7 +226,7 @@
                                                 <div class="form-group form-outline">
                                                     <select id="pendidikan_terakir_ayah"
                                                         class="form-select form-control @error('pendidikan_terakir_ayah') is-invalid @enderror"
-                                                        name="pendidikan_terakir_ayah" required>
+                                                        name="pendidikan_terakir_ayah">
                                                         <option value="sd" disabled selected>Pilih Pendidikan Terakhir
                                                             Ayah
                                                         </option>
@@ -274,8 +274,7 @@
                                                 <div class="form-group form-outline">
                                                     <input id="pekerjaan_ayah" type="text"
                                                         class="form-control @error('pekerjaan_ayah') is-invalid @enderror"
-                                                        name="pekerjaan_ayah" value="{{ old('pekerjaan_ayah') }}"
-                                                        required placeholder="Pekerjaan Ayah">
+                                                        name="pekerjaan_ayah" value="{{ old('pekerjaan_ayah') }}" placeholder="Pekerjaan Ayah">
                                                     @error('pekerjaan_ayah')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -288,7 +287,7 @@
                                                 <div class="form-group form-outline">
                                                     <select id="penghasilan_ayah"
                                                         class="form-select form-control @error('penghasilan_ayah') is-invalid @enderror"
-                                                        name="penghasilan_ayah" required>
+                                                        name="penghasilan_ayah">
                                                         <option value="1" disabled selected>Pilih Kategori Penghasilan
                                                             Ayah
                                                         </option>
@@ -335,7 +334,7 @@
                                                 <div class="form-group form-outline">
                                                     <input id="nama_ibu" type="text"
                                                         class="form-control @error('nama_ibu') is-invalid @enderror"
-                                                        name="nama_ibu" value="{{ old('nama_ibu') }}" required
+                                                        name="nama_ibu" value="{{ old('nama_ibu') }}"
                                                         placeholder="Nama Ibu">
                                                     @error('nama_ibu')
                                                         <span class="invalid-feedback" role="alert">
@@ -348,7 +347,7 @@
                                                 <div class="form-group form-outline">
                                                     <input id="no_wa_ibu" type="text"
                                                         class="form-control @error('no_wa_ibu') is-invalid @enderror"
-                                                        name="no_wa_ibu" value="{{ old('no_wa_ibu') }}" required
+                                                        name="no_wa_ibu" value="{{ old('no_wa_ibu') }}"
                                                         placeholder="No. WhatsApp Ibu">
                                                     @error('no_wa_ibu')
                                                         <span class="invalid-feedback" role="alert">
@@ -363,7 +362,7 @@
                                                 <div class="form-group form-outline">
                                                     <select id="pendidikan_terakir_ibu"
                                                         class="form-select form-control @error('pendidikan_terakir_ibu') is-invalid @enderror"
-                                                        name="pendidikan_terakir_ibu" required>
+                                                        name="pendidikan_terakir_ibu">
                                                         <option value="sd" disabled selected>Pilih Pendidikan Terakhir
                                                             Ibu
                                                         </option>
@@ -409,7 +408,7 @@
                                                 <div class="form-group form-outline">
                                                     <input id="pekerjaan_ibu" type="text"
                                                         class="form-control @error('pekerjaan_ibu') is-invalid @enderror"
-                                                        name="pekerjaan_ibu" value="{{ old('pekerjaan_ibu') }}" required
+                                                        name="pekerjaan_ibu" value="{{ old('pekerjaan_ibu') }}"
                                                         placeholder="Pekerjaan Ibu">
                                                     @error('pekerjaan_ibu')
                                                         <span class="invalid-feedback" role="alert">
@@ -422,7 +421,7 @@
                                                 <div class="form-group form-outline">
                                                     <select id="penghasilan_ibu"
                                                         class="form-select form-control @error('penghasilan_ibu') is-invalid @enderror"
-                                                        name="penghasilan_ibu" required>
+                                                        name="penghasilan_ibu">
                                                         <option value="1" disabled selected>Pilih Kategori Penghasilan
                                                             Ibu
                                                         </option>

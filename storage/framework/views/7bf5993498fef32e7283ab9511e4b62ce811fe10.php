@@ -45,6 +45,11 @@
                     <td><?php echo e($config->pendaftaran_ulang_start); ?></td>
                     <td><?php echo e($config->pendaftaran_ulang_due); ?></td>
                 </tr>
+                <tr>
+                    <td>Link WhatsApp</td>
+                    <td colspan="2"><a href="<?php echo e($config->redirect_wa); ?>"><?php echo e($config->redirect_wa); ?></a></td>
+                    
+                </tr>
             </tbody>
         </table>
     </div>

@@ -61,7 +61,7 @@
             Kamu sudah melakukan registrasi ulang!
         </div>
         <div class="alert alert-success">
-            Silahkan join grup whatsapp: NULL.
+            Silahkan join grup whatsapp: {{ $config->redirect_wa}}
         </div>
     @endif
 
