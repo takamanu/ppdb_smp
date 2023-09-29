@@ -99,31 +99,26 @@
                             @if (empty($payment))
                                 <img src="/images/centang_belum.png" class="card-img-top" alt="...">
                                 <div class="card-body">
-
                                     <h5 class="card-title">Pembayaran</h5>
-                                    {{-- <p class="card-text">
-                                    </p> --}}
                                     <button type="submit" class="btn btn-danger btn-sm btn-block">Belum bayar</button>
-                                
-                                    @elseif ($handle_payment->status_payment !== 2 && $handle_payment->status !== 2)
+                                </div>
+                            @elseif ($payment->status_payment !== 2 && $payment->status !== 2)
+                                <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                                <div class="card-body">
                                     <h5 class="card-title">Pembayaran</h5>
-                                    {{-- <p class="card-text">
-                                    </p> --}}
-                                    <a href="/bayar" class="btn btn-danger btn-sm btn-block">Selesaikan pembayaran</button>
-
-                                    @else
-                                    <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Pembayaran</h5>
-                                        {{-- <p class="card-text">
-                                    </p> --}}
-                                        <button class="btn btn-success btn-sm btn-block" disabled>Sudah bayar</button>
+                                    <p class="card-text">
+                                        <a href="/bayar" class="btn btn-danger btn-sm btn-block">Selesaikan pembayaran</a>
+                                    </p>
+                                </div>
+                            @else
+                                <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pembayaran</h5>
+                                    <button class="btn btn-success btn-sm btn-block" disabled>Sudah bayar</button>
+                                </div>
                             @endif
-                            <!-- Button trigger modal -->
-                            {{-- <button type="submit" class="btn btn-primary">
-                                    Bayar
-                                </button> --}}
                         </form>
+                        
 
                     </div>
                 </div>
