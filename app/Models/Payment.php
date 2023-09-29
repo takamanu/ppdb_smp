@@ -11,7 +11,7 @@ class Payment extends Model
     protected $table = 'payments';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'status','amount','status_payment','id_user','snapToken'
+        'status','amount','status_payment','user_id','snapToken'
     ];
 
 

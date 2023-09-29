@@ -93,47 +93,70 @@
             <div class="row row-cols-1 row-cols-md-2 g-4 d-flex justify-content-center">
                 <div class="col d-flex justify-content-center">
                     <div class="card max-card-size">
-                        <img src="/images/centang_belum.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <form class="row g-3" action="{{ route('payment.store') }}" method="post">
-                                @csrf
-                                <h5 class="card-title">Pembayaran</h5>
-                                <p class="card-text"><button type="submit" class="btn btn-danger btn-sm btn-block">Belum bayar</button>
-                                </p>
-                                <!-- Button trigger modal -->
-                                {{-- <button type="submit" class="btn btn-primary">
+
+                        <form class="row g-3" action="{{ route('payment.store') }}" method="post">
+                            @csrf
+                            @if (empty($payment))
+                                <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+
+                                    <h5 class="card-title">Pembayaran</h5>
+                                    {{-- <p class="card-text">
+                                    </p> --}}
+                                    <button type="submit" class="btn btn-danger btn-sm btn-block">Belum bayar</button>
+                                
+                                    @else
+                                    <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Pembayaran</h5>
+                                        {{-- <p class="card-text">
+                                    </p> --}}
+                                        <button class="btn btn-success btn-sm btn-block" disabled>Sudah bayar</button>
+                            @endif
+                            <!-- Button trigger modal -->
+                            {{-- <button type="submit" class="btn btn-primary">
                                     Bayar
                                 </button> --}}
-                            </form>
+                        </form>
 
-                        </div>
                     </div>
                 </div>
-                <div class="col d-flex justify-content-center">
+            </div>
+            <div class="col d-flex justify-content-center">
 
-                    {{-- <h5 class="card-title">Datapokok</h5> --}}
-                    @if ($agen == 'NULL')
-                        <div class="card max-card-size">
-                            <img src="/images/centang_belum.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Datapokok</h5>
-                                <p class="card-text"><a href="/siswa/create" class="btn btn-danger btn-sm btn-block">Belum
-                                        Isi</a></p>
-                            </div>
+                {{-- <h5 class="card-title">Datapokok</h5> --}}
+                @if (empty($payment))
+                    <div class="card max-card-size">
+                        <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Datapokok</h5>
+                            <p class="card-text"><button class="btn btn-warning btn-sm btn-block" disabled>Bayar terlebih
+                                    dahulu</button>
+                            </p>
                         </div>
-                    @else
-                        <div class="card max-card-size">
-                            <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Datapokok</h5>
-                                <p class="card-text"><button class="btn btn-success btn-sm btn-block"
-                                        disabled>Success</button></p>
-                            </div>
+                    </div>
+                @elseif ($agen == 'NULL')
+                    <div class="card max-card-size">
+                        <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Datapokok</h5>
+                            <p class="card-text"><a href="/siswa/create" class="btn btn-danger btn-sm btn-block">Belum
+                                    Isi</a></p>
                         </div>
-                    @endif
-                </div>
+                    </div>
+                @else
+                    <div class="card max-card-size">
+                        <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Datapokok</h5>
+                            <p class="card-text"><button class="btn btn-success btn-sm btn-block" disabled>Success</button>
+                            </p>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
+    </div>
     </div>
 
     <div class="card text-center mb-5">

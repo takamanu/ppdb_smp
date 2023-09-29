@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_user');
+            $table->foreignId('user_id');
             $table->bigInteger('amount');
             $table->string('snapToken')->nullable();
             $table->integer('status_payment')->default(0);

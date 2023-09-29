@@ -8,6 +8,7 @@ use App\Models\Agen;
 use App\Models\Datapokok;
 use App\Models\Policy;
 use App\Models\Nilai;
+use App\Models\Payment;
 use App\Models\Config;
 use App\Models\RegistrasiUlang;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,10 @@ class SiswaController extends Controller
         $config = Config::where('id', 1)->first();
         $agen = $user->datapokok;
         $date_now = date('Y-m-d H:i:s');
+        $payment = Payment::where('user_id', $userData)->first();
+        
+        // $payment = auth()->user()->payment;
+
 
         if (is_null($agen)) {
             $agen = 'NULL'; // Set a default value or any other value you want to use
@@ -34,6 +39,7 @@ class SiswaController extends Controller
             'user' => $user,
             'config' => $config,
             'date_now' => $date_now,
+            'payment' => $payment,
         ]);
     }
     /**

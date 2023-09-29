@@ -93,48 +93,66 @@
             <div class="row row-cols-1 row-cols-md-2 g-4 d-flex justify-content-center">
                 <div class="col d-flex justify-content-center">
                     <div class="card max-card-size">
-                        <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <form class="row g-3" action="<?php echo e(route('payment.store')); ?>" method="post">
-                                <?php echo csrf_field(); ?>
-                                <h5 class="card-title">Pembayaran</h5>
-                                <p class="card-text"><button class="btn btn-success btn-sm btn-block"
-                                        disabled>Success</button>
-                                </p>
-                                <!-- Button trigger modal -->
-                                <button type="submit" class="btn btn-primary">
-                                    Bayar
-                                </button>
-                            </form>
 
-                        </div>
+                        <form class="row g-3" action="<?php echo e(route('payment.store')); ?>" method="post">
+                            <?php echo csrf_field(); ?>
+                            <?php if(empty($payment)): ?>
+                                <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+
+                                    <h5 class="card-title">Pembayaran</h5>
+                                    
+                                    <button type="submit" class="btn btn-danger btn-sm btn-block">Belum bayar</button>
+                                
+                                    <?php else: ?>
+                                    <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Pembayaran</h5>
+                                        
+                                        <button class="btn btn-success btn-sm btn-block" disabled>Sudah bayar</button>
+                            <?php endif; ?>
+                            <!-- Button trigger modal -->
+                            
+                        </form>
+
                     </div>
                 </div>
-                <div class="col d-flex justify-content-center">
+            </div>
+            <div class="col d-flex justify-content-center">
 
-                    
-                    <?php if($agen == 'NULL'): ?>
-                        <div class="card max-card-size">
-                            <img src="/images/centang_belum.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Datapokok</h5>
-                                <p class="card-text"><a href="/siswa/create" class="btn btn-danger btn-sm btn-block">Belum
-                                        Isi</a></p>
-                            </div>
+                
+                <?php if(empty($payment)): ?>
+                    <div class="card max-card-size">
+                        <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Datapokok</h5>
+                            <p class="card-text"><button class="btn btn-warning btn-sm btn-block" disabled>Bayar terlebih
+                                    dahulu</button>
+                            </p>
                         </div>
-                    <?php else: ?>
-                        <div class="card max-card-size">
-                            <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Datapokok</h5>
-                                <p class="card-text"><button class="btn btn-success btn-sm btn-block"
-                                        disabled>Success</button></p>
-                            </div>
+                    </div>
+                <?php elseif($agen == 'NULL'): ?>
+                    <div class="card max-card-size">
+                        <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Datapokok</h5>
+                            <p class="card-text"><a href="/siswa/create" class="btn btn-danger btn-sm btn-block">Belum
+                                    Isi</a></p>
                         </div>
-                    <?php endif; ?>
-                </div>
+                    </div>
+                <?php else: ?>
+                    <div class="card max-card-size">
+                        <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Datapokok</h5>
+                            <p class="card-text"><button class="btn btn-success btn-sm btn-block" disabled>Success</button>
+                            </p>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
+    </div>
     </div>
 
     <div class="card text-center mb-5">

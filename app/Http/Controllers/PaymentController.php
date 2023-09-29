@@ -23,7 +23,7 @@ class PaymentController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-        $payment = Payment::where('id_user',3)
+        $payment = Payment::where('user_id',3)
                             ->where('status_payment',2)
                             ->where('status',2)
                             ->first();
@@ -65,7 +65,7 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         $id = Auth::user()->id;
-        $payment = Payment::where('id_user',3)
+        $payment = Payment::where('user_id',3)
                             ->where('status_payment',2)
                             ->where('status',2)
                             ->first();
@@ -87,11 +87,11 @@ class PaymentController extends Controller
         // $user_detail = 
 
         $payment = Payment::create([
-            'id_user' => Auth::user()->id,
+            'user_id' => Auth::user()->id,
             'amount' => $amount
         ]);
 
-        $order_id = 33+ $payment->id;
+        $order_id = 55+ $payment->id;
 
         $params = array(
             'transaction_details' => array(
@@ -133,7 +133,7 @@ class PaymentController extends Controller
         $order_id = $notif->order_id;
         $fraud = $notif->fraud_status;
 
-        $payment = Payment::find($order_id - 33);
+        $payment = Payment::find($order_id - 55);
 
         if ($transaction == 'capture') {
             if ($type == 'credit_card'){
