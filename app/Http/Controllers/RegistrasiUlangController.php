@@ -40,6 +40,11 @@ class RegistrasiUlangController extends Controller
      */
     public function store(Request $request)
     {
+        $check_data = RegistrasiUlang::find('user_id',Auth::user()->id);
+        if($check_data){
+            return abort(403, 'Unauthorized');
+        }
+
         $user = auth()->user()->id;
         $siswa = Datapokok::where('user_id', $user)->first();
 
@@ -138,6 +143,10 @@ class RegistrasiUlangController extends Controller
      */
     public function update(Request $request, RegistrasiUlang $registrasiUlang)
     {
+        $check_data = RegistrasiUlang::find('user_id',Auth::user()->id);
+        if($check_data){
+            return abort(403, 'Unauthorized');
+        }
         $validatedData = $request->validate([
             'ijazah' => 'mimes:pdf',
             'surat_pernyataan_bermaterai' => 'mimes:pdf',

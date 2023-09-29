@@ -10,6 +10,7 @@ use App\Models\Policy;
 use App\Models\Nilai;
 use App\Models\Config;
 use App\Models\RegistrasiUlang;
+use Illuminate\Support\Facades\Auth;
 
 date_default_timezone_set('Asia/Jakarta');
 
@@ -43,18 +44,8 @@ class SiswaController extends Controller
 
     public function create()
     {
-        $userData = auth()->user()->id;
-
-        $user = User::where('id', $userData)->first();
-        $config = Config::where('id', 1)->first();
-        $agen = $user->datapokok;
-        $date_now = date('Y-m-d H:i:s');
-
-        if (is_null($agen)) {
-            $agen = 'NULL'; // Set a default value or any other value you want to use
-        }
         
-        return view('siswa.create')->with('agen', $agen);
+        return view('siswa.create');
     }
 
     /**
@@ -64,8 +55,12 @@ class SiswaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        // dd($data);
+    {   
+        $check_data = Datapokok::find('user_id',Auth::user()->id);
+        if($check_data){
+            return abort(403, 'Unauthorized');
+        }
+        
         $userData = auth()->user();
         // $user = User::where('id', $userData)->first();
         $daftarSekolahLain = $request->input('daftar_sekolah_lain');
@@ -184,6 +179,10 @@ class SiswaController extends Controller
 
     public function registrasiUlang($id)
     {
+        $check_data = RegistrasiUlang::find('user_id',Auth::user()->id);
+        if($check_data){
+            return abort(403, 'Unauthorized');
+        }
         $siswa = Datapokok::where('user_id', $id)->first();
         //   $siswa->nilai;
         // return $agen;
