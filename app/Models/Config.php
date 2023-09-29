@@ -24,6 +24,7 @@ class Config extends Model
         'pendaftaran_ulang_start',
         'pendaftaran_ulang_due',
         'pengumuman',
-        'redirect_wa'
+        'redirect_wa',
+        'nominal_pembayaran'
     ];
 }
