@@ -901,7 +901,7 @@
                                     </div>
                                 </div> --}}
 
-                                                <button type="submit" onclick="showSweetAlert()"
+                                                <button type="button" onclick="showSweetAlert()"
                                                     class="btn btn-primary btn-block">{{ __('Tambah') }}</button>
                                                 <a href="{{ url()->previous() }}"
                                                     class="btn btn-danger btn-block">Back</a>
