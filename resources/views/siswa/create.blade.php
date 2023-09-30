@@ -901,7 +901,7 @@
                                     </div>
                                 </div> --}}
 
-                                                <button type="submit" onclick="return confirm(&quot;Apakah anda sudah yakin dengan data yang akan anda submit?&quot;)"
+                                                <button type="submit" onclick="showSweetAlert()"
                                                     class="btn btn-primary btn-block">{{ __('Tambah') }}</button>
                                                 <a href="{{ url()->previous() }}"
                                                     class="btn btn-danger btn-block">Back</a>
@@ -993,6 +993,23 @@
             // Get references to the checkbox and input field
             const checkbox = document.getElementById('daftar_sekolah_lain');
             const inputField = document.getElementById('nama_sekolahnya_jika_daftar');
+
+            function showSweetAlert() {
+                Swal.fire({
+                    title: "Apakah anda sudah yakin dengan data yang akan anda submit?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Ya, Saya Yakin",
+                    cancelButtonText: "Batal",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // If user clicks "Ya, Saya Yakin," submit the form
+                        document.querySelector('form').submit();
+                    }
+                });
+            }
         
             // Add an event listener to the checkbox
             checkbox.addEventListener('change', function () {
@@ -1006,6 +1023,7 @@
                 }
             });
         </script>
+        
 
     </body>
 

@@ -47,11 +47,12 @@
                 onSuccess: function(result) {
                     /* You may add your own implementation here */
                     // alert("payment success! anjing"); console.log(result);
-                    Swal.fire(
-                        'Good job!',
-                        'You clicked the button!',
-                        'success'
-                    )
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Pembayaran kamu berhasil!',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
                     window.location.href = "/siswa";
                 },
                 onPending: function(result) {
