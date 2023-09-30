@@ -833,75 +833,21 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
 
-                                                {{-- <div class="row">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Perjanjian 1:</label>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="perjanjian1" value="Ya" id="perjanjian1Ya"
-                                                {{ old('perjanjian1') == 'Ya' ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="perjanjian1Ya">Ya</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="perjanjian1" value="Tidak" id="perjanjian1Tidak"
-                                                {{ old('perjanjian1') == 'Tidak' ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="perjanjian1Tidak">Tidak</label>
-                                        </div>
-                                        <p>Deskripsi Perjanjian 1:</p>
-                                        <p>Percaya dan taat sepenuhnya kepada kebijaksanaan SMPTQ</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Perjanjian 2:</label>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="perjanjian2" value="Ya" id="perjanjian2Ya"
-                                                {{ old('perjanjian2') == 'Ya' ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="perjanjian2Ya">Ya</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="perjanjian2" value="Tidak" id="perjanjian2Tidak"
-                                                {{ old('perjanjian2') == 'Tidak' ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="perjanjian2Tidak">Tidak</label>
-                                        </div>
-                                        <p>Deskripsi Perjanjian 2:</p>
-                                        <p>Mendukung sunnah dan disiplin yang berlaku di SMPTQ</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Perjanjian 3:</label>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="perjanjian3" value="Ya" id="perjanjian3Ya"
-                                                {{ old('perjanjian3') == 'Ya' ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="perjanjian3Ya">Ya</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="perjanjian3" value="Tidak" id="perjanjian3Tidak"
-                                                {{ old('perjanjian3') == 'Tidak' ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="perjanjian3Tidak">Tidak</label>
-                                        </div>
-                                        <p>Deskripsi Perjanjian 3:</p>
-                                        <p>Memenuhi segala kewajiban yang telah ditetapkan oleh SMPTQ</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Perjanjian 4:</label>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="perjanjian4" value="Ya" id="perjanjian4Ya"
-                                                {{ old('perjanjian4') == 'Ya' ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="perjanjian4Ya">Ya</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="perjanjian4" value="Tidak" id="perjanjian4Tidak"
-                                                {{ old('perjanjian4') == 'Tidak' ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="perjanjian4Tidak">Tidak</label>
-                                        </div>
-                                        <p>Deskripsi Perjanjian 4:</p>
-                                        <p>Melunasi semua pembayaran uang sekolah dan uang makan sebelum Ujian Semester Ganjil dan Semester Genap.</p>
-                                    </div>
-                                </div> --}}
-
-                                                <button type="submit" onclick="showSweetAlert()"
+                                                <button type="submit" onclick='Swal.fire({
+                                                    title: "Apakah anda sudah yakin dengan data yang akan anda submit?",
+                                                    icon: "warning",
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: "#3085d6",
+                                                    cancelButtonColor: "#d33",
+                                                    confirmButtonText: "Ya, Saya Yakin",
+                                                    cancelButtonText: "Batal",
+                                                }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        // If user clicks "Ya, Saya Yakin," submit the form
+                                                        document.querySelector("form").submit();
+                                                    }
+                                                });'
                                                     class="btn btn-primary btn-block">{{ __('Tambah') }}</button>
                                                 <a href="{{ url()->previous() }}"
                                                     class="btn btn-danger btn-block">Back</a>
@@ -911,73 +857,6 @@
                 </div>
             </div>
         </div>
-
-        {{-- <h3 class="mb-3">Masukkan Nilai</h3>
-
-                                <!-- Previous input fields (nama_wali_siswa, no_wa_wali_siswa, hubungan_dengan_siswa, alamat_wali_siswa, pendidikan_terakir_wali, pekerjaan_wali, penghasilan_wali) -->
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group form-outline">
-                                            <input id="matematika" type="number"
-                                                class="form-control @error('matematika') is-invalid @enderror"
-                                                name="matematika" value="{{ old('matematika') }}" required
-                                                placeholder="Nilai Matematika">
-                                            @error('matematika')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-outline">
-                                            <input id="ilmu_pengetahuan_alam" type="number"
-                                                class="form-control @error('ilmu_pengetahuan_alam') is-invalid @enderror"
-                                                name="ilmu_pengetahuan_alam" value="{{ old('ilmu_pengetahuan_alam') }}"
-                                                required placeholder="Nilai Ilmu Pengetahuan Alam (IPA)">
-                                            @error('ilmu_pengetahuan_alam')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group form-outline">
-                                            <input id="bahasa_indonesia" type="number"
-                                                class="form-control @error('bahasa_indonesia') is-invalid @enderror"
-                                                name="bahasa_indonesia" value="{{ old('bahasa_indonesia') }}" required
-                                                placeholder="Nilai Bahasa Indonesia">
-                                            @error('bahasa_indonesia')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-outline">
-                                            <input id="test_membaca_al_quran" type="number"
-                                                class="form-control @error('test_membaca_al_quran') is-invalid @enderror"
-                                                name="test_membaca_al_quran" value="{{ old('test_membaca_al_quran') }}"
-                                                required placeholder="Nilai Test Membaca Al-Quran">
-                                            @error('test_membaca_al_quran')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div> --}}
-
-
-
-        {{-- </div>
-    </div> --}}
 
         <!-- Bootstrap core JavaScript-->
         <script src="vendor/jquery/jquery.min.js"></script>
@@ -995,20 +874,7 @@
             const inputField = document.getElementById('nama_sekolahnya_jika_daftar');
 
             function showSweetAlert() {
-                Swal.fire({
-                    title: "Apakah anda sudah yakin dengan data yang akan anda submit?",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Ya, Saya Yakin",
-                    cancelButtonText: "Batal",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // If user clicks "Ya, Saya Yakin," submit the form
-                        document.querySelector('form').submit();
-                    }
-                });
+                
             }
         
             // Add an event listener to the checkbox
