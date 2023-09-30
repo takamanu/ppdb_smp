@@ -170,6 +170,15 @@ class SiswaController extends Controller
         return view('siswa.pengumuman')->with(['siswa' => $siswa, 'agen' => $agen, 'config' => $config]);
     }
 
+    public function cetak($id)
+    {
+        $agen = Datapokok::where('id', $id)->first();
+        // $test = Datapokok::where('id', $id)->first();
+        // return $agen . $test;
+        // return $agen;
+        return view('agen.cetak')->with('agen', $agen);
+    }
+
     public function registrasiUlang($id)
     {
         // return $id;

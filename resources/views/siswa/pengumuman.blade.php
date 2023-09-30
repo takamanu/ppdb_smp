@@ -66,7 +66,7 @@
     @endif
 
     <hr>
-    <a href="{{ url('/agen/cetak/' . $siswa->id) }}" title="Cetak Datapokok Siswa" class="btn btn-success btn-block">Cetak
+    <a href="{{ url('/siswa/cetak/' . $siswa->id) }}" title="Cetak Datapokok Siswa" class="btn btn-success btn-block">Cetak
         Datapokok</a>
     {{-- <a href="/" class="btn btn-warning btn-block">Cetak Datapokok</a> --}}
     <a href="/siswa" class="btn btn-warning btn-block">Kembali ke dashboard</a>
