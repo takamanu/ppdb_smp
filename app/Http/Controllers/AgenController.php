@@ -24,6 +24,7 @@ class AgenController extends Controller
 
     public function index(Request $request)
     {
+
         //
         // return view('user.index', [
         //     'users' => DB::table('users')->paginate(15)
@@ -154,6 +155,7 @@ class AgenController extends Controller
         $user = User::where('id', $id)->first();
         $agen = $user->datapokok;
 
+
         // dd($agen->nilai);
         // $agen = User::where('id', $id)->first();
 
@@ -169,6 +171,8 @@ class AgenController extends Controller
     public function cetak($id)
     {
         $agen = Datapokok::where('user_id', $id)->first();
+        $test = Datapokok::where('id', $id)->first();
+        return $agen . $test;
         // return $agen;
         return view('agen.cetak')->with('agen', $agen);
     }
