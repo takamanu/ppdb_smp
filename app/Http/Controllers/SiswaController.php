@@ -50,8 +50,9 @@ class SiswaController extends Controller
 
     public function create()
     {
+        $config = Config::where('id', 1)->first();        
         
-        return view('siswa.create');
+        return view('siswa.create')->with('config', $config);
     }
 
     /**
