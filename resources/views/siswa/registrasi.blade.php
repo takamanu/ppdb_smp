@@ -76,7 +76,7 @@
                 </tbody>
             </table>
             <button type="type"
-            onclick="showSweetAlert()"
+            onclick="return confirm(&quot;Apakah anda yakin dengan data anda?&quot;)"
                 class="btn btn-success btn-block">Upload</button>
         </form>
     </div>
