@@ -167,7 +167,7 @@ class PaymentController extends Controller
             'amount' => $amount,
         ]);
 
-        $order_id = 28 + $payment->id;
+        $order_id = 59 + $payment->id;
 
         $params = [
             'transaction_details' => [
@@ -210,7 +210,7 @@ class PaymentController extends Controller
         $order_id = $notif->order_id;
         $fraud = $notif->fraud_status;
 
-        $payment = Payment::find($order_id - 28);
+        $payment = Payment::find($order_id - 59);
 
         if ($transaction == 'capture') {
             if ($type == 'credit_card') {
