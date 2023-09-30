@@ -75,7 +75,7 @@
                     </tr>
                 </tbody>
             </table>
-            <button type="button"
+            <button type="type"
             onclick="showSweetAlert()"
                 class="btn btn-success btn-block">Upload</button>
         </form>

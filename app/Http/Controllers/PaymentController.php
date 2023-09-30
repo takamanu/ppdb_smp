@@ -138,7 +138,7 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         $id = Auth::user()->id;
-        $payment = Payment::where('user_id', 3)
+        $payment = Payment::where('user_id', $id)
             ->where('status_payment', 2)
             ->where('status', 2)
             ->first();
