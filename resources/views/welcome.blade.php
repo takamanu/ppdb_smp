@@ -22,7 +22,9 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Pengumuman Kelolosan</div>
                             <div class="h5 mb-2 font-weight-bold text-gray-800">
-                                <input type="checkbox" data-toggle="toggle">
+                                {{-- <input type="checkbox" data-toggle="toggle">
+                                 --}}
+                                 <a href="/config" class="btn btn-primary">Atur</a>
                             </div>
                         </div>
                         <div class="col-auto">
