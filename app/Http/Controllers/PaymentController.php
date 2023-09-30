@@ -50,11 +50,13 @@ class PaymentController extends Controller
             $snapToken = $handle_payment->snapToken;
             // Your code here to use the $snapToken
         }
+
+        $nominal = "Testing";
         
 
         $config = Config::where('id', 1)->first();
 
-        return view('siswa.bayar', compact('snapToken'))->with(['config' => $config]);
+        return view('siswa.bayar', compact('snapToken'))->with(['config' => $config, 'nominal' => nominal]);
     }
 
     public function index()
