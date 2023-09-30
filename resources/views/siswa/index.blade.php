@@ -106,9 +106,9 @@
                                 <img src="/images/centang_belum.png" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Pembayaran</h5>
-                                    <p class="card-text">
+                                    {{-- <p class="card-text"> --}}
                                         <a href="/bayar" class="btn btn-danger btn-sm btn-block">Selesaikan pembayaran</a>
-                                    </p>
+                                    {{-- </p> --}}
                                 </div>
                             @else
                                 <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
