@@ -6,6 +6,7 @@ use App\Models\RegistrasiUlang;
 use App\Models\Datapokok;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Config;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -43,6 +44,7 @@ class RegistrasiUlangController extends Controller
         
         $user = auth()->user()->id;
         $auth = auth()->user();
+        $config = Config::where('id', 1)->first();
 
 
         if (!is_null($auth->registrasi_ulang)){
@@ -98,7 +100,8 @@ class RegistrasiUlangController extends Controller
         return redirect('/siswa/pengumuman/' . $siswa->user_id)
             ->with(['siswa' => $siswa,
             'agen' => $agen,
-            'success' => 'Files uploaded successfully.']);
+            'success' => 'Files uploaded successfully.',
+            'config' =>$config]);
         // $validatedData = $request->validate([
         //     'ijazah' => 'required|mimes:pdf|',
         //     'surat_pernyataan_bermaterai' => 'required|mimes:pdf|',

@@ -63,6 +63,7 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $userData = auth()->user();
+        $config = Config::where('id', 1)->first();
 
         if (!is_null($userData->datapokok))
         {
@@ -139,7 +140,7 @@ class SiswaController extends Controller
         Policy::create($raw_data_policy);
 
         // Agen::create($input);
-        return redirect('siswa')->with('flash_message', 'Isi datapokok selesai!');
+        return redirect('siswa')->with(['flash_message' => 'Isi datapokok selesai!', 'config' => $config]);
     }
 
     /**
@@ -148,22 +149,6 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        // $agen = Datapokok::where('user_id', $id)->first();
-        $user = User::where('id', $id)->first();
-        $agen = $user->datapokok;
-
-        // dd($agen->nilai);
-        // $agen = User::where('id', $id)->first();
-
-        // dd($agen->datapokok->policy);
-        // $agentest = Datapokok::where('user_id', 2)->first();
-        // return $agentest;
-
-        // return $agen;
-        return view('agen.show')->with('agen', $agen);
-    }
 
     public function pengumuman($id)
     {
@@ -198,92 +183,12 @@ class SiswaController extends Controller
         $user = User::where('id', $userData)->first();
         $config = Config::where('id', 1)->first();
         $agen = $user->datapokok;
-        $date_now = date('Y-m-d H:i:s');
+        // $date_now = date('Y-m-d H:i:s');
 
         if (is_null($agen)) {
             $agen = 'NULL'; // Set a default value or any other value you want to use
         }
 
-        return view('siswa.registrasi')->with(['siswa'=> $siswa, 'agen' => $agen]);
+        return view('siswa.registrasi')->with(['siswa'=> $siswa, 'agen' => $agen, 'config' => $config]);
     }
-
-    // public function storeRegistrasiUlang(Request $request)
-    // {
-    //     // Validate the uploaded files
-    //     $request->validate([
-    //         'ijazah' => 'required|mimes:pdf,docx',
-    //         'surat_pernyataan_bermaterai' => 'required|mimes:pdf,docx',
-    //         'surat_keterangan_siswa_aktif_sd_asal' => 'required|mimes:pdf,docx',
-    //         'pasfoto' => 'required|image|mimes:jpg,jpeg,png',
-    //         'akta_kelahiran' => 'required|mimes:pdf,docx',
-    //         'kk' => 'required|mimes:pdf,docx',
-    //     ]);
-
-    //     // Store the uploaded files
-    //     $uploadedFiles = [];
-
-    //     foreach ($request->allFiles() as $key => $file) {
-    //         $path = $file->store('uploads'); // Store files in the 'uploads' directory
-
-    //         $uploadedFiles[$key] = $path;
-    //     }
-
-    //     // Create a record in the database with the file paths
-    //     RegistrasiUlang::create([
-    //         'user_id' => auth()->user()->id,
-    //         'ijazah' => $uploadedFiles['ijazah'],
-    //         'surat_pernyataan_bermaterai' => $uploadedFiles['surat_pernyataan_bermaterai'],
-    //         'surat_keterangan_siswa_aktif_sd_asal' => $uploadedFiles['surat_keterangan_siswa_aktif_sd_asal'],
-    //         'pasfoto' => $uploadedFiles['pasfoto'],
-    //         'akta_kelahiran' => $uploadedFiles['akta_kelahiran'],
-    //         'kk' => $uploadedFiles['kk'],
-    //     ]);
-
-    //     // Redirect with a success message
-    //     return redirect()
-    //         ->route('siswa.pengumuman')
-    //         ->with('success', 'Files uploaded successfully.');
-    // }
-
-    public function cetak($id)
-    {
-        $agen = Datapokok::where('user_id', $id)->first();
-        // return $agen;
-
-        return view('agen.cetak')->with('agen', $agen);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $agen = Agen::find($id);
-        return view('agen.edit')->with('agen', $agen);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $agen = Agen::find($id);
-        $input = $request->all();
-        $agen->update($input);
-        return redirect('agen')->with('flash_message', 'Users Updated!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 }

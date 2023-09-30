@@ -74,7 +74,7 @@
                         href="/agen">Daftar Siswa</a>
                 @else
                     @if (is_null(Auth::user()->datapokok))
-                        @if (Config::where('id', 1)->first()->pengumuman == 0)
+                        @if ($config->pengumuman == 0)
                             <h6 class="collapse-header">Aktivitas Siswa:</h6>
                             <a class="collapse-item {{ Request::is('siswa/create') ? 'active' : '' }}"
                                 href="{{ url('siswa/create') }}">Datapokok</a>
@@ -88,7 +88,7 @@
                                 href="{{ url('siswa/pengumuman/' . Auth::user()->id) }}">Pengumuman</a>  
                         @endif
                     @else
-                        @if (Config::where('id', 1)->first()->pengumuman == 0)
+                        @if ($config->pengumuman == 0)
                             <h6 class="collapse-header">Aktivitas Siswa:</h6>
                             {{-- <a class="collapse-item {{ Request::is('siswa/create') ? 'active' : '' }}" href="{{ url('siswa/create') }}">Datapokok</a> --}}
                             <a class="collapse-item"
