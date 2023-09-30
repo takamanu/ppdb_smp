@@ -91,6 +91,7 @@
         <div class="card-body p-5">
             {{-- <h5 class="card-title mb-5">Kartu Peserta PPDB SMP TQ Pangeran Diponegoro</h5> --}}
             <div class="row row-cols-1 row-cols-md-2 g-4 d-flex justify-content-center">
+
                 <div class="col d-flex justify-content-center">
                     <div class="card max-card-size">
 
@@ -107,7 +108,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Pembayaran</h5>
                                     {{-- <p class="card-text"> --}}
-                                        <a href="/bayar" class="btn btn-danger btn-sm btn-block">Selesaikan pembayaran</a>
+                                    <a href="/bayar" class="btn btn-danger btn-sm btn-block">Selesaikan pembayaran</a>
                                     {{-- </p> --}}
                                 </div>
                             @else
@@ -122,43 +123,44 @@
 
                     </div>
                 </div>
-            </div>
-            
-            <div class="col d-flex justify-content-center">
 
-                {{-- <h5 class="card-title">Datapokok</h5> --}}
-                @if (empty($payment))
-                    <div class="card max-card-size">
-                        <img src="/images/centang_belum.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Datapokok</h5>
-                            <p class="card-text"><button class="btn btn-warning btn-sm btn-block" disabled>Bayar terlebih
-                                    dahulu</button>
-                            </p>
+                <div class="col d-flex justify-content-center">
+
+                    {{-- <h5 class="card-title">Datapokok</h5> --}}
+                    @if (empty($payment))
+                        <div class="card max-card-size">
+                            <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Datapokok</h5>
+                                <p class="card-text"><button class="btn btn-warning btn-sm btn-block" disabled>Bayar
+                                        terlebih
+                                        dahulu</button>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                @elseif ($agen == 'NULL')
-                    <div class="card max-card-size">
-                        <img src="/images/centang_belum.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Datapokok</h5>
-                            <p class="card-text"><a href="/siswa/create" class="btn btn-danger btn-sm btn-block">Belum
-                                    Isi</a></p>
+                    @elseif ($agen == 'NULL')
+                        <div class="card max-card-size">
+                            <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Datapokok</h5>
+                                <p class="card-text"><a href="/siswa/create" class="btn btn-danger btn-sm btn-block">Belum
+                                        Isi</a></p>
+                            </div>
                         </div>
-                    </div>
-                @else
-                    <div class="card max-card-size">
-                        <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Datapokok</h5>
-                            <p class="card-text"><button class="btn btn-success btn-sm btn-block" disabled>Success</button>
-                            </p>
+                    @else
+                        <div class="card max-card-size">
+                            <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Datapokok</h5>
+                                <p class="card-text"><button class="btn btn-success btn-sm btn-block"
+                                        disabled>Success</button>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                @endif
+                    @endif
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
     <div class="card text-center mb-5">
