@@ -125,15 +125,16 @@ class PaymentController extends Controller
             return $temp;
         }
 
-    public function terbilang($nilai)
+        public function terbilang($nilai)
         {
             if ($nilai < 0) {
-                $hasil = 'minus ' . trim(penyebut($nilai));
+                $hasil = 'minus ' . trim($this->penyebut($nilai));
             } else {
-                $hasil = trim(penyebut($nilai));
+                $hasil = trim($this->penyebut($nilai));
             }
             return $hasil;
         }
+        
 
     public function store(Request $request)
     {

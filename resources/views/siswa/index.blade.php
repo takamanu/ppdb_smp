@@ -95,29 +95,29 @@
                     <div class="card max-card-size">
 
                         <form class="row g-3" action="{{ route('payment.store') }}" method="post">
-    @csrf
-    @if (empty($payment))
-        <img src="/images/centang_belum.png" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Pembayaran</h5>
-            <button type="submit" class="btn btn-danger btn-sm btn-block">Belum bayar</button>
-        </div>
-    @elseif ($payment->status_payment !== 2 && $payment->status !== 2)
-        <img src="/images/centang_belum.png" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Pembayaran</h5>
-            <p class="card-text">
-                <a href="/bayar" class="btn btn-danger btn-sm btn-block">Selesaikan pembayaran</a>
-            </p>
-        </div>
-    @else
-        <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Pembayaran</h5>
-            <button class="btn btn-success btn-sm btn-block" disabled>Sudah bayar</button>
-        </div>
-    @endif
-</form>
+                            @csrf
+                            @if (empty($payment))
+                                <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pembayaran</h5>
+                                    <button type="submit" class="btn btn-danger btn-sm btn-block">Belum bayar</button>
+                                </div>
+                            @elseif ($payment->status_payment !== 2 && $payment->status !== 2)
+                                <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pembayaran</h5>
+                                    <p class="card-text">
+                                        <a href="/bayar" class="btn btn-danger btn-sm btn-block">Selesaikan pembayaran</a>
+                                    </p>
+                                </div>
+                            @else
+                                <img src="/images/centang_sudah.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pembayaran</h5>
+                                    <button class="btn btn-success btn-sm btn-block" disabled>Sudah bayar</button>
+                                </div>
+                            @endif
+                        </form>
 
 
                     </div>
