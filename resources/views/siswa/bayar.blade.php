@@ -56,7 +56,7 @@
                         // Redirect after 3 seconds
                         setTimeout(function() {
                             window.location.href = "/siswa";
-                        }, 3000);
+                        }, 500);
                     });
                 },
                 onPending: function(result) {
