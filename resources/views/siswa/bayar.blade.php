@@ -51,12 +51,10 @@
                         icon: 'success',
                         title: 'Pembayaran kamu berhasil!',
                         showConfirmButton: false,
-                        timer: 3000 // Display for 3 seconds
+                        timer: 1500 // Display for 3 seconds
                     }).then(function() {
                         // Redirect after 3 seconds
-                        setTimeout(function() {
-                            window.location.href = "/siswa";
-                        }, 500);
+                        window.location.href = "/siswa";
                     });
                 },
                 onPending: function(result) {
