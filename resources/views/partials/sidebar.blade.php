@@ -74,16 +74,31 @@
                         href="/agen">Daftar Siswa</a>
                 @else
                     @if (is_null(Auth::user()->datapokok))
-                        <h6 class="collapse-header">Aktivitas Siswa:</h6>
-                        <a class="collapse-item {{ Request::is('siswa/create') ? 'active' : '' }}"
-                            href="{{ url('siswa/create') }}">Datapokok</a>
-                        <a class="collapse-item {{ Request::is('siswa/pengumuman/' . Auth::user()->id) ? 'active' : '' }}"
-                            href="{{ url('siswa/pengumuman/' . Auth::user()->id) }}">Pengumuman</a>
+                        @if (Config::where('id', 1)->first()->pengumuman == 0)
+                            <h6 class="collapse-header">Aktivitas Siswa:</h6>
+                            <a class="collapse-item {{ Request::is('siswa/create') ? 'active' : '' }}"
+                                href="{{ url('siswa/create') }}">Datapokok</a>
+                            <a class="collapse-item"
+                                href="#" onclick="alert('Pengumuman belum dibuka');">Pengumuman</a> 
+                        @else
+                            <h6 class="collapse-header">Aktivitas Siswa:</h6>
+                            <a class="collapse-item {{ Request::is('siswa/create') ? 'active' : '' }}"
+                                href="{{ url('siswa/create') }}">Datapokok</a>
+                            <a class="collapse-item {{ Request::is('siswa/pengumuman/' . Auth::user()->id) ? 'active' : '' }}"
+                                href="{{ url('siswa/pengumuman/' . Auth::user()->id) }}">Pengumuman</a>  
+                        @endif
                     @else
-                        <h6 class="collapse-header">Aktivitas Siswa:</h6>
-                        {{-- <a class="collapse-item {{ Request::is('siswa/create') ? 'active' : '' }}" href="{{ url('siswa/create') }}">Datapokok</a> --}}
-                        <a class="collapse-item {{ Request::is('siswa/pengumuman/' . Auth::user()->id) ? 'active' : '' }}"
-                            href="{{ url('siswa/pengumuman/' . Auth::user()->id) }}">Pengumuman</a>
+                        @if (Config::where('id', 1)->first()->pengumuman == 0)
+                            <h6 class="collapse-header">Aktivitas Siswa:</h6>
+                            {{-- <a class="collapse-item {{ Request::is('siswa/create') ? 'active' : '' }}" href="{{ url('siswa/create') }}">Datapokok</a> --}}
+                            <a class="collapse-item"
+                                href="#" onclick="alert('Pengumuman belum dibuka');">Pengumuman</a> 
+                        @else
+                            <h6 class="collapse-header">Aktivitas Siswa:</h6>
+                            {{-- <a class="collapse-item {{ Request::is('siswa/create') ? 'active' : '' }}" href="{{ url('siswa/create') }}">Datapokok</a> --}}
+                            <a class="collapse-item {{ Request::is('siswa/pengumuman/' . Auth::user()->id) ? 'active' : '' }}"
+                                href="{{ url('siswa/pengumuman/' . Auth::user()->id) }}">Pengumuman</a>
+                        @endif
                     @endif
                     {{-- <a class="collapse-item {{ Request::is('agen') or (Request::is('agen/[1-99999]') ? 'active' : '') }}"
                         href="/agen">Daftar Siswa</a> --}}

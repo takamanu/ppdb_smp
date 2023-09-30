@@ -138,6 +138,17 @@
                                 </p>
                             </div>
                         </div>
+                    @elseif ($payment->status_payment !== 2 && $payment->status !== 2)
+                        <div class="card max-card-size">
+                            <img src="/images/centang_belum.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Datapokok</h5>
+                                <p class="card-text"><button class="btn btn-warning btn-sm btn-block" disabled>Bayar
+                                        terlebih
+                                        dahulu</button>
+                                </p>
+                            </div>
+                        </div>
                     @elseif ($agen == 'NULL')
                         <div class="card max-card-size">
                             <img src="/images/centang_belum.png" class="card-img-top" alt="...">
