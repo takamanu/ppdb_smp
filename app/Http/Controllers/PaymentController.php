@@ -45,17 +45,15 @@ class PaymentController extends Controller
             \Midtrans\Config::$isSanitized = true;
             // Set 3DS transaction for credit card to true
             \Midtrans\Config::$is3ds = true;
-        
+
             // Obtain the snapToken
             $snapToken = $handle_payment->snapToken;
             // Your code here to use the $snapToken
         }
         $config = Config::where('id', 1)->first();
 
-
         $amount = $config->nominal_pembayaran;
         $nominal = $this->terbilang($amount);
-        
 
         return view('siswa.bayar', compact('snapToken'))->with(['config' => $config, 'nominal' => $nominal]);
     }
@@ -97,49 +95,46 @@ class PaymentController extends Controller
     }
 
     public function penyebut($nilai)
-        {
-            $nilai = abs($nilai);
-            $huruf = ['', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan', 'sepuluh', 'sebelas'];
-            $temp = '';
-            if ($nilai < 12) {
-                $temp = ' ' . $huruf[$nilai];
-            } elseif ($nilai < 20) {
-                $temp = penyebut($nilai - 10) . ' belas';
-            } elseif ($nilai < 100) {
-                $temp = penyebut($nilai / 10) . ' puluh' . penyebut($nilai % 10);
-            } elseif ($nilai < 200) {
-                $temp = ' seratus' . penyebut($nilai - 100);
-            } elseif ($nilai < 1000) {
-                $temp = penyebut($nilai / 100) . ' ratus' . penyebut($nilai % 100);
-            } elseif ($nilai < 2000) {
-                $temp = ' seribu' . penyebut($nilai - 1000);
-            } elseif ($nilai < 1000000) {
-                $temp = penyebut($nilai / 1000) . ' ribu' . penyebut($nilai % 1000);
-            } elseif ($nilai < 1000000000) {
-                $temp = penyebut($nilai / 1000000) . ' juta' . penyebut($nilai % 1000000);
-            } elseif ($nilai < 1000000000000) {
-                $temp = penyebut($nilai / 1000000000) . ' milyar' . penyebut(fmod($nilai, 1000000000));
-            } elseif ($nilai < 1000000000000000) {
-                $temp = penyebut($nilai / 1000000000000) . ' trilyun' . penyebut(fmod($nilai, 1000000000000));
-            }
-            return $temp;
+    {
+        $nilai = abs($nilai);
+        $huruf = ['', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan', 'sepuluh', 'sebelas'];
+        $temp = '';
+        if ($nilai < 12) {
+            $temp = ' ' . $huruf[$nilai];
+        } elseif ($nilai < 20) {
+            $temp = penyebut($nilai - 10) . ' belas';
+        } elseif ($nilai < 100) {
+            $temp = penyebut($nilai / 10) . ' puluh' . penyebut($nilai % 10);
+        } elseif ($nilai < 200) {
+            $temp = ' seratus' . penyebut($nilai - 100);
+        } elseif ($nilai < 1000) {
+            $temp = penyebut($nilai / 100) . ' ratus' . penyebut($nilai % 100);
+        } elseif ($nilai < 2000) {
+            $temp = ' seribu' . penyebut($nilai - 1000);
+        } elseif ($nilai < 1000000) {
+            $temp = penyebut($nilai / 1000) . ' ribu' . penyebut($nilai % 1000);
+        } elseif ($nilai < 1000000000) {
+            $temp = penyebut($nilai / 1000000) . ' juta' . penyebut($nilai % 1000000);
+        } elseif ($nilai < 1000000000000) {
+            $temp = penyebut($nilai / 1000000000) . ' milyar' . penyebut(fmod($nilai, 1000000000));
+        } elseif ($nilai < 1000000000000000) {
+            $temp = penyebut($nilai / 1000000000000) . ' trilyun' . penyebut(fmod($nilai, 1000000000000));
         }
+        return $temp;
+    }
 
-        public function terbilang($nilai)
-        {
-            if ($nilai < 0) {
-                $hasil = 'minus ' . trim($this->penyebut($nilai));
-            } else {
-                $hasil = trim($this->penyebut($nilai));
-            }
-            return $hasil;
+    public function terbilang($nilai)
+    {
+        if ($nilai < 0) {
+            $hasil = 'minus ' . trim($this->penyebut($nilai));
+        } else {
+            $hasil = trim($this->penyebut($nilai));
         }
-        
+        return $hasil;
+    }
 
     public function store(Request $request)
     {
-        
-
         $id = Auth::user()->id;
         $payment = Payment::where('user_id', 3)
             ->where('status_payment', 2)
