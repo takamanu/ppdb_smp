@@ -94,7 +94,7 @@
                 <div class="col d-flex justify-content-center">
                     <div class="card max-card-size">
 
-                        <form class="row g-3" action="{{ route('payment.store') }}" method="post">
+                        <form action="{{ route('payment.store') }}" method="post">
                             @csrf
                             @if (empty($payment))
                                 <img src="/images/centang_belum.png" class="card-img-top" alt="...">
@@ -123,6 +123,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="col d-flex justify-content-center">
 
                 {{-- <h5 class="card-title">Datapokok</h5> --}}
