@@ -14,7 +14,7 @@
             <thead>
                 <tr>
                     <th>Rp</th>
-                    <th>{{ $config->nominal_pembayaran}}</th>
+                    <th>{{ $config->nominal_pembayaran }}</th>
                     {{-- <th>Tanggal Berakhir</th> --}}
                 </tr>
             </thead>
@@ -31,7 +31,7 @@
                 </tr>
             </tbody>
         </table>
-        <button type="button" id="pay-button" class="btn btn-success btn-block" >Bayar biaya registrasi</a>
+        <button type="button" id="pay-button" class="btn btn-success btn-block">Bayar biaya registrasi</a>
 
     </div>
     <hr>
@@ -41,30 +41,36 @@
     <script type="text/javascript">
         // For example trigger on button clicked, or any time you need
         var payButton = document.getElementById('pay-button');
-        payButton.addEventListener('click', function () {
+        payButton.addEventListener('click', function() {
             // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-            window.snap.pay('{{$snapToken}}', {
-            onSuccess: function(result){
-                /* You may add your own implementation here */
-                alert("payment success! anjing"); console.log(result);
-                window.location.href = "/siswa";
-            },
-            onPending: function(result){
-                /* You may add your own implementation here */
-                alert("wating your payment!"); console.log(result);
-            },
-            onError: function(result){
-                /* You may add your own implementation here */
-                alert("payment failed!"); console.log(result);
-            },
-            onClose: function(){
-                /* You may add your own implementation here */
-                alert('you closed the popup without finishing the payment');
-            }
+            window.snap.pay('{{ $snapToken }}', {
+                onSuccess: function(result) {
+                    /* You may add your own implementation here */
+                    // alert("payment success! anjing"); console.log(result);
+                    Swal.fire(
+                        'Good job!',
+                        'You clicked the button!',
+                        'success'
+                    )
+                    window.location.href = "/siswa";
+                },
+                onPending: function(result) {
+                    /* You may add your own implementation here */
+                    alert("wating your payment!");
+                    console.log(result);
+                },
+                onError: function(result) {
+                    /* You may add your own implementation here */
+                    alert("payment failed!");
+                    console.log(result);
+                },
+                onClose: function() {
+                    /* You may add your own implementation here */
+                    alert('you closed the popup without finishing the payment');
+                }
             })
         });
-        </script>
-        <script type="text/javascript"
-        src="https://app.sandbox.midtrans.com/snap/snap.js"
+    </script>
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
         data-client-key="{{ config('midtrans.client_key') }}"></script>
 @endsection
