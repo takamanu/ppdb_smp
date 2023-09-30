@@ -51,9 +51,13 @@
                         icon: 'success',
                         title: 'Pembayaran kamu berhasil!',
                         showConfirmButton: false,
-                        timer: 2000
-                    })
-                    window.location.href = "/siswa";
+                        timer: 3000 // Display for 3 seconds
+                    }).then(function() {
+                        // Redirect after 3 seconds
+                        setTimeout(function() {
+                            window.location.href = "/siswa";
+                        }, 3000);
+                    });
                 },
                 onPending: function(result) {
                     /* You may add your own implementation here */
@@ -69,7 +73,7 @@
                     /* You may add your own implementation here */
                     alert('you closed the popup without finishing the payment');
                 }
-            })
+            });
         });
     </script>
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"

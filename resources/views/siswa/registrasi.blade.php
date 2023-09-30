@@ -12,7 +12,7 @@
                         <td><label for="ijazah" class="form-label">Ijazah</label></td>
                         <td>
                             <input type="file" class="form-control @error('ijazah') is-invalid @enderror" id="ijazah"
-                                name="ijazah">
+                                name="ijazah" accept=".pdf,.docx">
                             @error('ijazah')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -24,7 +24,7 @@
                         <td>
                             <input type="file"
                                 class="form-control @error('surat_pernyataan_bermaterai') is-invalid @enderror"
-                                id="surat_pernyataan_bermaterai" name="surat_pernyataan_bermaterai" >
+                                id="surat_pernyataan_bermaterai" name="surat_pernyataan_bermaterai" accept=".pdf,.docx">
                             @error('surat_pernyataan_bermaterai')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -37,7 +37,7 @@
                             <input type="file"
                                 class="form-control @error('surat_keterangan_siswa_aktif_sd_asal') is-invalid @enderror"
                                 id="surat_keterangan_siswa_aktif_sd_asal" name="surat_keterangan_siswa_aktif_sd_asal"
-                                >
+                                accept=".pdf,.docx">
                             @error('surat_keterangan_siswa_aktif_sd_asal')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -47,7 +47,7 @@
                         <td><label for="pasfoto" class="form-label">Pasfoto</label></td>
                         <td>
                             <input type="file" class="form-control @error('pasfoto') is-invalid @enderror" id="pasfoto"
-                                name="pasfoto">
+                                name="pasfoto" accept=".jpg,.jpeg,.png">
                             @error('pasfoto')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -57,7 +57,7 @@
                         <td><label for="akta_kelahiran" class="form-label">Akta Kelahiran</label></td>
                         <td>
                             <input type="file" class="form-control @error('akta_kelahiran') is-invalid @enderror"
-                                id="akta_kelahiran" name="akta_kelahiran" >
+                                id="akta_kelahiran" name="akta_kelahiran" accept=".pdf,.docx">
                             @error('akta_kelahiran')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -67,7 +67,7 @@
                         <td><label for="kk" class="form-label">Kartu Keluarga (KK)</label></td>
                         <td>
                             <input type="file" class="form-control @error('kk') is-invalid @enderror" id="kk"
-                                name="kk" >
+                                name="kk" accept=".pdf,.docx">
                             @error('kk')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
