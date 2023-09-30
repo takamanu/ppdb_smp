@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Agen;
+use App\Models\Config;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -17,7 +18,9 @@ class ProfileController extends Controller
     public function index()
     {
         $agen = Agen::find(auth()->user()->id);
-        return view('profile.index')->with('agen', $agen);
+        $config = Config::where('id', 1)->first();
+
+        return view('profile.index')->with(['agen'=> $agen, 'config' => $config]);
         
     }
 
@@ -62,7 +65,8 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $agen = Agen::find(auth()->user()->id);
-        return view('profile.edit')->with('agen', $agen);
+        $config = Config::where('id', 1)->first();
+        return view('profile.edit')->with(['agen'=> $agen, 'config' => $config]);
     }
 
     /**
@@ -77,6 +81,8 @@ class ProfileController extends Controller
         $agen = Agen::find(auth()->user()->id);
         // $valipass = $request->query('password');
         $valipass = $request->password;
+        $config = Config::where('id', 1)->first();
+
         // console.log($valipass);
         // console.log
         // if(Hash::check($valipass, $agen->password) == true) {
@@ -108,11 +114,11 @@ class ProfileController extends Controller
             }
         } else {
         
-            return redirect('profile')->with('flash_message_error', 'Profil gagal diperbarui karena password lama salah!');
+            return redirect('profile')->with(['flash_message_error' => 'Profil gagal diperbarui karena password lama salah!', 'config' => $config]);
         
         }
         
-        return redirect('profile')->with('flash_message_error', 'Gagal memperbarui, kontak admin untuk masalah ini.');
+        return redirect('profile')->with(['flash_message_error' => 'Gagal memperbarui, kontak admin untuk masalah ini.', 'config' => $config]);
     }
 
     /**
