@@ -119,7 +119,7 @@ class RegistrasiUlangController extends Controller
     //     }
     public function store(Request $request)
     {   
-        return $request;
+        // return $request;
         
         $user = auth()->user()->id;
         $auth = auth()->user();
