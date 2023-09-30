@@ -47,140 +47,140 @@ class RegistrasiUlangController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function store(Request $request)
-        {
-            // Retrieve the authenticated user
-            $user = auth()->user();
-            $config = Config::find(1); // Assuming 'Config' is your model for configuration data
+    //  public function store(Request $request)
+    //     {
+    //         // Retrieve the authenticated user
+    //         $user = auth()->user();
+    //         $config = Config::find(1); // Assuming 'Config' is your model for configuration data
 
-            // Check if the user has already submitted files
-            if (!is_null($user->registrasi_ulang)) {
-                return abort(403, 'Unauthorized');
-            }
+    //         // Check if the user has already submitted files
+    //         if (!is_null($user->registrasi_ulang)) {
+    //             return abort(403, 'Unauthorized');
+    //         }
 
-            // Define validation rules
-            $validator = Validator::make($request->all(), [
-                'ijazah' => 'required|mimes:pdf,docx',
-                'surat_pernyataan_bermaterai' => 'required|mimes:pdf,docx',
-                'surat_keterangan_siswa_aktif_sd_asal' => 'required|mimes:pdf,docx',
-                'pasfoto' => 'required|image|mimes:jpg,jpeg,png',
-                'akta_kelahiran' => 'required|mimes:pdf,docx',
-                'kk' => 'required|mimes:pdf,docx',
-            ]);
+    //         // Define validation rules
+    //         $validator = Validator::make($request->all(), [
+    //             'ijazah' => 'required|mimes:pdf,docx',
+    //             'surat_pernyataan_bermaterai' => 'required|mimes:pdf,docx',
+    //             'surat_keterangan_siswa_aktif_sd_asal' => 'required|mimes:pdf,docx',
+    //             'pasfoto' => 'required|image|mimes:jpg,jpeg,png',
+    //             'akta_kelahiran' => 'required|mimes:pdf,docx',
+    //             'kk' => 'required|mimes:pdf,docx',
+    //         ]);
 
-            if ($validator->fails()) {
-                return redirect()->back()
-                    ->withErrors($validator)
-                    ->withInput();
-            }
+    //         if ($validator->fails()) {
+    //             return redirect()->back()
+    //                 ->withErrors($validator)
+    //                 ->withInput();
+    //         }
 
-            try {
-                // Start a database transaction
-                DB::beginTransaction();
+    //         try {
+    //             // Start a database transaction
+    //             DB::beginTransaction();
 
-                // Store the uploaded files
-                $uploadedFiles = [];
-                foreach ($request->allFiles() as $key => $file) {
-                    $path = $file->store('uploads'); // Store files in the 'uploads' directory
-                    $uploadedFiles[$key] = $path;
-                }
+    //             // Store the uploaded files
+    //             $uploadedFiles = [];
+    //             foreach ($request->allFiles() as $key => $file) {
+    //                 $path = $file->store('uploads'); // Store files in the 'uploads' directory
+    //                 $uploadedFiles[$key] = $path;
+    //             }
 
-                // Create a record in the database with the file paths
-                RegistrasiUlang::create([
-                    'user_id' => $user->id,
-                    'ijazah' => $uploadedFiles['ijazah'],
-                    'surat_pernyataan_bermaterai' => $uploadedFiles['surat_pernyataan_bermaterai'],
-                    'surat_keterangan_siswa_aktif_sd_asal' => $uploadedFiles['surat_keterangan_siswa_aktif_sd_asal'],
-                    'pasfoto' => $uploadedFiles['pasfoto'],
-                    'akta_kelahiran' => $uploadedFiles['akta_kelahiran'],
-                    'kk' => $uploadedFiles['kk'],
-                ]);
+    //             // Create a record in the database with the file paths
+    //             RegistrasiUlang::create([
+    //                 'user_id' => $user->id,
+    //                 'ijazah' => $uploadedFiles['ijazah'],
+    //                 'surat_pernyataan_bermaterai' => $uploadedFiles['surat_pernyataan_bermaterai'],
+    //                 'surat_keterangan_siswa_aktif_sd_asal' => $uploadedFiles['surat_keterangan_siswa_aktif_sd_asal'],
+    //                 'pasfoto' => $uploadedFiles['pasfoto'],
+    //                 'akta_kelahiran' => $uploadedFiles['akta_kelahiran'],
+    //                 'kk' => $uploadedFiles['kk'],
+    //             ]);
 
-                // Commit the database transaction
-                DB::commit();
+    //             // Commit the database transaction
+    //             DB::commit();
 
-                // Redirect with a success message
-                return redirect('/siswa/pengumuman/' . $user->id)
-                    ->with([
-                        'success' => 'Files uploaded successfully.',
-                        'config' => $config,
-                    ]);
-            } catch (\Exception $e) {
-                // Rollback the database transaction on error
-                DB::rollback();
+    //             // Redirect with a success message
+    //             return redirect('/siswa/pengumuman/' . $user->id)
+    //                 ->with([
+    //                     'success' => 'Files uploaded successfully.',
+    //                     'config' => $config,
+    //                 ]);
+    //         } catch (\Exception $e) {
+    //             // Rollback the database transaction on error
+    //             DB::rollback();
 
-                // Log the error for debugging (you can customize this)
-                Log::error('File upload error: ' . $e->getMessage());
+    //             // Log the error for debugging (you can customize this)
+    //             Log::error('File upload error: ' . $e->getMessage());
 
-                // Redirect with an error message
-                return redirect()->back()
-                    ->with('error', 'An error occurred while processing your request. Please try again later.');
-            }
-        }
-    // public function store(Request $request)
-    // {   
+    //             // Redirect with an error message
+    //             return redirect()->back()
+    //                 ->with('error', 'An error occurred while processing your request. Please try again later.');
+    //         }
+    //     }
+    public function store(Request $request)
+    {   
         
-    //     $user = auth()->user()->id;
-    //     $auth = auth()->user();
-    //     $config = Config::where('id', 1)->first();
+        $user = auth()->user()->id;
+        $auth = auth()->user();
+        $config = Config::where('id', 1)->first();
 
 
-    //     if (!is_null($auth->registrasi_ulang)){
-    //         return abort(403, 'Unauthorized');
+        if (!is_null($auth->registrasi_ulang)){
+            return abort(403, 'Unauthorized');
 
-    //     }
+        }
 
-    //     $user = auth()->user()->id;
-    //     $siswa = Datapokok::where('user_id', $user)->first();
+        $user = auth()->user()->id;
+        $siswa = Datapokok::where('user_id', $user)->first();
 
-    //     $usess = User::find(Auth::user()->id);
-    //     // dd($usess->datapokok);
-    //     $request->validate([
-    //         'ijazah' => 'required|mimes:pdf,docx',
-    //         'surat_pernyataan_bermaterai' => 'required|mimes:pdf,docx',
-    //         'surat_keterangan_siswa_aktif_sd_asal' => 'required|mimes:pdf,docx',
-    //         'pasfoto' => 'required|image|mimes:jpg,jpeg,png',
-    //         'akta_kelahiran' => 'required|mimes:pdf,docx',
-    //         'kk' => 'required|mimes:pdf,docx',
-    //     ]);
-    //     // return $siswa;
+        $usess = User::find(Auth::user()->id);
+        // dd($usess->datapokok);
+        $request->validate([
+            'ijazah' => 'required|mimes:pdf,docx',
+            'surat_pernyataan_bermaterai' => 'required|mimes:pdf,docx',
+            'surat_keterangan_siswa_aktif_sd_asal' => 'required|mimes:pdf,docx',
+            'pasfoto' => 'required|image|mimes:jpg,jpeg,png',
+            'akta_kelahiran' => 'required|mimes:pdf,docx',
+            'kk' => 'required|mimes:pdf,docx',
+        ]);
+        // return $siswa;
 
-    //     // Store the uploaded files
-    //     $uploadedFiles = [];
-    //     // return $user->datapokok;
-    //     // $agen = $user->datapokok;
-    //     // return $agen;'
-    //     $agen = '';
-    //     $date_now = date('Y-m-d H:i:s');
+        // Store the uploaded files
+        $uploadedFiles = [];
+        // return $user->datapokok;
+        // $agen = $user->datapokok;
+        // return $agen;'
+        $agen = '';
+        $date_now = date('Y-m-d H:i:s');
 
-    //     if (is_null($siswa)) {
-    //         $agen = 'NULL'; // Set a default value or any other value you want to use
-    //     }
+        if (is_null($siswa)) {
+            $agen = 'NULL'; // Set a default value or any other value you want to use
+        }
 
-    //     foreach ($request->allFiles() as $key => $file) {
-    //         $path = $file->store('uploads'); // Store files in the 'uploads' directory
+        foreach ($request->allFiles() as $key => $file) {
+            $path = $file->store('uploads'); // Store files in the 'uploads' directory
 
-    //         $uploadedFiles[$key] = $path;
-    //     }
+            $uploadedFiles[$key] = $path;
+        }
 
-    //     // Create a record in the database with the file paths
-    //     RegistrasiUlang::create([
-    //         'user_id' => auth()->user()->id,
-    //         'ijazah' => $uploadedFiles['ijazah'],
-    //         'surat_pernyataan_bermaterai' => $uploadedFiles['surat_pernyataan_bermaterai'],
-    //         'surat_keterangan_siswa_aktif_sd_asal' => $uploadedFiles['surat_keterangan_siswa_aktif_sd_asal'],
-    //         'pasfoto' => $uploadedFiles['pasfoto'],
-    //         'akta_kelahiran' => $uploadedFiles['akta_kelahiran'],
-    //         'kk' => $uploadedFiles['kk'],
-    //     ]);
+        // Create a record in the database with the file paths
+        RegistrasiUlang::create([
+            'user_id' => auth()->user()->id,
+            'ijazah' => $uploadedFiles['ijazah'],
+            'surat_pernyataan_bermaterai' => $uploadedFiles['surat_pernyataan_bermaterai'],
+            'surat_keterangan_siswa_aktif_sd_asal' => $uploadedFiles['surat_keterangan_siswa_aktif_sd_asal'],
+            'pasfoto' => $uploadedFiles['pasfoto'],
+            'akta_kelahiran' => $uploadedFiles['akta_kelahiran'],
+            'kk' => $uploadedFiles['kk'],
+        ]);
 
-    //     // Redirect with a success message
-    //     return redirect('/siswa/pengumuman/' . $siswa->user_id)
-    //         ->with(['siswa' => $siswa,
-    //         'agen' => $agen,
-    //         'success' => 'Files uploaded successfully.',
-    //         'config' =>$config]);
-    // }
+        // Redirect with a success message
+        return redirect('/siswa/pengumuman/' . $siswa->user_id)
+            ->with(['siswa' => $siswa,
+            'agen' => $agen,
+            'success' => 'Files uploaded successfully.',
+            'config' =>$config]);
+    }
 
     /**
      * Display the specified resource.
