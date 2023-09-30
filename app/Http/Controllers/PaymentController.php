@@ -56,7 +56,7 @@ class PaymentController extends Controller
 
         $config = Config::where('id', 1)->first();
 
-        return view('siswa.bayar', compact('snapToken'))->with(['config' => $config, 'nominal' => nominal]);
+        return view('siswa.bayar', compact('snapToken'))->with(['config' => $config, 'nominal' => $nominal]);
     }
 
     public function index()
