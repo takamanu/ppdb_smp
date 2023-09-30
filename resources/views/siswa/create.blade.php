@@ -494,7 +494,7 @@
                                                         <input id="hubungan_dengan_siswa" type="text"
                                                             class="form-control @error('hubungan_dengan_siswa') is-invalid @enderror"
                                                             name="hubungan_dengan_siswa"
-                                                            value="{{ old('hubungan_dengan_siswa') }}" required
+                                                            value="{{ old('hubungan_dengan_siswa') }}"
                                                             placeholder="Hubungan dengan Siswa">
                                                         @error('hubungan_dengan_siswa')
                                                             <span class="invalid-feedback" role="alert">
@@ -648,7 +648,7 @@
                                                             name="nama_sekolahnya_jika_daftar"
                                                             value="{{ old('nama_sekolahnya_jika_daftar') }}"
                                                             placeholder="Nama Sekolah Jika Daftar Lain"
-                                                            {{ old('daftar_sekolah_lain') ? '' : 'disabled' }} required>
+                                                            {{ old('daftar_sekolah_lain') ? '' : 'disabled' }}>
                                                         @error('nama_sekolahnya_jika_daftar')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -901,7 +901,7 @@
                                     </div>
                                 </div> --}}
 
-                                                <button type="submit"
+                                                <button type="submit" onclick="return confirm(&quot;Apakah anda sudah yakin dengan data yang akan anda submit?&quot;)"
                                                     class="btn btn-primary btn-block">{{ __('Tambah') }}</button>
                                                 <a href="{{ url()->previous() }}"
                                                     class="btn btn-danger btn-block">Back</a>
