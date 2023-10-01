@@ -53,7 +53,7 @@ class AgenController extends Controller
 
     public function index(Request $request)
     {
-        $this->get_user_with_all_registerd_account();
+        // $this->get_user_with_all_registerd_account();
         //
         // return view('user.index', [
         //     'users' => DB::table('users')->paginate(15)
