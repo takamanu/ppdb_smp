@@ -32,19 +32,19 @@ class AgenController extends Controller
         $cari = $request->query('cari');
 
         if(!empty($cari)){
-            $dataagen = Agen::where('name','like',"%".$cari."%")
+            $dataagen = User::where('name','like',"%".$cari."%")
                 ->sortable()
                 ->paginate(5);
 //
         }else{
-            $dataagen = Agen::sortable()->paginate(5);
+            $dataagen = User::sortable()->paginate(5);
         }
         return view('agen.index')->with([
             'agen' => $dataagen,
             'cari' => $cari,
         ]);
 
-        $dataagen = Agen::paginate(5);
+        $dataagen = User::paginate(5);
         return view ('agen.index')->with([
             'agen' => $dataagen,
 

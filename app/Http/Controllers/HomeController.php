@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Config as ModelsConfig;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use PSpell\Config;
 
 class HomeController extends Controller
@@ -45,8 +47,19 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    
+    public function count_paid_and_filled_datapokok(){
+        return $users = DB::table('users')
+                ->join('payments', 'users.id', '=', 'payments.user_id')
+                ->join('datapokok', 'users.id', '=', 'datapokok.user_id')
+                ->select('users.*', 'payments.*', 'datapokok.*')
+                ->where('payments.status',2)
+                ->count();
+    }
+    
     public function index()
     {
+
         $userData = auth()->user()->id;
 
         $date = Carbon::now();
@@ -183,7 +196,8 @@ class HomeController extends Controller
             'keluarBulan' => json_encode($keluarBulan, JSON_NUMERIC_CHECK),
             'saldoTahun' => json_encode($saldoTahun, JSON_NUMERIC_CHECK),
             'masukTahun' => json_encode($masukTahun, JSON_NUMERIC_CHECK),
-            'keluarTahun' => json_encode($keluarTahun, JSON_NUMERIC_CHECK)
+            'keluarTahun' => json_encode($keluarTahun, JSON_NUMERIC_CHECK),
+            'count' => $this->count_paid_and_filled_datapokok()
         ]);
     }
 

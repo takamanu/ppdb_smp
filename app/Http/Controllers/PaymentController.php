@@ -67,7 +67,7 @@ class PaymentController extends Controller
             ->first();
 
         if ($payment) {
-            return abort(403, 'Unauthorized');
+            return abort(404, 'Not Found');
         }
 
         return view('midtrans');
@@ -144,7 +144,7 @@ class PaymentController extends Controller
             ->first();
 
         if ($payment) {
-            return abort(403, 'Unauthorized');
+            return abort(404, 'Not Found');
         }
 
         \Midtrans\Config::$serverKey = config('midtrans.server_key');

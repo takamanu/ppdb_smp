@@ -48,8 +48,29 @@ class SiswaController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function check_payment(){
+        $userData = auth()->user();
+        if (!is_null($userData->payment))
+        {
+           $test = Payment::where('user_id',Auth::user()->id)
+                    ->where('status_payment',2)
+                    ->where('status',2)
+                    ->first();
+            if (!$test){
+                return abort(404, 'Not Found');
+            }
+        }
+    }
+
     public function create()
-    {
+    {   
+        $this->check_payment();
+        $userData = auth()->user();
+        if (!is_null($userData->datapokok))
+        {
+            return abort(404, 'Not Found');
+        }
+
         $config = Config::where('id', 1)->first();        
         
         return view('siswa.create')->with('config', $config);
@@ -68,7 +89,7 @@ class SiswaController extends Controller
 
         if (!is_null($userData->datapokok))
         {
-            return abort(403, 'Unauthorized');
+            return abort(404, 'Not Found');
         }
         
         

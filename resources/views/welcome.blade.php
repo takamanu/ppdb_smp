@@ -44,7 +44,7 @@
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Total Siswa yang mendaftar</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <h2>NULL</h2>
+                                <h2>{{ $count }}</h2>
                             </div>
                         </div>
                         <div class="col-auto">
