@@ -92,12 +92,11 @@ class SiswaController extends Controller
             return abort(404, 'Not Found');
         }
         
-        
         $daftarSekolahLain = $request->input('daftar_sekolah_lain');
         $namaSekolahJikaDaftar = $request->input('nama_sekolahnya_jika_daftar');
 
         // If the checkbox is not checked and the field is not filled, set a default value
-        if (!$daftarSekolahLain && empty($namaSekolahJikaDaftar)) {
+        if (!$daftarSekolahLain || empty($namaSekolahJikaDaftar)) {
             $namaSekolahJikaDaftar = 'None';
             $daftarSekolahLain = 0;
         }
