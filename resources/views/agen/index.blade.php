@@ -53,8 +53,8 @@
                                         <td> 
                                             @if ($item->payment == "[]")
                                                 Belum bayar
-                                            @elseif ($item->payment->status_payment !== 2 && $item->payment->status !== 2)
-                                                Proses bayar
+                                            {{-- @elseif ($item->payment->status_payment !== 2 && $item->payment->status !== 2)
+                                                Proses bayar --}}
                                             @else
                                                 Selesai bayar
                                             @endif
