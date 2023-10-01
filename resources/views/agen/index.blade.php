@@ -36,6 +36,8 @@
                                         <th>No</th>
                                         <th>@sortablelink('name', 'Nama')</th>
                                         <th>@sortablelink('email', 'Email')</th>
+                                        <th>Status Bayar</th>
+                                        <th>Status Datapokok</th>
                                         <th>Tanggal Dibuat</th>
                                         {{-- <th>Tanggal Diupdate</th> --}}
                                         {{-- <th>Role</th> --}}
@@ -48,6 +50,8 @@
                                         <td>{{ $agen->firstItem() + $key }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
+                                        <td> {{ $item->payment }}</td>
+                                        <td> {{ $item->datapokok }}</td>
                                         <td>{{ $item->created_at }}</td>
                                         {{-- <td>{{ $item->updated_at }}</td> --}}
                                         {{-- <td>{{ $item->role }}</td> --}}

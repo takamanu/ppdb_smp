@@ -60,8 +60,6 @@ class AgenController extends Controller
         // ]);
         $cari = $request->query('cari');
 
-        $user = User::all();
-
 
         if(!empty($cari)){
             $dataagen = User::where('name','like',"%".$cari."%")
@@ -74,15 +72,12 @@ class AgenController extends Controller
         return view('agen.index')->with([
             'agen' => $dataagen,
             'cari' => $cari,
-            'user' => $user
 
         ]);
 
         $dataagen = User::paginate(5);
         return view ('agen.index')->with([
             'agen' => $dataagen,
-            'user' => $user
-
         ]);
     }
 
