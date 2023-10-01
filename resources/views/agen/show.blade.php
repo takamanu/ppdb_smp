@@ -234,7 +234,7 @@
                     <tbody>
                         <tr>
                             <th>Ijazah</th>
-                            <td><a href="{{ asset('storage/app/'. $user->registrasi_ulang->ijazah) }}">{{ $user->registrasi_ulang->ijazah }}</a></td>
+                            <td><a href="{{ asset('storage/app/'. $user->registrasi_ulang->ijazah) }}" download>{{ $user->registrasi_ulang->ijazah }}</a></td>
                         </tr>
                         <tr>
                             <th>Surat Pernyataan Bermaterai</th>
