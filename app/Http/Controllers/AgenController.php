@@ -22,8 +22,38 @@ class AgenController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function get_user_with_all_paid(){
+        $users = DB::table('users')
+                ->join('payments', 'users.id', '=', 'payments.user_id')
+                ->join('datapokok', 'users.id', '=', 'datapokok.user_id')
+                ->select('users.*', 'payments.*', 'datapokok.*')
+                ->where('payments.status',2)
+                ->where('users.role',1)
+                ->get();
+    }
+
+    public function get_user_with_all_paid_and_datapokok(){
+        $users = DB::table('users')
+                ->join('payments', 'users.id', '=', 'payments.user_id')
+                ->join('datapokok', 'users.id', '=', 'datapokok.user_id')
+                ->select('users.*', 'payments.*', 'datapokok.*')
+                ->where('payments.status',2)
+                ->where('users.role',1)
+                ->where('datapokok.user_id','!=',NULL)
+                ->get();
+        // dd($users);
+    }
+
+    public function get_user_with_all_registerd_account(){
+        $users = DB::table('users')
+                ->where('users.role',1)
+                ->get();
+        dd($users);
+    }
+
     public function index(Request $request)
     {
+        $this->get_user_with_all_registerd_account();
         //
         // return view('user.index', [
         //     'users' => DB::table('users')->paginate(15)
@@ -34,12 +64,12 @@ class AgenController extends Controller
 
 
         if(!empty($cari)){
-            $dataagen = Agen::where('name','like',"%".$cari."%")
+            $dataagen = User::where('name','like',"%".$cari."%")
                 ->sortable()
                 ->paginate(5);
 //
         }else{
-            $dataagen = Agen::sortable()->paginate(5);
+            $dataagen = User::sortable()->paginate(5);
         }
         return view('agen.index')->with([
             'agen' => $dataagen,
@@ -48,7 +78,7 @@ class AgenController extends Controller
 
         ]);
 
-        $dataagen = Agen::paginate(5);
+        $dataagen = User::paginate(5);
         return view ('agen.index')->with([
             'agen' => $dataagen,
             'user' => $user

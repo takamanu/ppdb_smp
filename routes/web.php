@@ -72,9 +72,7 @@ Route::middleware(['auth'])->group(function(){
     // Route::post('/siswa/registrasi/create', [SiswaController::class, 'storeRegistrasiUlang']);
     Route::resource('/persediaan', StockController::class);
     Route::resource('/produk', ProdukController::class);
-    Route::get('/config', [ConfigController::class, 'index']);
-    Route::get('/config/edit', [ConfigController::class, 'edit']);
-    Route::put('/config/update', [ConfigController::class, 'update']);
+
     // Route::resource('/register', RegistersUsers::class);
     Route::resource('/profile', ProfileController::class);
     Route::resource('/registrasi_ulang', RegistrasiUlangController::class);
@@ -91,6 +89,9 @@ Route::middleware(['admin:1'])->group(function(){
 Route::middleware(['admin:0'])->group(function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('/agen', AgenController::class);
+    Route::get('/config', [ConfigController::class, 'index']);
+    Route::get('/config/edit', [ConfigController::class, 'edit']);
+    Route::put('/config/update', [ConfigController::class, 'update']);
 });
 
 
