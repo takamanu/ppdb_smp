@@ -11,6 +11,8 @@ use App\Models\Policy;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Models\Datapokok;
+use App\Models\RegistrasiUlang;
+use Illuminate\Support\Facades\Auth;
 
 date_default_timezone_set('Asia/Jakarta');
 
@@ -181,9 +183,30 @@ class AgenController extends Controller
      */
     public function show($id)
     {
-        // $agen = Datapokok::where('user_id', $id)->first();
+
+        $agen = Datapokok::where('user_id', $id)->first();
         $user = User::where('id', $id)->first();
         $agen = $user->datapokok;
+        $registrasi_ulang = RegistrasiUlang::where('user_id',14)->first();
+        // dd($registrasi_ulang);
+
+        $data = [];
+        
+
+        $data['ijazah'] = config('app.url') . "/storage/uploads/" . explode("/",$registrasi_ulang->ijazah)[2];
+        $data['surat_pernyataan_bermaterai'] = config('app.url') . "/storage/uploads/" . explode("/",$registrasi_ulang->surat_pernyataan_bermaterai)[2];
+        $data['surat_keterangan_siswa_aktif_sd_asal'] = config('app.url') . "/storage/uploads/" . explode("/",$registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal)[2];
+        $data['pasfoto'] = config('app.url') . "/storage/uploads/" . explode("/",$registrasi_ulang->pasfoto)[2];
+        $data['akta_kelahiran'] = config('app.url') . "/storage/uploads/" . explode("/",$registrasi_ulang->akta_kelahiran)[2];
+        $data['kk'] = config('app.url') . "/storage/uploads/" . explode("/",$registrasi_ulang->kk)[2];
+
+        dd($data);
+
+        // $registrasi_ulang->surat_pernyataan_bermaterai
+
+        // dd( config('app.url') . "/" .$registrasi_ulang->surat_pernyataan_bermaterai);
+
+        // dd($test);
 
         // dd($agen->nilai);
         // $agen = User::where('id', $id)->first();
@@ -194,7 +217,7 @@ class AgenController extends Controller
 
 
         // return $agen;
-        return view('agen.show')->with('agen', $agen);
+        return view('agen.show')->with('agen', $agen,'data',$data);
     }
 
     public function cetak($id)
