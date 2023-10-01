@@ -58,7 +58,7 @@
                                             @else
                                                 Selesai bayar
                                             @endif
-                                            {{ $item->payment }}
+                                            {{-- {{ $item->payment }} --}}
                                         </td>
                                         <td> 
                                             @if (empty($item->datapokok))
