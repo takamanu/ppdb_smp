@@ -23,7 +23,20 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                switch (Auth::guard($guard)->user()->role){
+                    // Redirect Admin Dashboard
+                    case 0:
+                     return redirect('/home');
+                    case 1:
+                     return redirect('/siswa');
+                    break;
+ 
+                   // If need any Roles for example:
+                //    case: 'RoleName':
+                //    return redirect('url');
+                //    break;
+                //    default: return  redirect('/GeneralDashboard');
+                }
             }
         }
 
