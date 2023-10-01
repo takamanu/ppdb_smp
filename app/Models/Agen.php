@@ -17,4 +17,8 @@ class Agen extends Model
 
     public $sortable = ['name', 'email', 'password'];
 
+    public function datapokok() {
+        return $this->hasOne(Datapokok::class);
+    }
+
 }

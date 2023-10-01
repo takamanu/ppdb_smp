@@ -24,12 +24,14 @@ class AgenController extends Controller
 
     public function index(Request $request)
     {
-        
         //
         // return view('user.index', [
         //     'users' => DB::table('users')->paginate(15)
         // ]);
         $cari = $request->query('cari');
+
+        $user = User::all();
+
 
         if(!empty($cari)){
             $dataagen = Agen::where('name','like',"%".$cari."%")
@@ -42,11 +44,14 @@ class AgenController extends Controller
         return view('agen.index')->with([
             'agen' => $dataagen,
             'cari' => $cari,
+            'user' => $user
+
         ]);
 
         $dataagen = Agen::paginate(5);
         return view ('agen.index')->with([
             'agen' => $dataagen,
+            'user' => $user
 
         ]);
     }
@@ -154,7 +159,6 @@ class AgenController extends Controller
         // $agen = Datapokok::where('user_id', $id)->first();
         $user = User::where('id', $id)->first();
         $agen = $user->datapokok;
-
 
         // dd($agen->nilai);
         // $agen = User::where('id', $id)->first();

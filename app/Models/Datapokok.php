@@ -25,6 +25,10 @@ class Datapokok extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function agen() {
+        return $this->belongsTo(Agen::class, 'user_id');
+    }
+
     public function policy(){
         return $this->hasOne(Policy::class);
     }
