@@ -50,8 +50,27 @@
                                         <td>{{ $agen->firstItem() + $key }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
-                                        <td> {{ $item->payment }}</td>
-                                        <td> {{ $item->datapokok }}</td>
+                                        <td> 
+                                            @if (empty($item->payment))
+                                                Belum bayar
+                                            @elseif (is_null($item->payment))
+                                                Belum bayar
+                                            @elseif ($item->$payment->status_payment !== 2 && $item->$payment->status !== 2)
+                                                Proses bayar
+                                            @else
+                                                Selesai bayar
+                                            @endif
+                                        </td>
+                                        <td> 
+                                            @if (empty($item->datapokok))
+                                                Belum isi datapokok
+                                            @elseif (is_null($item->datapokok))
+                                                Belum isi datapokok
+                                            @else
+                                                Isi datapokok
+                                            @endif
+                                            {{ $item->datapokok }}
+                                        </td>
                                         <td>{{ $item->created_at }}</td>
                                         {{-- <td>{{ $item->updated_at }}</td> --}}
                                         {{-- <td>{{ $item->role }}</td> --}}
