@@ -234,37 +234,37 @@
                     <tbody>
                         <tr>
                             <th>Ijazah</th>
-                            <td><a href="../{{ $user->registrasi_ulang->ijazah }}">{{ $user->registrasi_ulang->ijazah }}</a></td>
+                            <td><a href="../storage/{{ $user->registrasi_ulang->ijazah }}">{{ $user->registrasi_ulang->ijazah }}</a></td>
                         </tr>
                         <tr>
                             <th>Surat Pernyataan Bermaterai</th>
                             <td>
-                                <a href="../{{ $user->registrasi_ulang->surat_pernyataan_bermaterai }}">{{ $user->registrasi_ulang->surat_pernyataan_bermaterai }}</a>
+                                <a href="../storage/{{ $user->registrasi_ulang->surat_pernyataan_bermaterai }}">{{ $user->registrasi_ulang->surat_pernyataan_bermaterai }}</a>
                             </td>
                         </tr>
                         <tr>
                             <th>Surat Keterangan Siswa Aktif SD Asal</th>
                             <td>
-                                <a href="../{{ $user->registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal }}">{{ $user->registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal }}</a>
+                                <a href="../storage/{{ $user->registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal }}">{{ $user->registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal }}</a>
 
                             </td>
                         </tr>
                         <tr>
                             <th>Pasfoto</th>
                             <td>
-                                <a href="../{{ $user->registrasi_ulang->pasfoto }}">{{ $user->registrasi_ulang->pasfoto }}</a>
+                                <a href="../storage/{{ $user->registrasi_ulang->pasfoto }}">{{ $user->registrasi_ulang->pasfoto }}</a>
                             </td>
                         </tr>
                         <tr>
                             <th>Akta Kelahiran</th>
                             <td>
-                                <a href="../{{ $user->registrasi_ulang->akta_kelahiran }}">{{ $user->registrasi_ulang->akta_kelahiran }}</a>
+                                <a href="../storage/{{ $user->registrasi_ulang->akta_kelahiran }}">{{ $user->registrasi_ulang->akta_kelahiran }}</a>
                             </td>
                         </tr>
                         <tr>
                             <th>Kartu Keluarga</th>
                             <td>
-                                <a href="../{{ $user->registrasi_ulang->kk }}">{{ $user->registrasi_ulang->kk }}</a>
+                                <a href="../storage/{{ $user->registrasi_ulang->kk }}">{{ $user->registrasi_ulang->kk }}</a>
                             </td>
                         </tr>
                         <!-- Add more rows for other additional information -->
@@ -278,7 +278,7 @@
             <br>
             <div class="row">
                 <div class="col">
-                    <a href="../{{ url()->previous() }}" class="btn btn-danger btn-block">Back</a>
+                    <a href="../storage/{{ url()->previous() }}" class="btn btn-danger btn-block">Back</a>
                 </div>
             </div>
         </div>
