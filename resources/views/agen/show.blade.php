@@ -235,37 +235,37 @@
                     <tbody>
                         <tr>
                             <th>Ijazah</th>
-                            <td><a href="{{ asset('storage/uploads/'. $data['ijazah'] ) }}" download>Link to: {{ $user->registrasi_ulang->ijazah }}</a></td>
+                            <td><a href="{{ asset('storage/uploads/../'. $data['ijazah'] ) }}" download>Link to: {{ $user->registrasi_ulang->ijazah }}</a></td>
                         </tr>
                         <tr>
                             <th>Surat Pernyataan Bermaterai</th>
                             <td>
-                                <a href="{{ asset('storage/uploads/'. $data['surat_pernyataan_bermaterai']) }}" download>Link to: {{ $user->registrasi_ulang->surat_pernyataan_bermaterai }}</a>
+                                <a href="{{ asset('storage/uploads/../'. $data['surat_pernyataan_bermaterai']) }}" download>Link to: {{ $user->registrasi_ulang->surat_pernyataan_bermaterai }}</a>
                             </td>
                         </tr>
                         <tr>
                             <th>Surat Keterangan Siswa Aktif SD Asal</th>
                             <td>
-                                <a href="{{ asset('storage/uploads/'. $data['surat_keterangan_siswa_aktif_sd_asal']) }}" download>Link to: {{ $user->registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal }}</a>
+                                <a href="{{ asset('storage/uploads/../'. $data['surat_keterangan_siswa_aktif_sd_asal']) }}" download>Link to: {{ $user->registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal }}</a>
 
                             </td>
                         </tr>
                         <tr>
                             <th>Pasfoto</th>
                             <td>
-                                <a href="{{ asset('storage/uploads/'. $data['pasfoto']) }}" download>Link to: {{ $user->registrasi_ulang->pasfoto }}</a>
+                                <a href="{{ asset('storage/uploads/../'. $data['pasfoto']) }}" download>Link to: {{ $user->registrasi_ulang->pasfoto }}</a>
                             </td>
                         </tr>
                         <tr>
                             <th>Akta Kelahiran</th>
                             <td>
-                                <a href="{{ asset('storage/uploads/'. $data['akta_kelahiran']) }}" download>Link to: {{ $user->registrasi_ulang->akta_kelahiran }}</a>
+                                <a href="{{ asset('storage/uploads/../'. $data['akta_kelahiran']) }}" download>Link to: {{ $user->registrasi_ulang->akta_kelahiran }}</a>
                             </td>
                         </tr>
                         <tr>
                             <th>Kartu Keluarga</th>
                             <td>
-                                <a href="{{ asset('storage/uploads/'. $data['kk']) }}" download>Link to: {{ $user->registrasi_ulang->kk }}</a>
+                                <a href="{{ asset('storage/uploads/../'. $data['kk']) }}" download>Link to: {{ $user->registrasi_ulang->kk }}</a>
                             </td>
                         </tr>
                         <!-- Add more rows for other additional information -->
