@@ -233,8 +233,8 @@
                 <table class="table table-striped">
                     <tbody>
                         <tr>
-                            <th>Ijazah {{ asset('storage/app/uploads/0XEj5F4b70I0Z9pGD9b6wfzSr839HTee7Ro7pHsX.pdf') }}</th>
-                            <td><a href="../storage/app/{{ $user->registrasi_ulang->ijazah }}">{{ $user->registrasi_ulang->ijazah }}</a></td>
+                            <th>Ijazah</th>
+                            <td><a href="{{ asset('storage/app'. $user->registrasi_ulang->ijazah) }}">{{ $user->registrasi_ulang->ijazah }}</a></td>
                         </tr>
                         <tr>
                             <th>Surat Pernyataan Bermaterai</th>
