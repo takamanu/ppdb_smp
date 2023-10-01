@@ -234,37 +234,37 @@
                     <tbody>
                         <tr>
                             <th>Ijazah</th>
-                            <td>{{ $siswa->registrasi_ulang->ijazah }}</td>
+                            <td>{{ $user->registrasi_ulang->ijazah }}</td>
                         </tr>
                         <tr>
                             <th>Surat Pernyataan Bermaterai</th>
                             <td>
-                                {{ $siswa->registrasi_ulang->surat_pernyataan_bermaterai }}
+                                {{ $user->registrasi_ulang->surat_pernyataan_bermaterai }}
                             </td>
                         </tr>
                         <tr>
                             <th>Surat Keterangan Siswa Aktif SD Asal</th>
                             <td>
-                                {{ $siswa->registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal }}
+                                {{ $user->registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal }}
 
                             </td>
                         </tr>
                         <tr>
                             <th>Pasfoto</th>
                             <td>
-                                {{ $siswa->registrasi_ulang->pasfoto }}
+                                {{ $user->registrasi_ulang->pasfoto }}
                             </td>
                         </tr>
                         <tr>
                             <th>Akta Kelahiran</th>
                             <td>
-                                {{ $siswa->registrasi_ulang->akta_kelahiran }}
+                                {{ $user->registrasi_ulang->akta_kelahiran }}
                             </td>
                         </tr>
                         <tr>
                             <th>Kartu Keluarga</th>
                             <td>
-                                {{ $siswa->registrasi_ulang->kk }}
+                                {{ $user->registrasi_ulang->kk }}
                             </td>
                         </tr>
                         <!-- Add more rows for other additional information -->
