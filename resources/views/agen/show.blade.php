@@ -229,42 +229,42 @@
                     <!-- Add more rows for other additional information -->
                 </tbody>
             </table>
-            {{-- @if (!is_null($agen->registrasi_ulang)) --}}
+            {{-- @if (!is_null($siswaagen->registrasi_ulang)) --}}
                 <table class="table table-striped">
                     <tbody>
                         <tr>
                             <th>Ijazah</th>
-                            <td>{{ $agen->registrasi_ulang->ijazah }}</td>
+                            <td>{{ $siswa->registrasi_ulang->ijazah }}</td>
                         </tr>
                         <tr>
                             <th>Surat Pernyataan Bermaterai</th>
                             <td>
-                                {{ $agen->registrasi_ulang->surat_pernyataan_bermaterai }}
+                                {{ $siswa->registrasi_ulang->surat_pernyataan_bermaterai }}
                             </td>
                         </tr>
                         <tr>
                             <th>Surat Keterangan Siswa Aktif SD Asal</th>
                             <td>
-                                {{ $agen->registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal }}
+                                {{ $siswa->registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal }}
 
                             </td>
                         </tr>
                         <tr>
                             <th>Pasfoto</th>
                             <td>
-                                {{ $agen->registrasi_ulang->pasfoto }}
+                                {{ $siswa->registrasi_ulang->pasfoto }}
                             </td>
                         </tr>
                         <tr>
                             <th>Akta Kelahiran</th>
                             <td>
-                                {{ $agen->registrasi_ulang->akta_kelahiran }}
+                                {{ $siswa->registrasi_ulang->akta_kelahiran }}
                             </td>
                         </tr>
                         <tr>
                             <th>Kartu Keluarga</th>
                             <td>
-                                {{ $agen->registrasi_ulang->kk }}
+                                {{ $siswa->registrasi_ulang->kk }}
                             </td>
                         </tr>
                         <!-- Add more rows for other additional information -->

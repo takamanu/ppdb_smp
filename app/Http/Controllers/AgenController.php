@@ -184,7 +184,7 @@ class AgenController extends Controller
         // $agen = Datapokok::where('user_id', $id)->first();
         $user = User::where('id', $id)->first();
         $agen = $user->datapokok;
-        return $agen->registrasi_ulang;
+        
 
         // dd($agen->nilai);
         // $agen = User::where('id', $id)->first();
@@ -195,7 +195,7 @@ class AgenController extends Controller
 
 
         // return $agen;
-        return view('agen.show')->with('agen', $agen);
+        return view('agen.show')->with(['agen' => $agen, 'user' => $user]);
     }
 
     public function cetak($id)
