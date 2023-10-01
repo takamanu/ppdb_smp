@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
+
+    protected $unique_id_payment = 46114;
     /**
      * Display a listing of the resource.
      *
@@ -167,7 +169,7 @@ class PaymentController extends Controller
             'amount' => $amount,
         ]);
 
-        $order_id = 59 + $payment->id;
+        $order_id = $this->unique_id_payment + $payment->id;
 
         $params = [
             'transaction_details' => [
@@ -210,7 +212,7 @@ class PaymentController extends Controller
         $order_id = $notif->order_id;
         $fraud = $notif->fraud_status;
 
-        $payment = Payment::find($order_id - 59);
+        $payment = Payment::find($order_id - $this->unique_id_payment);
 
         if ($transaction == 'capture') {
             if ($type == 'credit_card') {
