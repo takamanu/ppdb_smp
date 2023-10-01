@@ -76,6 +76,9 @@ Route::middleware(['auth'])->group(function(){
     // Route::resource('/register', RegistersUsers::class);
     Route::resource('/profile', ProfileController::class);
     Route::resource('/registrasi_ulang', RegistrasiUlangController::class);
+    // Route::get('/config', [ConfigController::class, 'index']);
+    // Route::get('/config/edit', [ConfigController::class, 'edit']);
+    // Route::put('/config/update', [ConfigController::class, 'update']);
 });
 
 Route::middleware(['admin:1'])->group(function(){
