@@ -186,20 +186,20 @@ class AgenController extends Controller
         $user = User::where('id', $id)->first();
         $agen = $user->datapokok;
 
-        $registrasi_ulang = RegistrasiUlang::where('user_id',14)->first();
+        $registrasi_ulang = RegistrasiUlang::where('user_id',$user)->first();
         // dd($registrasi_ulang);
 
-        $data = [];
+        // $data = [];
         
 
-        $data['ijazah'] = config('app.url') . "/storage/uploads/" . explode("/",$registrasi_ulang->ijazah)[2];
-        $data['surat_pernyataan_bermaterai'] = config('app.url') . "/storage/uploads/" . explode("/",$registrasi_ulang->surat_pernyataan_bermaterai)[2];
-        $data['surat_keterangan_siswa_aktif_sd_asal'] = config('app.url') . "/storage/uploads/" . explode("/",$registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal)[2];
-        $data['pasfoto'] = config('app.url') . "/storage/uploads/" . explode("/",$registrasi_ulang->pasfoto)[2];
-        $data['akta_kelahiran'] = config('app.url') . "/storage/uploads/" . explode("/",$registrasi_ulang->akta_kelahiran)[2];
-        $data['kk'] = config('app.url') . "/storage/uploads/" . explode("/",$registrasi_ulang->kk)[2];
+        // $data['ijazah'] = config('app.url') . "/storage/uploads/" . explode("/",$registrasi_ulang->ijazah)[2];
+        // $data['surat_pernyataan_bermaterai'] = config('app.url') . "/storage/uploads/" . explode("/",$registrasi_ulang->surat_pernyataan_bermaterai)[2];
+        // $data['surat_keterangan_siswa_aktif_sd_asal'] = config('app.url') . "/storage/uploads/" . explode("/",$registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal)[2];
+        // $data['pasfoto'] = config('app.url') . "/storage/uploads/". explode("/",$registrasi_ulang->pasfoto)[2];
+        // $data['akta_kelahiran'] = config('app.url') . "/storage/uploads/" . explode("/",$registrasi_ulang->akta_kelahiran)[2];
+        // $data['kk'] = config('app.url') . "/storage/uploads/" . explode("/",$registrasi_ulang->kk)[2];
 
-        dd($data);
+        // dd($data);
         
 
         // dd($agen->nilai);
