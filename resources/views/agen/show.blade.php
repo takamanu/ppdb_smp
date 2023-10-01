@@ -279,7 +279,7 @@
             <br>
             <div class="row">
                 <div class="col">
-                    <a href="{{ url()->previous()) }}" class="btn btn-danger btn-block">Back</a>
+                    <a href="{{ url()->previous() }}" class="btn btn-danger btn-block">Back</a>
                 </div>
             </div>
         </div>
