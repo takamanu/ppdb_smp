@@ -166,7 +166,8 @@
                         <td>{{ $agen->policy->perjanjian4 }}</td>
                     </tr>
                     <tr>
-                        <td colspan="2">Melunasi semua pembayaran uang sekolah dan uang makan sebelum Ujian Semester Ganjil dan
+                        <td colspan="2">Melunasi semua pembayaran uang sekolah dan uang makan sebelum Ujian Semester
+                            Ganjil dan
                             Semester Genap</td>
                     </tr>
                     <!-- Add more rows for other policy information -->
@@ -228,6 +229,51 @@
                     <!-- Add more rows for other additional information -->
                 </tbody>
             </table>
+            @if (!is_null($agen->registrasi_ulang))
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th>Ijazah</th>
+                            <td>{{ $agen->registrasi_ulang->ijazah }}</td>
+                        </tr>
+                        <tr>
+                            <th>Surat Pernyataan Bermaterai</th>
+                            <td>
+                                {{ $agen->registrasi_ulang->surat_pernyataan_bermaterai }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Surat Keterangan Siswa Aktif SD Asal</th>
+                            <td>
+                                {{ $agen->registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal }}
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Pasfoto</th>
+                            <td>
+                                {{ $agen->registrasi_ulang->pasfoto }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Akta Kelahiran</th>
+                            <td>
+                                {{ $agen->registrasi_ulang->akta_kelahiran }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Kartu Keluarga</th>
+                            <td>
+                                {{ $agen->registrasi_ulang->kk }}
+                            </td>
+                        </tr>
+                        <!-- Add more rows for other additional information -->
+                    </tbody>
+                </table>
+            @else
+                No data for registration ulang.
+            @endif
+
 
             <br>
             <div class="row">
