@@ -159,7 +159,7 @@ class RegistrasiUlangController extends Controller
         }
 
         foreach ($request->allFiles() as $key => $file) {
-            $path = $file->store('uploads'); // Store files in the 'uploads' directory
+            $path = $file->store('/uploads'); // Store files in the 'uploads' directory
 
             $uploadedFiles[$key] = $path;
         }
