@@ -187,7 +187,7 @@ class AgenController extends Controller
         $agen = $user->datapokok;
 
         $registrasi_ulang = RegistrasiUlang::where('user_id',$user)->first();
-        return $user->registrasi_ulang;
+        // return $user->registrasi_ulang;
         // dd($registrasi_ulang);
 
         // $data = [];
