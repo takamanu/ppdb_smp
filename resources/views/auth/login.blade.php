@@ -39,9 +39,9 @@
                                         <h1 class="h4 text-gray-900 mb-4">Login Siswa PPDB SMPTQ Pangeran Diponegoro
                                         </h1>
                                     </div>
-                                    @if (session('status'))
+                                    @if (session('flash_message'))
                                         <div class="alert alert-success">
-                                            {{ session('status') }}
+                                            {{ session('flash_message') }}
                                         </div>
                                     @endif
                                     <form method="POST" action="{{ route('login') }}">

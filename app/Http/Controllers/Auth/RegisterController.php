@@ -162,6 +162,6 @@ class RegisterController extends Controller
 
         
         // Agen::create($input);
-        return redirect('login')->with('flash_message', 'Users Added!');
+        return redirect('login')->with('flash_message', 'Berhasil mendaftar, silahkan login!');
     }
 }
