@@ -57,7 +57,7 @@ class SiswaController extends Controller
                     ->where('status',2)
                     ->first();
             if (!$test){
-                return abort(404, 'Not Found');
+                return abort(403, 'Belom Bayar');
             }
         }
     }
@@ -68,7 +68,7 @@ class SiswaController extends Controller
         $userData = auth()->user();
         if (!is_null($userData->datapokok))
         {
-            return abort(404, 'Not Found');
+            return abort(403, 'Belom Isi DataPokok');
         }
 
         $config = Config::where('id', 1)->first();        
@@ -174,12 +174,34 @@ class SiswaController extends Controller
 
     public function pengumuman($id)
     {
+        
+
+        $config = Config::where('id', 1)->first();
         $siswa = Datapokok::where('user_id', $id)->first();
+        $nilai = Nilai::where('datapokok_id',$siswa->id)->first();
+
+        if ($config->pengumuman != true){
+            return abort(404,"Config Pengumuman Masih Mati");
+        };
+
+        if (!$siswa){
+            return abort(403,"Data Pokok Tidak Ditemukan");
+        }
+        if($nilai->matematika === "Isi nilai A-E"){
+            return abort(403, "Belom Mempunyai Nilai");
+        };
+
+        // if()
+
+        // if (!is_null($siswa->datapokok)) {
+        //     return abort(404, 'Not Found');
+        // }
+
         //   $siswa->nilai;
         // return $agen;
         $userData = auth()->user()->id;
         $user = User::where('id', $userData)->first();
-        $config = Config::where('id', 1)->first();
+        
         $agen = $user->datapokok;
         // dd($agen);
         $date_now = date('Y-m-d H:i:s');
@@ -204,15 +226,33 @@ class SiswaController extends Controller
     {
         // return $id;
         $siswa = Datapokok::where('id', $id)->first();
+        $nilai = Nilai::where('datapokok_id',$id)->first();
+        $registrasi_ulang = RegistrasiUlang::where('user_id',Auth::user()->id)->first();
 
-        if (!is_null($siswa->registrasi_ulang)) {
-            return abort(403, 'Unauthorized');
+        // if (!is_null($siswa->registrasi_ulang)) {
+        //     return abort(404, 'Not Found');
+        // }
+        $config = Config::where('id', 1)->first();
+        if ($config->pengumuman != true){
+            return abort(403,"Config Pengumuman Masih Mati");
+        };
+
+        if ($nilai->status != "Lulus"){
+            return abort(403, "Tidak Lulus");
         }
+
+        if ($registrasi_ulang){
+            return abort(403, "Sudah Pernah Mengisi Dokumen");
+        }
+
+
+
         //   $siswa->nilai;
         // return $agen;
         $userData = auth()->user()->id;
         $user = User::where('id', $userData)->first();
-        $config = Config::where('id', 1)->first();
+        
+        // dd($user->nilai);
         $agen = $user->datapokok;
         // $date_now = date('Y-m-d H:i:s');
 
