@@ -229,7 +229,7 @@
                     <!-- Add more rows for other additional information -->
                 </tbody>
             </table>
-            @if (!is_null($agen->registrasi_ulang))
+            {{-- @if (!is_null($agen->registrasi_ulang)) --}}
                 <table class="table table-striped">
                     <tbody>
                         <tr>
@@ -270,9 +270,9 @@
                         <!-- Add more rows for other additional information -->
                     </tbody>
                 </table>
-            @else
+            {{-- @else
                 No data for registration ulang.
-            @endif
+            @endif --}}
 
 
             <br>
