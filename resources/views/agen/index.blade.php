@@ -51,7 +51,7 @@
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td> 
-                                            @if ($item->payment == [])
+                                            @if ($item->payment == "[]")
                                                 Belum bayar
                                             {{-- @elseif ($item->payment->status_payment !== 2 && $item->payment->status !== 2)
                                                 Proses bayar --}}
