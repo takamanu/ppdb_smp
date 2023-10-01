@@ -53,23 +53,28 @@
         </table>
     </div>
     <hr>
-    @if ($user->datapokok->nilai->status == "Tidak Lulus")
+    @if ($user->datapokok->nilai->status == 'Tidak Lulus')
         <a href="#" class="btn btn-primary btn-block" disabled>Jangan putus asa dan tetep semangat!</a>
     @elseif (is_null(Auth::user()->registrasi_ulang))
         <a href="{{ url('/siswa/registrasi/' . $siswa->id) }}" class="btn btn-primary btn-block">Registrasi Ulang</a>
+        <hr>
+        <a href="{{ url('/siswa/cetak/' . $siswa->id) }}" title="Cetak Datapokok Siswa"
+            class="btn btn-success btn-block">Cetak
+            Datapokok</a>
     @else
-        <button onclick="alert('Kamu sudah melakukan registrasi ulang!')" class="btn btn-primary btn-block mb-3" disabled>Registrasi Ulang</button>
+        <button onclick="alert('Kamu sudah melakukan registrasi ulang!')" class="btn btn-primary btn-block mb-3"
+            disabled>Registrasi Ulang</button>
         <div class="alert alert-success mb-3">
             Kamu sudah melakukan registrasi ulang!
         </div>
         <div class="alert alert-success">
-            Silahkan join grup whatsapp: {{ $config->redirect_wa}}
+            Silahkan join grup whatsapp: {{ $config->redirect_wa }}
         </div>
+        <hr>
+        <a href="{{ url('/siswa/cetak/' . $siswa->id) }}" title="Cetak Datapokok Siswa"
+            class="btn btn-success btn-block">Cetak
+            Datapokok</a>
     @endif
-
-    <hr>
-    <a href="{{ url('/siswa/cetak/' . $siswa->id) }}" title="Cetak Datapokok Siswa" class="btn btn-success btn-block">Cetak
-        Datapokok</a>
     {{-- <a href="/" class="btn btn-warning btn-block">Cetak Datapokok</a> --}}
     <a href="/siswa" class="btn btn-warning btn-block">Kembali ke dashboard</a>
 @endsection
