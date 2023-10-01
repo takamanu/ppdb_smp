@@ -53,7 +53,7 @@
         </table>
     </div>
     <hr>
-    @if ($user->nilai->status == "Tidak Lulus")
+    @if ($user->datapokok->nilai->status == "Tidak Lulus")
         <a href="#" class="btn btn-primary btn-block" disabled>Jangan putus asa dan tetep semangat!</a>
     @elseif (is_null(Auth::user()->registrasi_ulang))
         <a href="{{ url('/siswa/registrasi/' . $siswa->id) }}" class="btn btn-primary btn-block">Registrasi Ulang</a>

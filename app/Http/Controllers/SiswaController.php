@@ -201,6 +201,7 @@ class SiswaController extends Controller
         // return $agen;
         $userData = auth()->user()->id;
         $user = User::where('id', $userData)->first();
+        // dd($user->datapokok->nilai->status);
         
         $agen = $user->datapokok;
         // dd($agen);
@@ -210,7 +211,9 @@ class SiswaController extends Controller
             $agen = 'NULL'; // Set a default value or any other value you want to use
         }
 
-        return view('siswa.pengumuman')->with(['siswa' => $siswa, 'agen' => $agen, 'config' => $config]);
+        // $user = User::where('id', $userData)->first();
+
+        return view('siswa.pengumuman')->with(['siswa' => $siswa, 'agen' => $agen, 'config' => $config,'user'=>$user]);
     }
 
     public function cetak($id)
