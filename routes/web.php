@@ -63,6 +63,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/siswa', SiswaController::class);
 
     // Route::get('/daftar', [AgenController::class, 'create']);
+    Route::get('/agen/cek', [AgenController::class, 'show']);
     Route::get('/agen/cetak/{id}', [AgenController::class, 'cetak']);
     Route::get('/siswa/cetak/{id}', [SiswaController::class, 'cetak']);
     Route::get('/agen/nilai/{id}', [AgenController::class, 'masukNilai']);
