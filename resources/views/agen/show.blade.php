@@ -5,8 +5,8 @@
         <div class="card-header">Lihat Siswa {{ $agen->nama_lengkap }}</div>
         <div class="card-body">
             <!-- Section 1: Data Pribadi -->
-            <h3 class="mb-5">Data Pribadi</h3>
-            <table class="table table-striped">
+            <h3>Data Pribadi</h3>
+            <table class="table table-striped mb-5">
                 <tbody>
                     <tr>
                         <th>Nama Lengkap</th>
@@ -56,8 +56,8 @@
             </table>
 
             <!-- Section 2: Informasi Keluarga -->
-            <h3 class="mb-5">Informasi Keluarga</h3>
-            <table class="table table-striped">
+            <h3Informasi Keluarga</h3>
+            <table class="table table-striped mb-5">
                 <tbody>
                     <tr>
                         <th>Nama Ayah</th>
@@ -103,8 +103,8 @@
             </table>
 
             <!-- Section 3: Data Wali Siswa -->
-            <h3 class="mb-5">Data Wali Siswa</h3>
-            <table class="table table-striped">
+            <h3Data Wali Siswa</h3>
+            <table class="table table-striped mb-5">
                 <tbody>
                     <tr>
                         <th>Nama Wali Siswa</th>
@@ -137,8 +137,8 @@
                 </tbody>
             </table>
 
-            <h3 class="mb-5">Policy</h3>
-            <table class="table table-striped">
+            <h3Policy</h3>
+            <table class="table table-striped mb-5">
                 <tbody>
                     <tr>
                         <th>Policy (1)</th>
@@ -175,7 +175,7 @@
             </table>
 
             <h3 class="mb-3">Nilai</h3>
-            <table class="table table-striped">
+            <table class="table table-striped mb-5">
                 <tbody>
                     <tr>
                         <th>Matematika</th>
@@ -202,7 +202,7 @@
 
             <!-- Section 4: Lainnya -->
             <h3 class="mb-3">Lainnya</h3>
-            <table class="table table-striped">
+            <table class="table table-striped mb-5">
                 <tbody>
                     <tr>
                         <th>Motivasi</th>
@@ -230,41 +230,41 @@
                 </tbody>
             </table>
             {{-- @if (!is_null($siswaagen->registrasi_ulang)) --}}
-                <table class="table table-striped">
+                <table class="table table-striped mb-5">
                     <tbody>
                         <tr>
                             <th>Ijazah</th>
-                            <td><a href="{{ asset('storage/app/'. $user->registrasi_ulang->ijazah) }}" download>{{ $user->registrasi_ulang->ijazah }}</a></td>
+                            <td><a href="{{ asset('storage/app/'. $user->registrasi_ulang->ijazah) }}" download>Link to: {{ $user->registrasi_ulang->ijazah }}</a></td>
                         </tr>
                         <tr>
                             <th>Surat Pernyataan Bermaterai</th>
                             <td>
-                                <a href="../storage/app/{{ $user->registrasi_ulang->surat_pernyataan_bermaterai }}">{{ $user->registrasi_ulang->surat_pernyataan_bermaterai }}</a>
+                                <a href="{{ asset('storage/app/'. $user->registrasi_ulang->surat_pernyataan_bermaterai) }}">Link to: {{ $user->registrasi_ulang->surat_pernyataan_bermaterai }}</a>
                             </td>
                         </tr>
                         <tr>
                             <th>Surat Keterangan Siswa Aktif SD Asal</th>
                             <td>
-                                <a href="../storage/app/{{ $user->registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal }}">{{ $user->registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal }}</a>
+                                <a href="{{ asset('storage/app/'. $user->registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal) }}">Link to: {{ $user->registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal }}</a>
 
                             </td>
                         </tr>
                         <tr>
                             <th>Pasfoto</th>
                             <td>
-                                <a href="../storage/app/{{ $user->registrasi_ulang->pasfoto }}">{{ $user->registrasi_ulang->pasfoto }}</a>
+                                <a href="{{ asset('storage/app/'. $user->registrasi_ulang->pasfoto) }}">Link to: {{ $user->registrasi_ulang->pasfoto }}</a>
                             </td>
                         </tr>
                         <tr>
                             <th>Akta Kelahiran</th>
                             <td>
-                                <a href="../storage/app/{{ $user->registrasi_ulang->akta_kelahiran }}">{{ $user->registrasi_ulang->akta_kelahiran }}</a>
+                                <a href="{{ asset('storage/app/'. $user->registrasi_ulang->akta_kelahiran) }}">Link to: {{ $user->registrasi_ulang->akta_kelahiran }}</a>
                             </td>
                         </tr>
                         <tr>
                             <th>Kartu Keluarga</th>
                             <td>
-                                <a href="../storage/app/{{ $user->registrasi_ulang->kk }}">{{ $user->registrasi_ulang->kk }}</a>
+                                <a href="{{ asset('storage/app/'. $user->registrasi_ulang->kk) }}">Link to: {{ $user->registrasi_ulang->kk }}</a>
                             </td>
                         </tr>
                         <!-- Add more rows for other additional information -->
@@ -278,7 +278,7 @@
             <br>
             <div class="row">
                 <div class="col">
-                    <a href="../storage/app/{{ url()->previous() }}" class="btn btn-danger btn-block">Back</a>
+                    <a href="{{ asset('storage/app/'. url()->previous()) }}" class="btn btn-danger btn-block">Back</a>
                 </div>
             </div>
         </div>
