@@ -69,7 +69,7 @@
                                             @else
                                                 Isi datapokok
                                             @endif
-                                            {{ $item->datapokok }}
+                                            {{-- {{ $item->datapokok }} --}}
                                         </td>
                                         <td>{{ $item->created_at }}</td>
                                         {{-- <td>{{ $item->updated_at }}</td> --}}
