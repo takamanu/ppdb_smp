@@ -56,7 +56,7 @@
             </table>
 
             <!-- Section 2: Informasi Keluarga -->
-            <h3Informasi Keluarga</h3>
+            <h3>Informasi Keluarga</h3>
             <table class="table table-striped mb-5">
                 <tbody>
                     <tr>
@@ -103,7 +103,7 @@
             </table>
 
             <!-- Section 3: Data Wali Siswa -->
-            <h3Data Wali Siswa</h3>
+            <h3>Data Wali Siswa</h3>
             <table class="table table-striped mb-5">
                 <tbody>
                     <tr>
@@ -137,7 +137,7 @@
                 </tbody>
             </table>
 
-            <h3Policy</h3>
+            <h3>Policy</h3>
             <table class="table table-striped mb-5">
                 <tbody>
                     <tr>
@@ -174,7 +174,7 @@
                 </tbody>
             </table>
 
-            <h3 class="mb-3">Nilai</h3>
+            <h3>Nilai</h3>
             <table class="table table-striped mb-5">
                 <tbody>
                     <tr>
@@ -201,7 +201,7 @@
             </table>
 
             <!-- Section 4: Lainnya -->
-            <h3 class="mb-3">Lainnya</h3>
+            <h3>Lainnya</h3>
             <table class="table table-striped mb-5">
                 <tbody>
                     <tr>
@@ -230,6 +230,7 @@
                 </tbody>
             </table>
             {{-- @if (!is_null($siswaagen->registrasi_ulang)) --}}
+            <h3>Registrasi Ulang File</h3>
                 <table class="table table-striped mb-5">
                     <tbody>
                         <tr>
