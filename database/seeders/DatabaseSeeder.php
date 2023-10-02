@@ -113,6 +113,9 @@ class DatabaseSeeder extends Seeder
             'pengumuman'                    => 0,
             'redirect_wa'                   => 'web.whatsapp.com',
             'nominal_pembayaran'            => '100000',
+            'midtrans_merchant_id' => 'G580749628',
+            'midtrans_client_key' => 'SB-Mid-client-0E_ucsMNs8bQWClM',
+            'midtrans_server_key' => 'SB-Mid-server-AHwHYyPOXtAfyedpZ6CxHh5u',
             // 'nominal_pembayaran_terbilang'  => 'Seratus ribu',
         ]);
         

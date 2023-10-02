@@ -11,13 +11,23 @@ use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
-
+    protected $midtrans_merchant_id;
+    protected $midtrans_client_key;
+    protected $midtrans_server_key;
     protected $unique_id_payment = 47214;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $config_for_payment = Config::where('id',1)->first();
+        $this->midtrans_merchant_id = $config_for_payment->midtrans_merchant_id;
+        $this->midtrans_client_key = $config_for_payment->midtrans_client_key;
+        $this->midtrans_server_key = $config_for_payment->midtrans_server_key;
+    }
 
     public function bayar()
     {
@@ -40,7 +50,7 @@ class PaymentController extends Controller
 
         if ($handle_payment->status_payment !== 2 && $handle_payment->status !== 2) {
             // Configure Midtrans
-            \Midtrans\Config::$serverKey = config('midtrans.server_key');
+            \Midtrans\Config::$serverKey = $this->midtrans_server_key;
             // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
             \Midtrans\Config::$isProduction = false;
             // Set sanitization on (default)
@@ -149,7 +159,7 @@ class PaymentController extends Controller
             return abort(404, 'Not Found');
         }
 
-        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        \Midtrans\Config::$serverKey = $this->midtrans_server_key;
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
         // Set sanitization on (default)
@@ -204,7 +214,7 @@ class PaymentController extends Controller
     public function notification()
     {
         \Midtrans\Config::$isProduction = false;
-        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        \Midtrans\Config::$serverKey = $this->midtrans_server_key;
         $notif = new \Midtrans\Notification();
 
         $transaction = $notif->transaction_status;
