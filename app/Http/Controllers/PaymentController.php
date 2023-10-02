@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class PaymentController extends Controller
 {
 
-    protected $unique_id_payment = 46114;
+    protected $unique_id_payment = 47214;
     /**
      * Display a listing of the resource.
      *
