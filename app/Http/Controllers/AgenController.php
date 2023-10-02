@@ -193,12 +193,12 @@ class AgenController extends Controller
         $data = [];
         
 
-        $data['ijazah'] = explode("/",$registrasi_ulang->ijazah)[2];
-        $data['surat_pernyataan_bermaterai'] = explode("/",$registrasi_ulang->surat_pernyataan_bermaterai)[2];
-        $data['surat_keterangan_siswa_aktif_sd_asal'] = explode("/",$registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal)[2];
-        $data['pasfoto'] = explode("/",$registrasi_ulang->pasfoto)[2];
-        $data['akta_kelahiran'] = explode("/",$registrasi_ulang->akta_kelahiran)[2];
-        $data['kk'] = explode("/",$registrasi_ulang->kk)[2];
+        // $data['ijazah'] = explode("/",$registrasi_ulang->ijazah)[2];
+        // $data['surat_pernyataan_bermaterai'] = explode("/",$registrasi_ulang->surat_pernyataan_bermaterai)[2];
+        // $data['surat_keterangan_siswa_aktif_sd_asal'] = explode("/",$registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal)[2];
+        // $data['pasfoto'] = explode("/",$registrasi_ulang->pasfoto)[2];
+        // $data['akta_kelahiran'] = explode("/",$registrasi_ulang->akta_kelahiran)[2];
+        // $data['kk'] = explode("/",$registrasi_ulang->kk)[2];
 
         // dd($data);
         
