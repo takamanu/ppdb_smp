@@ -101,6 +101,41 @@ class SiswaController extends Controller
             $daftarSekolahLain = 0;
         }
 
+
+        $validateData = $request->validate([
+            'user_id' => 'required',
+            'nama_lengkap' => 'required',
+            'email' => 'required',
+            'nisn' => 'required',
+            'jenis_kelamin' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'agama' => 'required',
+            'alamat' => 'required',
+            'asal_sekolah' => 'required',
+            'alamat_sekolah' => 'required',
+            'jumlah_hafalan' => 2,
+            'nama_ayah' => 'required',
+            'pekerjaan_ayah' => 'required',
+            'penghasilan_ayah' => 'required',
+            'pendidikan_terakir_ayah' => 'required',
+            'no_wa_ayah' => 'required',
+            'nama_ibu' => 'required',
+            'pekerjaan_ibu' => 'required',
+            'penghasilan_ibu' => 'required',
+            'pendidikan_terakir_ibu' => 'required',
+            'no_wa_ibu' => 'required',
+            'nama_wali_siswa' => 'required',
+            'hubungan_dengan_siswa' => 'required',
+            'alamat_wali_siswa' => 'required',
+            'pekerjaan_wali' => 'required',
+            'penghasilan_wali' => 'required',
+            'pendidikan_terakir_wali' => 'required',
+            'no_wa_wali_siswa' => 'required',
+            'motivasi' => 'required',
+            'informasi_didapatkan_dari' => 'required',
+        ]);
+
         Datapokok::create([
             'user_id' => $userData->id,
             'nama_lengkap' => $request->nama_lengkap,

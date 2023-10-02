@@ -116,7 +116,7 @@ class DatabaseSeeder extends Seeder
             'midtrans_merchant_id' => 'G580749628',
             'midtrans_client_key' => 'SB-Mid-client-0E_ucsMNs8bQWClM',
             'midtrans_server_key' => 'SB-Mid-server-AHwHYyPOXtAfyedpZ6CxHh5u',
-            // 'nominal_pembayaran_terbilang'  => 'Seratus ribu',
+            'order_id_midtrans'  => 4611420039,
         ]);
         
 
