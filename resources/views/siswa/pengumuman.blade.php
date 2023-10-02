@@ -68,7 +68,7 @@
             Kamu sudah melakukan registrasi ulang!
         </div>
         <div class="alert alert-success">
-            Silahkan join grup whatsapp: {{ $config->redirect_wa }}
+            Silahkan join grup whatsapp: <a href="{{ $config->redirect_wa }}">{{ $config->redirect_wa }}</a>
         </div>
         <hr>
         <a href="{{ url('/siswa/cetak/' . $siswa->id) }}" title="Cetak Datapokok Siswa"

@@ -46,7 +46,6 @@
             window.snap.pay('{{ $snapToken }}', {
                 onSuccess: function(result) {
                     /* You may add your own implementation here */
-                    // alert("payment success! anjing"); console.log(result);
                     Swal.fire({
                         icon: 'success',
                         title: 'Pembayaran kamu berhasil!',

@@ -75,36 +75,27 @@
                 @else
                     @if (empty($payment))
                         <h6 class="collapse-header">Aktivitas Siswa:</h6>
-                        <a class="collapse-item"
-                            href="#" onclick="alert('Kamu belum bayar.');">Datapokok</a>
-                        <a class="collapse-item"
-                            href="#" onclick="alert('Pengumuman belum dibuka');">Pengumuman</a> 
+                        <a class="collapse-item" href="#" onclick="alert('Kamu belum bayar.');">Datapokok</a>
+                        <a class="collapse-item" href="#"
+                            onclick="alert('Pengumuman belum dibuka');">Pengumuman</a>
                     @elseif ($payment->status_payment !== 2 && $payment->status !== 2)
                         <h6 class="collapse-header">Aktivitas Siswa:</h6>
-                        <a class="collapse-item"
-                            href="#" onclick="alert('Kamu belum menyelesaikan pembayaran.');">Datapokok</a>
-                        <a class="collapse-item"
-                            href="#" onclick="alert('Pengumuman belum dibuka');">Pengumuman</a>   
+                        <a class="collapse-item" href="#"
+                            onclick="alert('Kamu belum menyelesaikan pembayaran.');">Datapokok</a>
+                        <a class="collapse-item" href="#"
+                            onclick="alert('Pengumuman belum dibuka');">Pengumuman</a>
                     @elseif (is_null(Auth::user()->datapokok))
-                        @if ($config->pengumuman == 0)
-                            <h6 class="collapse-header">Aktivitas Siswa:</h6>
-                            <a class="collapse-item {{ Request::is('siswa/create') ? 'active' : '' }}"
-                                href="{{ url('siswa/create') }}">Datapokok</a>
-                            <a class="collapse-item"
-                                href="#" onclick="alert('Pengumuman belum dibuka');">Pengumuman</a> 
-                        @else
-                            <h6 class="collapse-header">Aktivitas Siswa:</h6>
-                            <a class="collapse-item {{ Request::is('siswa/create') ? 'active' : '' }}"
-                                href="{{ url('siswa/create') }}">Datapokok</a>
-                            <a class="collapse-item {{ Request::is('siswa/pengumuman/' . Auth::user()->id) ? 'active' : '' }}"
-                                href="{{ url('siswa/pengumuman/' . Auth::user()->id) }}">Pengumuman</a>  
-                        @endif
+                        <h6 class="collapse-header">Aktivitas Siswa:</h6>
+                        <a class="collapse-item {{ Request::is('siswa/create') ? 'active' : '' }}"
+                            href="{{ url('siswa/create') }}">Datapokok</a>
+                        <a class="collapse-item" href="#"
+                            onclick="alert('Pengumuman belum dibuka');">Pengumuman</a>
                     @else
                         @if ($config->pengumuman == 0)
                             <h6 class="collapse-header">Aktivitas Siswa:</h6>
                             {{-- <a class="collapse-item {{ Request::is('siswa/create') ? 'active' : '' }}" href="{{ url('siswa/create') }}">Datapokok</a> --}}
-                            <a class="collapse-item"
-                                href="#" onclick="alert('Pengumuman belum dibuka');">Pengumuman</a> 
+                            <a class="collapse-item" href="#"
+                                onclick="alert('Pengumuman belum dibuka');">Pengumuman</a>
                         @else
                             <h6 class="collapse-header">Aktivitas Siswa:</h6>
                             {{-- <a class="collapse-item {{ Request::is('siswa/create') ? 'active' : '' }}" href="{{ url('siswa/create') }}">Datapokok</a> --}}
