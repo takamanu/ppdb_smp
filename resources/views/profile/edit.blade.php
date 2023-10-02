@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <form action="{{ url('profile/' .$agen->id) }}" method="post" enctype="multipart/form-data">
                         {!! csrf_field() !!}
-                        @method("PATCH")
+                        @method("PUT")
                         <table class="table table-striped">
                             <tbody>
                                 <tr>
@@ -37,7 +37,7 @@
                                     <td>
                                         <div class="input-group">
                                             {{-- <span class="input-group-text">Upload Avatar</span> --}}
-                                            <input id="avatar" type="file" class="form-control" name="avatar">
+                                            <input id="avatar" type="file" class="form-control" name="avatar" accept=".png,.jpg,.jpeg">
                                         </div>
                                     </td>
                                 </tr>
@@ -69,7 +69,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button type="submit" class="btn btn-success btn-block" value="Update">Edit</button>
+                        <button type="submit" class="btn btn-success btn-block">Edit</button>
                     </form>
                 </div>
             </div>
