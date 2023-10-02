@@ -48,7 +48,10 @@ Route::resource('/registrasi', RegistrasiUlangController::class);
 Route::resource('/payment', PaymentController::class);
 // Route::post('/daftar', [DatapokokController::class, 'store']);
 // Route::resource('/datapokok', DatapokokController::class);
-Route::get('/excel', [SiswaController::class,'export']);
+Route::get('/excel/sudah-bayar', [SiswaController::class,'export_sudah_bayar']);
+// Route::get('/excel', [SiswaController::class,'export_sudah_bayar']);
+Route::get('/excel/sudah-lulus', [SiswaController::class,'export_sudah_lulus']);
+Route::get('/excel/tidak-lulus', [SiswaController::class,'export_tidak_lulus']);
 
 
 

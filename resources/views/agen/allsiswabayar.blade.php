@@ -13,7 +13,7 @@
             <td>{{ $item->name }}</td>
             <td>{{ $item->email }}</td>
             <td>{{ $item->nisn }}</td>
-            <td>{{ $item->payment->status_payment }}</td>
+            <td>{{ $lulus }}</td>
         </tr>
     @endforeach
     </tbody>

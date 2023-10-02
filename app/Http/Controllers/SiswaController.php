@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UserExport;
+use App\Exports\UsersAllLulus;
+use App\Exports\UsersAllTidakLulus;
 use App\Exports\UsersExport;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -13,6 +16,7 @@ use App\Models\Payment;
 use App\Models\Config;
 use App\Models\RegistrasiUlang;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 date_default_timezone_set('Asia/Jakarta');
@@ -267,7 +271,15 @@ class SiswaController extends Controller
         return view('siswa.registrasi')->with(['siswa'=> $siswa, 'agen' => $agen, 'config' => $config]);
     }
 
-    public function export(){
-        return Excel::download(new UsersExport, 'users.xlsx');
+    public function export_sudah_bayar(){
+        return Excel::download(new UsersExport, 'Siswa_Sudah_Bayar.xlsx');
+    }
+
+    public function export_sudah_lulus(){
+        return Excel::download(new UsersAllLulus, 'Siswa_Lulus.xlsx');
+    }
+
+    public function export_tidak_lulus(){
+        return Excel::download(new UsersAllTidakLulus, 'Siswa_Tidak_lulus.xlsx');
     }
 }
