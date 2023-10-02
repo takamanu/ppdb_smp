@@ -130,7 +130,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <div class="row">
+                            <div class="row mb-5">
                                 <div class="col-md-8">
                                     Showing {{ $agen->firstItem() }} to {{ $agen->lastItem() }} of {{ $agen->total() }}
                                 </div>
@@ -140,9 +140,9 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <a href="/excel/sudah-bayar" class="btn btn-success btn-block">Daftar siswa Sudah bayar (Download PDF)</a>
-                                <a href="/excel/sudah-lulus" class="btn btn-success btn-block">Daftar siswa Sudah lulus (Download PDF)</a>
-                                <a href="/excel/tidak-lulus" class="btn btn-success btn-block">Daftar siswa Tidak lulus (Download PDF)</a>
+                                <a href="/excel/sudah-bayar" class="btn btn-success btn-block">Daftar siswa Sudah bayar (Download XLSX)</a>
+                                <a href="/excel/sudah-lulus" class="btn btn-success btn-block">Daftar siswa Sudah lulus (Download XLSX)</a>
+                                <a href="/excel/tidak-lulus" class="btn btn-success btn-block">Daftar siswa Tidak lulus (Download XLSX)</a>
                             </div>
                         </div>
                     </div>
