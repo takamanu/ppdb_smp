@@ -235,4 +235,3 @@
 <script>
     window.print()
 </script>
-@endsection
