@@ -661,7 +661,7 @@
                                         <div class="form-group form-outline">
                                             <input id="motivasi" type="text"
                                                 class="form-control @error('motivasi') is-invalid @enderror"
-                                                name="motivasi" value="{{ old('motivasi') }}" placeholder="Motivasi">
+                                                name="motivasi" value="{{ old('motivasi') }}" placeholder="Motivasi" required>
                                             @error('motivasi')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -673,7 +673,7 @@
                                         <div class="form-group form-outline">
                                             <select id="informasi_didapatkan_dari"
                                                 class="form-select form-control @error('informasi_didapatkan_dari') is-invalid @enderror"
-                                                name="informasi_didapatkan_dari">
+                                                name="informasi_didapatkan_dari" required>
                                                 <option value="" disabled selected>Pilih Sumber Informasi</option>
                                                 <option value="website"
                                                     {{ old('informasi_didapatkan_dari') == 'website' ? 'selected' : '' }}>
