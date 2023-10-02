@@ -96,7 +96,11 @@
                 <td colspan="2">SB-Mid-server-AHwHYyPOXtAfyedpZ6CxHh5u</td>
                 {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
             </tr>
-            </tbody>
+            <tr>
+                <td>Midtrans Order ID</td>
+                <td colspan="2">34</td>
+                {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
+            </tr>
         </table>
     </div>
     <a href="/config/edit" class="btn btn-warning btn-block">Update konfigurasi</a>
