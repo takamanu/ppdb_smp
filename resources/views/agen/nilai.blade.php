@@ -118,11 +118,6 @@
                             </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="2">
-                            <button type="submit" class="btn btn-primary">Update</button>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
             <button class="btn btn-success btn-block" type="submit">Submit nilai</button>
