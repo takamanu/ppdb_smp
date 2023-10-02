@@ -229,37 +229,46 @@
                     <!-- Add more rows for other additional information -->
                 </tbody>
             </table>
-            {{-- @if (!is_null($siswaagen->registrasi_ulang)) --}}
+
             <h3>Registrasi Ulang File</h3>
+
+            @if (is_null($user->registrasi_ulang))
+                <p>Belum melakukan registrasi ulang.</p>
+            @else
                 <table class="table table-striped mb-5">
                     <tbody>
                         <tr>
                             <th>Ijazah</th>
-                            <td><a href="../../storage/{{ $user->registrasi_ulang->ijazah }}" download>Click to download</a></td>
+                            <td><a href="../../storage/{{ $user->registrasi_ulang->ijazah }}" download>Click to
+                                    download</a></td>
                         </tr>
                         <tr>
                             <th>Surat Pernyataan Bermaterai</th>
                             <td>
-                                <a href="../../storage/{{ $user->registrasi_ulang->surat_pernyataan_bermaterai }}" download>Click to download</a>
+                                <a href="../../storage/{{ $user->registrasi_ulang->surat_pernyataan_bermaterai }}"
+                                    download>Click to download</a>
                             </td>
                         </tr>
                         <tr>
                             <th>Surat Keterangan Siswa Aktif SD Asal</th>
                             <td>
-                                <a href="../../storage/{{ $user->registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal }}" download>Click to download</a>
+                                <a href="../../storage/{{ $user->registrasi_ulang->surat_keterangan_siswa_aktif_sd_asal }}"
+                                    download>Click to download</a>
 
                             </td>
                         </tr>
                         <tr>
                             <th>Pasfoto</th>
                             <td>
-                                <a href="../../storage/{{ $user->registrasi_ulang->pasfoto }}" download>Click to download</a>
+                                <a href="../../storage/{{ $user->registrasi_ulang->pasfoto }}" download>Click to
+                                    download</a>
                             </td>
                         </tr>
                         <tr>
                             <th>Akta Kelahiran</th>
                             <td>
-                                <a href="../../storage/{{ $user->registrasi_ulang->akta_kelahiran }}" download>Click to download</a>
+                                <a href="../../storage/{{ $user->registrasi_ulang->akta_kelahiran }}" download>Click to
+                                    download</a>
                             </td>
                         </tr>
                         <tr>
@@ -271,6 +280,9 @@
                         <!-- Add more rows for other additional information -->
                     </tbody>
                 </table>
+            @endif
+            {{-- @if (!is_null($siswaagen->registrasi_ulang)) --}}
+
             {{-- @else
                 No data for registration ulang.
             @endif --}}
