@@ -180,9 +180,8 @@ class SiswaController extends Controller
         $nilai = Nilai::where('datapokok_id',$siswa->id)->first();
 
         if ($config->pengumuman != true){
-            return abort(404,"Config Pengumuman Masih Mati");
+            return abort(403,"Config Pengumuman Belum dibuka");
         };
-
         if (!$siswa){
             return abort(403,"Data Pokok Tidak Ditemukan");
         }

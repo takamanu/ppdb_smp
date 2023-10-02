@@ -59,8 +59,7 @@
         <a href="{{ url('/siswa/registrasi/' . $siswa->id) }}" class="btn btn-primary btn-block">Registrasi Ulang</a>
         <hr>
         <a href="{{ url('/siswa/cetak/' . $siswa->id) }}" title="Cetak Datapokok Siswa"
-            class="btn btn-success btn-block">Cetak
-            Datapokok</a>
+            class="btn btn-success btn-block">Cetak Riwayat</a>
     @else
         <button onclick="alert('Kamu sudah melakukan registrasi ulang!')" class="btn btn-primary btn-block mb-3"
             disabled>Registrasi Ulang</button>
@@ -72,8 +71,7 @@
         </div>
         <hr>
         <a href="{{ url('/siswa/cetak/' . $siswa->id) }}" title="Cetak Datapokok Siswa"
-            class="btn btn-success btn-block">Cetak
-            Datapokok</a>
+            class="btn btn-success btn-block">Cetak Riwayat</a>
     @endif
     {{-- <a href="/" class="btn btn-warning btn-block">Cetak Datapokok</a> --}}
     <a href="/siswa" class="btn btn-warning btn-block">Kembali ke dashboard</a>

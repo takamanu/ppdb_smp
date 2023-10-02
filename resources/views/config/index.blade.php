@@ -64,11 +64,35 @@
                     </td>
                     {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
                 </tr>
+
                 <tr>
                     <td>Biaya registrasi</td>
                     <td colspan="2">{{ $config->nominal_pembayaran }}</td>
                     {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
                 </tr>
+                <thead>
+                    <tr>
+                        <th colspan="3">Midtrans Config</th>
+                        {{-- <th>Tanggal Mulai</th>
+                        <th>Tanggal Berakhir</th> --}}
+                    </tr>
+                </thead>
+                <tr>
+                    <td>Merchant ID</td>
+                    <td colspan="2">G580749628</td>
+                    {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
+                </tr>
+                <tr>
+                    <td>Midtrans Client Key</td>
+                    <td colspan="2">SB-Mid-client-0E_ucsMNs8bQWClM</td>
+                    {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
+                </tr>
+                <tr>
+                    <td>Midtrans Server Key</td>
+                    <td colspan="2">SB-Mid-server-AHwHYyPOXtAfyedpZ6CxHh5u</td>
+                    {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
+                </tr>
+
             </tbody>
         </table>
     </div>
