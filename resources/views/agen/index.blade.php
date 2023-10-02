@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    <div class="card">
+    <div class="card p-5">
         <div class="card-header">
             <h2>Daftar Siswa</h2>
         </div>
