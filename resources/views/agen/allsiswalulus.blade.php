@@ -10,10 +10,10 @@
     <tbody>
     @foreach($agen as $item)
         <tr>
-            <td>{{ $agen->name }}</td>
-            <td>{{ $agen->email }}</td>
-            <td>{{ $agen->nisn }}</td>
-            <td>{{ $agen->nilai->status }}</td>
+            <td>{{ $item->name }}</td>
+            <td>{{ $item->email }}</td>
+            <td>{{ $item->nisn }}</td>
+            <td>{{ $item->nilai->status }}</td>
         </tr>
     @endforeach
     </tbody>
