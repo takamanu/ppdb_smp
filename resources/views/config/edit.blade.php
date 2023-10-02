@@ -141,13 +141,13 @@
                 </tr>
                 <tr>
                     <td>Midtrans Order ID</td>
-                    <td colspan="2">
+                    {{-- <td colspan="2"> --}}
                         <td colspan="2">
                             <input type="name" id="order_id_midtrans" name="order_id_midtrans"
                             aria-label="order_id_midtrans" class="form-control"
                             value="{{ $config->order_id_midtrans }}">
                         </td>
-                    </td>
+                    {{-- </td> --}}
                     {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
                 </tr>
             </table>
