@@ -33,7 +33,7 @@ return new class extends Migration
             $table->string('midtrans_merchant_id');
             $table->string('midtrans_client_key');
             $table->string('midtrans_server_key');
-            // $table->bigInteger('nominal_pembayaran_terbilang')->nullable();
+            $table->bigInteger('order_id_midtrans')->nullable();
             // $table->string('redirect_wa')->nullable();
             $table->timestamps();
         });

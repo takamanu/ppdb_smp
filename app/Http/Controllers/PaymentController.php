@@ -14,7 +14,7 @@ class PaymentController extends Controller
     protected $midtrans_merchant_id;
     protected $midtrans_client_key;
     protected $midtrans_server_key;
-    protected $unique_id_payment = 47214;
+    protected $unique_id_payment;
     /**
      * Display a listing of the resource.
      *
@@ -27,6 +27,7 @@ class PaymentController extends Controller
         $this->midtrans_merchant_id = $config_for_payment->midtrans_merchant_id;
         $this->midtrans_client_key = $config_for_payment->midtrans_client_key;
         $this->midtrans_server_key = $config_for_payment->midtrans_server_key;
+        $this->unique_id_payment = $config_for_payment->order_id_midtrans;
     }
 
     public function bayar()

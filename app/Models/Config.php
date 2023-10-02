@@ -26,5 +26,9 @@ class Config extends Model
         'pengumuman',
         'redirect_wa',
         'nominal_pembayaran',
+        'midtrans_merchant_id',
+        'midtrans_client_key',
+        'midtrans_server_key',
+        'order_id_midtrans'
     ];
 }
