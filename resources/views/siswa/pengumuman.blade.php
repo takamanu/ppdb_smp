@@ -58,8 +58,8 @@
     @elseif (is_null(Auth::user()->registrasi_ulang))
         <a href="{{ url('/siswa/registrasi/' . $siswa->id) }}" class="btn btn-primary btn-block">Registrasi Ulang</a>
         <hr>
-        <a href="{{ url('/siswa/cetak/' . $siswa->id) }}" title="Cetak Datapokok Siswa"
-            class="btn btn-success btn-block">Cetak Riwayat</a>
+        <a href="{{ url('/siswa/cetak/' . $siswa->id) }}" title="Cetak Riwayat Siswa"
+            class="btn btn-success btn-block">Cetak Riwayat (PDF)</a>
     @else
         <button onclick="alert('Kamu sudah melakukan registrasi ulang!')" class="btn btn-primary btn-block mb-3"
             disabled>Registrasi Ulang</button>
@@ -70,9 +70,10 @@
             Silahkan join grup whatsapp: <a href="{{ $config->redirect_wa }}" target="_blank">{{ $config->redirect_wa }}</a>
         </div>
         <hr>
-        <a href="{{ url('/siswa/cetak/' . $siswa->id) }}" title="Cetak Datapokok Siswa"
-            class="btn btn-success btn-block">Cetak Riwayat</a>
+        <a href="{{ url('/siswa/cetak/' . $siswa->id) }}" title="Cetak Riwayat Siswa"
+            class="btn btn-success btn-block">Cetak Riwayat (PDF)</a>
     @endif
     {{-- <a href="/" class="btn btn-warning btn-block">Cetak Datapokok</a> --}}
+    <a href="{{ url('/siswa/cetakpokok/' . $siswa->id) }}" title="Cetak Datapokok Siswa" class="btn btn-warning btn-block">Cetak Datapokok (PDF)</a>
     <a href="/siswa" class="btn btn-warning btn-block">Kembali ke dashboard</a>
 @endsection

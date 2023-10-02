@@ -70,6 +70,8 @@ Route::middleware(['auth'])->group(function(){
     Route::put('/agen/nilai/update/{id}', [AgenController::class, 'updateNilai']);
     Route::get('/siswa/pengumuman/{id}', [SiswaController::class, 'pengumuman']);
     Route::get('/siswa/registrasi/{id}', [SiswaController::class, 'registrasiUlang']);
+    Route::get('/siswa/cetakpokok/{id}', [SiswaController::class, 'cetakpokok']);
+
     // Route::post('/siswa/registrasi/create', [SiswaController::class, 'storeRegistrasiUlang']);
     Route::resource('/persediaan', StockController::class);
     Route::resource('/produk', ProdukController::class);

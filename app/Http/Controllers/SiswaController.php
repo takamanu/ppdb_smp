@@ -258,6 +258,15 @@ class SiswaController extends Controller
         return view('agen.cetak')->with('agen', $agen);
     }
 
+    public function cetakpokok($id)
+    {
+        $agen = Datapokok::where('id', $id)->first();
+        // $test = Datapokok::where('id', $id)->first();
+        // return $agen . $test;
+        // return $agen;
+        return view('siswa.cetakpokok')->with('agen', $agen);
+    }
+
     public function registrasiUlang($id)
     {
         // return $id;
