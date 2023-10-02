@@ -74,7 +74,7 @@
             class="btn btn-success btn-block">Cetak Riwayat (PDF)</a>
     @endif
     {{-- <a href="/" class="btn btn-warning btn-block">Cetak Datapokok</a> --}}
-    <a href="{{ url('/siswa/cetakpokok/' . $siswa->id) }}" title="Cetak Datapokok Siswa" class="btn btn-warning btn-block">Cetak Datapokok (PDF)</a>
+    <a href="{{ url('/siswa/cetakpokok/' . $siswa->id) }}" title="Cetak Datapokok Siswa" class="btn btn-primary btn-block">Cetak Datapokok (PDF)</a>
     <hr>
     <a href="/siswa" class="btn btn-warning btn-block">Kembali ke dashboard</a>
 @endsection
