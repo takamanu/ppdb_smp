@@ -63,36 +63,27 @@
                 <?php else: ?>
                     <?php if(empty($payment)): ?>
                         <h6 class="collapse-header">Aktivitas Siswa:</h6>
-                        <a class="collapse-item"
-                            href="#" onclick="alert('Kamu belum bayar.');">Datapokok</a>
-                        <a class="collapse-item"
-                            href="#" onclick="alert('Pengumuman belum dibuka');">Pengumuman</a> 
+                        <a class="collapse-item" href="#" onclick="alert('Kamu belum bayar.');">Datapokok</a>
+                        <a class="collapse-item" href="#"
+                            onclick="alert('Pengumuman belum dibuka');">Pengumuman</a>
                     <?php elseif($payment->status_payment !== 2 && $payment->status !== 2): ?>
                         <h6 class="collapse-header">Aktivitas Siswa:</h6>
-                        <a class="collapse-item"
-                            href="#" onclick="alert('Kamu belum menyelesaikan pembayaran.');">Datapokok</a>
-                        <a class="collapse-item"
-                            href="#" onclick="alert('Pengumuman belum dibuka');">Pengumuman</a>   
+                        <a class="collapse-item" href="#"
+                            onclick="alert('Kamu belum menyelesaikan pembayaran.');">Datapokok</a>
+                        <a class="collapse-item" href="#"
+                            onclick="alert('Pengumuman belum dibuka');">Pengumuman</a>
                     <?php elseif(is_null(Auth::user()->datapokok)): ?>
-                        <?php if($config->pengumuman == 0): ?>
-                            <h6 class="collapse-header">Aktivitas Siswa:</h6>
-                            <a class="collapse-item <?php echo e(Request::is('siswa/create') ? 'active' : ''); ?>"
-                                href="<?php echo e(url('siswa/create')); ?>">Datapokok</a>
-                            <a class="collapse-item"
-                                href="#" onclick="alert('Pengumuman belum dibuka');">Pengumuman</a> 
-                        <?php else: ?>
-                            <h6 class="collapse-header">Aktivitas Siswa:</h6>
-                            <a class="collapse-item <?php echo e(Request::is('siswa/create') ? 'active' : ''); ?>"
-                                href="<?php echo e(url('siswa/create')); ?>">Datapokok</a>
-                            <a class="collapse-item <?php echo e(Request::is('siswa/pengumuman/' . Auth::user()->id) ? 'active' : ''); ?>"
-                                href="<?php echo e(url('siswa/pengumuman/' . Auth::user()->id)); ?>">Pengumuman</a>  
-                        <?php endif; ?>
+                        <h6 class="collapse-header">Aktivitas Siswa:</h6>
+                        <a class="collapse-item <?php echo e(Request::is('siswa/create') ? 'active' : ''); ?>"
+                            href="<?php echo e(url('siswa/create')); ?>">Datapokok</a>
+                        <a class="collapse-item" href="#"
+                            onclick="alert('Pengumuman belum dibuka');">Pengumuman</a>
                     <?php else: ?>
                         <?php if($config->pengumuman == 0): ?>
                             <h6 class="collapse-header">Aktivitas Siswa:</h6>
                             
-                            <a class="collapse-item"
-                                href="#" onclick="alert('Pengumuman belum dibuka');">Pengumuman</a> 
+                            <a class="collapse-item" href="#"
+                                onclick="alert('Pengumuman belum dibuka');">Pengumuman</a>
                         <?php else: ?>
                             <h6 class="collapse-header">Aktivitas Siswa:</h6>
                             
