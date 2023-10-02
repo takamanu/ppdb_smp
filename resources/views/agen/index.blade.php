@@ -139,7 +139,11 @@
                                     {{ $agen->links() }}
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <a href="/excel/sudah-bayar" class="btn btn-success btn-block">Daftar siswa Sudah bayar (Download PDF)</a>
+                                <a href="/excel/sudah-lulus" class="btn btn-success btn-block">Daftar siswa Sudah lulus (Download PDF)</a>
+                                <a href="/excel/tidak-lulus" class="btn btn-success btn-block">Daftar siswa Tidak lulus (Download PDF)</a>
+                            </div>
                         </div>
                     </div>
                 </div>
