@@ -83,22 +83,22 @@
             </thead>
             <tr>
                 <td>Merchant ID</td>
-                <td colspan="2">G580749628</td>
+                <td colspan="2">{{ $config->midtrans_merchant_id }}</td>
                 {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
             </tr>
             <tr>
                 <td>Midtrans Client Key</td>
-                <td colspan="2">SB-Mid-client-0E_ucsMNs8bQWClM</td>
+                <td colspan="2">{{ $config->midtrans_client_key }}</td>
                 {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
             </tr>
             <tr>
                 <td>Midtrans Server Key</td>
-                <td colspan="2">SB-Mid-server-AHwHYyPOXtAfyedpZ6CxHh5u</td>
+                <td colspan="2">{{ $config->midtrans_server_key }}</td>
                 {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
             </tr>
             <tr>
                 <td>Midtrans Order ID</td>
-                <td colspan="2">34</td>
+                <td colspan="2">{{ $config->order_id_midtrans }}</td>
                 {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
             </tr>
         </table>

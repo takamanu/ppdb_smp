@@ -106,9 +106,7 @@
                 <thead>
                     <tr>
                         <th colspan="3">
-                            <input type="name" id="nominal_pembayaran" name="nominal_pembayaran"
-                                aria-label="nominal_pembayaran" class="form-control"
-                                value="{{ $config->nominal_pembayaran }}">
+                            Midtrans Configuration
                         </th>
                         {{-- <th>Tanggal Mulai</th>
                             <th>Tanggal Berakhir</th> --}}
@@ -117,34 +115,38 @@
                 <tr>
                     <td>Merchant ID</td>
                     <td colspan="2">
-                        {{-- <input type="name" id="merchant_id" name="nominal_pembayaran"
-                                aria-label="nominal_pembayaran" class="form-control"
-                                value="{{ $config->nominal_pembayaran }}"> --}}
+                        <input type="name" id="midtrans_merchant_id" name="midtrans_merchant_id"
+                                aria-label="midtrans_merchant_id" class="form-control"
+                                value="{{ $config->midtrans_merchant_id }}">
                     </td>
                     {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
                 </tr>
                 <tr>
                     <td>Midtrans Client Key</td>
                     <td colspan="2">
-                        {{-- <input type="name" id="nominal_pembayaran" name="nominal_pembayaran"
-                                aria-label="nominal_pembayaran" class="form-control"
-                                value="{{ $config->nominal_pembayaran }}"> --}}
+                        <input type="name" id="midtrans_client_key" name="midtrans_client_key"
+                        aria-label="midtrans_client_key" class="form-control"
+                        value="{{ $config->midtrans_client_key }}">
                     </td>
                     {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
                 </tr>
                 <tr>
                     <td>Midtrans Server Key</td>
                     <td colspan="2">
-                        {{-- <input type="name" id="nominal_pembayaran" name="nominal_pembayaran"
-                                aria-label="nominal_pembayaran" class="form-control"
-                                value="{{ $config->nominal_pembayaran }}"> --}}
+                        <input type="name" id="midtrans_server_key" name="midtrans_server_key"
+                        aria-label="midtrans_server_key" class="form-control"
+                        value="{{ $config->midtrans_server_key }}">
                     </td>
                     {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
                 </tr>
                 <tr>
                     <td>Midtrans Order ID</td>
                     <td colspan="2">
-                        
+                        <td colspan="2">
+                            <input type="name" id="order_id_midtrans" name="order_id_midtrans"
+                            aria-label="order_id_midtrans" class="form-control"
+                            value="{{ $config->order_id_midtrans }}">
+                        </td>
                     </td>
                     {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
                 </tr>
