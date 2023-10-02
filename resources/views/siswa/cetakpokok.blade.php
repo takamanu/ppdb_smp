@@ -30,8 +30,8 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 </head>
 <div class="card">
-    <div class="card-header">Datappokok Siswa {{ $agen->nama_lengkap }}</div>
     <div class="card-body">
+        <center><h1 class="mb-5">Datapokok Siswa {{ $agen->nama_lengkap }}</h1></center>
         <!-- Section 1: Data Pribadi -->
         <h3>Data Pribadi</h3>
         <table class="table table-striped mb-5">
