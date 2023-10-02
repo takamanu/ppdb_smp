@@ -628,7 +628,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="daftar_sekolah_lain"
                                                 value="1" id="daftar_sekolah_lain"
-                                                {{ old('daftar_sekolah_lain') ? 'checked' : '' }}>
+                                                {{ old('daftar_sekolah_lain') ? 'checked' : '' }} required>
                                             <label class="form-check-label" for="daftar_sekolah_lain">Ya</label>
                                         </div>
                                     </div>
@@ -717,7 +717,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian1"
                                                 value="ya" id="perjanjian1Ya"
-                                                {{ old('perjanjian1') == 'ya' ? 'checked' : '' }}>
+                                                {{ old('perjanjian1') == 'ya' ? 'checked' : '' }} required>
                                             <label class="form-check-label" for="perjanjian1Ya">ya</label>
                                         </div>
                                     </div>
@@ -725,7 +725,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian1"
                                                 value="tidak" id="perjanjian1Tidak"
-                                                {{ old('perjanjian1') == 'tidak' ? 'checked' : '' }}>
+                                                {{ old('perjanjian1') == 'tidak' ? 'checked' : '' }} required>
                                             <label class="form-check-label" for="perjanjian1Tidak">tidak</label>
                                         </div>
                                     </div>
@@ -733,7 +733,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian1"
                                                 value="ragu" id="perjanjian1Ragu"
-                                                {{ old('perjanjian1') == 'tidak' ? 'checked' : '' }}>
+                                                {{ old('perjanjian1') == 'tidak' ? 'checked' : '' }} required>
                                             <label class="form-check-label" for="perjanjian1Ragu">ragu</label>
                                         </div>
                                     </div>
@@ -746,7 +746,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian2"
                                                 value="ya" id="perjanjian2Ya"
-                                                {{ old('perjanjian2') == 'ya' ? 'checked' : '' }}>
+                                                {{ old('perjanjian2') == 'ya' ? 'checked' : '' }} required>
                                             <label class="form-check-label" for="perjanjian2Ya">ya</label>
                                         </div>
                                     </div>
@@ -754,7 +754,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian2"
                                                 value="tidak" id="perjanjian2Tidak"
-                                                {{ old('perjanjian2') == 'tidak' ? 'checked' : '' }}>
+                                                {{ old('perjanjian2') == 'tidak' ? 'checked' : '' }} required>
                                             <label class="form-check-label" for="perjanjian2Tidak">tidak</label>
                                         </div>
                                     </div>
@@ -762,7 +762,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian2"
                                                 value="ragu" id="perjanjian2Ragu"
-                                                {{ old('perjanjian2') == 'ragu' ? 'checked' : '' }}>
+                                                {{ old('perjanjian2') == 'ragu' ? 'checked' : '' }} required>
                                             <label class="form-check-label" for="perjanjian2Ragu">ragu</label>
                                         </div>
                                     </div>
@@ -775,7 +775,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian3"
                                                 value="ya" id="perjanjian3Ya"
-                                                {{ old('perjanjian3') == 'ya' ? 'checked' : '' }}>
+                                                {{ old('perjanjian3') == 'ya' ? 'checked' : '' }} required>
                                             <label class="form-check-label" for="perjanjian3Ya">ya</label>
                                         </div>
                                     </div>
@@ -783,7 +783,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian3"
                                                 value="tidak" id="perjanjian3Tidak"
-                                                {{ old('perjanjian3') == 'tidak' ? 'checked' : '' }}>
+                                                {{ old('perjanjian3') == 'tidak' ? 'checked' : '' }} required>
                                             <label class="form-check-label" for="perjanjian3Tidak">tidak</label>
                                         </div>
                                     </div>
@@ -791,7 +791,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian3"
                                                 value="ragu" id="perjanjian3Ragu"
-                                                {{ old('perjanjian3') == 'ragu' ? 'checked' : '' }}>
+                                                {{ old('perjanjian3') == 'ragu' ? 'checked' : '' }} required>
                                             <label class="form-check-label" for="perjanjian3Ragu">ragu</label>
                                         </div>
                                     </div>
@@ -803,7 +803,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian4"
                                                 value="ya" id="perjanjian4Ya"
-                                                {{ old('perjanjian4') == 'ya' ? 'checked' : '' }}>
+                                                {{ old('perjanjian4') == 'ya' ? 'checked' : '' }} required>
                                             <label class="form-check-label" for="perjanjian4Ya">ya</label>
                                         </div>
                                     </div>
@@ -811,7 +811,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian4"
                                                 value="tidak" id="perjanjian4Tidak"
-                                                {{ old('perjanjian4') == 'tidak' ? 'checked' : '' }}>
+                                                {{ old('perjanjian4') == 'tidak' ? 'checked' : '' }} required>
                                             <label class="form-check-label" for="perjanjian4Tidak">tidak</label>
                                         </div>
                                     </div>
@@ -819,7 +819,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian4"
                                                 value="ragu" id="perjanjian4Ragu"
-                                                {{ old('perjanjian4') == 'ragu' ? 'checked' : '' }}>
+                                                {{ old('perjanjian4') == 'ragu' ? 'checked' : '' }} required>
                                             <label class="form-check-label" for="perjanjian4Ragu">ragu</label>
                                         </div>
                                     </div>
