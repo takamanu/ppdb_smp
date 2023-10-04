@@ -79,9 +79,9 @@
             </div>
 
         </div>
-        <div class="card-footer text-body-secondary">
+        {{-- <div class="card-footer text-body-secondary">
             <button onclick="alert('Coming soon')" class="btn btn-primary btn-block">Cetak profil</a>
-        </div>
+        </div> --}}
     </div>
 
     <div class="card text-center mb-5">
@@ -268,9 +268,21 @@
                 </div>
             </div>
         </div>
+
         <div class="card-footer text-body-secondary ">
-            <a href="{{ url('/siswa/pengumuman/' . Auth::user()->id) }}" class="btn btn-primary btn-block">Cek
-                Pengumuman</a>
+            @if ($config->pengumuman == 0)
+                <a href="#" onclick="alert('Pengumuman belum dibuka!');" class="btn btn-primary btn-block">Cek Pengumuman</a>             
+            @else
+                @if (empty($payment))
+                    <a href="#" onclick="alert('Kamu belum melakukan pembayaran!');" class="btn btn-primary btn-block">Cek Pengumuman</a>             
+                @elseif ($payment->status_payment !== 2 && $payment->status !== 2)
+                    <a href="#" onclick="alert('Kamu belum menyelesaikan pembayaran!');" class="btn btn-primary btn-block">Cek Pengumuman</a>                     
+                @elseif ($agen == 'NULL')
+                    <a href="#" onclick="alert('Kamu belum mengisi datapokok!');" class="btn btn-primary btn-block">Cek Pengumuman</a>                     
+                @else
+                    <a href="{{ url('/siswa/pengumuman/' . Auth::user()->id) }}" class="btn btn-primary btn-block">Cek Pengumuman</a>
+                @endif
+            @endif
         </div>
     </div>
 
