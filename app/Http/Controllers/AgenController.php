@@ -26,8 +26,8 @@ class AgenController extends Controller
     public function get_user_with_all_paid(){
         $users = DB::table('users')
                 ->join('payments', 'users.id', '=', 'payments.user_id')
-                ->join('datapokok', 'users.id', '=', 'datapokok.user_id')
-                ->select('users.*', 'payments.*', 'datapokok.*')
+                ->join('registration', 'users.id', '=', 'registration.user_id')
+                ->select('users.*', 'payments.*', 'registration.*')
                 ->where('payments.status',2)
                 ->where('users.role',1)
                 ->get();
@@ -36,11 +36,11 @@ class AgenController extends Controller
     public function get_user_with_all_paid_and_datapokok(){
         $users = DB::table('users')
                 ->join('payments', 'users.id', '=', 'payments.user_id')
-                ->join('datapokok', 'users.id', '=', 'datapokok.user_id')
-                ->select('users.*', 'payments.*', 'datapokok.*')
+                ->join('registration', 'users.id', '=', 'registration.user_id')
+                ->select('users.*', 'payments.*', 'registration.*')
                 ->where('payments.status',2)
                 ->where('users.role',1)
-                ->where('datapokok.user_id','!=',NULL)
+                ->where('registration.user_id','!=',NULL)
                 ->get();
         // dd($users);
     }

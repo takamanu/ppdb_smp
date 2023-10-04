@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class RegistrasiUlang extends Model
 {
     use HasFactory;
-    protected $table = 'registrasi_ulang';
+    protected $table = 'reRegistration';
     protected $primaryKey = 'id';
     protected $fillable = [
         'user_id',

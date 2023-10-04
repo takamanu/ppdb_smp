@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('nilais', function (Blueprint $table) {
+        Schema::create('testResult', function (Blueprint $table) {
             $table->id();
             $table->foreignId('datapokok_id');
             $table->string('matematika');
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nilais');
+        Schema::dropIfExists('testResult');
     }
 };

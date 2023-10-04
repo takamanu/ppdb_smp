@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('registrasi_ulang', function (Blueprint $table) {
+        Schema::create('reRegistration', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             $table->string('ijazah');
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('registrasi_ulang');
+        Schema::dropIfExists('reRegistration');
     }
 };

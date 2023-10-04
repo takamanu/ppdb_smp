@@ -48,10 +48,7 @@ Route::resource('/registrasi', RegistrasiUlangController::class);
 Route::resource('/payment', PaymentController::class);
 // Route::post('/daftar', [DatapokokController::class, 'store']);
 // Route::resource('/datapokok', DatapokokController::class);
-Route::get('/excel/sudah-bayar', [SiswaController::class,'export_sudah_bayar']);
-// Route::get('/excel', [SiswaController::class,'export_sudah_bayar']);
-Route::get('/excel/sudah-lulus', [SiswaController::class,'export_sudah_lulus']);
-Route::get('/excel/tidak-lulus', [SiswaController::class,'export_tidak_lulus']);
+
 
 
 
@@ -61,8 +58,6 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/siswa', [App\Http\Controllers\SiswaController::class, 'index'])->name('siswa');
     // });
     Route::get('/bayar', [PaymentController::class, 'bayar'])->name('bayar');
-    Route::resource('/transaksi', TransaksiController::class);
-    Route::resource('/persediaan', ProdukController::class);
     Route::resource('/agen', AgenController::class);
     Route::resource('/siswa', SiswaController::class);
 
@@ -76,16 +71,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/siswa/registrasi/{id}', [SiswaController::class, 'registrasiUlang']);
     Route::get('/siswa/cetakpokok/{id}', [SiswaController::class, 'cetakpokok']);
 
-    // Route::post('/siswa/registrasi/create', [SiswaController::class, 'storeRegistrasiUlang']);
-    Route::resource('/persediaan', StockController::class);
-    Route::resource('/produk', ProdukController::class);
-
     // Route::resource('/register', RegistersUsers::class);
     Route::resource('/profile', ProfileController::class);
     Route::resource('/registrasi_ulang', RegistrasiUlangController::class);
-    // Route::get('/config', [ConfigController::class, 'index']);
-    // Route::get('/config/edit', [ConfigController::class, 'edit']);
-    // Route::put('/config/update', [ConfigController::class, 'update']);
 });
 
 Route::middleware(['admin:1'])->group(function(){
@@ -102,6 +90,10 @@ Route::middleware(['admin:0'])->group(function(){
     Route::get('/config', [ConfigController::class, 'index']);
     Route::get('/config/edit', [ConfigController::class, 'edit']);
     Route::put('/config/update', [ConfigController::class, 'update']);
+    Route::get('/excel/sudah-bayar', [SiswaController::class,'export_sudah_bayar']);
+//  Route::get('/excel', [SiswaController::class,'export_sudah_bayar']);
+    Route::get('/excel/sudah-lulus', [SiswaController::class,'export_sudah_lulus']);
+    Route::get('/excel/tidak-lulus', [SiswaController::class,'export_tidak_lulus']);
 });
 
 

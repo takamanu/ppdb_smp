@@ -51,8 +51,8 @@ class HomeController extends Controller
     public function count_paid_and_filled_datapokok(){
         return $users = DB::table('users')
                 ->join('payments', 'users.id', '=', 'payments.user_id')
-                ->join('datapokok', 'users.id', '=', 'datapokok.user_id')
-                ->select('users.*', 'payments.*', 'datapokok.*')
+                ->join('registration', 'users.id', '=', 'registration.user_id')
+                ->select('users.*', 'payments.*', 'registration.*')
                 ->where('payments.status',2)
                 ->count();
     }

@@ -9,7 +9,7 @@ class Datapokok extends Model
 {
     use HasFactory;
 
-    protected $table = 'datapokok';
+    protected $table = 'registration';
     protected $primaryKey = 'id';
     protected $fillable = [
         'user_id',

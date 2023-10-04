@@ -25,7 +25,7 @@ return new class extends Migration
 
     public function up()
     {
-        Schema::create('datapokok', function (Blueprint $table) {
+        Schema::create('registration', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             // $table->foreignId('policy_id');
@@ -108,6 +108,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('datapokok');
+        Schema::dropIfExists('registration');
     }
 };
