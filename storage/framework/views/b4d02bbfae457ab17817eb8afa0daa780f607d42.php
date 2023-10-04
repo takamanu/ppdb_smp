@@ -1005,7 +1005,7 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="daftar_sekolah_lain"
                                                 value="1" id="daftar_sekolah_lain"
-                                                <?php echo e(old('daftar_sekolah_lain') ? 'checked' : ''); ?>>
+                                                <?php echo e(old('daftar_sekolah_lain') ? 'checked' : ''); ?> required>
                                             <label class="form-check-label" for="daftar_sekolah_lain">Ya</label>
                                         </div>
                                     </div>
@@ -1136,7 +1136,7 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian1"
                                                 value="ya" id="perjanjian1Ya"
-                                                <?php echo e(old('perjanjian1') == 'ya' ? 'checked' : ''); ?>>
+                                                <?php echo e(old('perjanjian1') == 'ya' ? 'checked' : ''); ?> required>
                                             <label class="form-check-label" for="perjanjian1Ya">ya</label>
                                         </div>
                                     </div>
@@ -1144,7 +1144,7 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian1"
                                                 value="tidak" id="perjanjian1Tidak"
-                                                <?php echo e(old('perjanjian1') == 'tidak' ? 'checked' : ''); ?>>
+                                                <?php echo e(old('perjanjian1') == 'tidak' ? 'checked' : ''); ?> required>
                                             <label class="form-check-label" for="perjanjian1Tidak">tidak</label>
                                         </div>
                                     </div>
@@ -1152,7 +1152,7 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian1"
                                                 value="ragu" id="perjanjian1Ragu"
-                                                <?php echo e(old('perjanjian1') == 'tidak' ? 'checked' : ''); ?>>
+                                                <?php echo e(old('perjanjian1') == 'tidak' ? 'checked' : ''); ?> required>
                                             <label class="form-check-label" for="perjanjian1Ragu">ragu</label>
                                         </div>
                                     </div>
@@ -1165,7 +1165,7 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian2"
                                                 value="ya" id="perjanjian2Ya"
-                                                <?php echo e(old('perjanjian2') == 'ya' ? 'checked' : ''); ?>>
+                                                <?php echo e(old('perjanjian2') == 'ya' ? 'checked' : ''); ?> required>
                                             <label class="form-check-label" for="perjanjian2Ya">ya</label>
                                         </div>
                                     </div>
@@ -1173,7 +1173,7 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian2"
                                                 value="tidak" id="perjanjian2Tidak"
-                                                <?php echo e(old('perjanjian2') == 'tidak' ? 'checked' : ''); ?>>
+                                                <?php echo e(old('perjanjian2') == 'tidak' ? 'checked' : ''); ?> required>
                                             <label class="form-check-label" for="perjanjian2Tidak">tidak</label>
                                         </div>
                                     </div>
@@ -1181,7 +1181,7 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian2"
                                                 value="ragu" id="perjanjian2Ragu"
-                                                <?php echo e(old('perjanjian2') == 'ragu' ? 'checked' : ''); ?>>
+                                                <?php echo e(old('perjanjian2') == 'ragu' ? 'checked' : ''); ?> required>
                                             <label class="form-check-label" for="perjanjian2Ragu">ragu</label>
                                         </div>
                                     </div>
@@ -1194,7 +1194,7 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian3"
                                                 value="ya" id="perjanjian3Ya"
-                                                <?php echo e(old('perjanjian3') == 'ya' ? 'checked' : ''); ?>>
+                                                <?php echo e(old('perjanjian3') == 'ya' ? 'checked' : ''); ?> required>
                                             <label class="form-check-label" for="perjanjian3Ya">ya</label>
                                         </div>
                                     </div>
@@ -1202,7 +1202,7 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian3"
                                                 value="tidak" id="perjanjian3Tidak"
-                                                <?php echo e(old('perjanjian3') == 'tidak' ? 'checked' : ''); ?>>
+                                                <?php echo e(old('perjanjian3') == 'tidak' ? 'checked' : ''); ?> required>
                                             <label class="form-check-label" for="perjanjian3Tidak">tidak</label>
                                         </div>
                                     </div>
@@ -1210,7 +1210,7 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian3"
                                                 value="ragu" id="perjanjian3Ragu"
-                                                <?php echo e(old('perjanjian3') == 'ragu' ? 'checked' : ''); ?>>
+                                                <?php echo e(old('perjanjian3') == 'ragu' ? 'checked' : ''); ?> required>
                                             <label class="form-check-label" for="perjanjian3Ragu">ragu</label>
                                         </div>
                                     </div>
@@ -1222,7 +1222,7 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian4"
                                                 value="ya" id="perjanjian4Ya"
-                                                <?php echo e(old('perjanjian4') == 'ya' ? 'checked' : ''); ?>>
+                                                <?php echo e(old('perjanjian4') == 'ya' ? 'checked' : ''); ?> required>
                                             <label class="form-check-label" for="perjanjian4Ya">ya</label>
                                         </div>
                                     </div>
@@ -1230,7 +1230,7 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian4"
                                                 value="tidak" id="perjanjian4Tidak"
-                                                <?php echo e(old('perjanjian4') == 'tidak' ? 'checked' : ''); ?>>
+                                                <?php echo e(old('perjanjian4') == 'tidak' ? 'checked' : ''); ?> required>
                                             <label class="form-check-label" for="perjanjian4Tidak">tidak</label>
                                         </div>
                                     </div>
@@ -1238,7 +1238,7 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="perjanjian4"
                                                 value="ragu" id="perjanjian4Ragu"
-                                                <?php echo e(old('perjanjian4') == 'ragu' ? 'checked' : ''); ?>>
+                                                <?php echo e(old('perjanjian4') == 'ragu' ? 'checked' : ''); ?> required>
                                             <label class="form-check-label" for="perjanjian4Ragu">ragu</label>
                                         </div>
                                     </div>

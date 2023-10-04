@@ -14,8 +14,8 @@ class UsersExport implements FromView
     {
         $users = DB::table('users')
                 ->join('payments', 'users.id', '=', 'payments.user_id')
-                ->join('datapokok', 'users.id', '=', 'datapokok.user_id')
-                ->select('users.*', 'payments.*','datapokok.nisn')
+                ->join('registration', 'users.id', '=', 'registration.user_id')
+                ->select('users.*', 'payments.*','registration.nisn')
                 ->where('users.role',1)
                 ->where('payments.status_payment',2)
                 ->where('payments.status',2)

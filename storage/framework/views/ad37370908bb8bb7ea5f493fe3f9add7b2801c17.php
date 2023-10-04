@@ -131,7 +131,7 @@
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>
                             </table>
-                            <div class="row">
+                            <div class="row mb-5">
                                 <div class="col-md-8">
                                     Showing <?php echo e($agen->firstItem()); ?> to <?php echo e($agen->lastItem()); ?> of <?php echo e($agen->total()); ?>
 
@@ -142,7 +142,11 @@
 
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <a href="/excel/sudah-bayar" class="btn btn-success btn-block">Daftar siswa Sudah bayar (Download XLSX)</a>
+                                <a href="/excel/sudah-lulus" class="btn btn-success btn-block">Daftar siswa Sudah lulus (Download XLSX)</a>
+                                <a href="/excel/tidak-lulus" class="btn btn-success btn-block">Daftar siswa Tidak lulus (Download XLSX)</a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -55,9 +55,8 @@
     <?php elseif(is_null(Auth::user()->registrasi_ulang)): ?>
         <a href="<?php echo e(url('/siswa/registrasi/' . $siswa->id)); ?>" class="btn btn-primary btn-block">Registrasi Ulang</a>
         <hr>
-        <a href="<?php echo e(url('/siswa/cetak/' . $siswa->id)); ?>" title="Cetak Datapokok Siswa"
-            class="btn btn-success btn-block">Cetak
-            Datapokok</a>
+        <a href="<?php echo e(url('/siswa/cetak/' . $siswa->id)); ?>" title="Cetak Riwayat Siswa"
+            class="btn btn-success btn-block">Cetak Riwayat (PDF)</a>
     <?php else: ?>
         <button onclick="alert('Kamu sudah melakukan registrasi ulang!')" class="btn btn-primary btn-block mb-3"
             disabled>Registrasi Ulang</button>
@@ -65,15 +64,15 @@
             Kamu sudah melakukan registrasi ulang!
         </div>
         <div class="alert alert-success">
-            Silahkan join grup whatsapp: <?php echo e($config->redirect_wa); ?>
-
+            Silahkan join grup whatsapp: <a href="<?php echo e($config->redirect_wa); ?>" target="_blank"><?php echo e($config->redirect_wa); ?></a>
         </div>
         <hr>
-        <a href="<?php echo e(url('/siswa/cetak/' . $siswa->id)); ?>" title="Cetak Datapokok Siswa"
-            class="btn btn-success btn-block">Cetak
-            Datapokok</a>
+        <a href="<?php echo e(url('/siswa/cetak/' . $siswa->id)); ?>" title="Cetak Riwayat Siswa"
+            class="btn btn-success btn-block">Cetak Riwayat (PDF)</a>
     <?php endif; ?>
     
+    <a href="<?php echo e(url('/siswa/cetakpokok/' . $siswa->id)); ?>" title="Cetak Datapokok Siswa" class="btn btn-success btn-block">Cetak Datapokok (PDF)</a>
+    <hr>
     <a href="/siswa" class="btn btn-warning btn-block">Kembali ke dashboard</a>
 <?php $__env->stopSection(); ?>
 

@@ -14,9 +14,9 @@ class UsersAllTidakLulus implements FromView
     {
         $users = DB::table('users')
             ->join('payments', 'users.id', '=', 'payments.user_id')
-            ->join('datapokok', 'users.id', '=', 'datapokok.user_id')
-            ->join('nilais', 'datapokok.id', '=', 'nilais.datapokok_id')
-            ->select('users.*', 'payments.*','datapokok.nisn','nilais.status')
+            ->join('registration', 'users.id', '=', 'registration.user_id')
+            ->join('nilais', 'registration.id', '=', 'nilais.registration_id')
+            ->select('users.*', 'payments.*','registration.nisn','nilais.status')
             ->where('users.role',1)
             ->where('payments.status_payment',2)
             ->where('payments.status',2)
