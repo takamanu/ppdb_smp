@@ -96,6 +96,14 @@
                                             name="password_confirmation" required autocomplete="new-password">
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox small">
+                                        <input class="form-check-input" type="checkbox" name="togglePassword" id="togglePassword">
+
+                                            <label class="form-check-label" for="remember" id="togglePassword">
+                                                {{ __('Lihat sandi') }}
+                                    </div>
+                                </div>
 
                                 <div class="row mb-0">
                                     <div class="col-md-6 offset-md-4">
