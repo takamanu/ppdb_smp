@@ -113,3 +113,25 @@
 
     </div>
 </body>
+
+<script>
+    const togglePassword = document.querySelector("#togglePassword");
+    const password = document.querySelector("#password");
+    const passwordConfirm = document.querySelector("#password-confirm");
+
+    togglePassword.addEventListener("click", function(e) {
+        // toggle the type attribute
+        const type = password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+
+    });
+
+    togglePassword.addEventListener("click", function(e) {
+        // toggle the type attribute
+        const type = passwordConfirm.getAttribute("type") === "password" ? "text" : "password";
+        passwordConfirm.setAttribute("type", type);
+
+    });
+
+    // prevent form submit
+</script>
