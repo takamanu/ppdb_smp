@@ -91,12 +91,15 @@
                                         <a class="small"
                                             href="{{ route('register') }}">{{ __('Create an Account') }}</a>
                                     </div>
+                        
+                                    <div class="text-center">
 
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        <a class="small" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
                                     @endif
+                                    </div>
 
                                     {{-- <a class="btn btn-link" href="{{ route('register') }}">{{ __('Create an Account') }}</a> --}}
                                 </div>
