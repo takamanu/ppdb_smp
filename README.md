@@ -15,6 +15,9 @@ Sebelum Anda mulai, pastikan komputer Anda sudah memenuhi persyaratan berikut:
 
 Ikuti langkah-langkah ini untuk menginstal proyek Anda:
 
+Disclaimer:
+- Add database bernama "laravel" di phpmyadmin database local terlebih dahulu.
+
 1. **Clone repositori ini:**
 
     ```bash
@@ -27,62 +30,40 @@ Ikuti langkah-langkah ini untuk menginstal proyek Anda:
     cd nama-proyek
     ```
 
-3. **Salin file .env.example ke .env:**
+3. **Atur konfigurasi database di file .env:**
 
-    ```bash
-    cp .env.example .env
-    ```
-
-4. **Atur konfigurasi database di file .env:**
-
-    Buka file .env menggunakan teks editor Anda dan atur informasi database Anda:
+    Edit file .env menggunakan teks editor Anda dan atur informasi database Anda:
 
     ```env
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
     DB_PORT=3306
-    DB_DATABASE=nama_database_anda
-    DB_USERNAME=nama_pengguna_database_anda
-    DB_PASSWORD=sandi_database_anda
+    DB_DATABASE=laravel
+    DB_USERNAME=root
+    DB_PASSWORD=
     ```
 
-5. **Instal dependensi PHP menggunakan Composer:**
+4. **Instal dependensi PHP menggunakan Composer:**
 
     ```bash
     composer install
     ```
-
-6. **Generate kunci aplikasi Laravel:**
-
-    ```bash
-    php artisan key:generate
-    ```
-
-7. **Jalankan migrasi database dan pengisian awal (seeder), jika diperlukan:**
+5. **Jalankan migrasi database dan pengisian awal (seeder), jika diperlukan:**
 
     ```bash
-    php artisan migrate --seed
+    php artisan migrate:fresh
     ```
-
-8. **Instal dependensi JavaScript menggunakan npm:**
-
     ```bash
-    npm install
+    php artisan db:seed DatabaseSeeder
     ```
 
-9. **Kompilasi aset JavaScript dan CSS:**
-
-    ```bash
-    npm run dev
-    ```
-
-10. **Jalankan server pengembangan:**
+6. **Jalankan server pengembangan:**
 
     ```bash
     php artisan serve
     ```
 
-11. **Buka aplikasi di browser Anda:**
+7. **Buka aplikasi di browser Anda:**
 
     Buka browser Anda dan kunjungi `http://localhost:8000`.
 
@@ -101,5 +82,3 @@ Jika Anda ingin berkontribusi pada proyek ini, silakan ikuti langkah-langkah ini
 Tulis lisensi proyek Anda di sini (misalnya MIT, Apache 2.0, dsb.).
 
 ---
-
-Silakan ganti bagian "Nama Proyek Anda" dengan nama sebenarnya dan sesuaikan instruksi dengan kebutuhan proyek Anda. Semoga README ini membantu Anda untuk menginstal dan menjalankan proyek Laravel Anda dengan mudah.
