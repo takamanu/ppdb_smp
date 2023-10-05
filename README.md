@@ -1,64 +1,105 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Nama Proyek Anda
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Deskripsi singkat proyek Anda di sini.
 
-## About Laravel
+## Persyaratan
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Sebelum Anda mulai, pastikan komputer Anda sudah memenuhi persyaratan berikut:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [PHP](https://www.php.net/) versi x.x.x atau yang lebih tinggi
+- [Composer](https://getcomposer.org/)
+- [Node.js](https://nodejs.org/) dan [npm](https://www.npmjs.com/)
+- [Laragon](https://laragon.org/) atau [XAMPP](https://www.apachefriends.org/index.html) (opsional)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Instalasi
 
-## Learning Laravel
+Ikuti langkah-langkah ini untuk menginstal proyek Anda:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. **Clone repositori ini:**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    ```bash
+    git clone https://github.com/username/nama-proyek.git
+    ```
 
-## Laravel Sponsors
+2. **Pindah ke direktori proyek:**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+    ```bash
+    cd nama-proyek
+    ```
 
-### Premium Partners
+3. **Salin file .env.example ke .env:**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+    ```bash
+    cp .env.example .env
+    ```
 
-## Contributing
+4. **Atur konfigurasi database di file .env:**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    Buka file .env menggunakan teks editor Anda dan atur informasi database Anda:
 
-## Code of Conduct
+    ```env
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=nama_database_anda
+    DB_USERNAME=nama_pengguna_database_anda
+    DB_PASSWORD=sandi_database_anda
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5. **Instal dependensi PHP menggunakan Composer:**
 
-## Security Vulnerabilities
+    ```bash
+    composer install
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+6. **Generate kunci aplikasi Laravel:**
 
-## License
+    ```bash
+    php artisan key:generate
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+7. **Jalankan migrasi database dan pengisian awal (seeder), jika diperlukan:**
+
+    ```bash
+    php artisan migrate --seed
+    ```
+
+8. **Instal dependensi JavaScript menggunakan npm:**
+
+    ```bash
+    npm install
+    ```
+
+9. **Kompilasi aset JavaScript dan CSS:**
+
+    ```bash
+    npm run dev
+    ```
+
+10. **Jalankan server pengembangan:**
+
+    ```bash
+    php artisan serve
+    ```
+
+11. **Buka aplikasi di browser Anda:**
+
+    Buka browser Anda dan kunjungi `http://localhost:8000`.
+
+## Kontribusi
+
+Jika Anda ingin berkontribusi pada proyek ini, silakan ikuti langkah-langkah ini:
+
+1. Fork repositori ini.
+2. Buat cabang baru (`git checkout -b fitur-anda`)
+3. Buat komit untuk perubahan Anda (`git commit -m 'Menambahkan fitur baru'`)
+4. Dorong komit Anda ke cabang Anda (`git push origin fitur-anda`)
+5. Buat pull request ke repositori ini.
+
+## Lisensi
+
+Tulis lisensi proyek Anda di sini (misalnya MIT, Apache 2.0, dsb.).
+
+---
+
+Silakan ganti bagian "Nama Proyek Anda" dengan nama sebenarnya dan sesuaikan instruksi dengan kebutuhan proyek Anda. Semoga README ini membantu Anda untuk menginstal dan menjalankan proyek Laravel Anda dengan mudah.
