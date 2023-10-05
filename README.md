@@ -1,6 +1,4 @@
-# Nama Proyek Anda
-
-Deskripsi singkat proyek Anda di sini.
+# PPDB SMPTQ PANGERAN DIPONEGORO
 
 ## Persyaratan
 
@@ -21,7 +19,7 @@ Disclaimer:
 1. **Clone repositori ini:**
 
     ```bash
-    git clone https://github.com/username/nama-proyek.git
+    git clone https://github.com/takamanu/ppdb_smp.git
     ```
 
 2. **Pindah ke direktori proyek:**
