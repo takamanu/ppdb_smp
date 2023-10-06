@@ -5,7 +5,10 @@
         <div class="row">
             <div class="col">
                 <div class="card">
+                    <div class="table-responsive">
+                    
                     <div class="card-header">
+                        
                         <h2>Daftar Siswa</h2>
                     </div>
                     <div class="card-body">
@@ -30,7 +33,6 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
