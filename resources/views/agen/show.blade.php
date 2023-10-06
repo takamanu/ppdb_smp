@@ -5,6 +5,7 @@
         <div class="card-header">Lihat Siswa {{ $agen->nama_lengkap }}</div>
         <div class="card-body">
             <!-- Section 1: Data Pribadi -->
+            <div class="table-responsive">
             <h3>Data Pribadi</h3>
             <table class="table table-striped mb-5">
                 <tbody>
@@ -281,6 +282,7 @@
                     </tbody>
                 </table>
             @endif
+            </div>
             {{-- @if (!is_null($siswaagen->registrasi_ulang)) --}}
 
             {{-- @else
