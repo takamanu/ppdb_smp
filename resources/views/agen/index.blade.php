@@ -15,18 +15,17 @@
                         <a href="{{ url('/agen/create') }}" class="btn btn-success btn-sm float-left" title="Add New Agen">
                             <i class="fa fa-plus" aria-hidden="true"></i> Tambah Siswa
                         </a>
-                        <form method="GET"
-                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search float-right">
+                        <form method="GET" class="form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search float-right">
                             <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small" name="cari"
-                                    id="cari" placeholder="Cari siswa..." value={{ $cari }}>
+                                <input type="text" class="form-control bg-light border-0 small" name="cari" id="cari"
+                                    placeholder="Cari siswa..." value={{ $cari }}>
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit" name="submit">
                                         <i class="fas fa-search fa-sm"></i>
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                        </form>                        
                         <br><br>
                         @if (session('status'))
                             <div class="alert alert-success">
