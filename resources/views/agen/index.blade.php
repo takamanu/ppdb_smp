@@ -5,7 +5,6 @@
         <div class="row">
             <div class="col">
                 <div class="card">
-                    <div class="table-responsive">
                     
                     <div class="card-header">
                         
@@ -32,6 +31,8 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                        <div class="table-responsive">
+
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
