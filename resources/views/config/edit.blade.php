@@ -7,6 +7,7 @@
         {!! csrf_field() !!}
         @method('PUT')
         <div class="container mb-5">
+            <div class="table-responsive">
             <table class="table table-striped mb-5">
                 <thead>
                     <tr>
@@ -101,7 +102,9 @@
                 </tbody>
 
             </table>
+            </div>
 
+            <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -151,6 +154,7 @@
                     {{-- <td>{{ $config->pendaftaran_ulang_due }}</td> --}}
                 </tr>
             </table>
+            </div>
         </div>
         <button class="btn btn-primary btn-block" type="submit">Submit perubahan</a>
 
