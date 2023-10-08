@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Datapokok;
 use App\Models\Payment;
 use App\Models\RegistrasiUlang;
+use App\Models\Registration;
 use App\Models\Reregistration;
 use App\Models\Testresult;
 
@@ -114,7 +115,7 @@ class AgenController extends Controller
         
         $idBaru = User::latest('id')->first();
 
-        Datapokok::create([
+        Registration::create([
             'user_id' => $idBaru->id,
             'nama_lengkap' => $request->nama_lengkap,
             'email' => $request->email,
@@ -151,7 +152,7 @@ class AgenController extends Controller
             'informasi_didapatkan_dari' => 'brosur',
         ]);
 
-        $idBaruDatapokok = Datapokok::latest('id')->first();
+        $idBaruDatapokok = Registration::latest('id')->first();
 
         $raw_data_policy = [
             'datapokok_id' => $idBaruDatapokok->id, 
@@ -185,7 +186,7 @@ class AgenController extends Controller
      */
     public function show($id)
     {
-        // $agen = Datapokok::where('user_id', $id)->first();
+        // $agen = Registration::where('user_id', $id)->first();
         $user = User::where('id', $id)->first();
         $agen = $user->datapokok;
 
@@ -210,7 +211,7 @@ class AgenController extends Controller
         // $agen = User::where('id', $id)->first();
 
         // dd($agen->datapokok->policy);
-        // $agentest = Datapokok::where('user_id', 2)->first();
+        // $agentest = Registration::where('user_id', 2)->first();
         // return $agentest;
         // dd($data);
 
@@ -220,14 +221,14 @@ class AgenController extends Controller
 
     public function cetak($id)
     {
-        $agen = Datapokok::where('user_id', $id)->first();
+        $agen = Registration::where('user_id', $id)->first();
         // return $agen;
         return view('agen.cetak')->with('agen', $agen);
     }
 
     public function masukNilai($id)
     {
-        $agen = Datapokok::where('user_id', $id)->first();
+        $agen = Registration::where('user_id', $id)->first();
         // return $agen;    
         return view('agen.nilai')->with('agen', $agen);
     }
@@ -256,7 +257,7 @@ class AgenController extends Controller
     {
         // return $id;
 
-        $agen = Datapokok::where('user_id', $id)->first();
+        $agen = Registration::where('user_id', $id)->first();
         // return $id;
 
         $nilai = $agen->nilai;
@@ -336,7 +337,7 @@ class AgenController extends Controller
             if (!empty($agen->datapokok->nilai)){;
                 Testresult::destroy($agen->datapokok->nilai->id);
             }
-            Datapokok::destroy($agen->datapokok->id);
+            Registration::destroy($agen->datapokok->id);
         }
         
         if (!empty($agen->registrasi_ulang)){

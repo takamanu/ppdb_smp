@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Nilai;
 use App\Http\Controllers\Controller;
+use App\Models\Testresult;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,7 @@ class NilaiController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function check_nilai(Nilai $nilai){
+    public function check_nilai(Testresult $nilai){
         
         //cek nilai akademis
         $nilai_akademis = [];
@@ -67,9 +68,9 @@ class NilaiController extends Controller
             'test_membaca_al_quran' => $request->test_membaca_al_quran
         ];
 
-        $nilai = Nilai::create($validateData);
+        $nilai = Testresult::create($validateData);
 
-        $nilai_find = Nilai::find($nilai->id);
+        $nilai_find = Testresult::find($nilai->id);
         $nilai_find->update([
             'status' => $this->check_nilai($nilai)
         ]);
@@ -85,7 +86,7 @@ class NilaiController extends Controller
      * @param  \App\Models\Nilai  $nilai
      * @return \Illuminate\Http\Response
      */
-    public function show(Nilai $nilai)
+    public function show(Testresult $nilai)
     {
         //
     }
@@ -96,7 +97,7 @@ class NilaiController extends Controller
      * @param  \App\Models\Nilai  $nilai
      * @return \Illuminate\Http\Response
      */
-    public function edit(Nilai $nilai)
+    public function edit(Testresult $nilai)
     {
         //
     }
@@ -108,7 +109,7 @@ class NilaiController extends Controller
      * @param  \App\Models\Nilai  $nilai
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Nilai $nilai)
+    public function update(Request $request, Testresult $nilai)
     {
         $validateData = $request->validate([
             'user_id' => 'required',
@@ -119,7 +120,7 @@ class NilaiController extends Controller
         ]);
 
         $id_nilai = $request->id_nilai;
-        $nilai = Nilai::find($id_nilai);
+        $nilai = Testresult::find($id_nilai);
         $nilai->update($validateData);
     }
 
@@ -129,7 +130,7 @@ class NilaiController extends Controller
      * @param  \App\Models\Nilai  $nilai
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Nilai $nilai)
+    public function destroy(Testresult $nilai)
     {
         //
     }

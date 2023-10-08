@@ -14,6 +14,8 @@ use App\Models\Datapokok;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Config;
+use App\Models\Registration;
+use App\Models\Reregistration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -132,7 +134,7 @@ class RegistrasiUlangController extends Controller
         }
 
         $user = auth()->user()->id;
-        $siswa = Datapokok::where('user_id', $user)->first();
+        $siswa = Registration::where('user_id', $user)->first();
 
         $usess = User::find(Auth::user()->id);
         // dd($usess->datapokok);
@@ -165,7 +167,7 @@ class RegistrasiUlangController extends Controller
         }
 
         // Create a record in the database with the file paths
-        RegistrasiUlang::create([
+        Reregistration::create([
             'user_id' => auth()->user()->id,
             'ijazah' => $uploadedFiles['ijazah'],
             'surat_pernyataan_bermaterai' => $uploadedFiles['surat_pernyataan_bermaterai'],
@@ -189,7 +191,7 @@ class RegistrasiUlangController extends Controller
      * @param  \App\Models\RegistrasiUlang  $registrasiUlang
      * @return \Illuminate\Http\Response
      */
-    public function show(RegistrasiUlang $registrasiUlang)
+    public function show(Reregistration $registrasiUlang)
     {
         //
     }
@@ -200,7 +202,7 @@ class RegistrasiUlangController extends Controller
      * @param  \App\Models\RegistrasiUlang  $registrasiUlang
      * @return \Illuminate\Http\Response
      */
-    public function edit(RegistrasiUlang $registrasiUlang)
+    public function edit(Reregistration $registrasiUlang)
     {
         //
     }
@@ -212,9 +214,9 @@ class RegistrasiUlangController extends Controller
      * @param  \App\Models\RegistrasiUlang  $registrasiUlang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RegistrasiUlang $registrasiUlang)
+    public function update(Request $request, Reregistration $registrasiUlang)
     {
-        $check_data = RegistrasiUlang::find('user_id',Auth::user()->id);
+        $check_data = Reregistration::find('user_id',Auth::user()->id);
         if($check_data){
             return abort(403, 'Unauthorized');
         }
@@ -269,7 +271,7 @@ class RegistrasiUlangController extends Controller
             $validatedData['kk'] = $request->file('kk')->store('/public/registrasi_ulang/kk');
         }
         $id = $request->id_registrasi_ulang;
-        $registrasiUlang = RegistrasiUlang::find($id);
+        $registrasiUlang = Reregistration::find($id);
         $registrasiUlang->update($validatedData);
     }
 
@@ -279,7 +281,7 @@ class RegistrasiUlangController extends Controller
      * @param  \App\Models\RegistrasiUlang  $registrasiUlang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RegistrasiUlang $registrasiUlang)
+    public function destroy(Reregistration $registrasiUlang)
     {
         //
     }
