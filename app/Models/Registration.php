@@ -34,7 +34,7 @@ class Registration extends Model
     }
 
     public function nilai(){
-        return $this->hasOne(Nilai::class);
+        return $this->hasOne(Testresult::class);
     }
 
 }

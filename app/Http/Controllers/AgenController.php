@@ -171,7 +171,7 @@ class AgenController extends Controller
             "status" => "LULUS",
         ];
 
-        Nilai::create($raw_data_nilai);
+        Testresult::create($raw_data_nilai);
         Policy::create($raw_data_policy);
  
          // Agen::create($input);
@@ -190,7 +190,7 @@ class AgenController extends Controller
         $user = User::where('id', $id)->first();
         $agen = $user->datapokok;
 
-        $registrasi_ulang = RegistrasiUlang::where('user_id',$id)->first();
+        $registrasi_ulang = Reregistration::where('user_id',$id)->first();
         // return $user->registrasi_ulang;
         // dd($registrasi_ulang);
 
