@@ -58,17 +58,32 @@
                 },
                 onPending: function(result) {
                     /* You may add your own implementation here */
-                    alert("wating your payment!");
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Menunggu pembayaran kamu!',
+                        showConfirmButton: false,
+                        timer: 1500 // Display for 3 seconds
+                    })
                     console.log(result);
                 },
                 onError: function(result) {
                     /* You may add your own implementation here */
-                    alert("payment failed!");
+                    Swal.fire({
+                        icon: 'danger',
+                        title: 'Pembayaran belum berhasil!',
+                        showConfirmButton: false,
+                        timer: 1500 // Display for 3 seconds
+                    })
                     console.log(result);
                 },
                 onClose: function() {
                     /* You may add your own implementation here */
-                    alert('you closed the popup without finishing the payment');
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Menunggu pembayaran kamu!',
+                        showConfirmButton: false,
+                        timer: 1500 // Display for 3 seconds
+                    })
                 }
             });
         });
