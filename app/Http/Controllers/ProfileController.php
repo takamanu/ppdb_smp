@@ -87,7 +87,7 @@ class ProfileController extends Controller
         $config = Config::find(1);
 
         // Check if new password is provided
-        if ($request->has('new_password')) {
+        if (!empty($request->new_password)) {
             $valipass = $request->password;
             $pass_baru = $request->new_password;
 
