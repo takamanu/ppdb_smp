@@ -15,12 +15,12 @@ class UsersAllTidakLulus implements FromView
         $users = DB::table('users')
             ->join('payments', 'users.id', '=', 'payments.user_id')
             ->join('registration', 'users.id', '=', 'registration.user_id')
-            ->join('nilais', 'registration.id', '=', 'nilais.registration_id')
-            ->select('users.*', 'payments.*','registration.nisn','nilais.status')
+            ->join('testresult', 'registration.id', '=', 'testresult.datapokok_id')
+            ->select('users.*', 'payments.*','registration.nisn','testresult.status')
             ->where('users.role',1)
             ->where('payments.status_payment',2)
             ->where('payments.status',2)
-            ->where('nilais.status','Tidak Lulus')
+            ->where('testresult.status','Tidak Lulus')
             ->get();
         $lulus = "Tidak Lulus";
         return view('agen.allsiswabayar', [
