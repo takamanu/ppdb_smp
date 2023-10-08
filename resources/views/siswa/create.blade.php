@@ -628,7 +628,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="daftar_sekolah_lain"
                                                 value="1" id="daftar_sekolah_lain"
-                                                {{ old('daftar_sekolah_lain') ? 'checked' : '' }} required>
+                                                {{ old('daftar_sekolah_lain') ? 'checked' : '' }}>
                                             <label class="form-check-label" for="daftar_sekolah_lain">Ya</label>
                                         </div>
                                     </div>
