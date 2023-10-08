@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Nilai extends Model
 {
     use HasFactory;
-    protected $table = 'testresult';
+    protected $table = 'testResult';
     protected $primaryKey = 'id';
     protected $fillable = [
         "datapokok_id",
