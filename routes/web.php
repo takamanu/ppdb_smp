@@ -28,9 +28,7 @@ use App\Models\RegistrasiUlang;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+
 
 // Route::get('/persediaan', [BisnisController::class, 'stock']);
 // Route::prefix('admin')->middleware(['auth', 'admin'])->group(function(){
@@ -53,9 +51,10 @@ Route::resource('/payment', PaymentController::class);
 
 
 Route::middleware(['auth'])->group(function(){
+    
     // Route::middleware(['checkUserRole'])->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/siswa', [App\Http\Controllers\SiswaController::class, 'index'])->name('siswa');
+    // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    // Route::get('/siswa', [App\Http\Controllers\SiswaController::class, 'index'])->name('siswa');
     // });
     Route::get('/bayar', [PaymentController::class, 'bayar'])->name('bayar');
     Route::resource('/agen', AgenController::class);
@@ -77,6 +76,7 @@ Route::middleware(['auth'])->group(function(){
 });
 
 Route::middleware(['admin:1'])->group(function(){
+    Route::get('/', [SiswaController::class,'index']);
     Route::get('/siswa', 'SiswaController@index')->name('siswa');
     Route::resource('/siswa', SiswaController::class);
     Route::resource('/registrasi_ulang', RegistrasiUlangController::class);

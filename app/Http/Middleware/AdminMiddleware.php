@@ -19,8 +19,14 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next,$role)
     {
-        $userId = auth()->id(); // ID pengguna yang saat ini masuk
+        if (!auth()->check()) {
+            // Pengguna sudah login, lanjutkan ke request selanjutnya
+            return redirect('/login');
+        }
 
+
+        $userId = auth()->id(); // ID pengguna yang saat ini masuk
+        
         $user = User::find($userId);
 
         // dd($role);
