@@ -43,6 +43,10 @@
                                         <div class="alert alert-success">
                                             {{ session('flash_message') }}
                                         </div>
+                                    @elseif (session('flash_message_danger'))
+                                        <div class="alert alert-danger">
+                                            {{ session('flash_message_danger') }}
+                                        </div>
                                     @endif
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf

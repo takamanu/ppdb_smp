@@ -202,7 +202,7 @@ class PaymentController extends Controller
             return view('siswa.bayar', compact('snapToken'))->with(['config' => $config, 'nominal' => $nominal]);
         } catch (\Exception $e) {
             Payment::destroy($payment->id);
-            return redirect("/login");
+            return redirect("/login")->with('flash_message_danger', "Pembayaran bermasalah, silahkan hubungi admin.");
         }
     }
 
