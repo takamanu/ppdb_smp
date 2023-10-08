@@ -11,7 +11,10 @@ use App\Models\Policy;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Models\Datapokok;
+use App\Models\Payment;
 use App\Models\RegistrasiUlang;
+use App\Models\Reregistration;
+use App\Models\Testresult;
 
 date_default_timezone_set('Asia/Jakarta');
 
@@ -319,20 +322,25 @@ class AgenController extends Controller
         
         $agen = User::where('id', $id)->first();
 
+        // dd($agen->registrasi_ulang->id);
+        
+        if (!empty($agen->payment)){
+            Payment::destroy($agen->id);
+        }
+
+        
         if (!empty($agen->datapokok)){
+            if (!empty($agen->datapokok->policy)){
+                Policy::destroy($agen->datapokok->policy->id);
+            }
+            if (!empty($agen->datapokok->nilai)){;
+                Testresult::destroy($agen->datapokok->nilai->id);
+            }
             Datapokok::destroy($agen->datapokok->id);
         }
-
-        if (!empty($agen->nilai)){
-            Nilai::destroy($agen->nilai->id);
-        }
-
-        if (!empty($agen->policy)){
-            Policy::destroy($agen->policy->id);
-        }
-
+        
         if (!empty($agen->registrasi_ulang)){
-            Policy::destroy($agen->policy->registrasi_ulang);
+            Reregistration::destroy($agen->registrasi_ulang->id);
         }
         // return $agen;
         $nama = $agen->name;
