@@ -63,9 +63,9 @@ class User extends Authenticatable
         return $this->hasOne(RegistrasiUlang::class);
     }
     
-    public function nilai() {
-        return $this->hasOne(Nilai::class);
-    }
+    // public function nilai() {
+    //     return $this->hasOne(Testresult::class);
+    // }
 
     public function payment() {
         return $this->hasMany(Payment::class);

@@ -9,11 +9,14 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 
 
-use App\Models\RegistrasiUlang;
+// use App\Models\RegistrasiUlang;
 use App\Models\Datapokok;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Config;
+use App\Models\RegistrasiUlang;
+use App\Models\Registration;
+// use App\Models\RegistrasiUlang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;

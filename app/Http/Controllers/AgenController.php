@@ -11,7 +11,11 @@ use App\Models\Policy;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Models\Datapokok;
+use App\Models\Payment;
 use App\Models\RegistrasiUlang;
+use App\Models\Registration;
+use App\Models\Reregistration;
+use App\Models\Testresult;
 
 date_default_timezone_set('Asia/Jakarta');
 
@@ -182,7 +186,7 @@ class AgenController extends Controller
      */
     public function show($id)
     {
-        // $agen = Datapokok::where('user_id', $id)->first();
+        // $agen = Registration::where('user_id', $id)->first();
         $user = User::where('id', $id)->first();
         $agen = $user->datapokok;
 
@@ -207,7 +211,7 @@ class AgenController extends Controller
         // $agen = User::where('id', $id)->first();
 
         // dd($agen->datapokok->policy);
-        // $agentest = Datapokok::where('user_id', 2)->first();
+        // $agentest = Registration::where('user_id', 2)->first();
         // return $agentest;
         // dd($data);
 
@@ -224,8 +228,11 @@ class AgenController extends Controller
 
     public function masukNilai($id)
     {
+        
+        
         $agen = Datapokok::where('user_id', $id)->first();
-        // return $agen;    
+        
+        // dd($agen->policy);// return $agen;    
         return view('agen.nilai')->with('agen', $agen);
     }
 
@@ -319,20 +326,25 @@ class AgenController extends Controller
         
         $agen = User::where('id', $id)->first();
 
+        // dd($agen->registrasi_ulang->id);
+        
+        if (!empty($agen->payment)){
+            Payment::destroy($agen->id);
+        }
+
+        
         if (!empty($agen->datapokok)){
-            Datapokok::destroy($agen->datapokok->id);
+            if (!empty($agen->datapokok->policy)){
+                Policy::destroy($agen->datapokok->policy->id);
+            }
+            if (!empty($agen->datapokok->nilai)){;
+                Nilai::destroy($agen->datapokok->nilai->id);
+            }
+            RegistrasiUlang::destroy($agen->datapokok->id);
         }
-
-        if (!empty($agen->nilai)){
-            Nilai::destroy($agen->nilai->id);
-        }
-
-        if (!empty($agen->policy)){
-            Policy::destroy($agen->policy->id);
-        }
-
+        
         if (!empty($agen->registrasi_ulang)){
-            Policy::destroy($agen->policy->registrasi_ulang);
+            RegistrasiUlang::destroy($agen->registrasi_ulang->id);
         }
         // return $agen;
         $nama = $agen->name;

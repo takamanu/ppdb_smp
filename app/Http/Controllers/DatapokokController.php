@@ -6,8 +6,11 @@ use App\Models\Datapokok;
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use App\Models\Policy;
+// use App\Models\Datapokok;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Validator;
 
 class DatapokokController extends Controller

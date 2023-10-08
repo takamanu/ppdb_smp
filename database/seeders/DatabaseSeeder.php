@@ -10,6 +10,9 @@ use App\Models\Produk;
 use App\Models\Transaksi;
 use App\Models\Policy;
 use App\Models\Nilai;
+use App\Models\Registration;
+use App\Models\Reregistration;
+use App\Models\Testresult;
 use Carbon\Carbon; // Import the Carbon class
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Date;

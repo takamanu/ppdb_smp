@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Nilai;
 use App\Http\Controllers\Controller;
+use App\Models\Testresult;
 use App\Models\User;
 use Illuminate\Http\Request;
 
