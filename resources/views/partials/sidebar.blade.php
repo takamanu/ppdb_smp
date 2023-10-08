@@ -67,9 +67,9 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 @if (Auth::user()->role == 0)
                     <h6 class="collapse-header">Fitur Keagenan:</h6>
-                    <a class="collapse-item {{ Request::is('agen/create') ? 'active' : '' }}"
+                    {{-- <a class="collapse-item {{ Request::is('agen/create') ? 'active' : '' }}"
                         href="{{ url('/agen/create') }}">Tambah
-                        Siswa</a>
+                        Siswa</a> --}}
                     <a class="collapse-item {{ Request::is('agen') or (Request::is('agen/[1-99999]') ? 'active' : '') }}"
                         href="/agen">Daftar Siswa</a>
                 @else
