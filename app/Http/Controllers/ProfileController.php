@@ -90,19 +90,7 @@ class ProfileController extends Controller
         $pass_baru = $request->new_password;
         $config = Config::where('id', 1)->first();
 
-        if (empty($pass_baru)) {
-            if(request()->has('avatar')){
-                $avataruploaded = request()->file('avatar');
-                $avatarname = time() . '.' . $avataruploaded->getClientOriginalExtension();
-                $avatarpath = public_path('/images/');
-                $avataruploaded->move($avatarpath, $avatarname);
-                $agen->avatar = '/images/' . $avatarname;
-                $agen->save();
-                return redirect('profile')->with('flash_message', 'Avatar berhasil diperbarui!');
-            }
-        }
-
-        if (empty($valipass)) {
+        if (empty($pass_baru) || empty($valipass)) {
             if(request()->has('avatar')){
                 $avataruploaded = request()->file('avatar');
                 $avatarname = time() . '.' . $avataruploaded->getClientOriginalExtension();
@@ -149,7 +137,7 @@ class ProfileController extends Controller
                     $agen->name = $request->name;
                     $agen->email = $request->email;
                     $agen->password = Hash::make($request->new_password);
-                    $agen->avatar = $request->avatar;
+                    // $agen->avatar = $request->avatar;
                     $agen->save();
                     return redirect('profile')->with('flash_message', 'Profil berhasil diperbarui!');
                 }
