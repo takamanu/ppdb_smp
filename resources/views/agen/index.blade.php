@@ -11,9 +11,9 @@
                         <h2>Daftar Siswa</h2>
                     </div>
                     <div class="card-body">
-                        <a href="{{ url('/agen/create') }}" class="btn btn-success btn-sm float-left" title="Add New Agen">
+                        {{-- <a href="{{ url('/agen/create') }}" class="btn btn-success btn-sm float-left" title="Add New Agen">
                             <i class="fa fa-plus" aria-hidden="true"></i> Tambah Siswa
-                        </a>
+                        </a> --}}
                         <form method="GET" class="form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search float-right">
                             <div class="input-group">
                                 <input type="text" class="form-control bg-light border-0 small" name="cari" id="cari"
