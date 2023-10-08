@@ -81,9 +81,10 @@ class ProfileController extends Controller
         $agen = Agen::find(auth()->user()->id);
         // $valipass = $request->query('password');
         $valipass = $request->password;
+        $pass_baru = $request->new_password;
         $config = Config::where('id', 1)->first();
 
-        if (empty($valipass)) {
+        if (empty($pass_baru)) {
             if(request()->has('avatar')){
                 $avataruploaded = request()->file('avatar');
                 $avatarname = time() . '.' . $avataruploaded->getClientOriginalExtension();
