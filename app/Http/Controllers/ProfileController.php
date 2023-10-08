@@ -23,8 +23,7 @@ class ProfileController extends Controller
         $userData = auth()->user()->id;
         $payment = Payment::where('user_id', $userData)->first();
 
-        return view('profile.index')->with(['agen'=> $agen, 'config' => $config, 'payment' => $payment]);
-        
+        return view('profile.index')->with(['agen' => $agen, 'config' => $config, 'payment' => $payment]);
     }
 
     /**
@@ -71,8 +70,8 @@ class ProfileController extends Controller
         $config = Config::where('id', 1)->first();
         $userData = auth()->user()->id;
         $payment = Payment::where('user_id', $userData)->first();
-        
-        return view('profile.edit')->with(['agen'=> $agen, 'config' => $config, 'payment' => $payment]);
+
+        return view('profile.edit')->with(['agen' => $agen, 'config' => $config, 'payment' => $payment]);
     }
 
     /**
@@ -85,71 +84,49 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         $agen = Agen::find(auth()->user()->id);
-        // $valipass = $request->query('password');
-        $valipass = $request->password;
-        $pass_baru = $request->new_password;
-        $config = Config::where('id', 1)->first();
+        $config = Config::find(1);
 
-        if (empty($pass_baru) || empty($valipass)) {
-            if(request()->has('avatar')){
-                $avataruploaded = request()->file('avatar');
-                $avatarname = time() . '.' . $avataruploaded->getClientOriginalExtension();
-                $avatarpath = public_path('/images/');
-                $avataruploaded->move($avatarpath, $avatarname);
-                $agen->avatar = '/images/' . $avatarname;
-                $agen->save();
-                return redirect('profile')->with('flash_message', 'Avatar berhasil diperbarui!');
-            }
-        }
+        // Check if new password is provided
+        if ($request->has('new_password')) {
+            $valipass = $request->password;
+            $pass_baru = $request->new_password;
 
-        if (empty($pass_baru) && empty($valipass)) {
-            if(request()->has('avatar')){
-                $avataruploaded = request()->file('avatar');
-                $avatarname = time() . '.' . $avataruploaded->getClientOriginalExtension();
-                $avatarpath = public_path('/images/');
-                $avataruploaded->move($avatarpath, $avatarname);
-                $agen->avatar = '/images/' . $avatarname;
-                $agen->save();
-                return redirect('profile')->with('flash_message', 'Avatar berhasil diperbarui!');
+            // Check if old password matches
+            if (!Hash::check($valipass, $agen->password)) {
+                return redirect('profile')->with(['flash_message_error' => 'Profil gagal diperbarui karena password lama salah!', 'config' => $config]);
             }
-        }
-        // console.log($valipass);
-        // console.log
-        // if(Hash::check($valipass, $agen->password) == true) {
-    
-        if (Hash::check($valipass, $agen->password) == "true") {
-            if ($valipass == $request->new_password) {
+
+            // Check if old and new passwords are the same
+            if ($valipass === $pass_baru) {
                 return redirect('profile')->with('flash_message_error', 'Profil gagal diperbarui karena password lama dan baru sama!');
-            } else {
-                if(request()->has('avatar')){
-                    $avataruploaded = request()->file('avatar');
-                    $avatarname = time() . '.' . $avataruploaded->getClientOriginalExtension();
-                    $avatarpath = public_path('/images/');
-                    $avataruploaded->move($avatarpath, $avatarname);
-                    $agen->name = $request->name;
-                    $agen->email = $request->email;
-                    $agen->password = Hash::make($request->new_password);
-                    $agen->avatar = '/images/' . $avatarname;
-                    $agen->save();
-                    return redirect('profile')->with('flash_message', 'Profil berhasil diperbarui!');
-                    
-                } else {
-                    $agen->name = $request->name;
-                    $agen->email = $request->email;
-                    $agen->password = Hash::make($request->new_password);
-                    // $agen->avatar = $request->avatar;
-                    $agen->save();
-                    return redirect('profile')->with('flash_message', 'Profil berhasil diperbarui!');
-                }
             }
-        } else {
-        
-            return redirect('profile')->with(['flash_message_error' => 'Profil gagal diperbarui karena password lama salah!', 'config' => $config]);
-        
+
+            // Update password
+            $agen->password = Hash::make($pass_baru);
         }
-        
-        return redirect('profile')->with(['flash_message_error' => 'Gagal memperbarui, kontak admin untuk masalah ini.', 'config' => $config]);
+
+        // Check for other fields (email, name, avatar)
+        if ($request->has('email')) {
+            $agen->email = $request->email;
+        }
+
+        if ($request->has('name')) {
+            $agen->name = $request->name;
+        }
+
+        if ($request->has('avatar')) {
+            $avataruploaded = request()->file('avatar');
+            $avatarname = time() . '.' . $avataruploaded->getClientOriginalExtension();
+            $avatarpath = public_path('/images/');
+            $avataruploaded->move($avatarpath, $avatarname);
+            $agen->avatar = '/images/' . $avatarname;
+        }
+
+        $agen->save();
+
+        return redirect('profile')->with('flash_message', 'Profil berhasil diperbarui!');
     }
+
 
     /**
      * Remove the specified resource from storage.
