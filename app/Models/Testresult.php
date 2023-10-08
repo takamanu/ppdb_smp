@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Nilai extends Model
+class Testresult extends Model
 {
     use HasFactory;
     protected $table = 'testResult';
@@ -20,7 +20,7 @@ class Nilai extends Model
     ];
 
     public function datapokok(){
-        return $this->belongsTo(Datapokok::class, 'datapokok_id');
+        return $this->belongsTo(Registration::class, 'datapokok_id');
     }
 
 }

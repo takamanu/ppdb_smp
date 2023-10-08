@@ -56,11 +56,11 @@ class User extends Authenticatable
     }
 
     public function datapokok() {
-        return $this->hasOne(Datapokok::class);
+        return $this->hasOne(Registration::class);
     }
 
     public function registrasi_ulang() {
-        return $this->hasOne(RegistrasiUlang::class);
+        return $this->hasOne(Reregistration::class);
     }
     
     // public function nilai() {
