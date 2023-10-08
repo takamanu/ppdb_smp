@@ -69,7 +69,7 @@
                 onError: function(result) {
                     /* You may add your own implementation here */
                     Swal.fire({
-                        icon: 'danger',
+                        icon: 'error',
                         title: 'Pembayaran belum berhasil!',
                         showConfirmButton: false,
                         timer: 1500 // Display for 3 seconds
