@@ -23,6 +23,10 @@ date_default_timezone_set('Asia/Jakarta');
 
 class SiswaController extends Controller
 {
+    public function awal(){
+        return redirect("/login");
+    }
+
     public function index(Request $request)
     {
         $userData = auth()->user()->id;

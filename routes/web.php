@@ -41,6 +41,7 @@ use App\Models\RegistrasiUlang;
 // });
     
 // });
+Route::get('/', [SiswaController::class,'awal']);
 
 Route::resource('/registrasi', RegistrasiUlangController::class);
 Route::resource('/payment', PaymentController::class);
@@ -76,7 +77,6 @@ Route::middleware(['auth'])->group(function(){
 });
 
 Route::middleware(['admin:1'])->group(function(){
-    Route::get('/', [SiswaController::class,'index']);
     Route::get('/siswa', 'SiswaController@index')->name('siswa');
     Route::resource('/siswa', SiswaController::class);
     Route::resource('/registrasi_ulang', RegistrasiUlangController::class);
@@ -85,6 +85,7 @@ Route::middleware(['admin:1'])->group(function(){
 });
 
 Route::middleware(['admin:0'])->group(function(){
+    // Route::get('/', [SiswaController::class,'awal']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('/agen', AgenController::class);
     Route::get('/config', [ConfigController::class, 'index']);
