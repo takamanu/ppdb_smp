@@ -192,13 +192,18 @@ class PaymentController extends Controller
             ],
         ];
 
-        $snapToken = \Midtrans\Snap::getSnapToken($params);
         $payment_user = Payment::find($payment->id);
-        $payment_user->update([
-            'snapToken' => $snapToken,
-        ]);
-
-        return view('siswa.bayar', compact('snapToken'))->with(['config' => $config, 'nominal' => $nominal]);
+        
+        try {
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
+            $payment_user->update([
+                'snapToken' => $snapToken,
+            ]);
+            return view('siswa.bayar', compact('snapToken'))->with(['config' => $config, 'nominal' => $nominal]);
+        } catch (\Exception $e) {
+            Payment::destroy($payment->id);
+            return redirect("/login");
+        }
     }
 
     /**
