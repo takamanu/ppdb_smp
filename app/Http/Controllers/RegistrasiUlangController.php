@@ -15,7 +15,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Config;
 use App\Models\Registration;
-use App\Models\Reregistration;
+use App\Models\RegistrasiUlang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -167,7 +167,7 @@ class RegistrasiUlangController extends Controller
         }
 
         // Create a record in the database with the file paths
-        Reregistration::create([
+        RegistrasiUlang::create([
             'user_id' => auth()->user()->id,
             'ijazah' => $uploadedFiles['ijazah'],
             'surat_pernyataan_bermaterai' => $uploadedFiles['surat_pernyataan_bermaterai'],
@@ -191,7 +191,7 @@ class RegistrasiUlangController extends Controller
      * @param  \App\Models\RegistrasiUlang  $registrasiUlang
      * @return \Illuminate\Http\Response
      */
-    public function show(Reregistration $registrasiUlang)
+    public function show(RegistrasiUlang $registrasiUlang)
     {
         //
     }
@@ -202,7 +202,7 @@ class RegistrasiUlangController extends Controller
      * @param  \App\Models\RegistrasiUlang  $registrasiUlang
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reregistration $registrasiUlang)
+    public function edit(RegistrasiUlang $registrasiUlang)
     {
         //
     }
@@ -214,9 +214,9 @@ class RegistrasiUlangController extends Controller
      * @param  \App\Models\RegistrasiUlang  $registrasiUlang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reregistration $registrasiUlang)
+    public function update(Request $request, RegistrasiUlang $registrasiUlang)
     {
-        $check_data = Reregistration::find('user_id',Auth::user()->id);
+        $check_data = RegistrasiUlang::find('user_id',Auth::user()->id);
         if($check_data){
             return abort(403, 'Unauthorized');
         }
@@ -271,7 +271,7 @@ class RegistrasiUlangController extends Controller
             $validatedData['kk'] = $request->file('kk')->store('/public/registrasi_ulang/kk');
         }
         $id = $request->id_registrasi_ulang;
-        $registrasiUlang = Reregistration::find($id);
+        $registrasiUlang = RegistrasiUlang::find($id);
         $registrasiUlang->update($validatedData);
     }
 
@@ -281,7 +281,7 @@ class RegistrasiUlangController extends Controller
      * @param  \App\Models\RegistrasiUlang  $registrasiUlang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reregistration $registrasiUlang)
+    public function destroy(RegistrasiUlang $registrasiUlang)
     {
         //
     }

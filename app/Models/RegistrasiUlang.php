@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reregistration extends Model
+class RegistrasiUlang extends Model
 {
     use HasFactory;
     protected $table = 'reRegistration';

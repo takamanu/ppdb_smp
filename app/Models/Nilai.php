@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Testresult extends Model
+class Nilai extends Model
 {
     use HasFactory;
-    protected $table = 'testResult';
+    protected $table = 'testresult';
     protected $primaryKey = 'id';
     protected $fillable = [
         "datapokok_id",
@@ -20,7 +20,7 @@ class Testresult extends Model
     ];
 
     public function datapokok(){
-        return $this->belongsTo(Registration::class, 'datapokok_id');
+        return $this->belongsTo(Datapokok::class, 'datapokok_id');
     }
 
 }

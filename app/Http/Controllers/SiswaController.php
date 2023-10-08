@@ -118,7 +118,7 @@ class SiswaController extends Controller
         }
 
         
-        Registration::create([
+        Datapokok::create([
             'user_id' => $userData->id,
             'nama_lengkap' => $request->nama_lengkap,
             'email' => $userData->email,
@@ -155,7 +155,7 @@ class SiswaController extends Controller
             'informasi_didapatkan_dari' => $request->informasi_didapatkan_dari,
         ]);
 
-        $idBaruDatapokok = Registration::latest('id')->first();
+        $idBaruDatapokok = Datapokok::latest('id')->first();
 
         $raw_data_policy = [
             'datapokok_id' => $idBaruDatapokok->id,
@@ -174,7 +174,7 @@ class SiswaController extends Controller
             'status' => 'BELUM LULUS',
         ];
 
-        Testresult::create($raw_data_nilai);
+        Nilai::create($raw_data_nilai);
         Policy::create($raw_data_policy);
 
         // Agen::create($input);
@@ -193,8 +193,8 @@ class SiswaController extends Controller
         
 
         $config = Config::where('id', 1)->first();
-        $siswa = Registration::where('user_id', $id)->first();
-        $nilai = Testresult::where('datapokok_id',$siswa->id)->first();
+        $siswa = Datapokok::where('user_id', $id)->first();
+        $nilai = Nilai::where('datapokok_id',$siswa->id)->first();
         $userData = auth()->user()->id;
         $payment = Payment::where('user_id', $userData)->first();
 
@@ -235,7 +235,7 @@ class SiswaController extends Controller
 
     public function cetak($id)
     {
-        $agen = Registration::where('id', $id)->first();
+        $agen = Datapokok::where('id', $id)->first();
         // $test = Datapokok::where('id', $id)->first();
         // return $agen . $test;
         // return $agen;
@@ -244,7 +244,7 @@ class SiswaController extends Controller
 
     public function cetakpokok($id)
     {
-        $agen = Registration::where('id', $id)->first();
+        $agen = Datapokok::where('id', $id)->first();
         // $test = Datapokok::where('id', $id)->first();
         // return $agen . $test;
         // return $agen;
@@ -254,9 +254,9 @@ class SiswaController extends Controller
     public function registrasiUlang($id)
     {
         // return $id;
-        $siswa = Registration::where('id', $id)->first();
-        $nilai = Testresult::where('datapokok_id',$id)->first();
-        $registrasi_ulang = Reregistration::where('user_id',Auth::user()->id)->first();
+        $siswa = Datapokok::where('id', $id)->first();
+        $nilai = Nilai::where('datapokok_id',$id)->first();
+        $registrasi_ulang = RegistrasiUlang::where('user_id',Auth::user()->id)->first();
         $userData = auth()->user()->id;
         $payment = Payment::where('user_id', $userData)->first();
 

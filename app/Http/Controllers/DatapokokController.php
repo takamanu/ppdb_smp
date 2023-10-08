@@ -6,7 +6,7 @@ use App\Models\Datapokok;
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use App\Models\Policy;
-use App\Models\Registration;
+// use App\Models\Datapokok;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -225,7 +225,7 @@ class DatapokokController extends Controller
             'informasi_didapatkan_dari' => $request->informasi_didapatkan_dari
         ];
 
-        Registration::create($raw_request_data_pokok);
+        Datapokok::create($raw_request_data_pokok);
        
     }
 
@@ -235,7 +235,7 @@ class DatapokokController extends Controller
      * @param  \App\Models\Datapokok  $datapokok
      * @return \Illuminate\Http\Response
      */
-    public function show(Registration $datapokok)
+    public function show(Datapokok $datapokok)
     {
         //
     }
@@ -246,7 +246,7 @@ class DatapokokController extends Controller
      * @param  \App\Models\Datapokok  $datapokok
      * @return \Illuminate\Http\Response
      */
-    public function edit(Registration $datapokok)
+    public function edit(Datapokok $datapokok)
     {
         //
     }
@@ -258,7 +258,7 @@ class DatapokokController extends Controller
      * @param  \App\Models\Datapokok  $datapokok
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Registration $datapokok)
+    public function update(Request $request, Datapokok $datapokok)
     {
         //
     }
@@ -269,7 +269,7 @@ class DatapokokController extends Controller
      * @param  \App\Models\Datapokok  $datapokok
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Registration $datapokok)
+    public function destroy(Datapokok $datapokok)
     {
         //
     }

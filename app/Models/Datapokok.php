@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Registration extends Model
+class Datapokok extends Model
 {
     use HasFactory;
 
@@ -34,7 +34,7 @@ class Registration extends Model
     }
 
     public function nilai(){
-        return $this->hasOne(Testresult::class);
+        return $this->hasOne(Nilai::class);
     }
 
 }
