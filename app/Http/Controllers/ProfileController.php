@@ -101,6 +101,30 @@ class ProfileController extends Controller
                 return redirect('profile')->with('flash_message', 'Avatar berhasil diperbarui!');
             }
         }
+
+        if (empty($valipass)) {
+            if(request()->has('avatar')){
+                $avataruploaded = request()->file('avatar');
+                $avatarname = time() . '.' . $avataruploaded->getClientOriginalExtension();
+                $avatarpath = public_path('/images/');
+                $avataruploaded->move($avatarpath, $avatarname);
+                $agen->avatar = '/images/' . $avatarname;
+                $agen->save();
+                return redirect('profile')->with('flash_message', 'Avatar berhasil diperbarui!');
+            }
+        }
+
+        if (empty($pass_baru) && empty($valipass)) {
+            if(request()->has('avatar')){
+                $avataruploaded = request()->file('avatar');
+                $avatarname = time() . '.' . $avataruploaded->getClientOriginalExtension();
+                $avatarpath = public_path('/images/');
+                $avataruploaded->move($avatarpath, $avatarname);
+                $agen->avatar = '/images/' . $avatarname;
+                $agen->save();
+                return redirect('profile')->with('flash_message', 'Avatar berhasil diperbarui!');
+            }
+        }
         // console.log($valipass);
         // console.log
         // if(Hash::check($valipass, $agen->password) == true) {
