@@ -15,7 +15,7 @@ class UsersAllLulus implements FromView
         $users = DB::table('users')
                 ->join('payments', 'users.id', '=', 'payments.user_id')
                 ->join('registration', 'users.id', '=', 'registration.user_id')
-                ->join('testResult', 'registration.id', '=', 'testResult.datapokok_id   ')
+                ->join('testResult', 'registration.id', '=', 'testResult.datapokok_id')
                 ->select('users.*', 'payments.*','registration.nisn','testResult.status')
                 ->where('users.role',1)
                 ->where('payments.status_payment',2)
