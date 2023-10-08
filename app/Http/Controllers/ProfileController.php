@@ -93,7 +93,7 @@ class ProfileController extends Controller
             $pass_baru = $request->new_password;
 
             if (empty($valipass)) {
-                return redirect('profile')->with(['flash_message_error' => 'Profil gagal diperbarui karena password lama tidak ada password baru!', 'config' => $config]);
+                return redirect('profile')->with(['flash_message_error' => 'Profil gagal diperbarui karena tidak ada password lama!', 'config' => $config]);
             }
 
             // Check if old password matches
@@ -110,7 +110,9 @@ class ProfileController extends Controller
             $agen->password = Hash::make($pass_baru);
         }
 
-
+        if (!empty($request->password) && empty($request->new_password)) {
+            return redirect('profile')->with(['flash_message_error' => 'Profil gagal diperbarui karena tidak ada password baru!', 'config' => $config]);
+        }
 
         // Check for other fields (email, name, avatar)
         if ($request->has('email')) {
