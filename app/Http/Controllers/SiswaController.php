@@ -76,10 +76,12 @@ class SiswaController extends Controller
         {
             return abort(403, 'Belom Isi DataPokok');
         }
+        $userData = auth()->user()->id;
+        $payment = Payment::where('user_id', $userData)->first();
 
         $config = Config::where('id', 1)->first();        
         
-        return view('siswa.create')->with('config', $config);
+        return view('siswa.create')->with(['config' => $config, 'payment' => $payment]);
     }
 
     /**
@@ -185,6 +187,8 @@ class SiswaController extends Controller
         $config = Config::where('id', 1)->first();
         $siswa = Datapokok::where('user_id', $id)->first();
         $nilai = Nilai::where('datapokok_id',$siswa->id)->first();
+        $userData = auth()->user()->id;
+        $payment = Payment::where('user_id', $userData)->first();
 
         if ($config->pengumuman != true){
             return abort(403,"Config Pengumuman Belum dibuka");
@@ -218,7 +222,7 @@ class SiswaController extends Controller
 
         // $user = User::where('id', $userData)->first();
 
-        return view('siswa.pengumuman')->with(['siswa' => $siswa, 'agen' => $agen, 'config' => $config,'user'=>$user]);
+        return view('siswa.pengumuman')->with(['siswa' => $siswa, 'agen' => $agen, 'config' => $config, 'user'=>$user, 'payment' => $payment ]);
     }
 
     public function cetak($id)
@@ -245,6 +249,8 @@ class SiswaController extends Controller
         $siswa = Datapokok::where('id', $id)->first();
         $nilai = Nilai::where('datapokok_id',$id)->first();
         $registrasi_ulang = RegistrasiUlang::where('user_id',Auth::user()->id)->first();
+        $userData = auth()->user()->id;
+        $payment = Payment::where('user_id', $userData)->first();
 
         // if (!is_null($siswa->registrasi_ulang)) {
         //     return abort(404, 'Not Found');
@@ -277,7 +283,7 @@ class SiswaController extends Controller
             $agen = 'NULL'; // Set a default value or any other value you want to use
         }
 
-        return view('siswa.registrasi')->with(['siswa'=> $siswa, 'agen' => $agen, 'config' => $config]);
+        return view('siswa.registrasi')->with(['siswa'=> $siswa, 'agen' => $agen, 'config' => $config, 'payment' => $payment]);
     }
 
     public function export_sudah_bayar(){

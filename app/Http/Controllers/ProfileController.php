@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Agen;
+use App\Models\Payment;
 use App\Models\Config;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,8 +20,10 @@ class ProfileController extends Controller
     {
         $agen = Agen::find(auth()->user()->id);
         $config = Config::where('id', 1)->first();
+        $userData = auth()->user()->id;
+        $payment = Payment::where('user_id', $userData)->first();
 
-        return view('profile.index')->with(['agen'=> $agen, 'config' => $config]);
+        return view('profile.index')->with(['agen'=> $agen, 'config' => $config, 'payment' => $payment]);
         
     }
 
@@ -66,7 +69,10 @@ class ProfileController extends Controller
     {
         $agen = Agen::find(auth()->user()->id);
         $config = Config::where('id', 1)->first();
-        return view('profile.edit')->with(['agen'=> $agen, 'config' => $config]);
+        $userData = auth()->user()->id;
+        $payment = Payment::where('user_id', $userData)->first();
+        
+        return view('profile.edit')->with(['agen'=> $agen, 'config' => $config, 'payment' => $payment]);
     }
 
     /**
