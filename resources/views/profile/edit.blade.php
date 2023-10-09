@@ -69,7 +69,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button type="submit" class="btn btn-success btn-block">Edit</button>
+                        <button type="submit" class="btn btn-success btn-block">Save Changes</button>
                     </form>
                 </div>
             </div>
