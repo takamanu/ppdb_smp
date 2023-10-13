@@ -282,7 +282,7 @@
             @if ($config->pengumuman == 0)
                 <a href="#" onclick="alert('Pengumuman belum dibuka!');" class="btn btn-primary btn-block">Cek
                     Pengumuman</a>
-            @elseif (!is_null($agen) && $agen->$nilai->matematika === "Isi nilai A-E")
+            @elseif (!is_null(Auth::user()->datapokok) && Auth::user()->datapokok->nilai->matematika === "Isi nilai A-E")
                 <a href="#" onclick="alert('Kamu belum mempunyai nilai!');"
                     class="btn btn-primary btn-block">Cek Pengumuman</a>    
             @else
@@ -295,7 +295,7 @@
                 @elseif ($agen == 'NULL')
                     <a href="#" onclick="alert('Kamu belum mengisi datapokok!');"
                         class="btn btn-primary btn-block">Cek Pengumuman</a>
-                @elseif ($agen->$nilai->matematika === "Isi nilai A-E")
+                @elseif (Auth::user()->datapokok->nilai->matematika === "Isi nilai A-E")
                     <a href="#" onclick="alert('Kamu belum mempunyai nilai!');"
                         class="btn btn-primary btn-block">Cek Pengumuman</a>        
                 @else

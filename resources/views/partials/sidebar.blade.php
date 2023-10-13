@@ -96,7 +96,7 @@
                             {{-- <a class="collapse-item {{ Request::is('siswa/create') ? 'active' : '' }}" href="{{ url('siswa/create') }}">Datapokok</a> --}}
                             <a class="collapse-item" href="#"
                                 onclick="alert('Pengumuman belum dibuka');">Pengumuman</a>
-                        @elseif (!is_null($agen) && $agen->$nilai->matematika === "Isi nilai A-E")
+                        @elseif (!is_null(Auth::user()->datapokok) && Auth::user()->datapokok->nilai->matematika === "Isi nilai A-E")
                             <h6 class="collapse-header">Aktivitas Siswa:</h6>
                             {{-- <a class="collapse-item {{ Request::is('siswa/create') ? 'active' : '' }}" href="{{ url('siswa/create') }}">Datapokok</a> --}}
                             <a class="collapse-item" href="#"

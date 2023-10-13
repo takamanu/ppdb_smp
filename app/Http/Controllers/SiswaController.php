@@ -40,7 +40,7 @@ class SiswaController extends Controller
         $agen = $user->datapokok;
         $date_now = date('Y-m-d H:i:s');
         $payment = Payment::where('user_id', $userData)->first();
-        dd($agen->nilai);
+        // dd($agen->nilai);
         
         // $payment = auth()->user()->payment;
 
