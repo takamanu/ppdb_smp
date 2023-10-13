@@ -282,6 +282,9 @@
             @if ($config->pengumuman == 0)
                 <a href="#" onclick="alert('Pengumuman belum dibuka!');" class="btn btn-primary btn-block">Cek
                     Pengumuman</a>
+            @elseif (!is_null($agen) && $agen->$nilai->matematika === "Isi nilai A-E")
+                <a href="#" onclick="alert('Kamu belum mempunyai nilai!');"
+                    class="btn btn-primary btn-block">Cek Pengumuman</a>    
             @else
                 @if (empty($payment))
                     <a href="#" onclick="alert('Kamu belum melakukan pembayaran!');"
@@ -292,6 +295,9 @@
                 @elseif ($agen == 'NULL')
                     <a href="#" onclick="alert('Kamu belum mengisi datapokok!');"
                         class="btn btn-primary btn-block">Cek Pengumuman</a>
+                @elseif ($agen->$nilai->matematika === "Isi nilai A-E")
+                    <a href="#" onclick="alert('Kamu belum mempunyai nilai!');"
+                        class="btn btn-primary btn-block">Cek Pengumuman</a>        
                 @else
                     <a href="{{ url('/siswa/pengumuman/' . Auth::user()->id) }}" class="btn btn-primary btn-block">Cek
                         Pengumuman</a>

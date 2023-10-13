@@ -77,7 +77,7 @@
                         <td><label for="sertifikat" class="form-label">Sertifikat piagam</label></td>
                         <td>
                             <input type="file" class="form-control @error('sertifikat') is-invalid @enderror" id="sertifikat"
-                                name="sertifikat" accept=".pdf,.docx">
+                                name="sertifikat" accept=".pdf">
                             @error('sertifikat')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
