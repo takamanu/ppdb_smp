@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('pasfoto');
             $table->string('akta_kelahiran');
             $table->string('kk');
-            $table->string('sertifikat');
+            $table->string('sertifikat')->nullable();
             $table->timestamps();
         });
     }

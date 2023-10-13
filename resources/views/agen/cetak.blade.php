@@ -162,10 +162,8 @@
             </table>
         @endif
 
-
         <p>adalah Orang Tua/Wali dari siswa calon SMP Tahfizhul Qur’an Pangeran Diponegoro Semarang
             Tahun Ajaran 2024/2025.</p>
-
         <table>
             <tr>
                 <td style="width: 30%;">Nama</td>

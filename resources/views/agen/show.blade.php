@@ -280,6 +280,23 @@
                                 <a href="../../storage/{{ $user->registrasi_ulang->kk }}" download>Click to download</a>
                             </td>
                         </tr>
+                        @if (is_null($user->registrasi_ulang->sertifikat))
+                        <tr>
+                            <th>Sertifikat</th>
+                            <td>
+                                <p>Tidak ada.</p>
+                            </td>
+                        </tr>
+                        @else
+                        <tr>
+                            <th>Sertifikat</th>
+                            <td>
+                                <a href="../../storage/{{ $user->registrasi_ulang->sertifikat }}" download>Click to download</a>
+                            </td>
+                        </tr>
+                            
+                        @endif
+                        
                         <!-- Add more rows for other additional information -->
                     </tbody>
                 </table>
