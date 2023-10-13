@@ -17,7 +17,8 @@ class RegistrasiUlang extends Model
         'surat_keterangan_siswa_aktif_sd_asal',
         'pasfoto',
         'akta_kelahiran',
-        'kk'
+        'kk',
+        'sertifikat'
     ];
 
     public function user() {

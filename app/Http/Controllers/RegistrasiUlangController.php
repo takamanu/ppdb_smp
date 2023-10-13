@@ -146,6 +146,7 @@ class RegistrasiUlangController extends Controller
             'pasfoto' => 'required|image|mimes:jpg,jpeg,png',
             'akta_kelahiran' => 'required|mimes:pdf,docx',
             'kk' => 'required|mimes:pdf,docx',
+            'sertifikat' => 'required|mimes:pdf',
         ]);
         // return $siswa;
 
@@ -176,6 +177,7 @@ class RegistrasiUlangController extends Controller
             'pasfoto' => $uploadedFiles['pasfoto'],
             'akta_kelahiran' => $uploadedFiles['akta_kelahiran'],
             'kk' => $uploadedFiles['kk'],
+            'sertifikat' => $uploadedFiles['sertifikat'],
         ]);
 
         // Redirect with a success message
