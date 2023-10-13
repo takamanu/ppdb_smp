@@ -83,6 +83,15 @@
             <button onclick="alert('Coming soon')" class="btn btn-primary btn-block">Cetak profil</a>
         </div> --}}
     </div>
+    @if (session('flash_message'))
+        <div class="alert alert-success">
+            {{ session('flash_message') }}
+        </div>
+    @elseif (session('flash_message_danger'))
+        <div class="alert alert-danger">
+            {{ session('flash_message_danger') }}
+        </div>
+    @endif
 
     <div class="card text-center mb-5">
         <div class="card-header">
@@ -91,15 +100,7 @@
         <div class="card-body p-5">
             {{-- <h5 class="card-title mb-5">Kartu Peserta PPDB SMP TQ Pangeran Diponegoro</h5> --}}
             <div class="row row-cols-1 row-cols-md-2 g-4 d-flex justify-content-center">
-                @if (session('flash_message'))
-                    <div class="alert alert-success">
-                        {{ session('flash_message') }}
-                    </div>
-                @elseif (session('flash_message_danger'))
-                    <div class="alert alert-danger">
-                        {{ session('flash_message_danger') }}
-                    </div>
-                @endif
+
                 <div class="col d-flex justify-content-center">
                     <div class="card max-card-size">
 
