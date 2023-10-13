@@ -91,7 +91,15 @@
         <div class="card-body p-5">
             {{-- <h5 class="card-title mb-5">Kartu Peserta PPDB SMP TQ Pangeran Diponegoro</h5> --}}
             <div class="row row-cols-1 row-cols-md-2 g-4 d-flex justify-content-center">
-
+                @if (session('flash_message'))
+                    <div class="alert alert-success">
+                        {{ session('flash_message') }}
+                    </div>
+                @elseif (session('flash_message_danger'))
+                    <div class="alert alert-danger">
+                        {{ session('flash_message_danger') }}
+                    </div>
+                @endif
                 <div class="col d-flex justify-content-center">
                     <div class="card max-card-size">
 
@@ -271,16 +279,21 @@
 
         <div class="card-footer text-body-secondary ">
             @if ($config->pengumuman == 0)
-                <a href="#" onclick="alert('Pengumuman belum dibuka!');" class="btn btn-primary btn-block">Cek Pengumuman</a>             
+                <a href="#" onclick="alert('Pengumuman belum dibuka!');" class="btn btn-primary btn-block">Cek
+                    Pengumuman</a>
             @else
                 @if (empty($payment))
-                    <a href="#" onclick="alert('Kamu belum melakukan pembayaran!');" class="btn btn-primary btn-block">Cek Pengumuman</a>             
+                    <a href="#" onclick="alert('Kamu belum melakukan pembayaran!');"
+                        class="btn btn-primary btn-block">Cek Pengumuman</a>
                 @elseif ($payment->status_payment !== 2 && $payment->status !== 2)
-                    <a href="#" onclick="alert('Kamu belum menyelesaikan pembayaran!');" class="btn btn-primary btn-block">Cek Pengumuman</a>                     
+                    <a href="#" onclick="alert('Kamu belum menyelesaikan pembayaran!');"
+                        class="btn btn-primary btn-block">Cek Pengumuman</a>
                 @elseif ($agen == 'NULL')
-                    <a href="#" onclick="alert('Kamu belum mengisi datapokok!');" class="btn btn-primary btn-block">Cek Pengumuman</a>                     
+                    <a href="#" onclick="alert('Kamu belum mengisi datapokok!');"
+                        class="btn btn-primary btn-block">Cek Pengumuman</a>
                 @else
-                    <a href="{{ url('/siswa/pengumuman/' . Auth::user()->id) }}" class="btn btn-primary btn-block">Cek Pengumuman</a>
+                    <a href="{{ url('/siswa/pengumuman/' . Auth::user()->id) }}" class="btn btn-primary btn-block">Cek
+                        Pengumuman</a>
                 @endif
             @endif
         </div>
