@@ -68,29 +68,100 @@
         <h3 id=judul>TAHUN AJARAN 2024/2025</h3>
 
         <p>Yang bertandatangan di bawah ini:</p>
+        @if ($agen->nama_ayah == "Almarhum" && $agen->nama_ibu == "Almarhum")
+            <table>
+                <tr>
+                    <td style="width: 30%;">Nama</td>
+                    <td style="width: 5%;">:</td>
+                    <td style="width: 65%;">{{ $agen->nama_wali_siswa }}</td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">Pekerjaan</td>
+                    <td style="width: 5%;">:</td>
+                    <td style="width: 65%;">{{ $agen->pekerjaan_wali }}</td>
+                </tr>
+                <tr>
+                    <td style="width: 30%; vertical-align: top;">Alamat</td>
+                    <td style="width: 5%; vertical-align: top;">:</td>
+                    <td style="width: 65%;">{{ $agen->alamat }}</td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">No. Telp</td>
+                    <td style="width: 5%;">:</td>
+                    <td style="width: 65%;">{{ $agen->no_wa_wali_siswa }}</td>
+                </tr>
+            </table>
+        @elseif ($agen->nama_ayah == "Almarhum")
+            <table>
+                <tr>
+                    <td style="width: 30%;">Nama</td>
+                    <td style="width: 5%;">:</td>
+                    <td style="width: 65%;">{{ $agen->nama_ibu }}</td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">Pekerjaan</td>
+                    <td style="width: 5%;">:</td>
+                    <td style="width: 65%;">{{ $agen->pekerjaan_ibu }}</td>
+                </tr>
+                <tr>
+                    <td style="width: 30%; vertical-align: top;">Alamat</td>
+                    <td style="width: 5%; vertical-align: top;">:</td>
+                    <td style="width: 65%;">{{ $agen->alamat }}</td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">No. Telp</td>
+                    <td style="width: 5%;">:</td>
+                    <td style="width: 65%;">{{ $agen->no_wa_ibu }}</td>
+                </tr>
+            </table>
+        @elseif ($agen->nama_ibu == "Almarhum")
+            <table>
+                <tr>
+                    <td style="width: 30%;">Nama</td>
+                    <td style="width: 5%;">:</td>
+                    <td style="width: 65%;">{{ $agen->nama_ayah }}</td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">Pekerjaan</td>
+                    <td style="width: 5%;">:</td>
+                    <td style="width: 65%;">{{ $agen->pekerjaan_ayah }}</td>
+                </tr>
+                <tr>
+                    <td style="width: 30%; vertical-align: top;">Alamat</td>
+                    <td style="width: 5%; vertical-align: top;">:</td>
+                    <td style="width: 65%;">{{ $agen->alamat }}</td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">No. Telp</td>
+                    <td style="width: 5%;">:</td>
+                    <td style="width: 65%;">{{ $agen->no_wa_ayah }}</td>
+                </tr>
+            </table>
+        @else
+            <table>
+                <tr>
+                    <td style="width: 30%;">Nama</td>
+                    <td style="width: 5%;">:</td>
+                    <td style="width: 65%;">{{ $agen->nama_ayah }}</td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">Pekerjaan</td>
+                    <td style="width: 5%;">:</td>
+                    <td style="width: 65%;">{{ $agen->pekerjaan_ayah }}</td>
+                </tr>
+                <tr>
+                    <td style="width: 30%; vertical-align: top;">Alamat</td>
+                    <td style="width: 5%; vertical-align: top;">:</td>
+                    <td style="width: 65%;">{{ $agen->alamat }}</td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">No. Telp</td>
+                    <td style="width: 5%;">:</td>
+                    <td style="width: 65%;">{{ $agen->no_wa_ayah }}</td>
+                </tr>
+            </table>
+        @endif
 
-        <table>
-            <tr>
-                <td style="width: 30%;">Nama</td>
-                <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{ $agen->nama_ayah }}</td>
-            </tr>
-            <tr>
-                <td style="width: 30%;">Pekerjaan</td>
-                <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{ $agen->pekerjaan_ayah }}</td>
-            </tr>
-            <tr>
-                <td style="width: 30%; vertical-align: top;">Alamat</td>
-                <td style="width: 5%; vertical-align: top;">:</td>
-                <td style="width: 65%;">{{ $agen->alamat}}</td>
-            </tr>
-            <tr>
-                <td style="width: 30%;">No. Telp</td>
-                <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{ $agen->no_wa_ayah }}</td>
-            </tr>
-        </table>
 
         <p>adalah Orang Tua/Wali dari siswa calon SMP Tahfizhul Qur’an Pangeran Diponegoro Semarang
             Tahun Ajaran 2024/2025.</p>

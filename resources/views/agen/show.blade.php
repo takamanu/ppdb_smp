@@ -6,7 +6,9 @@
         <div class="card-body">
             <!-- Section 1: Data Pribadi -->
             <div class="table-responsive">
+            
             <h3>Data Pribadi</h3>
+
             <table class="table table-striped mb-5">
                 <tbody>
                     <tr>
@@ -17,7 +19,7 @@
                         <th>NISN</th>
                         <td>{{ $agen->nisn }}</td>
                     </tr>
-                    <tr>
+                    <tr>.
                         <th>Email</th>
                         <td>{{ $agen->email }}</td>
                     </tr>
