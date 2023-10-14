@@ -148,6 +148,7 @@ class RegistrasiUlangController extends Controller
             'kk' => 'required|mimes:pdf,docx',
             'sertifikat' => 'sometimes|mimes:pdf',
         ]);
+
         // return $siswa;
 
         // Store the uploaded files
@@ -168,8 +169,8 @@ class RegistrasiUlangController extends Controller
             $uploadedFiles[$key] = $path;
         }
 
-        // Create a record in the database with the file paths
-        RegistrasiUlang::create([
+
+        $the_data = [
             'user_id' => auth()->user()->id,
             'ijazah' => $uploadedFiles['ijazah'],
             'surat_pernyataan_bermaterai' => $uploadedFiles['surat_pernyataan_bermaterai'],
@@ -177,8 +178,18 @@ class RegistrasiUlangController extends Controller
             'pasfoto' => $uploadedFiles['pasfoto'],
             'akta_kelahiran' => $uploadedFiles['akta_kelahiran'],
             'kk' => $uploadedFiles['kk'],
-            'sertifikat' => $uploadedFiles['sertifikat'],
-        ]);
+            // 'sertifikat' => $uploadedFiles['sertifikat'],
+        ];
+
+        // dd($the_data);
+
+        if($request->file('sertifikat')){
+            $the_data['sertifikat'] = $uploadedFiles['sertifikat'];
+        }
+
+        // Create a record in the database with the file paths
+        RegistrasiUlang::create($the_data);
+
 
         // Redirect with a success message
         return redirect('/siswa/pengumuman/' . $siswa->user_id)
