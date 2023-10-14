@@ -103,6 +103,7 @@
                                                             onclick="return confirm(&quot;Apakah anda ingin menghapus data siswa {{ $item->name }}?&quot;)"><i
                                                                 class="fa fa-trash" aria-hidden="true"></i></button>
                                                     </form>
+                                                {{-- @elseif ($item->) --}}
                                                 @else
                                                     <a href="{{ url('/agen/nilai/' . $item->id) }}"
                                                         title="Tambah Kelulusan Siswa"><button

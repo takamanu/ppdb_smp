@@ -146,7 +146,7 @@ class RegistrasiUlangController extends Controller
             'pasfoto' => 'required|image|mimes:jpg,jpeg,png',
             'akta_kelahiran' => 'required|mimes:pdf,docx',
             'kk' => 'required|mimes:pdf,docx',
-            'sertifikat' => 'mimes:pdf',
+            'sertifikat' => 'sometimes|mimes:pdf',
         ]);
         // return $siswa;
 

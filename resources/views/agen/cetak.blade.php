@@ -68,7 +68,7 @@
         <h3 id=judul>TAHUN AJARAN 2024/2025</h3>
 
         <p>Yang bertandatangan di bawah ini:</p>
-        @if ($agen->nama_ayah == "Almarhum" && $agen->nama_ibu == "Almarhum")
+        @if ($agen->pekerjaan_ayah == "Almarhum" && $agen->pekerjaan_ibu == "Almarhum")
             <table>
                 <tr>
                     <td style="width: 30%;">Nama</td>
@@ -91,7 +91,7 @@
                     <td style="width: 65%;">{{ $agen->no_wa_wali_siswa }}</td>
                 </tr>
             </table>
-        @elseif ($agen->nama_ayah == "Almarhum")
+        @elseif ($agen->pekerjaan_ayah == "Almarhum")
             <table>
                 <tr>
                     <td style="width: 30%;">Nama</td>
@@ -114,7 +114,7 @@
                     <td style="width: 65%;">{{ $agen->no_wa_ibu }}</td>
                 </tr>
             </table>
-        @elseif ($agen->nama_ibu == "Almarhum")
+        @elseif ($agen->pekerjaan_ibu == "Almarhum")
             <table>
                 <tr>
                     <td style="width: 30%;">Nama</td>
