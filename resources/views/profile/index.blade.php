@@ -1,6 +1,18 @@
 @extends('layouts.main')
 
 @section('container')
+<script>
+    function fixAspect(img) {
+        var $img = $(img),
+            width = $img.width(),
+            height = $img.height(),
+            tallAndNarrow = width / height < 1;
+        if (tallAndNarrow) {
+            $img.addClass('tallAndNarrow');
+        }
+        $img.addClass('loaded');
+    }
+</script>
     <style>
         .input-group-text {
             width: 8rem !important;
@@ -58,17 +70,6 @@
         </div>
     </div>
 
-    <script>
-        function fixAspect(img) {
-            var $img = $(img),
-                width = $img.width(),
-                height = $img.height(),
-                tallAndNarrow = width / height < 1;
-            if (tallAndNarrow) {
-                $img.addClass('tallAndNarrow');
-            }
-            $img.addClass('loaded');
-        }
-    </script>
+    
 
 @endsection
