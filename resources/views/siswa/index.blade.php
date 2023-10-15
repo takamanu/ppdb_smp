@@ -24,7 +24,7 @@
             <div class="row mb-5">
                 <div class="col-md-6">
                     <p class="card-text">
-                        <img class="img-profile rounded-circle" width="50%" src="{{ asset(Auth::user()->avatar) }}">
+                        <img class="img-profile rounded-circle" width="50%" src="{{ asset(Auth::user()->avatar) }}" onload='fixAspect(this);'>
                     </p>
                 </div>
                 @if ($agen == 'NULL')
@@ -308,6 +308,19 @@
 
     <!-- Include Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function fixAspect(img) {
+            var $img = $(img),
+                width = $img.width(),
+                height = $img.height(),
+                tallAndNarrow = width / height < 1;
+            if (tallAndNarrow) {
+                $img.addClass('tallAndNarrow');
+            }
+            $img.addClass('loaded');
+        }
+    </script>
 
     <script>
         // Using jQuery for simplicity, but you can use plain JavaScript as well

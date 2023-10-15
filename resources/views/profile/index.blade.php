@@ -26,7 +26,7 @@
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col d-flex justify-content-center">
-                        <img class="img-thumbnail rounded-circle w-25" src="{{ asset(Auth::user()->avatar) }}">
+                        <img class="img-thumbnail rounded-circle w-25" src="{{ asset(Auth::user()->avatar) }}" onload='fixAspect(this);'>
                     </div>
                 </div>
 
@@ -57,5 +57,18 @@
 
         </div>
     </div>
+
+    <script>
+        function fixAspect(img) {
+            var $img = $(img),
+                width = $img.width(),
+                height = $img.height(),
+                tallAndNarrow = width / height < 1;
+            if (tallAndNarrow) {
+                $img.addClass('tallAndNarrow');
+            }
+            $img.addClass('loaded');
+        }
+    </script>
 
 @endsection
