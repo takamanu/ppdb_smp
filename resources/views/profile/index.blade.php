@@ -26,7 +26,7 @@
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col d-flex justify-content-center">
-                        <img class="img-thumbnail rounded-circle w-25" src="{{ asset(Auth::user()->avatar) }}" onload='fixAspect(this);'>
+                        <img class="img-profile rounded-circle" src="{{ asset(Auth::user()->avatar) }}" onload='fixAspect(this);'>
                     </div>
                 </div>
 
