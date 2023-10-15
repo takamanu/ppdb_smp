@@ -24,7 +24,9 @@
             <div class="row mb-5">
                 <div class="col-md-6">
                     <p class="card-text">
-                        <img class="img-profile rounded-circle" width="50%" src="{{ asset(Auth::user()->avatar) }}" onload='fixAspect(this);'>
+                        <div class="rounded-circle" style="width: 150px; height: 150px; overflow: hidden;">
+                            <img class="img-fluid" src="{{ asset(Auth::user()->avatar) }}" style="object-fit: cover; width: 100%; height: 100%;" alt="User Avatar">
+                        </div>  
                     </p>
                 </div>
                 @if ($agen == 'NULL')
