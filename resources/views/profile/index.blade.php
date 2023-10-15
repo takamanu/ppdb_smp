@@ -38,7 +38,9 @@
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col d-flex justify-content-center">
-                        <img class="img-profile rounded-circle" src="{{ asset(Auth::user()->avatar) }}" onload='fixAspect(this);'>
+                        <div class="rounded-circle" style="width: 150px; height: 150px; overflow: hidden;">
+                            <img class="img-fluid" src="{{ asset(Auth::user()->avatar) }}" style="object-fit: cover; width: 100%; height: 100%;" alt="User Avatar">
+                        </div>                       
                     </div>
                 </div>
 
