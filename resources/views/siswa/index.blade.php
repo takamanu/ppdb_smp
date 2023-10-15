@@ -22,7 +22,7 @@
         <div class="card-body">
             <h5 class="card-title mb-5">Kartu Peserta PPDB SMP TQ Pangeran Diponegoro</h5>
             <div class="row mb-5">
-                <div class="col-md-6">
+                <div class="col-md-6 d-flex justify-content-center">
                     <p class="card-text">
                         <div class="rounded-circle" style="width: 150px; height: 150px; overflow: hidden;">
                             <img class="img-fluid" src="{{ asset(Auth::user()->avatar) }}" style="object-fit: cover; width: 100%; height: 100%;" alt="User Avatar">
